@@ -8,27 +8,31 @@
             width: 80px;
             display: block;
             text-align: right;
-            float:left;
+            float: left;
         }
+
         .hobby {
             display: inline-block;
         }
-        .alas {
-            mso-element-frame-height: 100px;
 
+        #khung {
+            border-color: blue;
+            border-bottom-width: 3px;
+            border-style: solid;
+            width: 400px;
         }
     </style>
 </head>
 <body>
-<form action="file_thu.html" method="post">
-    <div>
+<form action="file_thu.html" method="post" style="border:3px blue">
+    <div id="khung">
         <h2 style="color: black; background: orange; text-align: center; width: 400px">sở thích của bạn</h2>
         <label class="space" for="hovaten">Họ và tên</label>
         <input type="text" id="hovaten" name="hovaten"><br><br>
         <label class="space" for="email">Email</label>
         <input type="text" id="email" name="email"><br><br>
         <label class="space" style="color: blue">sở thích</label>
-        <div class="hobby"> <input type="checkbox" id="thethao" name="thethao">
+        <div class="hobby"><input type="checkbox" id="thethao" name="thethao">
             <label for="thethao">thể thao</label>
             <input type="checkbox" id="amnhac" name="amnhac">
             <label for="amnhac">âm nhạc</label>
