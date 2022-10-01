@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script>function myig() {
-        document.getElementById("demo").innerHTML ="sửa cái gì mà sửa";
-    }</script>
 </head>
 <body>
-<p id="demo">gggg</p>
-<button type="button" onclick="myig()">click</button>
+<script>
+    let so1 = prompt('nhập số cần hiển thị');
+    let text;
+if (so1 == null){
+    text = "thứ bạn vừa nhâp đéo phải tên";
+}else {
+    if (so1 === "") {
+        text = "xin chào" + so1 + "!";
+    } else {
+        text = "mày đã hết cơ hội để nhập tên";
+    }
+}
+</script>
 </body>
 </html>
