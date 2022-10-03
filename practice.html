@@ -7,8 +7,15 @@
 <body>
 <label for="demo">tên</label>
 <input type="text" id="demo"><br>
-<button id="demo" onclick="document.getElementById('ddd').innerHTML" = >hiển thị</button>
+<button onclick= "input()">hiển thị</button>
 <p id="ddd"></p>
+<script>
+    function input() {
+        let value = document.getElementById('demo').value;
+        alert(value +'');
+    }
+
+</script>
 
 </body>
 </html>
