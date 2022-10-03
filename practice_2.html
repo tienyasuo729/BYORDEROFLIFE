@@ -5,13 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-<input type="text" id="domain" name="domain" value=""/>
-<button onclick="setDomain()">Gán giá trị</button>
+<h2>JavaScript Objects</h2>
+
+<p id="demo"></p>
+
 <script>
-    function setDomain(){
-        let domain = 'freetuts.net';
-        document.getElementById('domain').value = domain;
-    }
+    let person = {
+        firstName : "John",
+        lastName  : "Doe",
+        age     : 50,
+        eyeColor  : "blue"
+    };
+
+    document.getElementById("demo").innerHTML =
+        person.lastName + " is " + person.age + " years old.";
 </script>
 </body>
 </html>
