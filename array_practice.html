@@ -8,16 +8,23 @@
 <h1><i>Sample screen</i></h1>
 <label for="nhapso"></label>
 <input id="nhapso" type="number">
-<button id="add" type="button">Add</button>
-<button id="display" type="button">Display</button>
+<input type="button" onclick="nhapgiatri()" value="Add">
+<input type="button" onclick="display()" value="Display">
 <br><br>
-<h4 id="hienthi"
+<h4 id="hienthi"></h4>
 <script>
-    function add.array.number() {
-        let value = document.getElementById('nhapso')
-    }
-    function display.array.number() {
+    let x = 0;
+    let value = Array();
+   function nhapgiatri () {
+       value[x] = document.getElementById('nhapso').value;
+       x++;
+       alert(value);
+   }
 
+    function display() {
+       let e = "<hr/>";
+       for (let e)
+        document.getElementById('hienthi').innerHTML = value;
 
     }
 </script>
