@@ -11,6 +11,8 @@
 <button id="themsovaomang" type="button" onclick="arr_themsovaomang()">Thêm số vào mảng </button>
 <button id="xemnhungsodanhapvaomang" type="button" onclick="arr_xemnhungsotrongmang()">Xem những số có trong mảng</button>
 <button id="daonguocmang" type="button" onclick="arr_daonguocmang()">Đảo ngược mảng</button>
+<hr>
+<p id="hienthi"></p>
 <script>
     let x = 0;
     let arr = [];
@@ -23,13 +25,9 @@
     function arr_xemnhungsotrongmang() {
         let r = "";
         for (let i = 0; i < arr.length ; i++) {
-            r += "số thứ " + i + ":" + arr[i];
-            
+            r += "số thứ " + i + ":" + arr[i] + "<br>";
+            document.getElementById('hienthi').innerHTML = r;
         }
-        for (let i = 0; i < arr.length; i++) {
-
-        }
-
     }
 
     function arr_daonguocmang() {
