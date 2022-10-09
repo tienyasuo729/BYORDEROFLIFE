@@ -19,13 +19,20 @@
         let n = +prompt("nhập chiều dài của hình chữ nhật");
         let m = +prompt("nhập chiều rộng của hình nhật");
         for (let i = 0; i < m; i++) {
-            for (let i = 0; i < n; i++) {
-                document.write("*");
-            }document.write("<br>")
-            if ( m-1 > i >1 ){
-                
+            if (1 <= i < m ){
+                for (let j = 0; j < n; j++) {
+                    if (1 < j < n) {
+                        for (let k = 0; k < n - 1; k++) {
+                            document.write("&");
+                        }
+                    }else {
+                        document.write("*");
+                    }
+                }
+                else {
+                    document.write("ádasd");
+                }
             }
-
         }
 
     }
