@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Vẽ tam giác vuông cân rỗng có chiều cao h.</h1>
+<button type="button" onclick="bai2()">Bài 2</button>
+<script>
+    function bai2() {
+        let h;
+        let inramanhinh = "";
+        do {
+            h = +prompt("nhập chiều cao của tam giác vuông ");
+        }while (h <0);
+        for (let i = 1; i < h; i++) {
+            for (let j = 1; j < h; j++) {
+                inramanhinh += "*";
+                if (j > 1 || j < h) {
+                    inramanhinh += "&nbsp;&nbsp";
+                }
+                inramanhinh += "*" + "<br>";
+            }
+        }
+        document.write(inramanhinh);
+    }
+</script>
+</body>
+</html>
