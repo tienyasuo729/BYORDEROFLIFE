@@ -5,18 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Vẽ tam giác vuông cân rỗng có chiều cao h.</h1>
-<button type="button" onclick="bai2()">Bài 2</button>
+
+<h1 style="">Vẽ tam giác cân đặc có chiều cao h.</h1>
+<button type="button" onclick="bai3()">Bài 3</button>
 <script>
-    function bai2() {
-        let h;
+    function bai3() {
         let inramanhinh = "";
-        do {
-            h = +prompt("nhập chiều cao của tam giác vuông ");
-        } while (h < 0);
-        for (let i = 0; i < ; i++) {
-            
+        let h = +prompt("nhập vào màn hình chiều cao của tam giác");
+        for (let i = 0; i < h ; i++) {
+            for (let j = 0; j < i ; j++) {
+                inramanhinh += "*";
+            }
+         inramanhinh += "<br>";
+         inramanhinh += "<style = center>";
         }
+        document.write(inramanhinh);
+    }
 </script>
 </body>
 </html>
