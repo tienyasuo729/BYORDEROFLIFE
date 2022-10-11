@@ -60,7 +60,22 @@
     }
 
     function bai3() {
-
+        let inramanhinh = "";
+        let h = +prompt("nhập vào màn hình chiều cao của tam giác");
+        let a = h;
+        let b = 1;
+        for (let i = 0; i < h; i++) {
+            for (let j = 0; j < a; j++) {
+                inramanhinh += "&nbsp;&nbsp";
+            }
+            for (let j = 0; j < b; j++) {
+                inramanhinh += "*";
+            }
+            b += 2;
+            a --;
+            inramanhinh += "<br>";
+        }
+        document.write(inramanhinh);
     }
 
     function bai4() {
