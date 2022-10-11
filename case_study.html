@@ -41,7 +41,22 @@
     }
 
     function bai2() {
-
+        let h;
+        let inramanhinh = "";
+        do {
+            h = +prompt("nhập chiều cao của tam giác vuông ");
+        } while (h < 0);
+        for (let i = 0; i < h; i++) {// dòng
+            for (let j = 0; j < h; j++) {//cột
+                if (j === 0 || i === j || i === h -1 ){
+                    inramanhinh += "*"
+                }else {
+                    inramanhinh += "&nbsp;&nbsp";
+                }
+            }
+            inramanhinh += "<br>";
+        }
+        document.write(inramanhinh);
     }
 
     function bai3() {
