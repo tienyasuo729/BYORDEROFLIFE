@@ -13,16 +13,13 @@
         do {
             a = +prompt("nhập vào số cần kiểm tra");
         }while (a < 0);
-        let b = a ;
-        if (a % 2 >= 1 || a ===2) {
-            if (b === 2 ) {
-                alert("số" + b + "là số nguyên tố");
+        for (let i = 2; i < a^2 ; i++) {
+            if (a % i === 0 && a / i === a) {
+                break;
+                alert("sss");
             }else {
-                if (b % 3 >= 1) {
-                    alert("số" + b + "không phải là số nguyên tố");
-                }else {
-                    alert("số" + b + "là số nguyên tố");
-                }
+                break;
+                alert("số đó không phải là số nguyên tố");
             }
         }
     }
