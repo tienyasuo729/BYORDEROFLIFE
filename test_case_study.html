@@ -6,15 +6,23 @@
 </head>
 <body>
 <h1>Vẽ tam giác cân rỗng có chiều cao h. </h1>
-<button type="button" onclick="bai3()">Bài 3</button>
+<button type="button" onclick="practice2()">Bài 3</button>
 <script>
-    function bai3() {
-        let h = +prompt("nhập chiều cao của tam giác rỗng");
-        let inramanhinh = "";
-        for (let i = 0; i < h ; i++) {
-            for (let j = 0; j < i ; j++) {
-                inramanhinh += "*"
+    function practice2() {
+        let botton, height;
+        do {
+            height = +prompt("Nhap chieu cao: ");
+            botton = height;
+        } while (botton <= 0 || height <= 0 )
+        for (let i = 1; i <= botton; i++) {
+            for (let j = 1; j <= height; j++) {
+                if (j === 1 || j === i || i === botton) {
+                    document.write("*");
+                } else {
+                    document.write("\xa0\xa0");
+                }
             }
+            document.write('<br>');
         }
     }
 </script>

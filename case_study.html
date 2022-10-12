@@ -79,7 +79,33 @@
     }
 
     function bai4() {
-
+        let h = +prompt("nhập chiều cao của tam giác rỗng");
+        let a = h;
+        let b = 1;
+        let inramanhinh = "";
+        for (let i = 0; i < h; i++) {
+            for (let j = 0; j < a; j++) {
+                inramanhinh += "&nbsp;&nbsp";
+            }
+            if (i === h -1) {
+                b += 2;
+            }
+            if (i === 0 ||i === h - 1) {
+                for (let j = 0; j < b  ; j++) {
+                    inramanhinh += "*";
+                }
+            } else {
+                inramanhinh += "*";
+                for (let j = 0; j < b; j++) {
+                    inramanhinh += "&nbsp;&nbsp";
+                }
+                inramanhinh += "*";
+                b += 2;
+            }
+            inramanhinh += "<br>";
+            a--;
+        }
+        document.write(inramanhinh);
     }
 
 </script>
