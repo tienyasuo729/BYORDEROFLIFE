@@ -19,11 +19,11 @@
 <h2>Bài 3: Tạo hàm nhận vào hai tham số. Nếu giá trị của tham số thứ nhất lớn hơn tham số thứ hai, hiển thị hộp thoại thông báo cho người dùng. Nếu giá trị của tham số thứ nhất nhỏ hơn hoặc bằng tham số thứ hai, trả về tổng của hai tham số.</h2>
 <h2>Bài 4: Thêm các hàm alert() vào những vị trí thích hợp trong đoạn mã sau để bạn có thể nhìn thấy giá trị của biến result trước và sau lời gọi hàm</h2>
 <h2>Bài 5: Tạo một mảng với bảy phần tử dạng chuỗi có giá trị là tên các ngôi sao sau: Polaris, Aldebaran, Deneb, Vega, Altair, Dubhe và Regulus. Tạo một mảng khác với bảy phần tử dạng chuỗi có giá trị là tên các chòm sao tương ứng chứa các ngôi sao: Ursa Minor, Tarurus, Cygnus, Lyra, Aquila, Ursa Major và Leo. Tiếp theo, tạo một hàm nhận vào một tham số dạng chuỗi duy nhất. Trong hàm này, duyệt qua mảng thứ nhất để tìm tên ngôi sao. Nếu tìm thấy, trả lại giá trị tương ứng với chỉ số đó ở mảng thứ hai. Nói cách khác, trả lại tên chòm sao của ngôi sao đó. Trong phần body của trang web, dùng hộp thoại prompt để người dùng nhập vào tên của ngôi sao, sau đó gọi hàm với thông tin đầu vào. Đừng quên xử lý trong trường hợp không tìm thấy ngôi sao nào. Cho kết quả hiển thị trên màn hình.</h2>
-<button type="button" onclick="practice_Function_1_bai_1()">Bài 1</button>
-<button type="button" onclick="practice_Function_1_bai_2()">Bài 2</button>
-<button type="button" onclick="practice_Function_1_bai_3()">Bài 3</button>
-<button type="button" onclick="practice_Function_1_bai_4()">Bài 4</button>
-<button type="button" onclick="practice_Function_1_bai_5()">Bài 5</button>
+<button type="button" onclick="practice_Function_1_Bai_1()">Bài 1</button>
+<button type="button" onclick="practice_Function_1_Bai_2()">Bài 2</button>
+<button type="button" onclick="practice_Function_1_Bai_3()">Bài 3</button>
+<button type="button" onclick="practice_Function_1_Bai_4()">Bài 4</button>
+<button type="button" onclick="practice_Function_1_Bai_5()">Bài 5</button>
 <hr>
 <h1> Luyện tập tạo và sử dụng hàm 02</h1>
 <h2>Bài 1: Viết hàm tính bình phương của một số bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.</h2>
@@ -88,23 +88,47 @@
         alert("giá trị chuyển đổi được là :" + feet + "meters");
     }
 
-    function practice_Function_1_bai_1() {
+    function practice_Function_1_Bai_1() {
         alert("xin chào");
     }
 
-    function practice_Function_1_bai_2() {
-
+    function practice_Function_1_Bai_2() {
+        let x = +prompt("nhập giá trị cần tăng");
+        support_Pactice_Function_1_Bai_2(x);
+    }
+    function support_Pactice_Function_1_Bai_2(number) {
+        number ++;
+        alert("Giá trị cần in ra màn hình là :" + number);
     }
 
-    function practice_Function_1_bai_3() {
-
+    function practice_Function_1_Bai_3() {
+        let first_number = +prompt("nhập vào số thứ nhất");
+        let second_number = +prompt("nhập vào số thứ hai");
+        if (first_number === second_number) {
+            alert("Hai số bạn vừa nhập bằng nhau");
+        }
+        if (first_number > second_number) {
+            alert("Số thứ nhất lớn hơn số thứ hai");
+        }
+        if (second_number > first_number){
+            alert("số thứ hai lớn hơn số thứ nhất");
+        }
     }
 
-    function practice_Function_1_bai_4() {
+    function practice_Function_1_Bai_4() {
+        let firstNum = 4;
+        let secondNum = 8;
+        result = firstNum + secondNum;
+        return result;
 
     }
+    result = 0;
+    alert(result);
+    result = practice_Function_1_Bai_4();
+    alert(result);
 
-    function practice_Function_1_bai_5() {
+
+    function practice_Function_1_Bai_5() {
 
     }
 
