@@ -48,10 +48,10 @@
     function check_Prime_Number() {
         let number;
         do {
-            number = +prompt("nhập số cần kiểm tra");
+            number = +prompt("Nhập số cần kiểm tra");
         }while (number < 0);
         if (number < 2) {
-            alert("số" + number + "không phải là số nguyên tố");
+            alert("Số" + number + "không phải là số nguyên tố");
         }else {
             let check = true;
             for (let i = 2; i < number ; i++) {
@@ -60,9 +60,9 @@
                 }
             }
             if (check) {
-                alert("số" + number + "là số nguyên tố");
+                alert("Số" + number + "là số nguyên tố");
             }else {
-                alert("số" + number + "không phải là sô nguyên tố")
+                alert("Số" + number + "không phải là sô nguyên tố")
             }
         }
 
@@ -71,29 +71,29 @@
     function convert_Between_Feet_To_Meters() {
         let feet;
         do {
-            feet = +prompt("nhập feet cần chuyển đổi");
+            feet = +prompt("Nhập feet cần chuyển đổi");
         }while (feet < 0);
         let meters;
         meters = feet * 0.305;
-        alert("giá trị chuyển đổi được là :" + meters + "feet");
+        alert("Giá trị chuyển đổi được là :" + meters + "feet");
     }
 
     function convert_Between_Meters_To_Feet() {
         let meters;
         do {
-            meters = +prompt("nhập feet cần chuyển đổi");
+            meters = +prompt("Nhập feet cần chuyển đổi");
         }while (meters < 0);
         let feet;
         feet = meters * 3.279;
-        alert("giá trị chuyển đổi được là :" + feet + "meters");
+        alert("Giá trị chuyển đổi được là :" + feet + "meters");
     }
 
     function practice_Function_1_Bai_1() {
-        alert("xin chào");
+        alert("Xin chào");
     }
 
     function practice_Function_1_Bai_2() {
-        let x = +prompt("nhập giá trị cần tăng");
+        let x = +prompt("Nhập giá trị cần tăng");
         support_Pactice_Function_1_Bai_2(x);
     }
     function support_Pactice_Function_1_Bai_2(number) {
@@ -102,8 +102,8 @@
     }
 
     function practice_Function_1_Bai_3() {
-        let first_number = +prompt("nhập vào số thứ nhất");
-        let second_number = +prompt("nhập vào số thứ hai");
+        let first_number = +prompt("Nhập vào số thứ nhất");
+        let second_number = +prompt("Nhập vào số thứ hai");
         if (first_number === second_number) {
             alert("Hai số bạn vừa nhập bằng nhau");
         }
@@ -111,7 +111,7 @@
             alert("Số thứ nhất lớn hơn số thứ hai");
         }
         if (second_number > first_number){
-            alert("số thứ hai lớn hơn số thứ nhất");
+            alert("Số thứ hai lớn hơn số thứ nhất");
         }
     }
 
@@ -119,21 +119,38 @@
         let firstNum = 4;
         let secondNum = 8;
         result = firstNum + secondNum;
+        alert(result);
         return result;
-
     }
-    result = 0;
-    alert(result);
-    result = practice_Function_1_Bai_4();
-    alert(result);
-
 
     function practice_Function_1_Bai_5() {
-
+        let check;
+        do {
+            check = prompt("Nhập tên ca sĩ cần kiểm tra");
+        }while (check === "");
+        let arr_name_singer = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe" , "Regulus"];
+        let arr_star = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+        let print_arr ="";
+        for (let i = 0; i < arr_name_singer.length ; i++) {
+            if (check === arr_name_singer[i]) {
+                print_arr = arr_name_singer[i] + "--" + arr_star[i];
+                break;
+            }
+        }
+        if (print_arr === "") {
+            alert("Không tìm thấy");
+        }else {
+            support_Practice_Function_1_Bai_5(print_arr);
+        }
+    }
+    function support_Practice_Function_1_Bai_5(print) {
+       alert("Tên ngôi sao và chòm sao của ca sĩ là : " + print);
     }
 
     function practice_Function_2_bai_1() {
-
+        let number = +prompt("Nhập vào số cần tính bình phương");
+        let squared = number * number;
+        alert("Bình phương số vừa nhập là " + squared);
     }
 
     function practice_Function_2_bai_2() {
