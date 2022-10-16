@@ -116,11 +116,7 @@
     }
 
     function practice_Function_1_Bai_4() {
-        let firstNum = 4;
-        let secondNum = 8;
-        result = firstNum + secondNum;
-        alert(result);
-        return result;
+        alert("Bài này tự hiểu trên codegym");
     }
 
     function practice_Function_1_Bai_5() {
@@ -154,19 +150,42 @@
     }
 
     function practice_Function_2_bai_2() {
-
+        let radius = +prompt("Nhập vào đây bán kính hình tròn");
+        let circle_area = radius * radius * 3.14; // circle area : diện tích hình tròn
+        let perimeter_of_circle = radius * 2 * 3.14; // perimeter of circle : chu vi của hình tròn
+        alert("Diện tích của hình tròn là : " + circle_area);
+        alert("Chu vi hình tròn là : " + perimeter_of_circle);
     }
 
     function practice_Function_2_bai_3() {
-
+        let number = +prompt("Nhập số cần tính giai thừa");
+        let factorial = 1;
+        for (let i = 1; i <= number ; i++) {
+            factorial *= i;
+        }
+        alert("Giai thừa của số" + number + "!" + "là : " + factorial);
     }
 
     function practice_Function_2_bai_4() {
+        let number_1 = +prompt("Nhập vào số thứ nhất");
+        let number_2 = +prompt("Nhập vào số thứ hai");
+        let number_3 = +prompt("Nhập vào số thứ ba");
+        let max ;
+        if (number_1 > number_2) {
+            max = number_1;
+        } else {
+            if (number_2 > number_3) {
+                max = number_2;
+            }else {
+                max = number_3
+            }
+        }
+        alert("Số lớn nhất trong 3 số là " + max);
 
     }
 
     function practice_Function_2_bai_5() {
-
+        
     }
 
     function practice_Function_2_bai_6() {
