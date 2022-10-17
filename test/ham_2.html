@@ -185,11 +185,24 @@
     }
 
     function practice_Function_2_bai_5() {
-        
+        let number_1 = +prompt("Nhập vào số thứ nhất");
+        let number_2 = +prompt("Nhập vào số thứ hai");
+        let number_3 = +prompt("Nhập vào số thứ ba");
+        let min ;
+        if (number_1 < number_2) {
+            min = number_1;
+        } else {
+            if (number_2 < number_3) {
+                min = number_2;
+            }else {
+                min = number_3
+            }
+        }
+        alert("Số nhỏ nhất trong 3 số là " + min);
     }
 
     function practice_Function_2_bai_6() {
-
+        
     }
 
     function practice_Function_2_bai_7() {
