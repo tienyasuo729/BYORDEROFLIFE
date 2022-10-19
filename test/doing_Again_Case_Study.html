@@ -55,11 +55,30 @@
     }
 
     function part_1_Case_Study_Bai_2() {
-
+        let h = +prompt("Nhập vào đây chiều cao của tam giác vuông cân rỗng");
+        let print_To_The_Screen = "";
+        for (let i = 0; i < h ; i++) {
+            for (let j = 0; j <= i ; j++) {
+                if (j === 0 || j === i || i === h -1) {
+                    print_To_The_Screen += "* ";
+                }else {
+                    print_To_The_Screen += "&nbsp;&nbsp;&nbsp";
+                }
+            }
+            print_To_The_Screen += "<br>";
+        }
+        document.write(print_To_The_Screen);
     }
 
     function part_1_Case_Study_Bai_3() {
+        let h = +prompt("Nhập vào đây chiều cao của tam giác cân đặc");
+        let print_To_The_Screen = "";
+        for (let i = 0; i < h ; i++) {
+            for (let j = 0; j < ; j++) {
 
+            }
+            print_To_The_Screen += "<br>";
+        }
     }
 
     function part_1_Case_Study_Bai_4() {
