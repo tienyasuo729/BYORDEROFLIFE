@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CASE STUDY</title>
+    <style>
+        .tieuDe {
+            text-align: center;
+            color: red;
+            font-size: 50px;
+        }
+        .tieuDeCuaTungPhan {
+            color: red;
+        }
+        button {
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+            color: darkgreen;
+            border-color: lawngreen;
+            border-width: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1 class="tieuDe">*** CASE STUDY ***</h1>
+<hr>
+<h1 class="tieuDeCuaTungPhan">PART 1: YÊU CẦU 1 ( VẼ HÌNH * )</h1>
+<h2>- Bài 1: Vẽ hình chữ nhật rỗng chiều dài n và chiều rộng m theo hình dưới đây. Ví dụ: x = 4, y = 5</h2>
+<button type="button" onclick="part_1_Case_Study_Bai_1()">Vẽ bài 1</button>
+<h2>- Bài 2: Vẽ tam giác vuông cân rỗng có chiều cao h. Ví dụ: h = 5</h2>
+<button type="button" onclick="part_1_Case_Study_Bai_2()">Vẽ bài 2</button>
+<h2>- Bài 3: Vẽ tam giác cân đặc có chiều cao h. Ví dụ: h = 5</h2>
+<button type="button" onclick="part_1_Case_Study_Bai_3()">Vẽ bài 3</button>
+<h2>- Bài 4: Vẽ tam giác cân rỗng có chiều cao h. Ví dụ: h = 5</h2>
+<button type="button" onclick="part_1_Case_Study_Bai_4()">Vẽ bài 4</button>
+<hr>
+<h1 class="tieuDeCuaTungPhan">PART 2: YÊU CẦU 2 ( IF VÀ SWITCH CASE )</h1>
+<script>
+    function part_1_Case_Study_Bai_1() {
+        let n = +prompt("Nhập vào đây chiều dài của hình chữ nhật"); // hàng
+        let m = +prompt("Nhập vào đây chiều rộng của hình chữ nhật");// cột
+        let print_To_The_Screen = "";
+        for (let i = 0; i < m; i++) {
+            for (let j = 0; j < n; j++) {
+                if (i === 0 || j === 0 || j === n -1 || i === m -1) {
+                    print_To_The_Screen += "* ";
+                }else {
+                    print_To_The_Screen += "&nbsp;&nbsp;&nbsp";
+                }
+            }
+            print_To_The_Screen += "<br>";
+        }
+        document.write(print_To_The_Screen);
+    }
+
+    function part_1_Case_Study_Bai_2() {
+
+    }
+
+    function part_1_Case_Study_Bai_3() {
+
+    }
+
+    function part_1_Case_Study_Bai_4() {
+
+    }
+</script>
+</body>
+</html>
