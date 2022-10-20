@@ -124,19 +124,92 @@
     }
 
     function part_2_Case_Study_Bai_1() {
-        let salary = +prompt("Nhập vào đây mức lương của bạn ");
-        switch (salary) {
-            case salary > 15 :
-                alert("mức lương của bạn là :" + salary);
-                break;
-            case salary < 15 :
-                alert("sdfdsfds");
-                break
+        let salary;
+        do {
+            salary = +prompt("Nhập vào đây mức lương của bạn ");
+        } while (salary < 0);
+        let tax;
+        if (salary < 7000000) {
+            tax = salary / 100 * 5;
+            alert("Thuế bạn cần phải đóng là :" + tax + "vnd");
+            alert("lương của bạn sau khi trừ thuế là :" + (salary - tax) + "vnd");
+        } else {
+            if (7000 <= salary < 15000000) {
+                tax = salary / 100 * 10;
+                alert("Thuế bạn cần phải đóng là :" + tax + "vnd");
+                alert("lương của bạn sau khi trừ thuế là :" + (salary - tax) + "vnd");
+            } else {
+                if (salary >= 15000000) {
+                    tax = salary / 100 * 20;
+                    alert("Thuế bạn cần phải đóng là :" + tax + "vnd");
+                    alert("lương của bạn sau khi trừ thuế là :" + (salary - tax) + "vnd");
+                }
+            }
         }
     }
 
     function part_2_Case_Study_Bai_2() {
-
+        let alphabet = prompt("Nhập vào đây chữ cái cần kiểm tra là nguyên âm hay phụ âm");
+        switch (alphabet) {
+            case u:
+            case e:
+            case o:
+            case a:
+            case i:
+            case U:
+            case E:
+            case O:
+            case A:
+            case I:
+                alert("Chữ cái " + alphabet + "là một nguyên âm");
+                break;
+            case b:
+            case c:
+            case d:
+            case f:
+            case g:
+            case h:
+            case j:
+            case k:
+            case l:
+            case m:
+            case n:
+            case p:
+            case q:
+            case r:
+            case s:
+            case t:
+            case v:
+            case w:
+            case x:
+            case y:
+            case z:
+            case B:
+            case C:
+            case D:
+            case F:
+            case G:
+            case H:
+            case J:
+            case K:
+            case L:
+            case M:
+            case N:
+            case P:
+            case Q:
+            case R:
+            case S:
+            case T:
+            case V:
+            case W:
+            case X:
+            case Y:
+            case Z:
+                alert("Chữ cái " + alphabet + "là một phụ âm");
+                break;
+            default :
+                alert("Không tìm thấy hoặc bạn nhập vào không đúng");
+        }
     }
 </script>
 </body>
