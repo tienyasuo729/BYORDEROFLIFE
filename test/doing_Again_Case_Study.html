@@ -22,6 +22,7 @@
             border-color: lawngreen;
             border-width: 5px;
         }
+
     </style>
 </head>
 <body>
@@ -48,6 +49,23 @@
 <h2>- Bài 2: Viết chương trình kiểm tra một ký tự trong bảng chữ cái tiếng anh là nguyên âm hay phụ âm. Ký tự là bất kỳ
     được nhập từ bàn phím. Các ký tự nguyên âm bao gồm: 'o', 'u', 'i', 'a', 'e' hoặc 'O', 'U', 'I', 'A', 'E'</h2>
 <button type="button" onclick="part_2_Case_Study_Bai_2()">Bài 2</button>
+<hr>
+<h1 class="tieuDeCuaTungPhan">PART 3: YÊU CẦU 3 ( MẢNG VÀ LOOP )</h1>
+<h2>Bài 1: Cho mảng a chỉ chứa các số nguyên</h2>
+<h2>Xây dựng mảng b là prefix sums của mảng a cụ thể theo công thức:</h2>
+<h2>b[0]   = a[0]</h2>
+<h2>b[1]   = a[0] + a[1]</h2>
+<h2>b[2]   = a[0] + a[1] + a[2]</h2>
+<h2>...</h2>
+<h2>b[n - 1] = a[0] + a[1] + ... + a[n - 1]</h2>
+<h2>với n là độ dài của mảng a.</h2>
+<h2>Ví dụ: Cho a = [1, 2, 3], thì kết quả prefixSums(a) = [1, 3, 6].</h2>
+<h2>Mảng b được tạo ra: [1, 1 + 2, 1 + 2 + 3] = [1, 3, 6]</h2>
+<button type="button" onclick="part_3_Case_Study_Bai_1()">Bài 1</button>
+<h2>Bài 2: Cho 2 mảng A và B chứa số nguyên. Tìm ra một mảng đã được sắp xếp chứa các phần tử xuất hiện trong mảng B nhưng lại không xuất hiện A</h2>
+<h2>Chú ý các phần tử giống nhau chỉ tính là 1 lần xuất hiện</h2>
+<h2>Ví dụ:  A=[7,2,5,3,5,3] và B=[7,2,5,4,6,3,5,3] thì kết quả missingValue(A, B) = [4, 6]</h2>
+<button type="button" onclick="part_3_Case_Study_Bai_2()">Bài 2</button>
 <hr>
 <script>
     function part_1_Case_Study_Bai_1() {
@@ -151,66 +169,82 @@
     function part_2_Case_Study_Bai_2() {
         let alphabet = prompt("Nhập vào đây chữ cái cần kiểm tra là nguyên âm hay phụ âm");
         switch (alphabet) {
-            case u:
-            case e:
-            case o:
-            case a:
-            case i:
-            case U:
-            case E:
-            case O:
-            case A:
-            case I:
-                alert("Chữ cái " + alphabet + "là một nguyên âm");
+            case "u":
+            case "e":
+            case "o":
+            case "a":
+            case "i":
+            case "U":
+            case "E":
+            case "O":
+            case "A":
+            case "I":
+                alert("Chữ cái " + alphabet + " là một nguyên âm");
                 break;
-            case b:
-            case c:
-            case d:
-            case f:
-            case g:
-            case h:
-            case j:
-            case k:
-            case l:
-            case m:
-            case n:
-            case p:
-            case q:
-            case r:
-            case s:
-            case t:
-            case v:
-            case w:
-            case x:
-            case y:
-            case z:
-            case B:
-            case C:
-            case D:
-            case F:
-            case G:
-            case H:
-            case J:
-            case K:
-            case L:
-            case M:
-            case N:
-            case P:
-            case Q:
-            case R:
-            case S:
-            case T:
-            case V:
-            case W:
-            case X:
-            case Y:
-            case Z:
-                alert("Chữ cái " + alphabet + "là một phụ âm");
+            case "b":
+            case "c":
+            case "d":
+            case "f":
+            case "g":
+            case "h":
+            case "j":
+            case "k":
+            case "l":
+            case "m":
+            case "n":
+            case "p":
+            case "q":
+            case "r":
+            case "s":
+            case "t":
+            case "v":
+            case "w":
+            case "x":
+            case "y":
+            case "z":
+            case "B":
+            case "C":
+            case "D":
+            case "F":
+            case "G":
+            case "H":
+            case "J":
+            case "K":
+            case "L":
+            case "M":
+            case "N":
+            case "P":
+            case "Q":
+            case "R":
+            case "S":
+            case "T":
+            case "V":
+            case "W":
+            case "X":
+            case "Y":
+            case "Z":
+                alert("Chữ cái " + alphabet + " là một phụ âm");
                 break;
             default :
                 alert("Không tìm thấy hoặc bạn nhập vào không đúng");
         }
     }
+
+    function part_3_Case_Study_Bai_1() {
+
+    }
+
+    function part_3_Case_Study_Bai_2() {
+        let n = +prompt("Nhập vào đây số phần tử có trong mảng ");
+        let arr_a = [];
+        let arr_b = [];
+        for (let i = 0; i < n ; i++) {
+            let number = +prompt("Nhập vào đây phần tử thứ " + ( i + 1) + "của mảng a" );
+            arr[i] = number;
+        }
+        
+    }
+
 </script>
 </body>
 </html>
