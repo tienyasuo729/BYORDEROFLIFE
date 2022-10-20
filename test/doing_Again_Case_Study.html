@@ -9,9 +9,11 @@
             color: red;
             font-size: 50px;
         }
+
         .tieuDeCuaTungPhan {
             color: red;
         }
+
         button {
             width: 100px;
             height: 50px;
@@ -36,12 +38,15 @@
 <button type="button" onclick="part_1_Case_Study_Bai_4()">Vẽ bài 4</button>
 <hr>
 <h1 class="tieuDeCuaTungPhan">PART 2: YÊU CẦU 2 ( IF VÀ SWITCH CASE )</h1>
-<h2>- Bài 1: Viết một chương trình để nhập lương nhân viên, tính thuế thu nhập và lương ròng (số tiền lương thực sự mà nhân viên đó nhận được). Với các thông số giả sử như sau (không theo luật lương, chỉ là con số giả sử để dễ tính toán):</h2>
+<h2>- Bài 1: Viết một chương trình để nhập lương nhân viên, tính thuế thu nhập và lương ròng (số tiền lương thực sự mà
+    nhân viên đó nhận được). Với các thông số giả sử như sau (không theo luật lương, chỉ là con số giả sử để dễ tính
+    toán):</h2>
 <h2>+ 20% thuế thu nhập nếu lương là 15 triệu.</h2>
 <h2>+ 10% thuế thu nhập nếu lương từ 7 đến 15 triệu.</h2>
 <h2>+ 5% thuế thu nhập nếu lương dưới 7 triệu</h2>
 <button type="button" onclick="part_2_Case_Study_Bai_1()">Bài 1</button>
-<h2>- Bài 2: Viết chương trình kiểm tra một ký tự trong bảng chữ cái tiếng anh là nguyên âm hay phụ âm. Ký tự là bất kỳ được nhập từ bàn phím. Các ký tự nguyên âm bao gồm: 'o', 'u', 'i', 'a', 'e' hoặc 'O', 'U', 'I', 'A', 'E'</h2>
+<h2>- Bài 2: Viết chương trình kiểm tra một ký tự trong bảng chữ cái tiếng anh là nguyên âm hay phụ âm. Ký tự là bất kỳ
+    được nhập từ bàn phím. Các ký tự nguyên âm bao gồm: 'o', 'u', 'i', 'a', 'e' hoặc 'O', 'U', 'I', 'A', 'E'</h2>
 <button type="button" onclick="part_2_Case_Study_Bai_2()">Bài 2</button>
 <hr>
 <script>
@@ -51,9 +56,9 @@
         let print_To_The_Screen = "";
         for (let i = 0; i < m; i++) {
             for (let j = 0; j < n; j++) {
-                if (i === 0 || j === 0 || j === n -1 || i === m -1) {
+                if (i === 0 || j === 0 || j === n - 1 || i === m - 1) {
                     print_To_The_Screen += "* ";
-                }else {
+                } else {
                     print_To_The_Screen += "&nbsp;&nbsp;&nbsp";
                 }
             }
@@ -65,11 +70,11 @@
     function part_1_Case_Study_Bai_2() {
         let h = +prompt("Nhập vào đây chiều cao của tam giác vuông cân rỗng");
         let print_To_The_Screen = "";
-        for (let i = 0; i < h ; i++) {
-            for (let j = 0; j <= i ; j++) {
-                if (j === 0 || j === i || i === h -1) {
+        for (let i = 0; i < h; i++) {
+            for (let j = 0; j <= i; j++) {
+                if (j === 0 || j === i || i === h - 1) {
                     print_To_The_Screen += "* ";
-                }else {
+                } else {
                     print_To_The_Screen += "&nbsp;&nbsp;&nbsp";
                 }
             }
@@ -81,18 +86,18 @@
     function part_1_Case_Study_Bai_3() {
         let h = +prompt("Nhập vào đây chiều cao của tam giác cân đặc");
         let x = h;
-        let a = h-1;
+        let a = h - 1;
         let print_To_The_Screen = "";
-        for (let i = 0; i < h ; i++) {
+        for (let i = 0; i < h; i++) {
             for (let j = 0; j < x; j++) {
-                if (j === x -1 || j > a - 1) {
+                if (j === x - 1 || j > a - 1) {
                     print_To_The_Screen += "*";
-                }else {
+                } else {
                     print_To_The_Screen += "&nbsp;&nbsp";
                 }
             }
-            x ++;
-            a --;
+            x++;
+            a--;
             print_To_The_Screen += "<br>";
         }
         document.write(print_To_The_Screen);
@@ -101,18 +106,18 @@
     function part_1_Case_Study_Bai_4() {
         let h = +prompt("Nhập vào đây chiều cao của tam giác cân rỗng ruột");
         let x = h;
-        let a = h -1;
+        let a = h - 1;
         let print_To_The_Screen = "";
         for (let i = 0; i < h; i++) {
-            for (let j = 0; j < x ; j++) {
-                if (j === x - 1 || j === a || i === h -1) {
+            for (let j = 0; j < x; j++) {
+                if (j === x - 1 || j === a || i === h - 1) {
                     print_To_The_Screen += "* ";
-                }else {
+                } else {
                     print_To_The_Screen += "&nbsp;&nbsp;&nbsp";
                 }
             }
-            x ++;
-            a --;
+            x++;
+            a--;
             print_To_The_Screen += "<br>";
         }
         document.write(print_To_The_Screen);
@@ -124,6 +129,9 @@
             case salary > 15 :
                 alert("mức lương của bạn là :" + salary);
                 break;
+            case salary < 15 :
+                alert("sdfdsfds");
+                break
         }
     }
 
