@@ -246,29 +246,60 @@
         alert("Prefix sums của mảng a là : " + arr_b);
     }
 
-    function part_3_Case_Study_Bai_2() {
-        let n_a = +prompt("Nhập vào đây số phần tử của mảng a");
-        let arr_a = [];
-        let n_b = +prompt("Nhập vào đây số phần tử của mảng b");
-        let arr_b = [];
-        let missing_Value = "";
-        for (let i = 0; i < n_a ; i++) {
-            arr_a[i] = +prompt("Nhập vào đây giá trị của phần tử thứ " + (i+1) + "của mảng a :");
-        }
-        for (let i = 0; i < n_b; i++) {
-            arr_b[i] = +prompt("Nhập vào đây giá trị của phần tử thứ " + (i+1) + "của mảng b :");
-        }
-        if (n_a > n_b) {
-            for (let i = 0; i < n_b ; i++) {
-                for (let j = 0; j < n_a ; j++) {
-                  if (arr_b[i] !== arr_a[j]) {
-                      missing_Value += arr_a[j];
-                  }
-                  if (arr_a[])
-                }
-            }
-        }
-    }
+    // thử phần 3 lần đầu
+    // function check() {
+    //     let number, n;
+    //     let arr = [];
+    //     for (let i = 0; i < n; i++) {
+    //
+    //         if (number === arr[i]) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+    // function part_3_Case_Study_Bai_2() {
+    //     let n_a = +prompt("Nhập vào đây số phần tử của mảng a");
+    //     let arr_a = [7,2,5,3,5,3];
+    //     let n_b = +prompt("Nhập vào đây số phần tử của mảng b");
+    //     let arr_b = [7,2,5,4,6,3,5,3];
+    //     let missing_Value = "";
+    //     for (let i = 0; i < n_a; i++) {
+    //         arr_a[i] = +prompt("Nhập vào đây giá trị của phần tử thứ " + (i + 1) + "của mảng a :");
+    //     }
+    //     for (let i = 0; i < n_b; i++) {
+    //         arr_b[i] = +prompt("Nhập vào đây giá trị của phần tử thứ " + (i + 1) + "của mảng b :");
+    //     }
+    //     for (let i = 0; i < n_b; i++) {
+    //         for (let j = 0; j < n_a; j++) {
+    //             if (check(arr_a[i], arr_b, n_b)) {
+    //                 continue;
+    //             } else {
+    //                 missing_Value += arr_a;
+    //             }
+    //         }
+    //     }
+    //     alert(missing_Value);
+    // }
+
+
+    // thử phần 3 lần 2
+    // function part_3_Case_Study_Bai_2() {
+    //     let n_a = 6;
+    //     let n_b = 8;
+    //     let arr_a = [7,2,5,3,5,3];
+    //     let arr_b = [7,2,5,4,6,3,5,3];
+    //     let missing_Value = "";
+    //     for (let i = 0; i < n_b; i++) {
+    //         for (let j = 0; j < n_a ; j++) {
+    //             if (arr_b[i] === arr_a[j] ){
+    //                 continue;
+    //             }
+    //
+    //         }
+    //     }
+    //     alert(missing_Value);
+    // }
 
 </script>
 </body>
