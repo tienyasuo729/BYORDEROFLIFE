@@ -69,9 +69,13 @@
 <button type="button" onclick="part3CaseStudyBai2()">Bài 2</button>
 <h2>Bài 3: Cho một danh sách các phân số, hãy tìm chỉ số của phân số lớn nhất (đếm từ 0)</h2>
 <h2>Giả định rằng không có các phân số bằng nhau trong tập đầu vào</h2>
-<h2>Ví dụ: numerators = [5, 2, 5] và denominators = [6, 3, 4], thì kết quả maxFraction(numerators, denominators) = 2. </h2>
+<h2>Ví dụ: numerators = [5, 2, 5] và denominators = [6, 3, 4], thì kết quả maxFraction(numerators, denominators) =
+    2. </h2>
 <h2>⇨ 5/4 là phân số lớn nhất, có chỉ số là 2.</h2>
 <button type="button" onclick="part3CaseStudyBai3()">Bài 3</button>
+<h2>Bài 4: Viết một chương trình nhập một số từ bàn phím và in ra màn hình bằng chữ.</h2>
+<h2>Ví dụ 1234, kết quả in ra màn hình là một hai ba bốn.</h2>
+<button type="button" onclick="part3CaseStudyBai4()">Bài 4</button>
 <hr>
 <script>
     function part1CaseStudyBai1() {
@@ -175,7 +179,7 @@
     function part2CaseStudyBai2() {
         let alphabet = prompt("Nhập vào đây chữ cái cần kiểm tra là nguyên âm hay phụ âm");
         switch (alphabet) {
-            case "u":
+            case "u ":
             case "e":
             case "o":
             case "a":
@@ -295,7 +299,7 @@
         }
         alert("Prefix Sums [ A , B ] = " + missing_Value);
     }
-    
+
     function part3CaseStudyBai3() {
         let n = +prompt("Nhập vào đây số lượng phân số cần kiểm tra");
         let arr_numerators = [];
@@ -304,21 +308,51 @@
         let printFractions = Array();
         let printToScreen = "";
         let maxFractions = 0;
-        for (let i = 0; i < n ; i++) {
-            arr_numerators[i] = +prompt("Nhập vào đây tử số của phần tử thứ " + (i +1 ));
+        for (let i = 0; i < n; i++) {
+            arr_numerators[i] = +prompt("Nhập vào đây tử số của phần tử thứ " + (i + 1));
             do {
                 arr_denominators[i] = +prompt("Nhập vào đây mẫu số của phần tử thứ " + (i + 1));
-            }while (arr_denominators[i] === 0);
+            } while (arr_denominators[i] === 0);
             fractons[i] = arr_numerators[i] / arr_denominators[i];
             printFractions[i] = arr_numerators[i] + "/" + arr_denominators[i];
         }
-        for (let i = 0; i < fractons.length ; i++) {
+        for (let i = 0; i < fractons.length; i++) {
             if (maxFractions < fractons[i]) {
-                maxFractions =  fractons[i];
+                maxFractions = fractons[i];
                 printToScreen = "Phân số lớn nhất là = " + printFractions[i] + " và có chỉ số là : " + i;
             }
         }
         alert(printToScreen);
+    }
+
+    function part3CaseStudyBai4() {
+        // nam làm
+        // let number = prompt("Nhập số cần đọc ra màn hình");
+        // let letter = ["Không","Một","Hai","Ba","Bốn","Năm","Sáu","Bảy","Tám","Chín"];
+        // let index = 0;
+        // let printToTheScreen = "";
+        // for (let i = 0; i < letter.length; i++) {
+        //     if (number[index] == i ) {
+        //         printToTheScreen += letter[i];
+        //         ++index;
+        //     }
+        // }
+        // alert(printToTheScreen);
+
+        // tiến làm
+        let number = +prompt("Nhập số cần đọc ra màn hình");
+        let letter = ["Không","Một","Hai","Ba","Bốn","Năm","Sáu","Bảy","Tám","Chín"];
+        let printToTheScreen = "";
+        let a = 0;
+        for (let i = 0; i <= a; i++) {
+            if ()
+        }
+        for (let i = 0; i < number.length; i++) {
+            let n = number % 10;
+            printToTheScreen += letter[n] + " ";
+            number = ( number - n ) / 10;
+        }
+        alert(printToTheScreen);
     }
 </script>
 </body>
