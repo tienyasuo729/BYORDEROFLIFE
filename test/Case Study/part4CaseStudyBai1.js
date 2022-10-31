@@ -7,7 +7,7 @@ function part4CaseStudyBai1() {
         arr[i] = something[i];
     }
     for (let i = 0; i < arr.length ; i++) {
-        if (arr[i] === " " && arr[i+1] === " " && i >0 && i < arr.length-1  ) {
+        if (arr[i] === " " && arr[i+1] === " " ) {
             arr.splice(i, 1);
         }
     }
