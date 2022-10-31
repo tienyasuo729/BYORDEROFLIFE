@@ -25,5 +25,5 @@ function checkPriceOfProducPart3CaseStudyBai5(check) {
 }
 
 function printToTheScreenPart3CaseStudyBai5() {
-    alert("Tổng tiền quý khách cần thanh toán là :" + bill + " VND");
+    alert("Tổng tiền quý khách cần thanh toán là :" + bill_part3casestudybai5 + " VND");
 }
