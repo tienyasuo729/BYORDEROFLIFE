@@ -10,7 +10,7 @@
             font-size: 50px;
         }
 
-        .tieuDeCuaTungPhan {
+        h1 {
             color: red;
         }
 
@@ -28,7 +28,7 @@
 <body>
 <h1 class="tieuDe">*** CASE STUDY ***</h1>
 <hr>
-<h1 class="tieuDeCuaTungPhan">PART 1: YÊU CẦU 1 ( VẼ HÌNH * )</h1>
+<h1>PART 1: YÊU CẦU 1 ( VẼ HÌNH * )</h1>
 <h2>- Bài 1: Vẽ hình chữ nhật rỗng chiều dài n và chiều rộng m theo hình dưới đây. Ví dụ: x = 4, y = 5</h2>
 <button type="button" onclick="part1CaseStudyBai1()">Vẽ bài 1</button>
 <h2>- Bài 2: Vẽ tam giác vuông cân rỗng có chiều cao h. Ví dụ: h = 5</h2>
@@ -38,19 +38,16 @@
 <h2>- Bài 4: Vẽ tam giác cân rỗng có chiều cao h. Ví dụ: h = 5</h2>
 <button type="button" onclick="part1CaseStudyBai4()">Vẽ bài 4</button>
 <hr>
-<h1 class="tieuDeCuaTungPhan">PART 2: YÊU CẦU 2 ( IF VÀ SWITCH CASE )</h1>
-<h2>- Bài 1: Viết một chương trình để nhập lương nhân viên, tính thuế thu nhập và lương ròng (số tiền lương thực sự mà
-    nhân viên đó nhận được). Với các thông số giả sử như sau (không theo luật lương, chỉ là con số giả sử để dễ tính
-    toán):</h2>
+<h1>PART 2: YÊU CẦU 2 ( IF VÀ SWITCH CASE )</h1>
+<h2>- Bài 1: Viết một chương trình để nhập lương nhân viên, tính thuế thu nhập và lương ròng (số tiền lương thực sự mà nhân viên đó nhận được). Với các thông số giả sử như sau (không theo luật lương, chỉ là con số giả sử để dễ tính toán):</h2>
 <h2>+ 20% thuế thu nhập nếu lương là 15 triệu.</h2>
 <h2>+ 10% thuế thu nhập nếu lương từ 7 đến 15 triệu.</h2>
 <h2>+ 5% thuế thu nhập nếu lương dưới 7 triệu</h2>
 <button type="button" onclick="part2CaseStudyBai1()">Bài 1</button>
-<h2>- Bài 2: Viết chương trình kiểm tra một ký tự trong bảng chữ cái tiếng anh là nguyên âm hay phụ âm. Ký tự là bất kỳ
-    được nhập từ bàn phím. Các ký tự nguyên âm bao gồm: 'o', 'u', 'i', 'a', 'e' hoặc 'O', 'U', 'I', 'A', 'E'</h2>
+<h2>- Bài 2: Viết chương trình kiểm tra một ký tự trong bảng chữ cái tiếng anh là nguyên âm hay phụ âm. Ký tự là bất kỳ được nhập từ bàn phím. Các ký tự nguyên âm bao gồm: 'o', 'u', 'i', 'a', 'e' hoặc 'O', 'U', 'I', 'A', 'E'</h2>
 <button type="button" onclick="part2CaseStudyBai2()">Bài 2</button>
 <hr>
-<h1 class="tieuDeCuaTungPhan">PART 3: YÊU CẦU 3 ( MẢNG VÀ LOOP )</h1>
+<h1>PART 3: YÊU CẦU 3 ( MẢNG VÀ LOOP )</h1>
 <h2>Bài 1: Cho mảng a chỉ chứa các số nguyên</h2>
 <h2>Xây dựng mảng b là prefix sums của mảng a cụ thể theo công thức:</h2>
 <h2>b[0] = a[0]</h2>
@@ -62,15 +59,13 @@
 <h2>Ví dụ: Cho a = [1, 2, 3], thì kết quả prefixSums(a) = [1, 3, 6].</h2>
 <h2>Mảng b được tạo ra: [1, 1 + 2, 1 + 2 + 3] = [1, 3, 6]</h2>
 <button type="button" onclick="part3CaseStudyBai1()">Bài 1</button>
-<h2>Bài 2: Cho 2 mảng A và B chứa số nguyên. Tìm ra một mảng đã được sắp xếp chứa các phần tử xuất hiện trong mảng B
-    nhưng lại không xuất hiện A</h2>
+<h2>Bài 2: Cho 2 mảng A và B chứa số nguyên. Tìm ra một mảng đã được sắp xếp chứa các phần tử xuất hiện trong mảng B nhưng lại không xuất hiện A</h2>
 <h2>Chú ý các phần tử giống nhau chỉ tính là 1 lần xuất hiện</h2>
 <h2>Ví dụ: A=[7,2,5,3,5,3] và B=[7,2,5,4,6,3,5,3] thì kết quả missingValue(A, B) = [4, 6]</h2>
 <button type="button" onclick="part3CaseStudyBai2()">Bài 2</button>
 <h2>Bài 3: Cho một danh sách các phân số, hãy tìm chỉ số của phân số lớn nhất (đếm từ 0)</h2>
 <h2>Giả định rằng không có các phân số bằng nhau trong tập đầu vào</h2>
-<h2>Ví dụ: numerators = [5, 2, 5] và denominators = [6, 3, 4], thì kết quả maxFraction(numerators, denominators) =
-    2. </h2>
+<h2>Ví dụ: numerators = [5, 2, 5] và denominators = [6, 3, 4], thì kết quả maxFraction(numerators, denominators) = 2. </h2>
 <h2>⇨ 5/4 là phân số lớn nhất, có chỉ số là 2.</h2>
 <button type="button" onclick="part3CaseStudyBai3()">Bài 3</button>
 <h2>Bài 4: Viết một chương trình nhập một số từ bàn phím và in ra màn hình bằng chữ.</h2>
@@ -90,6 +85,10 @@
 <h2>Sử dụng vòng lặp do while lặp lại cho người dùng đặt thức uống, kết thúc quá trình đặt thức uống khi người nhấn số 7</h2>
 <button type="button" onclick="part3CaseStudyBai5()">Bài 5</button>
 <hr>
+<h1>Part 4: YÊU CẦU 4 ( STRING )</h1>
+<h2>Bài 1: Viết một hàm chuẩn hóa xâu ký tự: biến đổi xâu ký tự thành xâu sao cho trong xâu không có 2 dấu cách liền nhau và bắt đầu mỗi từ phải in hoa. Ví dụ tRuong    TaN   HAI => Truong Tan Hai.</h2>
+<h2>Và một hàm tìm từ dài nhất trong 1 xâu ký tự. Hàm main sử dụng các hàm này để nhập xâu ký tự từ bàn phím, in ra xâu trước và sau khi chuẩn hóa, 1 từ dài nhất trong xâu đó.</h2>
+<button type="button" onclick="part4CaseStudyBai1()">Bài 1</button>
 <script>
     function part1CaseStudyBai1() {
         let n = +prompt("Nhập vào đây chiều dài của hình chữ nhật"); // hàng
@@ -351,9 +350,39 @@
     }
 
     function part3CaseStudyBai5() {
-        let a = '<h2>ádadasdadasd</h2>'
+        let a = '<h2 style="color: red; text-align: center; font-size: 40px">MENU</h2>\n' +
+            '<form style="font-size: 50px" id="bbbb">\n' +
+            '    <input style="width: 30px; height: 30px" type="checkbox" id="cafe" onclick="checkPriceOfProducPart3CaseStudyBai5(this.value)" value=12000>\n' +
+            '    <label for="cafe" >1. Cafe</label><br>\n' +
+            '    <input style="width: 30px; height: 30px" type="checkbox" id="camvat" onclick="checkPriceOfProducPart3CaseStudyBai5(this.value)" value=20000>\n' +
+            '    <label for="camvat" >2. Cam Vắt</label><br>\n' +
+            '    <input style="width: 30px; height: 30px" type="checkbox" id="nuocepcarot" onclick="checkPriceOfProducPart3CaseStudyBai5(this.value)" value=20000>\n' +
+            '    <label for="nuocepcarot" >3. Nước Ép Cà Rốt</label><br>\n' +
+            '    <input style="width: 30px; height: 30px" type="checkbox" id="nuocepcachua" onclick="checkPriceOfProducPart3CaseStudyBai5(this.value)" value=20000>\n' +
+            '    <label for="nuocepcachua" >4. Nước Ép Cà Chua</label><br>\n' +
+            '    <input style="width: 30px; height: 30px" type="checkbox" id="nuocloc" onclick="checkPriceOfProducPart3CaseStudyBai5(this.value)" value=7000>\n' +
+            '    <label for="nuocloc" >5. Nước Lọc</label><br>\n' +
+            '    <input style="width: 30px; height: 30px" type="checkbox" id="nuocdua" onclick="checkPriceOfProducPart3CaseStudyBai5(this.value)" value=25000>\n' +
+            '    <label for="nuocdua" >6. Nước Dừa</label><br>\n' +
+            '    <button style="width: 200px; height: 50px; font-size: 30px; border-color: lawngreen; border-width: 5px" type="button" onclick="printToTheScreenPart3CaseStudyBai5()">Thanh toán </button>\n' +
+            '</form>'
+
         document.write(a);
     }
+    let bill_part3casestudybai5 = 0;
+    function checkPriceOfProducPart3CaseStudyBai5(check) {
+        let amount = +prompt("Nhập vào đây số lượng khách yêu cầu");
+        bill_part3casestudybai5 += check * amount;
+    }
+
+    function printToTheScreenPart3CaseStudyBai5() {
+        alert("Tổng tiền quý khách cần thanh toán là :" + bill + " VND");
+    }
+
+    function part4CaseStudyBai1() {
+
+    }
+
 </script>
 </body>
 </html>

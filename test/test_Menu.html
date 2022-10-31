@@ -4,42 +4,35 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        input {
-            width: 30px;
-            height: 30px;
-        }
+
     </style>
 </head>
 <body>
-
 <h2 style="color: red; text-align: center; font-size: 40px">MENU</h2>
 <form style="font-size: 50px" id="bbbb">
-    <input type="checkbox" id="cafe" onclick="aimabiet(this.value)" value="cafe ">
+    <input style="width: 30px; height: 30px" type="checkbox" id="cafe" onclick="aimabiet(this.value)" value=12000>
     <label for="cafe" >1. Cafe</label><br>
-    <input type="checkbox" id="camvat" onclick="aimabiet(this.value)" value="cam vắt ">
+    <input style="width: 30px; height: 30px" type="checkbox" id="camvat" onclick="aimabiet(this.value)" value=20000>
     <label for="camvat" >2. Cam Vắt</label><br>
-    <input type="checkbox" id="nuocepcarot" onclick="aimabiet(this.value)" value="nước ép cà rốt ">
+    <input style="width: 30px; height: 30px" type="checkbox" id="nuocepcarot" onclick="aimabiet(this.value)" value=20000>
     <label for="nuocepcarot" >3. Nước Ép Cà Rốt</label><br>
-    <input type="checkbox" id="nuocepcachua" onclick="aimabiet(this.value)" value="nước ép cà chua ">
+    <input style="width: 30px; height: 30px" type="checkbox" id="nuocepcachua" onclick="aimabiet(this.value)" value=20000>
     <label for="nuocepcachua" >4. Nước Ép Cà Chua</label><br>
-    <input type="checkbox" id="nuocloc" onclick="aimabiet(this.value)" value="nước lọc ">
+    <input style="width: 30px; height: 30px" type="checkbox" id="nuocloc" onclick="aimabiet(this.value)" value=7000>
     <label for="nuocloc" >5. Nước Lọc</label><br>
-    <input type="checkbox" id="nuocdua" onclick="aimabiet(this.value)" value="nước dừa ">
+    <input style="width: 30px; height: 30px" type="checkbox" id="nuocdua" onclick="aimabiet(this.value)" value=25000>
     <label for="nuocdua" >6. Nước Dừa</label><br>
-    <button type="button" onclick="hienthi()" id="aaaa">nộp</button>
+    <button style="width: 200px; height: 50px; font-size: 30px; border-color: lawngreen; border-width: 5px" type="button" onclick="hienthi()">Thanh toán </button>
 </form>
 <script>
-    let arr_items = [];
-    let arr_amount = [];
-    let n = 0;
+    let bill = 0;
     function aimabiet(check) {
-        arr_amount[n] = +prompt("Nhập vào đây số lượng bạn cần");       
-        arr_items[n] = check;
-        ++n;
+        let amount = +prompt("Nhập vào đây số lượng khách yêu cầu");
+        bill += check * amount;
     }
 
     function hienthi() {
-        alert("Những món bạn đã đặt là: " + arr_items);
+        alert("Tổng tiền quý khách cần thanh toán là :" + bill + " VND");
     }
 
 </script>
