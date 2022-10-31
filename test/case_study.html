@@ -76,6 +76,19 @@
 <h2>Bài 4: Viết một chương trình nhập một số từ bàn phím và in ra màn hình bằng chữ.</h2>
 <h2>Ví dụ 1234, kết quả in ra màn hình là một hai ba bốn.</h2>
 <button type="button" onclick="part3CaseStudyBai4()">Bài 4</button>
+<h2>Bài 5: Giả sử menu của chúng ta có các loại thức uống như sau:</h2>
+<h2>+ Cafe</h2>
+<h2>+ Cam vắt</h2>
+<h2>+ Nước ép cà rốt</h2>
+<h2>+ Nước ép cà chua</h2>
+<h2>+ Nước lọc</h2>
+<h2>+ Nước dừa</h2>
+<h2>Viết một chương trình gọi thức uống đơn giản.</h2>
+<h2>Gợi ý: Trước tiên in ra màn hinh danh sách các loại thức uống cho người dùng chọn lựa</h2>
+<h2>Đánh dấu theo thứ tự 1 (cafe), 2 (cam vắt), 3(nước ép cà rốt), 4(nước ép cà chua), 5(nước lọc), 6(nước dừa), 7(thoát gọi món)</h2>
+<h2>Khi người dùng lựa chọn 1 trong số các thức uống, chương trình sẽ hiện đơn giá của thức uống đó và cho phép người dùng nhập số lượng. Cuối cùng hiển thị tổng số tiền người dùng cần phải trả.</h2>
+<h2>Sử dụng vòng lặp do while lặp lại cho người dùng đặt thức uống, kết thúc quá trình đặt thức uống khi người nhấn số 7</h2>
+<button type="button" onclick="part3CaseStudyBai5()">Bài 5</button>
 <hr>
 <script>
     function part1CaseStudyBai1() {
@@ -326,33 +339,20 @@
     }
 
     function part3CaseStudyBai4() {
-        // nam làm
-        // let number = prompt("Nhập số cần đọc ra màn hình");
-        // let letter = ["Không","Một","Hai","Ba","Bốn","Năm","Sáu","Bảy","Tám","Chín"];
-        // let index = 0;
-        // let printToTheScreen = "";
-        // for (let i = 0; i < letter.length; i++) {
-        //     if (number[index] == i ) {
-        //         printToTheScreen += letter[i];
-        //         ++index;
-        //     }
-        // }
-        // alert(printToTheScreen);
-
-        // tiến làm
-        let number = +prompt("Nhập số cần đọc ra màn hình");
+        let number = prompt("Nhập số cần đọc ra màn hình");
         let letter = ["Không","Một","Hai","Ba","Bốn","Năm","Sáu","Bảy","Tám","Chín"];
         let printToTheScreen = "";
-        let a = 0;
-        for (let i = 0; i <= a; i++) {
-            if ()
-        }
         for (let i = 0; i < number.length; i++) {
-            let n = number % 10;
-            printToTheScreen += letter[n] + " ";
-            number = ( number - n ) / 10;
+            printToTheScreen += letter[number[i]] + " ";
+
         }
         alert(printToTheScreen);
+        alert(typeof number);
+    }
+
+    function part3CaseStudyBai5() {
+        let a = '<h2>ádadasdadasd</h2>'
+        document.write(a);
     }
 </script>
 </body>
