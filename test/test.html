@@ -7,10 +7,23 @@
 <body>
 <button type="button" onclick="part4CaseStudyBai1()">hhhh</button>
 <script>
-    let arr = ["c","a","b","c","a"];
     function part4CaseStudyBai1() {
-          arr.splice(0,2);
-          alert(arr);
+        let row = +prompt("nhập số hàng");
+        let col = +prompt("nhập số cột");
+        let arr = new Array(row);
+        for (let i = 0; i <arr.length ; i++) {
+            arr[i]= new Array(col);
+            for (let j = 0; j <arr[i].length ; j++) {
+                arr[i][j]= +prompt("nhập vào phần tử hàng : "+i + " cột :" +j);
+            }
+        }
+        for (let i = 0; i <arr.length ; i++) {
+            for (let j = 0; j <arr[i].length ; j++) {
+                document.write(arr[i][j])
+            }
+            document.write("<br>")
+        }
+        alert(arr)
     }
 </script>
 </body>
