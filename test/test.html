@@ -11,8 +11,10 @@
         let row = +prompt("nhập số hàng");
         let col = +prompt("nhập số cột");
         let arr = new Array(row);
+        alert(arr);
         for (let i = 0; i <arr.length ; i++) {
             arr[i]= new Array(col);
+            alert(arr[i] )
             for (let j = 0; j <arr[i].length ; j++) {
                 arr[i][j]= +prompt("nhập vào phần tử hàng : "+i + " cột :" +j);
             }
@@ -21,7 +23,7 @@
             for (let j = 0; j <arr[i].length ; j++) {
                 document.write(arr[i][j])
             }
-            document.write("<br>")
+            document.write("<br>");
         }
         alert(arr)
     }
