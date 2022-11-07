@@ -17,11 +17,11 @@
         arr[i] = prompt("Nhập vào đây phần tử thứ " + (i +1));
     }
     for (let i = 0; i < arr.length; i++) {
-        for (let j = 1; j <= arr.length; j++) {
-            if (arr[i] === arr[j]) {
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[i] === arr[j] && i !== j) {
                 ++dem;
                 arr.splice(j,1);
-                --j;
+                j--;
             }
         }
         printtothescreen += arr[i] + " :" + dem + "<br>";
