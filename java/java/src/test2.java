@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class test2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String print = "Đọc số cần in ra màn hình là : ";
         int number;
         do {
             System.out.print("Mời nhập số nguyên không âm dưới 1000 : ");
@@ -20,6 +19,7 @@ public class test2 {
         System.out.print("Số vừa nhập là : " + number);
     }
     private static String bbb(int number){
+        String print = "Đọc số cần in ra màn hình là : ";
         switch (number) {
             case 1:
                 print += "Một";
@@ -55,5 +55,5 @@ public class test2 {
                 print +="Không";
         }
     }
-
+    return String;
 }
