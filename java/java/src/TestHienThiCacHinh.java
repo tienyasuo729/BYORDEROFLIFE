@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class testHienThiCacHinh {
+public class TestHienThiCacHinh {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("1.Print the rectangle");
