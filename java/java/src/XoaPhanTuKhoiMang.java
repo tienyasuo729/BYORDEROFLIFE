@@ -12,11 +12,11 @@ public class XoaPhanTuKhoiMang {
         for (int i = 0; i <= 1000; i++) {
             arr[i] = i;
         }
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == x) {
-             System.out.print("");
-            }else {
-                arr2[count] = arr[i];
+        for (int j : arr) {
+            if (j == x) {
+                System.out.print("");
+            } else {
+                arr2[count] = j;
                 count++;
             }
         }
