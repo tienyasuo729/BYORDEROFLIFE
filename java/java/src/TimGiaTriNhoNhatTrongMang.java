@@ -9,11 +9,15 @@ public class TimGiaTriNhoNhatTrongMang {
         System.out.print("Nhập vào đây số cột của mảng 2 chiều : ");
         int columns = Integer.parseInt(nhap.nextLine());
         int [][] arr = new int[rows][columns];
-        int min = arr[0][0];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 System.out.print("Nhập vào đây phần tử ở hàng  " + (i+1) + " cột " + (j+1) + " : ");
                 arr[i][j] = Integer.parseInt(nhap.nextLine());
+            }
+        }
+        int min = arr[0][0];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
                 if (min > arr[i][j]) {
                     min = arr[i][j];
                 }
