@@ -1,3 +1,5 @@
+package test;
+
 import java.util.Scanner;
 
 public class test2 {
@@ -11,26 +13,26 @@ public class test2 {
         } while (number >= 1000 || number < 0);
         if (number <= 10) {
             prin = read(number);
-            System.out.println("Đọc số cần in ra màn hình là : " + prin);
+            System.out.println("Đọc số cần test.in ra màn hình là : " + prin);
         } else if (number % 10 == 0 && number < 100) {
             int ahi = number / 10;
             prin = read(ahi) + " mươi";
-            System.out.println("Đọc số cần in ra màn hình là : " + prin);
+            System.out.println("Đọc số cần test.in ra màn hình là : " + prin);
         } else if (number % 100 == 0 && number >= 100) {
             int ahihi = number / 100;
             prin = read(ahihi) + " trăm";
-            System.out.println("Đọc số cần in ra màn hình là : " + prin);
+            System.out.println("Đọc số cần test.in ra màn hình là : " + prin);
         } else if (number < 100) {
             int firstNumber = number / 10;
             int secondNumber = number % 10;
             prin += read(firstNumber) + " mươi " + read(secondNumber);
-            System.out.println("Đọc số cần in ra màn hình là : " + prin);
+            System.out.println("Đọc số cần test.in ra màn hình là : " + prin);
         } else {
             int firstNumber = number / 100;
             int secondNumber = (number - (firstNumber * 100)) / 10;
             int thirdNumber = number % 10;
             prin += read(firstNumber) + " trăm " + read(secondNumber) + " mươi " + read(thirdNumber);
-            System.out.println("Đọc số cần in ra màn hình là : " + prin);
+            System.out.println("Đọc số cần test.in ra màn hình là : " + prin);
         }
         System.out.print("Số vừa nhập là : " + number);
     }

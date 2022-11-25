@@ -1,3 +1,4 @@
+package test;
 
 public class test {
     int a;
@@ -13,7 +14,7 @@ public class test {
 
     @Override
     public String toString() {
-        return "test{" +
+        return "test.test{" +
                 "a=" + a +
                 ", b=" + b +
                 "school = " + school +

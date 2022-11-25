@@ -1,3 +1,5 @@
+package test;
+
 import java.util.Scanner;
 
 public class ung_dung_doc_so_thanh_chu {
