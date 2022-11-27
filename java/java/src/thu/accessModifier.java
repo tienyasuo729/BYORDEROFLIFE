@@ -6,13 +6,13 @@ public class accessModifier {
     public accessModifier(){
 
     }
-    public accessModifier(double radius){
+    accessModifier(double radius){
         this.radius = radius;
     }
-    public double getRadius(){
+    double getRadius(){
         return radius;
     }
-    public String getColor(){
+    String getColor(){
         return color;
     }
 
