@@ -1,9 +1,9 @@
 package King_game;
 
-public class knight extends People {
+public abstract class knight extends People {
     private String weapon;
 
-    public knight(String name, String age, int height, int weight, String weapon) {
+    public knight(String name, int age, int height, int weight, String weapon) {
         super(name, age, height, weight);
         this.weapon = weapon;
     }
@@ -15,5 +15,12 @@ public class knight extends People {
     void goOnDuty (String mission) {
         System.out.println("Đi làm nhiệm vụ : " + mission);
     }
-    abstract void fight
+    abstract void fight ();
+
+    @Override
+    public String toString() {
+        return "knight{" +
+                "weapon='" + weapon + '\'' +
+                '}';
+    }
 }

@@ -2,10 +2,10 @@ package King_game;
 
 public abstract class People {
     private String name;
-    private String age;
+    private int age;
     private int height;
     private int weight;
-    public People(String name, String age, int height, int weight) {
+    public People(String name, int age, int height, int weight) {
         this.name = name;
         this.age = age;
         this.height = height;
@@ -17,7 +17,7 @@ public abstract class People {
         return name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
