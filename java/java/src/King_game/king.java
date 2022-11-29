@@ -7,8 +7,12 @@ public class king extends People {
         super(name, age, height, weight);
     }
 
+    void command(String mission){
+        System.out.println("Vua ra lệnh là : " + mission);
+    }
     @Override
     void howToMove() {
-        System.out.println("Đi bằng xe ngưa");
+        System.out.println("Đi bằng kiệu");
     }
+
 }
