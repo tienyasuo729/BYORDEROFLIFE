@@ -1,5 +1,5 @@
 package King_game;
 
-public class braveWarrior extends knight {
+//public class braveWarrior extends knight {
 
-}
+//}

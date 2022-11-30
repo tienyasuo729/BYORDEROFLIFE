@@ -1,4 +1,4 @@
 package King_game;
 
-public class wiseWorrior extends knight{
-}
+//public class wiseWorrior extends knight{
+//}
