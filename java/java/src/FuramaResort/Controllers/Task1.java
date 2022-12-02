@@ -1,4 +1,4 @@
-package CaseStudy;
+package FuramaResort.Controllers;
 
 import java.util.Scanner;
 

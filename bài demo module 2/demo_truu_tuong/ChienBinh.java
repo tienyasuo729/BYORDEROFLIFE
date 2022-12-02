@@ -1,4 +1,3 @@
-package ss7_abstract_interface;
 
 public abstract class ChienBinh extends ConNguoi {
     private String vuKhi;
