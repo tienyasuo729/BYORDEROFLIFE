@@ -1,10 +1,10 @@
-package FuramaResort.Controllers;
+package FuramaResort.controllers;
 
 import java.util.Scanner;
 
-public class Task1 {
+public class FuramaController {
     private static void displayMainMenu (){
-        System.out.println("1.Employee Management \n2.Customer Management \n3.Facility Management \n4.Booking Management \n5.Promotion Management \n6.Exit");
+        System.out.println("1.Employee Management \n2.Customer Management \n3.FuramaResort.Models.Facility Management \n4.Booking Management \n5.Promotion Management \n6.Exit");
     }
     private static void employeeManagement (){
         System.out.println("1. Display list employees \n2. Add new employee \n3. Edit employee \n4. Return main menu");
