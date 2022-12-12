@@ -1,4 +1,4 @@
-package FuramaResort.models;
+package FuramaResort.Models;
 
 public class Contract {
 }

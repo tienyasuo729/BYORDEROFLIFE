@@ -3,6 +3,7 @@ package FuramaResort.controllers;
 import java.util.Scanner;
 
 public class FuramaController {
+
     private static void displayMainMenu (){
         System.out.println("1.Employee Management \n2.Customer Management \n3.FuramaResort.Models.Facility Management \n4.Booking Management \n5.Promotion Management \n6.Exit");
     }
@@ -48,4 +49,6 @@ public class FuramaController {
                 break;
         }
     }
+
+
 }
