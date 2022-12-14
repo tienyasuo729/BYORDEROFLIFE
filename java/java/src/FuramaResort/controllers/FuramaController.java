@@ -1,5 +1,7 @@
 package FuramaResort.controllers;
 
+import FuramaResort.Services.Impl.EmployeeServiceImpl;
+
 import java.util.Scanner;
 
 public class FuramaController {
@@ -25,12 +27,14 @@ public class FuramaController {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
         displayMainMenu();
         System.out.print("Chọn chức năng : ");
         int choose = Integer.parseInt(scanner.nextLine());
         switch (choose) {
             case 1:
                 employeeManagement();
+                employeeService.addNewEmployee();
                 break;
             case 2:
                 customerManagement();
