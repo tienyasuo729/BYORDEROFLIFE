@@ -5,6 +5,8 @@ public class Product {
     private String nameProduct;
     private int price;
 
+
+
     public Product(int id, String nameProduct, int price) {
         this.id = id;
         this.nameProduct = nameProduct;
@@ -33,5 +35,14 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", nameProduct='" + nameProduct + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

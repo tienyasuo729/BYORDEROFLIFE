@@ -6,8 +6,10 @@ import java.util.Scanner;
 public class ProductManager {
     static ArrayList<Product> products = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
-
-    public static void product() {
+    public static void prin() {
+        products.add(new Product(56,"dd",200));
+        products.add(new Product(23,"dffffd",20330));
+        products.add(new Product(69,"ádasd",205550));
         System.out.println("1/ Thêm sản phâm mới");
         System.out.println("2/ Sủa sản phẩm trong danh sách");
         System.out.println("3/ Xoá sản phẩm trong danh sách");
@@ -19,7 +21,7 @@ public class ProductManager {
         do {
             System.out.print("Chọn chức năng muốn thực hiện : ");
             choose = Integer.parseInt(scanner.nextLine());
-        } while (choose > 7 || choose < 0);
+        } while (choose > 7 || choose <= 0);
         switch (choose) {
             case 1:
                 addProduct();
@@ -41,9 +43,10 @@ public class ProductManager {
         }
 
     }
-
+    public static void main(String[] args) {
+        prin();
+    }
     static void addProduct() {
-        while (true) {
             System.out.print("Nhập mã sản phẩm : ");
             int id = Integer.parseInt(scanner.nextLine());
             System.out.print("Nhập tên sản phẩm : ");
@@ -53,16 +56,43 @@ public class ProductManager {
             System.out.print("Bạn có muốn thêm sản phẩm không ( Y OR N ) : ");
             String choose = scanner.nextLine();
             if (choose.equals("n") || choose.equals("N")) {
-                product();
+                prin();
+            } else {
+                Product product = new Product(id,name,price);
+                products.add(product);
+                prin();
             }
-        }
     }
 
     static void fixInformation(){
+        System.out.print("Nhập id sản phẩm muốn sửa : ");
+        int fixById = Integer.parseInt(scanner.nextLine());
 
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == fixById) {
+                System.out.println(products.get(i));
+                int productNeedToFix = i;
+                break;
+            }
+        }
+        System.out.print("Nhập mã sản phẩm : ");
+        int id = Integer.parseInt(scanner.nextLine());
+        System.out.print("Nhập tên sản phẩm : ");
+        String name = scanner.nextLine();
+        System.out.print("Nhập giá sản phẩm : ");
+        int price = Integer.parseInt(scanner.nextLine());
+        System.out.print("Bạn có muốn thêm sản phẩm không ( Y OR N ) : ");
+        String choose = scanner.nextLine();
+        if (choose.equals("n") || choose.equals("N")) {
+            prin();
+        } else {
+            products.remove(productNeedToFix);
+            Product product = new Product(id,name,price);
+            products.add(fixById, product);
+            System.out.println("Sản phẩm sau khi sửa là : " + products.get(fixById));
+            prin();
+        }
     }
 
-    public static void main(String[] args) {
-        product();
-    }
+
 }
