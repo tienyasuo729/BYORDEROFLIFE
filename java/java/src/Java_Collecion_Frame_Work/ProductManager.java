@@ -26,7 +26,8 @@ public class ProductManager {
 
 
     }
-    public static void displayToTheScreenLinkedList(){
+
+    public static void displayToTheScreenLinkedList() {
         System.out.println("------------------------------------------------------------------------------------------------------------------");
         System.out.println("1/ Thêm sản phâm mới");
         System.out.println("2/ Sủa sản phẩm trong danh sách");
@@ -64,7 +65,8 @@ public class ProductManager {
                 break;
         }
     }
-    static void addProductLinkedlist(){
+
+    static void addProductLinkedlist() {
         System.out.print("Nhập mã sản phẩm mới : ");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.print("Nhập tên sản phẩm mới : ");
@@ -81,7 +83,8 @@ public class ProductManager {
             displayToTheScreenLinkedList();
         }
     }
-    static void fixInformationLinkedList(){
+
+    static void fixInformationLinkedList() {
         int productNeedToFix = 0;
         boolean check = true;
         do {
@@ -115,7 +118,8 @@ public class ProductManager {
             displayToTheScreenLinkedList();
         }
     }
-    static void deleteProductLinkedList(){
+
+    static void deleteProductLinkedList() {
         boolean check = true;
         do {
             System.out.print("Nhập id sản phẩm muốn xoá : ");
@@ -132,11 +136,13 @@ public class ProductManager {
             }
         } while (check);
     }
-    static void displayProductLinkedlist(){
+
+    static void displayProductLinkedlist() {
         System.out.println(linkedListProducts);
         displayToTheScreenLinkedList();
     }
-    static void findProductLinkedList(){
+
+    static void findProductLinkedList() {
         boolean check = true;
         do {
             System.out.print("Nhập tên sản phẩm muốn tìm : ");
@@ -151,7 +157,8 @@ public class ProductManager {
         } while (check);
         displayToTheScreenArrayList();
     }
-    static void sortProductsLinkedList(){
+
+    static void sortProductsLinkedList() {
         System.out.println("1/ Sắp xếp theo giá trị tăng dần \n2/ Sắp xếp theo giá trị giảm dần");
         int sort = Integer.parseInt(scanner.nextLine());
         if (sort == 1) {
@@ -161,6 +168,7 @@ public class ProductManager {
         }
         displayProductLinkedlist();
     }
+
     public static void displayToTheScreenArrayList() {
         System.out.println("------------------------------------------------------------------------------------------------------------------");
         System.out.println("1/ Thêm sản phâm mới");
