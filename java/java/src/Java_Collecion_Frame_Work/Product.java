@@ -43,6 +43,6 @@ public class Product {
                 "id=" + id +
                 ", nameProduct='" + nameProduct + '\'' +
                 ", price=" + price +
-                '}';
+                '}' + "\n";
     }
 }
