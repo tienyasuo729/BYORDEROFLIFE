@@ -1,6 +1,6 @@
 package FuramaResort.Models;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private String timeForJob;
     private String skill;
     private String degree;
@@ -38,14 +38,17 @@ public class Employee extends Person{
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Employee{" + "cccd=" + getCccd() + '\'' +
+                ", name=" + getName() + '\'' +
+                ", age=" + getAge() + '\'' +
+                ", gender=" + getGender() + '\'' +
                 "timeForJob='" + timeForJob + '\'' +
                 ", skill='" + skill + '\'' +
                 ", degree='" + degree + '\'' +
-                '}' + "\n";
+                '}';
     }
 
-    public void howToMove(String move){
+    public void howToMove(String move) {
         System.out.println(move);
     }
 }

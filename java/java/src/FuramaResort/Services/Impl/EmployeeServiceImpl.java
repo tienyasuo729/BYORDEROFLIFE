@@ -10,6 +10,13 @@ public class EmployeeServiceImpl {
     static ArrayList<Employee> listEmployee = new ArrayList<>();
 
     static Scanner scanner = new Scanner(System.in);
+    static boolean check = false;
+
+    static void check(boolean check){
+        if (check){
+            System.out.println("Không tìm thấy kết quả");
+        }
+    }
 
     private static void employeeManagement() {
         System.out.println("1. Display list employees \n2. Add new employee \n3. Edit employee \n4. Return main menu");
@@ -27,7 +34,7 @@ public class EmployeeServiceImpl {
                 addNewEmployee();
                 break;
             case 3:
-
+                editEployee();
                 break;
             case 4:
                 FuramaController.Menu();
@@ -56,6 +63,7 @@ public class EmployeeServiceImpl {
         choose = Integer.parseInt(scanner.nextLine());
         if (choose == 1) {
             listEmployee.add(new Employee(cccd, name, age, gender, timeForJob, skill, degree));
+            EmployeesList();
         } else {
             EmployeesList();
         }
@@ -69,7 +77,6 @@ public class EmployeeServiceImpl {
 
     public void editEployee() {
         int choose;
-        System.out.println(listEmployee);
         System.out.print("Nhập số căn cước của bạn để chỉnh sửa thông tin : ");
         int edit = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < listEmployee.size(); i++) {
@@ -93,11 +100,13 @@ public class EmployeeServiceImpl {
                 choose = Integer.parseInt(scanner.nextLine());
                 if (choose == 1) {
                     listEmployee.add(new Employee(cccd, name, age, gender, timeForJob, skill, degree));
-                    break;
+                    check = true;
+                    EmployeesList();
                 } else {
                     EmployeesList();
                 }
             }
+            check(check);
         }
     }
 }

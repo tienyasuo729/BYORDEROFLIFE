@@ -45,5 +45,15 @@ public abstract class Person {
         this.gender = gender;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "cccd=" + cccd +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
+
     public abstract void howToMove(String move);
 }
