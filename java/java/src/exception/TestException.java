@@ -1,19 +1,56 @@
 package exception;
 
-import java.util.Scanner;
+import java.util.*;
+
+class Student{
+    int id;
+    public Student() {
+    }
+
+    public Student(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                '}';
+    }
+
+//    @Override
+//    public int compareTo(Student o) {
+//        if (this.id < o.id)return 1;
+//        else if (this.id > o.id)return -1;
+//        else return 0;
+//    }
+
+}
 
 public class TestException {
-    static Scanner scanner = new Scanner(System.in);
-    public static void main(String[] args) {
-        int n = 0;
-        try {
-            System.out.println("Nhập vào giá trị n : ");
-            n = Integer.parseInt(scanner.nextLine());
-        }catch (Exception i){
-            System.out.println("Nhập sai ");
-        }
+    private static LinkedList<Student> linkedList = new LinkedList<>();
 
-        System.out.println("Giá trị của n là : " + n);
-        System.out.println("kết thúc chương trình .");
+    public static void main(String[] args) {
+        linkedList.add(new Student(11));
+        linkedList.add(new Student(6));
+        linkedList.add(new Student(8));
+        linkedList.add(new Student(5));
+//        Collections.sort(linkedList, new Comparator<Student>() {
+//            @Override
+//            public int compare(Student o2, Student o1) {
+//                if(o1.id < o2.id)return 1;
+//                else if(o1.id > o2.id) return -1;
+//                else return 0;
+//            }
+//        });
+        Collections.sort(linkedList, new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                if (o1.id < o2.id)return 1;
+                else if (o1.id > o2.id) return -1;
+                else return 0;
+            }
+        });
+        System.out.println(linkedList);
     }
 }
