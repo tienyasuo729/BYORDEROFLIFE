@@ -1,8 +1,9 @@
 package FuramaResort.service;
 
-public class employeeService {
-    public void addEmployee(){
+public class EmployeeService {
 
+    public static void addEmployee(){
+        System.out.println("");
     }
     public void displayEmployee(){
 
