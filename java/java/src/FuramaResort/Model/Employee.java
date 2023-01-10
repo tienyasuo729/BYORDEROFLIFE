@@ -1,9 +1,9 @@
 package FuramaResort.Model;
 
-public class employee extends people{
+public class Employee extends People {
     private String skills;
 
-    public employee(int cccd, String name, int age, String skills) {
+    public Employee(int cccd, String name, int age, String skills) {
         super(cccd, name, age);
         this.skills = skills;
     }
@@ -18,9 +18,9 @@ public class employee extends people{
 
     @Override
     public String toString() {
-        return "employee{" +
-                super.toString() + '\'' +
-                "skills='" + skills + "} ";
+        return "Employee{" +
+                "skills='" + skills + '\'' +
+                "} " + super.toString();
     }
 
     @Override

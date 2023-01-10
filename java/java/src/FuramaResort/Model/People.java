@@ -1,11 +1,11 @@
 package FuramaResort.Model;
 
-public abstract class people {
+public abstract class People {
     private int cccd;
     private String name;
     private int age;
 
-    public people(int cccd, String name, int age) {
+    public People(int cccd, String name, int age) {
         this.cccd = cccd;
         this.name = name;
         this.age = age;
