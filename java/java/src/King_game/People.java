@@ -48,8 +48,5 @@ public class People {
         this.weight = weight;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s hádhadhshsa", age);
-    }
+
 }
