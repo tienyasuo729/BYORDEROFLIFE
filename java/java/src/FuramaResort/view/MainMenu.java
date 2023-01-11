@@ -12,7 +12,7 @@ public class MainMenu {
         while (true) {
             System.out.println("---------- MENU ---------- \n1.Employee Management \n2.Customer Management \n3.Facility Management \n4.Booking Management \n5.Promotion Management \n6.Exit");
             int chooseInMainMenu = 0;
-            chooseInMainMenu = CheckChoose.checkChoose(chooseInMainMenu, 6);
+            chooseInMainMenu = CheckChoose.checkChoose(6);
             switch (chooseInMainMenu) {
                 case 1:
                     EmployeeService.mainEmployee();
