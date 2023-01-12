@@ -22,11 +22,12 @@ public class test {
 //        int x = 2;
 //        System.out.println(nn.length() > x);
 
-        String nn = "abcd";
-        char [] checkForLettersInput = nn.toCharArray();
-        for (int i = 0; i < nn.length(); i++) {
-            System.out.println(Character.isLetter(checkForLettersInput[i]));
-        }
+//        String nn = "ab3d";
+//        char [] checkForLettersInput = nn.toCharArray();
+//        System.out.println(checkForLettersInput[2] + 2);
+//        for (int i = 0; i < nn.length(); i++) {
+//            System.out.println(Character.isLetter(checkForLettersInput[i]));
+//        }
 
     }
 }

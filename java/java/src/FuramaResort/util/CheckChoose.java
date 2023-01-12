@@ -26,7 +26,6 @@ public class CheckChoose {
         boolean check = true; // công tắc kích hoạt ( vòng lặp )
         String input = null;
         int firstTime = 1;
-        int checkAge = 0;
 
         do { // ( vòng lặp )
              // mảng kiểm tra nhập vào có chữ không
@@ -38,7 +37,7 @@ public class CheckChoose {
                     input = scanner.nextLine();
                 }
                 if (inputLength <= 3 && inputLength > 0) { // kiểm tra tuổi
-                    checkAge = Integer.parseInt(input);
+                    int checkAge = Integer.parseInt(input); // kiểm tra xem trong input nhập tuổi có chữ không, nếu có thì cho nó lỗi để nhảy sang catch
                     if (input.length() <= inputLength){
                         check = false;
                     }
