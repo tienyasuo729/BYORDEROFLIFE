@@ -2,6 +2,7 @@ package FuramaResort.service;
 
 import FuramaResort.Model.Employee;
 import FuramaResort.util.CheckChoose;
+import FuramaResort.util.ReadAndWrite;
 import FuramaResort.view.MainMenu;
 
 import java.util.*;
@@ -55,6 +56,7 @@ public class EmployeeService {
         int chooseYNAdd = CheckChoose.checkChoose(2);
         if (chooseYNAdd == 1){
             listemployee.add(new Employee(cccd,name,age,skill));
+            ReadAndWrite.write("C:\\codegym\\text\\java\\java\\src\\FuramaResort\\Data\\Employee", true, listemployee);
         }
     }
 
