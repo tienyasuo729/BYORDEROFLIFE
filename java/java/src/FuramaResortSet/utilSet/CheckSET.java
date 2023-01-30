@@ -27,7 +27,6 @@ public class CheckSET {
 
 
 
-
     // kiểm tra input theo regex
     // cần có chữ thông báo nhập lần đầu tiên
     public static String checkIntInPut(String regex) { // kiểm tra dữ liệu nhập vào có bị lỗi về cố tình nhập chữ hay vượt phạm vi int không { theo regex }

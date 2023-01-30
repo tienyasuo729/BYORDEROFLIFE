@@ -36,6 +36,16 @@ public class Check {
 
         return choose;
     }
+    public static String checkName(){
+        String name = null;
+        do {
+            name = scanner.nextLine();
+            if (name.matches("^[a-z]+$") != true){
+                System.out.print("Nhập sai tên rồi, nhập lại: ");
+            }
+        }while (name.matches("^[a-z]+$") != true);
+        return name;
+    }
 
     public static int checkNumberInput(String print) {
         int number = 0;

@@ -47,12 +47,13 @@ public class EmployeeServiceSET {
         int age = CheckSET.checkAge();
         System.out.print("Enter your SKILL : ");
         String skill = scanner.nextLine();
-        System.out.println("------------------------------\n" + new EmployeeSET(cccd,name,age,skill));
+        System.out.println("------------------------------ \nEmployee: " + new EmployeeSET(cccd,name,age,skill));
         System.out.print("Are you sure ?\n" + "1. YES\n" + "2. NO\n");
         int chooseYNAdd = CheckSET.checkChoose(2);
         if (chooseYNAdd == 1){
-            listemployeeSET.add(new EmployeeSET(cccd,name,age,skill));
-            ReadAndWriteSET.write(listemployeeSET);
+//            listemployeeSET.add(new EmployeeSET(cccd,name,age,skill));
+//            ReadAndWriteSET.write(new EmployeeSET(cccd,name,age,skill));
+            ReadAndWriteSET.write(new EmployeeSET(cccd,name,age,skill));
         }
     }
 
@@ -95,7 +96,7 @@ public class EmployeeServiceSET {
                         listemployeeArrayList.set(i, new EmployeeSET(cccd,name,age,skill));
                         listemployeeSET.clear();
                         listemployeeSET.addAll(listemployeeArrayList);
-                        ReadAndWriteSET.write(listemployeeSET);
+//                        ReadAndWriteSET.write(listemployeeSET);
                         System.out.println("----- Successful -----");
                     }
                 }

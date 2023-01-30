@@ -66,7 +66,7 @@ public class DienThoai {
         System.out.print("Nhập mã số cầm: ");
         int id = Check.checkNumberInput("Nhập sai mã số phiếu cầm, nhập lại: ");
         System.out.print("Nhập tên của khách hàng: ");
-        String name = scanner.nextLine();
+        String name = Check.checkName();
         System.out.print("Nhập tên đồ cầm: ");
         String product = scanner.nextLine();
         System.out.print("Nhập số tiền cầm: ");

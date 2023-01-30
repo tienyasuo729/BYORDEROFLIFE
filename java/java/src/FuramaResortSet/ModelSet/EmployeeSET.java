@@ -20,7 +20,7 @@ public class EmployeeSET extends People implements Comparable<EmployeeSET>{
 
     @Override
     public String toString() {
-        return String.format("EmployeeSet ( CCCD: %s, Name: %s, Age: %s, Skill: %s )\n", super.getCccd(),super.getName(), super.getAge(), skills );
+        return String.format("%s %s %s %s )", super.getCccd(),super.getName(), super.getAge(), skills );
     }
 
 
