@@ -1,25 +1,14 @@
 package test.thu;
 
-import test.thu.Human;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class test {
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        while (true){
-            System.out.print("Nhập : ");
-            String nn = scanner.next();
-        }
+//        while (true){
+//            System.out.print("Nhập : ");
+//            String nn = scanner.next();
+//        }
 
 //        int x = 1;
 //        while (true){
