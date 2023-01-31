@@ -39,10 +39,13 @@ public class ReadAndWriteSET {
     }
 
     public static void Read(String pathFile){
+        String line = null;
         try{
             FileReader fileReader = new FileReader(pathFile);
             BufferedReader bufferedReader =new BufferedReader(fileReader);
-
+            do {
+                line = bufferedReader.readLine();
+            }while ();
             bufferedReader.close();
             fileReader.close();
         }catch (Exception e){
