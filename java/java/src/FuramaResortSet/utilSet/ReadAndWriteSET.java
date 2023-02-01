@@ -28,7 +28,7 @@ public class ReadAndWriteSET {
 
     public static void write(EmployeeSET employeeList){
         try {
-            FileWriter fileWriter =new FileWriter("C:\\codegym\\text\\java\\java\\src\\FuramaResortSet\\DataSet\\EmployeeSet", true);
+            FileWriter fileWriter =new FileWriter("src/FuramaResortSet/DataSet/EmployeeSet", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(String.valueOf(employeeList));
             bufferedWriter.newLine();
@@ -44,10 +44,11 @@ public class ReadAndWriteSET {
         String [] nn;
         String line = null;
         try{
-            FileReader fileReader = new FileReader("C:\\codegym\\text\\java\\java\\src\\FuramaResortSet\\DataSet\\EmployeeSet");
+            FileReader fileReader = new FileReader("src/FuramaResortSet/DataSet/EmployeeSet");
             BufferedReader bufferedReader =new BufferedReader(fileReader);
             do {
                 line = bufferedReader.readLine();
+//                if(line.equals(""))break;
                 if (line != null){
                     nn = line.split(",");
                     list.add(new EmployeeSET(nn[0],nn[1],Integer.parseInt(nn[2]),nn[3]));
@@ -56,7 +57,7 @@ public class ReadAndWriteSET {
             bufferedReader.close();
             fileReader.close();
         }catch (Exception e){
-            System.out.println("error");
+            System.out.println(e);
         }
         return list;
     }
