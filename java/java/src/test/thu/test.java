@@ -129,17 +129,15 @@ public class test {
 //        System.out.println(ff);
     }
 
-//    private static void write(Set<Human> humans){
+//    private static void write(int i){
 //        try {
 //            FileWriter fileWriter = new FileWriter("D:\\codegym\\text\\java\\java\\src\\test\\thu\\data");
 //            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-//            for (Human e: humans) {
-//                bufferedWriter.write(e.toString());
-//                bufferedWriter.newLine();
-//            }
+////            bufferedWriter.write();
 //            bufferedWriter.close();
 //            fileWriter.close();
 //        }catch (Exception e){
+//            System.out.println("sssss");
 //        }
 //    }
 //    private static void read(){

@@ -13,9 +13,6 @@ public class EmployeeServiceSET {
     private static Set<EmployeeSET> listemployeeSET = new TreeSet<>();
     public static void mainEmployee() {
         listemployeeSET.addAll(ReadAndWriteSET.ReadAll());
-//        listemployeeSET.add(new EmployeeSET("123123123123","Tiến",23,"HHH"));
-//        listemployeeSET.add(new EmployeeSET("456456456456","Ti",24,"ggg"));
-
         while (true){
             System.out.println("---------- EmployeeSet ----------\n" + "1Display list employees\n" + "2Add new employee\n" + "3Edit employee\n" + "4Return main menu");
             int chooseInEmployeeService = Check.checkChoose(4);
@@ -31,11 +28,12 @@ public class EmployeeServiceSET {
                     editEmployee();
                     break;
                 case 4:
+                    ReadAndWriteSET.writeAllEmployee(listemployeeSET);
                     MainMenuSET.displayMainMenu();
                     break;
             }
-
         }
+
     }
 
     public static void addEmployee() {
@@ -48,11 +46,11 @@ public class EmployeeServiceSET {
         int age = CheckSET.checkAge();
         System.out.print("Enter your SKILL : ");
         String skill = scanner.nextLine();
-        System.out.println("------------------------------ \nEmployee: " + new EmployeeSET(cccd,name,age,skill));
+        System.out.println("------------------------------ \nEmployee { CCCD: " + cccd + ", Name: " + name + ", Age: " + age + ", Skill: " + skill + " }");
         System.out.print("Are you sure ?\n" + "1. YES\n" + "2. NO\n");
         int chooseYNAdd = CheckSET.checkChoose(2);
         if (chooseYNAdd == 1){
-            ReadAndWriteSET.write(new EmployeeSET(cccd,name,age,skill));
+            ReadAndWriteSET.writeEmployee(new EmployeeSET(cccd,name,age,skill));
             listemployeeSET.add(new EmployeeSET(cccd,name,age,skill));
         }
     }
@@ -61,6 +59,7 @@ public class EmployeeServiceSET {
         if (listemployeeSET.isEmpty()){
             System.out.println("----- List Employees is empty -----");
         }else {
+            System.out.println("----- List Employees -----");
             for (EmployeeSET list : listemployeeSET) {
                 System.out.println("CCCD: " + list.getCccd() + ", Name: " + list.getName() + ", Age: " + list.getAge() + ", Skills: " + list.getSkills());
             }
@@ -87,14 +86,14 @@ public class EmployeeServiceSET {
                     int age = CheckSET.checkAge();
                     System.out.print("Enter your SKILL : ");
                     String skill = scanner.nextLine();
-                    System.out.println("------------------------------\n" + new EmployeeSET(cccd,name,age,skill));
+                    System.out.println("------------------------------ \nEmployee { CCCD: " + cccd + ", Name: " + name + ", Age: " + age + ", Skill: " + skill + " }");
                     System.out.print("Are you sure ?\n" + "1. YES\n" + "2. NO\n");
                     int chooseYNAdd = CheckSET.checkChoose(2);
                     if (chooseYNAdd == 1){
                         listemployeeArrayList.set(i, new EmployeeSET(cccd,name,age,skill));
                         listemployeeSET.clear();
                         listemployeeSET.addAll(listemployeeArrayList);
-//                        ReadAndWriteSET.write(listemployeeSET);
+//                        ReadAndWriteSET.writeEdit(listemployeeSET);
                         System.out.println("----- Successful -----");
                     }
                 }
