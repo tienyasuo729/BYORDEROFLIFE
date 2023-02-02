@@ -45,6 +45,10 @@ public class CheckSET {
     }
 
 
+//    ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+
+
+
     // kiểm tra input không dùng regex
 //    public static String checkIntInPut(int inputLength) { // kiểm tra int nhập vào có bị lỗi về cố tình nhập chữ hay vượt phạm vi int không và trả về String
 //        boolean check = true; // công tắc kích hoạt ( vòng lặp )
