@@ -22,5 +22,16 @@ public class CheckTienThanh {
 
         return choose;
     }
-
+    public static String checkRegex(String regex, String mess){
+        String input;
+        boolean check = true;
+        do {
+            input = scanner.nextLine();
+            if (!input.matches(regex) != true){
+                check = false;
+                System.out.print(mess);
+            }
+        }while (check);
+        return input;
+    }
 }

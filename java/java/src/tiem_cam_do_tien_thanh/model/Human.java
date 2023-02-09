@@ -6,6 +6,12 @@ public class Human {
     private String address;
     private String phoneNumber;
 
+    public Human(String cccd, String name, String phoneNumber) {
+        this.name = name;
+        this.cccd = cccd;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Human(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
