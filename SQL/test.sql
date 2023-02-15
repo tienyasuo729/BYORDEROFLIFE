@@ -9,31 +9,51 @@ create table PhieuXuat(
     NgayXuat date
 );
 create table PhieuNHap(
-	SoPX varchar(45) primary key,
+	SoPN varchar(45) primary key,
     NgayNhap date
 );
-create table DonDH(
-	SoDH varchar(45) primary key,
-    NgayDH date
-);
+
 create table NhaCC(
 	MaNhaCC varchar(45) primary key,
     TenNhaCC varchar(45),
-    DiaChi varchar(100)
+    DiaChi varchar(100),
+    SoDH varchar(45)
 );
-create table DonXuat(
+create table DonDH(
+	SoDH varchar(45) primary key,
+    NgayDH date,
+    MaNhaCC varchar(45),
+    foreign key (MaNhaCC) references NhaCC(MaNhaCC)
+);
+create table ChiTietPhieuXuat(
 	SoPX varchar(45),
 	MaVTU varchar(45),
+    foreign key (SoPX) references PhieuXuat(SoPX),
+    foreign key (MaVTU) references VatTu(MaVTU),
 	DGXuat int,
     SLXuat int
+);
+create table ChiTietPhieuNhap(
+	MaVTU varchar(45),
+	SoPN varchar(45),
+    foreign key (MaVTU) references VatTu(MaVTU),
+    foreign key (SoPN) references PhieuNhap(SoPN),
+    DGNhap int,
+    SLNhap int
 );
 create table SDT (
 	SDT mediumint,
     MaNhaCC varchar(10),
     primary key (SDT, MaNhaCC),
-    foreign key (SDT) REFERENCES NhaCC(SDT),
     foreign key (MaNhaCC) REFERENCES NhaCC(MaNhaCC)
 );
+create table ChiTietDatHang(
+	MaVTU varchar(45),
+    SoDH varchar(45),
+    foreign key (MaVTU) references VatTu(MaVTU),
+    foreign key (SoDH) references DonDH(SoDH)
+);
+
 
 
 
