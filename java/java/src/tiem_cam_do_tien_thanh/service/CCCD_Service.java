@@ -57,7 +57,13 @@ public class CCCD_Service {
         String name = CheckTienThanh.checkRegex("^[\\p{L}\\s]+$", "Tên không chứa kí tự đặc biệt hoặc số, xin nhập lại: ");
         System.out.print("Nhập số điện thoại của khách hàng: ");
         String phoneNumber = CheckTienThanh.checkRegex("^[0-9]{10}$", "Nhập sai số điện thoại, xin nhập lại: ");
-        System.out.print("Nhập N: ");
+        System.out.print("Nhập ngày cầm : ");
+        String dayIn = CheckTienThanh.checkRegex("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}$", "Nhập sai ngày cầm rồi, xin nhập lại: ");
+        System.out.print("Nhập ghi chú : ");
+        String note = scanner.nextLine();
+        System.out.print("Bạn có chắn chắn thêm người này không.\n1. Có\n2. Không\nNhập lựa chọn của bạn: ");
+        int choose = CheckTienThanh.checkChooseTienThanh(2);
+
 
     }
     private static void deleteCCCD(){
