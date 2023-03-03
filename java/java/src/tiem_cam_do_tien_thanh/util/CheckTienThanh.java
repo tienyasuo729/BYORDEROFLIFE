@@ -27,8 +27,9 @@ public class CheckTienThanh {
         boolean check = true;
         do {
             input = scanner.nextLine();
-            if (!input.matches(regex) != true){
+            if (input.matches(regex)){
                 check = false;
+            }else {
                 System.out.print(mess);
             }
         }while (check);

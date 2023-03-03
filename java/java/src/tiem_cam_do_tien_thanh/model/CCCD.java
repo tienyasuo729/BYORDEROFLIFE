@@ -10,10 +10,10 @@ public class CCCD extends Human{
         this.note = note;
     }
 
-    public CCCD(String cccd, String name, String phoneNumber, String dayIn) {
-        super(cccd, name, phoneNumber);
-        this.dayIn = dayIn;
-    }
+//    public CCCD(String cccd, String name, String phoneNumber, String dayIn) {
+//        super(cccd, name, phoneNumber);
+//        this.dayIn = dayIn;
+//    }
 
     public String getNote() {
         return note;
@@ -36,10 +36,10 @@ public class CCCD extends Human{
         return String.format("%s , %s , %s , %s , %s",super.getCccd(),super.getName(),super.getPhoneNumber(),getDayIn(),getNote());
     }
 
-    public String Note() {
-        return String.format("%s , %s , %s , %s , %s",super.getCccd(),super.getName(),super.getPhoneNumber(),getDayIn(),getNote());
-    }
-    public String noNote() {
-        return String.format("%s , %s , %s , %s",super.getCccd(),super.getName(),super.getPhoneNumber(),getDayIn());
-    }
+//    public String Note() {
+//        return String.format("%s , %s , %s , %s , %s",super.getCccd(),super.getName(),super.getPhoneNumber(),getDayIn(),getNote());
+//    }
+//    public String noNote() {
+//        return String.format("%s , %s , %s , %s",super.getCccd(),super.getName(),super.getPhoneNumber(),getDayIn());
+//    }
 }
