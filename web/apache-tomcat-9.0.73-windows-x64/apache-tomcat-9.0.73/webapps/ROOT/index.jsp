@@ -1,25 +1,34 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<style type="text/css">
-    .login {
-        height:180px; width:230px;
-        margin:0;
-        padding:10px;
-        border:1px #CCC solid;
-    }
-    .login input {
-        padding:5px; margin:5px
-    }
-</style>
+<head>
+    <title>JSP - Hello World</title>
+    <style>
+        label{
+            color: red;
+        }
+        .input {
+            height:180px; width:230px;
+            margin:0;
+            padding:10px;
+            border:1px #CCC solid;
+        }
+    </style>
+</head>
 <body>
-<form method="get"action="/hello-servlet">
-<%--    <div class="login">--%>
-<%--        <h2>Login</h2>--%>
-<%--        <input type="text" name="username" size="30"  placeholder="username" />--%>
-<%--        <input type="password" name="password" size="30" placeholder="password" />--%>
-        <input type="submit" value="Sign in"/>
-<%--    </div>--%>
+<form action="/caculation" method="post">
+    <h1>Product Discount Calculator</h1>
+    <div class="input">
+        <label for="productDescription">Product Description: </label>
+        <input id="productDescription" type="text" name="productDescription" size="30" placeholder="Enter your Product Description"><br>
+        <label for="ListPrice">List Price: </label>
+        <input id="ListPrice" type="text" name="listPrice" size="30" placeholder="Enter your List Price"><br>
+        <label for="DiscountPercent">Discount Percent: </label>
+        <input id="DiscountPercent" type="text" name="discountPercent" size="30"placeholder="Enter your Discount Percent">
+        <input style="margin-top: 10px" type="submit" value="caculation">
+    </div>
+
 </form>
+
 </body>
 </html>

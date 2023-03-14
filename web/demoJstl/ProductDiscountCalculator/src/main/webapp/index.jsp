@@ -4,6 +4,9 @@
 <head>
     <title>JSP - Hello World</title>
     <style>
+        label{
+            color: red;
+        }
         .input {
             height:180px; width:230px;
             margin:0;
@@ -13,16 +16,19 @@
     </style>
 </head>
 <body>
-<h1>Product Discount Calculator</h1>
-<div class="input">
-<label for="productDescription">Product Description: </label>
-<input id="productDescription" type="text" name="productDescription" size="30"><br>
-<label for="ListPrice">List Price: </label>
-<input id="ListPrice" type="text" name="productDescription" size="30"><br>
-<label for="DiscountPercent">Discount Percent: </label>
-<input id="DiscountPercent" type="text" name="productDescription" size="30">
-</div>
-<%--<br/>--%>
-<%--<a href="hello-servlet">Hello Servlet</a>--%>
+<form action="/caculation" method="post">
+    <h1>Product Discount Calculator</h1>
+    <div class="input">
+        <label for="productDescription">Product Description: </label>
+        <input id="productDescription" type="text" name="productDescription" size="30" placeholder="Enter your Product Description"><br>
+        <label for="ListPrice">List Price: </label>
+        <input id="ListPrice" type="text" name="listPrice" size="30" placeholder="Enter your List Price"><br>
+        <label for="DiscountPercent">Discount Percent: </label>
+        <input id="DiscountPercent" type="text" name="discountPercent" size="30"placeholder="Enter your Discount Percent">
+        <input style="margin-top: 10px" type="submit" value="caculation">
+    </div>
+
+</form>
+
 </body>
 </html>
