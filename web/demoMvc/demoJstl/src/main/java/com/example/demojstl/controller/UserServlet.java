@@ -1,6 +1,6 @@
-package com.example.demojstl.servlet;
+package com.example.demojstl.controller;
 
-import com.example.demojstl.modal.Student;
+import com.example.demojstl.bean.Student;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "UserServlet", value = "/userggg")
+@WebServlet(name = "UserServlet", value = "/user/detail")
 public class UserServlet extends HttpServlet {
-    private List<Student> students;
+    public static List<Student> students;
 
     @Override
     public void init() throws ServletException {
@@ -27,23 +27,17 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
-
-        if (id != null) {
-            Student student = null;
-            for (Student s : students) {
-                if (s.getId().equals(id)) {
-                    student = s;
-                }
+        Student student = null;
+        for (Student s: students) {
+            if (s.getId().equals(id)) {
+                student = s;
             }
-            request.setAttribute("student", student);
-            request.getRequestDispatcher("/user/detail.jsp").forward(request, response);
-//        request.getRequestDispatcher("/user/detail_jstl.jsp").forward(request, response);
-        } else {
-            request.setAttribute("students", students);
-            request.getRequestDispatcher("/user/list.jsp").forward(request, response);
         }
-
-
+        request.setAttribute("student", student);
+        request.setAttribute("students", students);
+//        request.getRequestDispatcher("/user/detail.jsp").forward(request, response);
+//        request.getRequestDispatcher("/user/detail_jstl.jsp").forward(request, response);
+        request.getRequestDispatcher("/user/list.jsp").forward(request, response);
     }
 
     @Override

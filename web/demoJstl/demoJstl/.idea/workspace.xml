@@ -5,19 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a47f1b9d-4946-4673-b0e4-c5d3bb6e402e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/hhhhhhhhhhh/HelloServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/demoJstl.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/productdiscountcalculator/HelloServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/productdiscountcalculator/caculationServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pc/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../pc/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demojstl/servlet/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demojstl/servlet/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/src/main/java/com/example/ungdungchuyendoitiente/HelloServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ungDungChuyenDoiTienTe/src/main/webapp/index.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,14 +53,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/codegym/text/web/taoTrangWebHienThiThoiGianHeThong"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/codegym/text/web/demoJstl/demoJstl&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.732" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.732" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -154,6 +159,12 @@
       <option name="presentableId" value="Default" />
       <updated>1678705317229</updated>
       <workItem from="1678705319420" duration="223000" />
+      <workItem from="1678866420678" duration="3955000" />
+      <workItem from="1678877353049" duration="717000" />
+      <workItem from="1678878481854" duration="229000" />
+      <workItem from="1678878723816" duration="1761000" />
+      <workItem from="1678880734787" duration="6885000" />
+      <workItem from="1678888962159" duration="761000" />
     </task>
     <servers />
   </component>
