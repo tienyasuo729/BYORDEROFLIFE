@@ -29,7 +29,12 @@ public class caculatorServlet extends HttpServlet {
                 result = firstOperand * secondOperand;
                 break;
             case '/':
-                result = firstOperand / secondOperand;
+                try{
+                    result = firstOperand / secondOperand;
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 break;
         }
         request.setAttribute("firstOperand", firstOperand);

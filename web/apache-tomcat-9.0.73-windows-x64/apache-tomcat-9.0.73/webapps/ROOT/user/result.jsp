@@ -11,13 +11,13 @@
     <title>Title</title>
 </head>
 <body>
-<%--<% float firstOperand = (float) request.getAttribute("firstOperand"); %>--%>
-<%--<% float secondOperand = (float) request.getAttribute("secondOperand"); %>--%>
-<%--<% float result = (float) request.getAttribute("result"); %>--%>
+<% float firstOperand = (float) request.getAttribute("firstOperand"); %>
+<% float secondOperand = (float) request.getAttribute("secondOperand"); %>
+<% float result = (float) request.getAttribute("result"); %>
 <h1>Result:</h1>
-<%--<h1><%=firstOperand%></h1>--%>
-<p><%=request.getAttribute("firstOperand")%> <%=request.getAttribute("operator")%> <%=request.getAttribute("secondOperand")%>
-    = <%=request.getAttribute("result")%>
+<h1><%=firstOperand%></h1>
+<%--<p><%=request.getAttribute("firstOperand")%> <%=request.getAttribute("operator")%> <%=request.getAttribute("secondOperand")%>--%>
+<%--    = <%=request.getAttribute("result")%>--%>
 </p>
 </body>
 </html>

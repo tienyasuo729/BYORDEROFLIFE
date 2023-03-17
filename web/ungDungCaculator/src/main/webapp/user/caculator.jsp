@@ -28,13 +28,15 @@
     <label for="firstOperand">First operand: </label>
     <input id="firstOperand" type="text" name="firstOperand" size="30" placeholder="Enter your First operand"><br>
     <label for="operator">Operator: </label>
+    <br>
     <select id="operator" name="operator">
       <option value="+">addition</option>
       <option value="-">subtraction</option>
       <option value="*">multiplication</option>
       <option value="/">division</option>
     </select>
-    <label for="secondOperand">Discount Percent: </label>
+    <br>
+    <label for="secondOperand">Second Operand: </label>
     <input id="secondOperand" type="text" name="secondOperand" size="30"placeholder="Enter your Second operator">
     <input style="margin-top: 10px" type="submit" value="caculate">
   </div>
