@@ -3,11 +3,11 @@ package com.example.taoungdungquanlysanpham.bean;
 public class Product {
     private String id;
     private String name;
-    private int price;
+    private double price;
     private String describe;
     private String producer;
 
-    public Product(String id, String name, int price, String describe, String producer) {
+    public Product(String id, String name, double price, String describe, String producer) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -31,11 +31,11 @@ public class Product {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
