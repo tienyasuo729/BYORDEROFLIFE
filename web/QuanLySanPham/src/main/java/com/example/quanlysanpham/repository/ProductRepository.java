@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ProductRepository {
     List display();
-    void create(Product product);
+    void create(Product creaseProduct);
     void update(Product product);
     void delete(String id);
     Product findById(String id);

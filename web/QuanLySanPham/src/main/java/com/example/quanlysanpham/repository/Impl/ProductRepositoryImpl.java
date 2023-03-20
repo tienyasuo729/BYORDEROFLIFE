@@ -3,17 +3,40 @@ package com.example.quanlysanpham.repository.Impl;
 import com.example.quanlysanpham.bean.Product;
 import com.example.quanlysanpham.repository.ProductRepository;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepositoryImpl implements ProductRepository {
+    private static List<Product> productList = new ArrayList<>();
     private Repository repository = new Repository();
+
+//    static {
+//        productList.add(new Product("dv001", "tien1", 1000, "a1","tienthanh1"));
+//        productList.add(new Product("dv002", "tien2", 2000, "a2","tienthanh2"));
+//        productList.add(new Product("dv003", "tien3", 3000, "a3","tienthanh3"));
+//        productList.add(new Product("dv004", "tien4", 4000, "a4","tienthanh4"));
+//        productList.add(new Product("dv005", "tien5", 5000, "a5","tienthanh5"));
+//    }
     @Override
     public List display() {
         return null;
     }
 
     @Override
-    public void create(Product product) {
+    public void create(Product creaseProduct) {
+        try {
+            PreparedStatement preparedStatement = this.repository.getConnectionJavaToDB().
+                    prepareStatement("insert into testjdbc(id,name,ptice,describe_product,producer) values (?,?,?,?,?)");
+            preparedStatement.setString(1, creaseProduct.getId());
+            preparedStatement.setString(2, creaseProduct.getName());
+            preparedStatement.setInt(3, creaseProduct.getPrice());
+            preparedStatement.setString(4, creaseProduct.getDescribe());
+            preparedStatement.setString(5, creaseProduct.getProducer());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
