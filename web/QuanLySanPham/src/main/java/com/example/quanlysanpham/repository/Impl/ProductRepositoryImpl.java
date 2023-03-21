@@ -34,6 +34,7 @@ public class ProductRepositoryImpl implements ProductRepository {
             preparedStatement.setInt(3, creaseProduct.getPrice());
             preparedStatement.setString(4, creaseProduct.getDescribe());
             preparedStatement.setString(5, creaseProduct.getProducer());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
