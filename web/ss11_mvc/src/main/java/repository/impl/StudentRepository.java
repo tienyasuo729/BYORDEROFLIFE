@@ -45,7 +45,7 @@ public class StudentRepository implements IStudentRepository {
     public List<Student> getAll() {
         List<Student> students = new ArrayList<>();
         try {
-            PreparedStatement statement = this.baseRepository.getConnectionJavaToDB().prepareStatement();
+            Statement statement = this.baseRepository.getConnectionJavaToDB().createStatement();
             ResultSet resultSet = statement.executeQuery("select * from student");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");

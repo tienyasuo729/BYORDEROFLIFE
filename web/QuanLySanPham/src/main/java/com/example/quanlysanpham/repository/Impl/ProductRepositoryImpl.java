@@ -4,6 +4,7 @@ import com.example.quanlysanpham.bean.Product;
 import com.example.quanlysanpham.repository.ProductRepository;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,22 @@ public class ProductRepositoryImpl implements ProductRepository {
 //    }
     @Override
     public List display() {
-        return null;
+        List<Product> productList1 = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = this.repository.getConnectionJavaToDB().prepareStatement("select * from TABLE ( test )");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String id = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                int price = resultSet.getInt("price");
+                String describe = resultSet.getString("describeproduct");
+                String producer = resultSet.getString("producer");
+                productList1.add(new Product(id,name,price,describe,producer));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return productList1;
     }
 
     @Override
@@ -34,6 +50,7 @@ public class ProductRepositoryImpl implements ProductRepository {
             preparedStatement.setInt(3, creaseProduct.getPrice());
             preparedStatement.setString(4, creaseProduct.getDescribe());
             preparedStatement.setString(5, creaseProduct.getProducer());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
