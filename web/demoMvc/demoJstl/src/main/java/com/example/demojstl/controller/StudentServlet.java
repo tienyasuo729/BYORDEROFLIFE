@@ -51,7 +51,7 @@ public class StudentServlet extends HttpServlet {
     }
 
     private void showList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("students", service.findAll());
+        request.setAttribute("studentsaaa", service.findAll());
         request.getRequestDispatcher("/user/list.jsp").forward(request, response);
     }
 
