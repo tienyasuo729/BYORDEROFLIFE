@@ -16,7 +16,7 @@ public class CreateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("list", productService.display());
-        request.getRequestDispatcher("/webapp/display.jsp").forward(request,response);
+        request.getRequestDispatcher("/display.jsp").forward(request,response);
     }
 
     @Override

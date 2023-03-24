@@ -24,7 +24,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     public List display() {
         List<Product> productList1 = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = this.repository.getConnectionJavaToDB().prepareStatement("select * from TABLE ( test )");
+            PreparedStatement preparedStatement = this.repository.getConnectionJavaToDB().prepareStatement("select * from test");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 String id = resultSet.getString("id");

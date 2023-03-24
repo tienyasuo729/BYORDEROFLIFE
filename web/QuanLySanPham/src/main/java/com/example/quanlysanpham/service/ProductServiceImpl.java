@@ -1,12 +1,14 @@
 package com.example.quanlysanpham.service;
 
 import com.example.quanlysanpham.bean.Product;
+import com.example.quanlysanpham.repository.Impl.ProductRepositoryImpl;
+import com.example.quanlysanpham.repository.ProductRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService{
-    private ProductService productService = new ProductServiceImpl();
+    private ProductRepository productService = new ProductRepositoryImpl();
     @Override
     public List display() {
         List<Product> productList = this.productService.display();
