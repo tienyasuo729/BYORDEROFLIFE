@@ -1,4 +1,4 @@
-create database ss2;
+	create database ss2;
 use ss2;
 create table VatTu(
 	MaVTU varchar(45) primary key,

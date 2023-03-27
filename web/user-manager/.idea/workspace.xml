@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e22cba-6961-4d08-aef4-54d3d58ea87b" name="Changes" comment="" />
+    <list default="true" id="69e22cba-6961-4d08-aef4-54d3d58ea87b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../khu_nghi_duong_Furama/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../khu_nghi_duong_Furama/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11_mvc/src/main/webapp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11_mvc/src/main/webapp/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,16 +38,6 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
-      <setting name="path" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tomcat 9.0.738" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.738" ALTERNATIVE_JRE_ENABLED="false">
       <deployment>
         <artifact name="Gradle : com.example : user-manager-1.0-SNAPSHOT.war">
@@ -74,6 +69,7 @@
       <option name="presentableId" value="Default" />
       <updated>1679644888492</updated>
       <workItem from="1679644889902" duration="669000" />
+      <workItem from="1679918742861" duration="111000" />
     </task>
     <servers />
   </component>
