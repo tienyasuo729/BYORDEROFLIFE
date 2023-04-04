@@ -5,15 +5,14 @@ import com.example.quan_ly_nhan_su.repository.IEployeeRepository;
 import com.example.quan_ly_nhan_su.repository.impl.EmployeeRepository;
 import com.example.quan_ly_nhan_su.service.IEmployeeService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeService implements IEmployeeService {
-    private IEployeeRepository iEployeeRepository = new EmployeeRepository();
+    private IEployeeRepository EmployeeRepository = new EmployeeRepository();
 
     @Override
     public void addNewEmployee(Employee employee) {
-
+        EmployeeRepository.addNewEmployee(employee);
     }
 
     @Override
@@ -23,7 +22,7 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public List<Employee> listEmployee() {
-        List<Employee> employeeList = this.iEployeeRepository.listEmployee();
+        List<Employee> employeeList = this.EmployeeRepository.listEmployee();
         return employeeList;
     }
 

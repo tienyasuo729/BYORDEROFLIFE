@@ -13,15 +13,19 @@ public class EmployeeRepository implements IEployeeRepository {
     private BaseRepository baseRepository = new BaseRepository();
     private List<Employee> employeeList = new ArrayList<>();
 
+    private static final String ADD_NEW_EMPLOYEE = "insert into employee(name,birthday,address,startDate,endDate,salary,jobid) values (?,?,?,?,?,?,?)";
     @Override
     public void addNewEmployee(Employee employee) {
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement("insert into employee(name,birthday,address,startDate,endDate,salary,jobid) values (?,?,?,?,?,?,?)");
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(ADD_NEW_EMPLOYEE);
             preparedStatement.setString(1, employee.getEmployeeName());
             preparedStatement.setDate(2, Date.valueOf(employee.getBirthday()));
             preparedStatement.setString(3, employee.getAddress());
             preparedStatement.setDate(4, Date.valueOf(employee.getStartDate()));
-
+            preparedStatement.setDate(5, Date.valueOf(employee.getEndDate()));
+            preparedStatement.setInt(6, employee.getSalary());
+            preparedStatement.setInt(7, employee.getJobId());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
