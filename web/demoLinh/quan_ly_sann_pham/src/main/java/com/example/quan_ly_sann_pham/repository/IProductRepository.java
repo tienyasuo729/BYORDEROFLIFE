@@ -7,9 +7,11 @@ import java.util.List;
 public interface IProductRepository {
     void addProduct(Product product);
     void updateProduct(Product product);
-    void deleteProduct(int id);
+//  int deleteProduct(String id);
+    void deleteProduct(String id);
+
     List<Product> listProduct();
-//    List<Employee> findByNameOfJob();
+    List<Product> findByNameOfProduct(String findName);
 //    List<Employee> findByStartDateOfJob();
 //    List<Employee> findByEndDateOfJob();
 

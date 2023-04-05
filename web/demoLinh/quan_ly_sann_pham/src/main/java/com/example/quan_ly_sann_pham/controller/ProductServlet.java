@@ -38,16 +38,60 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 showNewForm(request, response);
                 break;
-//                case "edit":
-//                    showEditForm(request, response);
-//                    break;
-//                case "delete":
-//                    deleteNhanVien(request, response);
-//                    break;
+            case "edit":
+                edit(request, response);
+                break;
+            case "delete":
+                deleteNhanVien(request, response);
+                break;
             default:
                 listProduct(request, response);
                 break;
         }
+    }
+
+    private void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("listProduct", productService.listProduct());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/edit.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String editId = request.getParameter("idEdit");
+        String name = request.getParameter("name");
+        int price = Integer.parseInt(request.getParameter("price"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String color = request.getParameter("color");
+        String description = request.getParameter("description");
+        String category = request.getParameter("category");
+//        Product product = productService.findById(maCongViec);
+        Product product = new Product(editId, name, price, quantity, color, description, category);
+        productService.update(product);
+        response.sendRedirect("/list");
+
+    }
+
+    private void deleteNhanVien(HttpServletRequest request, HttpServletResponse response) {
+        productService.delete(request.getParameter("id"));
+        //        int check = productService.delete(request.getParameter("id"));
+//        if (check == 0){
+//            request.setAttribute("deleteById", "Xoá sản phẩm không thành công");
+//        }else {
+//            request.setAttribute("deleteById", "Xoá sản phẩm thành công");
+//        }
+//        try {
+//            request.getRequestDispatcher("/list.jsp").forward(request,response);
+//        } catch (ServletException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        try {
+            response.sendRedirect("/list");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -74,15 +118,28 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 insertProduct(request, response);
                 break;
-//                case "edit":
-//                    updateUser(request, response);
-//                    break;
-//                case "search":
-//                    searchByCountry(request, response);
-//                    break;
+            case "edit":
+                updateUser(request, response);
+                break;
+                case "search":
+                    searchByCountry(request, response);
+                    break;
+            case "delete":
+                deleteNhanVien(request, response);
+                break;
         }
     }
+
+    private void searchByCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String findName = request.getParameter("findName");
+        List<Product> listProduct = productService.findByNameOfProduct(findName);
+        request.setAttribute("listProduct", listProduct);
+        request.getRequestDispatcher("/findByName.jsp").forward(request, response);
+
+    }
+
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
         String name = request.getParameter("name");
         int price = Integer.parseInt(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
@@ -90,7 +147,7 @@ public class ProductServlet extends HttpServlet {
         String description = request.getParameter("description");
         String category = request.getParameter("category");
 //        Product product = productService.findById(maCongViec);
-        Product product = new Product(name,price,quantity,color,description,category);
+        Product product = new Product(id, name, price, quantity, color, description, category);
         productService.add(product);
         response.sendRedirect("/list?isCreate=true");
     }

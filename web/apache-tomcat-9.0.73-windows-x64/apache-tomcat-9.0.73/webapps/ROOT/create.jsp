@@ -24,37 +24,38 @@
         <table border="1" cellpadding="5">
             <caption>
                 <h2>
-                    Edit Product
+                    Add Product
                 </h2>
             </caption>
             <tr>
-                <th>name:</th>
+                <th>ID:</th>
                 <td>
-                    <input type="text" name="name" size="45"
-                           value="<c:out value='${Product.name}' />"
-                    />
+                    <input type="text" name="id" size="45"/>
                 </td>
             </tr>
             <tr>
-                <th>price:</th>
+                <th>NAME:</th>
                 <td>
-                    <input type="number" name="price" size="45"  placeholder="10.000.000" aria-valuemin="10000000"
-                           value="<c:out value='${Product.price}' />"
-                    />
+                    <input type="text" name="name" size="45"/>
                 </td>
             </tr>
             <tr>
-                <th>quantity:</th>
+                <th>PRICE:</th>
                 <td>
-                    <input type="number" name="quantity" size="15"
-                           value="<c:out value='${Product.quantity}' />"
-                    />
+                    <input type="number" name="price" size="45" >
+<%--                    <a><c:out value="${checkPrice}"></a>--%>
                 </td>
             </tr>
             <tr>
-                <th>color:</th>
+                <th>QUANTITY:</th>
                 <td>
-                    <select name="color">
+                    <input type="number" name="quantity" size="15"/>
+                </td>
+            </tr>
+            <tr>
+                <th>COLOR:</th>
+                <td>
+                    <select multiple name="color">
                         <option value="red">red</option>
                         <option value="blue">blue</option>
                         <option value="Black">Black</option>
@@ -64,15 +65,13 @@
                 </td>
             </tr>
             <tr>
-                <th>description:</th>
+                <th>DESCRIPTION:</th>
                 <td>
-                    <input type="text" name="description" size="15"
-                           value="<c:out value='${Product.description}' />"
-                    />
+                    <input type="text" name="description" size="15"/>
                 </td>
             </tr>
             <tr>
-                <th>category:</th>
+                <th>CATEGORY:</th>
                 <td>
                     <select name="category">
                         <option value="phone">phone</option>

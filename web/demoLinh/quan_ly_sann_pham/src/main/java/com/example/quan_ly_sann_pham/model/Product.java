@@ -1,7 +1,7 @@
 package com.example.quan_ly_sann_pham.model;
 
 public class Product {
-    private int stt;
+    private String id;
     private String name;
     private int price;
     private int quantity;
@@ -9,7 +9,9 @@ public class Product {
     private String description;
     private String category;
 
-    public Product(String name, int price, int quantity, String color, String description, String category) {
+
+    public Product(String id, String name, int price, int quantity, String color, String description, String category) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -18,22 +20,12 @@ public class Product {
         this.category = category;
     }
 
-    public Product(int stt, String name, int price, int quantity, String color, String description, String category) {
-        this.stt = stt;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-        this.color = color;
-        this.description = description;
-        this.category = category;
+    public String getId() {
+        return id;
     }
 
-    public int getStt() {
-        return stt;
-    }
-
-    public void setStt(int stt) {
-        this.stt = stt;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
