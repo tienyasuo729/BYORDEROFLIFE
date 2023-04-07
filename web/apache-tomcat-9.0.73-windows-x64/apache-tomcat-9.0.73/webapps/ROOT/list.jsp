@@ -12,7 +12,6 @@
 <head>
     <title>Quản lý nhân viên</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
 </head>
 <body>
 <center>
@@ -53,13 +52,19 @@
                 <td><c:out value="${product.description}"/></td>
                 <td><c:out value="${product.idCategory}"/></td>
                 <td>
-                    <a href="/list?action=edit&idEdit=${product.id}">Edit</a>
-                    <a href="/list?action=delete&id=${product.id}" onclick="confirm('bạn chắc chưa')">Delete</a>
-<%--                    <form action="/list" method="post">--%>
-<%--                        <input type="hidden" name="action" value="delete">--%>
-<%--                        <input type="hidden" name="id" value="${product.id}">--%>
-<%--                        <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</button>--%>
-<%--                    </form>--%>
+                    <form action="/list" method="post">
+                    <%--                    <a href="/list?action=edit&idEdit=${product.id}">Edit</a>--%>
+                    <input type="hidden" name="action" value="edit">
+                    <input type="hidden" name="idEdit" value="${product.id}">
+                    <button type="submit" onclick="return confirm('Bạn chắc chắn có muốn sửa không ?')">Edit</button>
+<%--                    <a href="/list?action=delete&id=${product.id}" onclick="confirm('bạn chắc chưa')">Delete</a>--%>
+                    </form>
+
+                    <form action="/list" method="post">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="id" value="${product.id}">
+                        <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</button>
+                    </form>
 
                 </td>
             </tr>
