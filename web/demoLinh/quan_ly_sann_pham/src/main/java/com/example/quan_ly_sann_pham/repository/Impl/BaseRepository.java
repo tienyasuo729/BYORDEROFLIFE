@@ -1,4 +1,4 @@
-package com.example.quan_ly_sann_pham.repository;
+package com.example.quan_ly_sann_pham.repository.Impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

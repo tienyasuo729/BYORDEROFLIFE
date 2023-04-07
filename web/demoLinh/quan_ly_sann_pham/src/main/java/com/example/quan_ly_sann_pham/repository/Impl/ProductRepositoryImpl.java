@@ -1,8 +1,8 @@
-package com.example.quan_ly_sann_pham.repository;
+package com.example.quan_ly_sann_pham.repository.Impl;
 
 import com.example.quan_ly_sann_pham.model.Product;
+import com.example.quan_ly_sann_pham.repository.IProductRepository;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,12 +14,12 @@ import static java.sql.DriverManager.getConnection;
 public class ProductRepositoryImpl implements IProductRepository {
 
     private BaseRepository baseRepository = new BaseRepository();
-    private static final String LIST_PRODUCT = "select * from product";
-    private static final String ADD_NEW_PRODUCT = "INSERT INTO product(id,name, price, quantity, color, description, category ) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String LIST_PRODUCT = "select * from product;";
+    private static final String ADD_NEW_PRODUCT = "INSERT INTO product(id,name, price, quantity, color, description, idcategory ) VALUES (?, ?, ?, ?, ?, ?, ?);";
 
-    private static final String DELETE_PRODUCT = "DELETE FROM PRODUCT WHERE id = ?";
+    private static final String DELETE_PRODUCT = "DELETE FROM PRODUCT WHERE id = ?;";
 
-    private static final String EDIT_PRODUCT = "UPDATE product SET name = ?, price = ?, quantity = ?, color = ?, description = ?, category = ? WHERE id = ?;\n";
+    private static final String EDIT_PRODUCT = "UPDATE product SET name = ?, price = ?, quantity = ?, color = ?, description = ?, idcategory = ? WHERE id = ?;";
 
     private static final String FIND_BY_NAME = "SELECT * FROM product WHERE name LIKE ?";
 
@@ -34,7 +34,7 @@ public class ProductRepositoryImpl implements IProductRepository {
             preparedStatement.setInt(4, product.getQuantity());
             preparedStatement.setString(5, product.getColor().toString());
             preparedStatement.setString(6, product.getDescription());
-            preparedStatement.setString(7, product.getCategory());
+            preparedStatement.setString(7, product.getIdCategory());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -50,7 +50,7 @@ public class ProductRepositoryImpl implements IProductRepository {
             preparedStatement.setInt(3, product.getQuantity());
             preparedStatement.setString(4, product.getColor().toString());
             preparedStatement.setString(5, product.getDescription());
-            preparedStatement.setString(6, product.getCategory());
+            preparedStatement.setString(6, product.getIdCategory());
             preparedStatement.setString(7, product.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -72,7 +72,7 @@ public class ProductRepositoryImpl implements IProductRepository {
                 int quantity = resultSet.getInt("quantity");
                 String color = resultSet.getString("color");
                 String description = resultSet.getString("description");
-                String category = resultSet.getString("category");
+                String category = resultSet.getString("idcategory");
                 products.add(new Product(id, name, price, quantity, color, description, category));
             }
         } catch (SQLException e) {

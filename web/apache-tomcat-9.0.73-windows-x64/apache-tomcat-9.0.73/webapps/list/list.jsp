@@ -16,14 +16,16 @@
 <center>
     <h1>Quản lý nhân viên</h1>
     <h2>
-        <a href="/list?action=create">Thêm mới sản phẩm mới</a>
+        <form method="post">
+            <a href="/list?action=create">Thêm mới sản phẩm mới</a>
+        </form>
         <br>
         <a href="/list">Tải lại</a>
     </h2>
     <div class="search">
         <form action="/list" method="post">
             <h2>Tìm kiếm sản phẩm</h2>
-            <input type="text" name="search_country" placeholder="Tìm theo tên công việc...">
+            <input type="text" name="findName" placeholder="Tìm theo tên">
             <input type="submit" value="search" name="action">
         </form>
     </div>
@@ -43,20 +45,35 @@
         </tr>
         <c:forEach items="${listProduct}" var="product">
             <tr>
-                <td><c:out value="${product.stt}"/></td>
+                <td><c:out value="${product.id}"/></td>
                 <td><c:out value="${product.name}"/></td>
-                <td><fmt:formatNumber value="${product.price}" pattern="###,###"/></td>
+                <td><fmt:formatNumber value="${product.price}" pattern="###,###,###,###"/></td>
                 <td><c:out value="${product.quantity}"/></td>
                 <td><c:out value="${product.color}"/></td>
                 <td><c:out value="${product.description}"/></td>
-                <td><c:out value="${product.category}"/></td>
+                <td><c:out value="${product.idCategory}"/></td>
                 <td>
-                    <a href="/users?action=edit&id=${user.id}">Edit</a>
-                    <a href="/users?action=delete&id=${user.id}">Delete</a>
+                    <a href="/list?action=edit&idEdit=${product.id}">Edit</a>
+                    <a href="/list?action=delete&id=${product.id}" onclick="confirm('bạn chắc chưa')">Delete</a>
+<%--                    <form action="/list" method="post">--%>
+<%--                        <input type="hidden" name="action" value="delete">--%>
+<%--                        <input type="hidden" name="id" value="${product.id}">--%>
+<%--                        <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</button>--%>
+<%--                    </form>--%>
+
                 </td>
             </tr>
         </c:forEach>
     </table>
 </div>
+<%--<script>--%>
+<%--function check() {--%>
+<%--        if (confirm('ban chac chua')){--%>
+<%--            let h = <c:out value="deleteById">;--%>
+<%--        alert(h)--%>
+<%--        window.location.href = "/list.jsp";--%>
+<%--            }--%>
+<%--    }--%>
+<%--</script>--%>
 </body>
 </html>

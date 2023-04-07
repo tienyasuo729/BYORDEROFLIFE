@@ -11,6 +11,8 @@
 <html>
 <head>
     <title>Quản lý nhân viên</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
 <body>
 <center>
@@ -29,7 +31,7 @@
     </div>
 </center>
 <div align="center">
-    <table border="1" cellpadding="5">
+    <table class="table table-hover">
         <caption><h2>List of Users</h2></caption>
         <tr>
             <th>STT</th>
@@ -49,7 +51,7 @@
                 <td><c:out value="${product.quantity}"/></td>
                 <td><c:out value="${product.color}"/></td>
                 <td><c:out value="${product.description}"/></td>
-                <td><c:out value="${product.category}"/></td>
+                <td><c:out value="${product.idCategory}"/></td>
                 <td>
                     <a href="/list?action=edit&idEdit=${product.id}">Edit</a>
                     <a href="/list?action=delete&id=${product.id}" onclick="confirm('bạn chắc chưa')">Delete</a>

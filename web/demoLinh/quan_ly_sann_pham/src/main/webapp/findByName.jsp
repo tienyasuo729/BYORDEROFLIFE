@@ -32,7 +32,7 @@
                 <td><c:out value="${product.quantity}"/></td>
                 <td><c:out value="${product.color}"/></td>
                 <td><c:out value="${product.description}"/></td>
-                <td><c:out value="${product.category}"/></td>
+                <td><c:out value="${product.idCategory}"/></td>
                 <td>
                     <a href="/list?action=edit&idEdit=${product.id}">Edit</a>
                     <a href="/list?action=delete&id=${product.id}" onclick="confirm('bạn chắc chưa')">Delete</a>

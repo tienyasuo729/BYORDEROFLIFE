@@ -7,17 +7,17 @@ public class Product {
     private int quantity;
     private String color;
     private String description;
-    private String category;
+    private String idCategory;
 
 
-    public Product(String id, String name, int price, int quantity, String color, String description, String category) {
+    public Product(String id, String name, int price, int quantity, String color, String description, String idCategory) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.color = color;
         this.description = description;
-        this.category = category;
+        this.idCategory = idCategory;
     }
 
     public String getId() {
@@ -68,11 +68,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getCategory() {
-        return category;
+    public String getIdCategory() {
+        return idCategory;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setIdCategory(String idCategory) {
+        this.idCategory = idCategory;
     }
 }
