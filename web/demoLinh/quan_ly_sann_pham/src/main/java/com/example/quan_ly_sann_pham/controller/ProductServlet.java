@@ -42,12 +42,12 @@ public class ProductServlet extends HttpServlet {
             case "create":
                 showNewForm(request, response);
                 break;
-            case "edit":
-                edit(request, response);
-                break;
-            case "delete":
-                deleteNhanVien(request, response);
-                break;
+//            case "edit":
+//                edit(request, response);
+//                break;
+//            case "delete":
+//                deleteNhanVien(request, response);
+//                break;
             default:
                 listProduct(request, response);
                 break;
@@ -66,6 +66,7 @@ public class ProductServlet extends HttpServlet {
                 insertProduct(request, response);
                 break;
             case "edit":
+                edit(request, response);
                 updateUser(request, response);
                 break;
             case "search":
@@ -76,6 +77,7 @@ public class ProductServlet extends HttpServlet {
                 break;
         }
     }
+
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> listProduct = productService.listProduct();
         request.setAttribute("listProduct", listProduct);
