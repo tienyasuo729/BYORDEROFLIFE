@@ -1,9 +1,10 @@
-package com.example.quan_ly_sann_pham.service;
+package com.example.quan_ly_sann_pham.service.Impl;
 
 
 import com.example.quan_ly_sann_pham.model.Product;
 import com.example.quan_ly_sann_pham.repository.IProductRepository;
 import com.example.quan_ly_sann_pham.repository.Impl.ProductRepositoryImpl;
+import com.example.quan_ly_sann_pham.service.ProductService;
 
 import java.util.List;
 

@@ -3,9 +3,9 @@ package com.example.quan_ly_sann_pham.controller;
 
 import com.example.quan_ly_sann_pham.model.Product;
 import com.example.quan_ly_sann_pham.service.CategoryService;
-import com.example.quan_ly_sann_pham.service.CategoryServiceImpl;
+import com.example.quan_ly_sann_pham.service.Impl.CategoryServiceImpl;
 import com.example.quan_ly_sann_pham.service.ProductService;
-import com.example.quan_ly_sann_pham.service.ProductServiceImpl;
+import com.example.quan_ly_sann_pham.service.Impl.ProductServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,11 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "NhanVienServlet", value = "/list")
@@ -120,7 +116,7 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         int price = Integer.parseInt(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        String [] colorAfter = request.getParameterValues("color");
+        String [] colorAfter = request.getParameterValues("color[]");
         String color = Arrays.toString(colorAfter);
         color = color.substring(1, color.length() - 1);
         String description = request.getParameter("description");
@@ -134,7 +130,7 @@ public class ProductServlet extends HttpServlet {
 
     private void deleteNhanVien(HttpServletRequest request, HttpServletResponse response) {
         productService.delete(request.getParameter("id"));
-        //        int check = productService.delete(request.getParameter("id"));
+//        int check = productService.delete(request.getParameter("id"));
 //        if (check == 0){
 //            request.setAttribute("deleteById", "Xoá sản phẩm không thành công");
 //        }else {
@@ -166,7 +162,7 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         int price = Integer.parseInt(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        String [] colorAfter = request.getParameterValues("color");
+        String [] colorAfter = request.getParameterValues("color[]");
         String color = Arrays.toString(colorAfter);
         color = color.substring(1, color.length() - 1);
         String description = request.getParameter("description");
@@ -174,7 +170,7 @@ public class ProductServlet extends HttpServlet {
 //        Product product = productService.findById(maCongViec);
         Product product = new Product(id, name, price, quantity, color, description, category);
         productService.add(product);
-        response.sendRedirect("/list?isCreate=true");
+        response.sendRedirect("/list");
     }
 
 }

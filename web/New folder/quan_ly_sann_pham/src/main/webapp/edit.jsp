@@ -49,13 +49,11 @@
             <tr>
                 <th>COLOR:</th>
                 <td>
-                    <select multiple name="color">
-                        <option value="red">red</option>
-                        <option value="blue">blue</option>
-                        <option value="Black">Black</option>
-                        <option value="white">white</option>
-                        <option value="yellow">yellow</option>
-                    </select>
+                    <label><input type="checkbox" name="color[]" value="red"> Red</label><br>
+                    <label><input type="checkbox" name="color[]" value="blue"> Blue</label><br>
+                    <label><input type="checkbox" name="color[]" value="Black"> Black</label><br>
+                    <label><input type="checkbox" name="color[]" value="white"> White</label><br>
+                    <label><input type="checkbox" name="color[]" value="yellow"> Yellow</label>
                 </td>
             </tr>
             <tr>

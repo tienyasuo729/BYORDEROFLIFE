@@ -10,14 +10,20 @@
 <html>
 <head>
     <title>Quản lý sản phẩm</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 
 <center>
     <h1>Add new product</h1>
     <h2>
-        <a href="list?action=list">List product</a>
+<%--        <a href="list?action=list">List product</a>--%>
+    <form action="/list" method="post">
+        <input type="hidden" name="action" value="list">
+        <input type="hidden" name="id" value="${product.id}">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</button>
+    </form>
     </h2>
 </center>
 <div align="center">
@@ -43,8 +49,8 @@
             <tr>
                 <th>PRICE:</th>
                 <td>
-                    <input type="number" name="price" size="45" >
-<%--                    <a><c:out value="${checkPrice}"></a>--%>
+                    <input type="number" name="price" size="45">
+                    <%--                    <a><c:out value="${checkPrice}"></a>--%>
                 </td>
             </tr>
             <tr>
@@ -56,13 +62,19 @@
             <tr>
                 <th>COLOR:</th>
                 <td>
-                    <select name="color" multiple>
-                        <option value="red">red</option>
-                        <option value="blue">blue</option>
-                        <option value="Black">Black</option>
-                        <option value="white">white</option>
-                        <option value="yellow">yellow</option>
-                    </select>
+                    <%--                    <select name="color" multiple>--%>
+                    <%--                        <option value="red">red</option>--%>
+                    <%--                        <option value="blue">blue</option>--%>
+                    <%--                        <option value="Black">Black</option>--%>
+                    <%--                        <option value="white">white</option>--%>
+                    <%--                        <option value="yellow">yellow</option>--%>
+                    <%--                    </select>--%>
+                    <label><input type="checkbox" name="color[]" value="red"> Red</label><br>
+                    <label><input type="checkbox" name="color[]" value="blue"> Blue</label><br>
+                    <label><input type="checkbox" name="color[]" value="Black"> Black</label><br>
+                    <label><input type="checkbox" name="color[]" value="white"> White</label><br>
+                    <label><input type="checkbox" name="color[]" value="yellow"> Yellow</label>
+
                 </td>
             </tr>
             <tr>
