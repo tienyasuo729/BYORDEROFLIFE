@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Quản lý sản phẩm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 
@@ -20,7 +21,7 @@
     </h2>
 </center>
 <div align="center">
-    <form method="post">
+    <form method="post" action="/list">
         <table border="1" cellpadding="5">
             <caption>
                 <h2>
@@ -55,7 +56,7 @@
             <tr>
                 <th>COLOR:</th>
                 <td>
-                    <select name="color">
+                    <select name="color" multiple>
                         <option value="red">red</option>
                         <option value="blue">blue</option>
                         <option value="Black">Black</option>
@@ -74,7 +75,7 @@
                 <th>CATEGORY:</th>
                 <td>
                     <select name="category">
-                        <c:forEach items="${listProduct}" var="category">
+                        <c:forEach items="${listCategory}" var="category">
                             <option value="${category.id}"><c:out value="${category.name}"></c:out></option>
                         </c:forEach>
                     </select>
@@ -82,7 +83,7 @@
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="Save"/>
+                    <input type="submit" name="action2" value="Save"/>
                 </td>
             </tr>
         </table>

@@ -5,38 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f0e30d-6298-44ea-becc-6fc5f4b53318" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../HTML vs Javascript/test/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../HTML vs Javascript/test/bootstrap.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../HTML vs Javascript/test/bootstrap.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../tai_lieu/~$vở CSS.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Module3" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Module3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/quan_ly_sann_pham/controller/ProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/quan_ly_sann_pham/controller/ProductServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/quan_ly_sann_pham/model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/quan_ly_sann_pham/model/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/quan_ly_sann_pham/repository/BaseRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/quan_ly_sann_pham/repository/ProductRepositoryImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/quan_ly_sann_pham/service/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/quan_ly_sann_pham/service/ProductServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/create.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/findByName.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/findByName.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/part1CaseStudyBai2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/controller/ProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/controller/ProductServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/model/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/repository/BaseRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/repository/IProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/repository/IProductRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/repository/ProductRepositoryImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/service/ProductService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/service/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/WEB-INF/classes/com/example/quan_ly_sann_pham/service/ProductServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/create.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/list/list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../module3.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../module3.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/java/com/example/quan_ly_sann_pham/controller/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/java/com/example/quan_ly_sann_pham/controller/ProductServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/java/com/example/quan_ly_sann_pham/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/java/com/example/quan_ly_sann_pham/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/java/com/example/quan_ly_sann_pham/repository/BaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/java/com/example/quan_ly_sann_pham/repository/Impl/BaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/java/com/example/quan_ly_sann_pham/repository/ProductRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/java/com/example/quan_ly_sann_pham/repository/Impl/ProductRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/java/com/example/quan_ly_sann_pham/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/java/com/example/quan_ly_sann_pham/service/ProductServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/webapp/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/webapp/create.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/webapp/findByName.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/webapp/findByName.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/webapp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/webapp/list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../quan_ly_sann_pham/src/main/webapp/part1CaseStudyBai2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../exercise_hrm/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../exercise_hrm/.idea/gradle.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +49,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/codegym/text/web/QuanLySanPham"
+    "last_opened_file_path": "D:/codegym/text/web/demoLinh/quan_ly_sann_pham"
   }
 }]]></component>
   <component name="RunManager">
@@ -179,6 +156,8 @@
       <workItem from="1680687587570" duration="58000" />
       <workItem from="1680792420241" duration="668000" />
       <workItem from="1680838332599" duration="448000" />
+      <workItem from="1681199966243" duration="11000" />
+      <workItem from="1681199990116" duration="18000" />
     </task>
     <servers />
   </component>

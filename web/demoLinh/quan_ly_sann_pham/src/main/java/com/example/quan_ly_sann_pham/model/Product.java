@@ -9,7 +9,6 @@ public class Product {
     private String description;
     private String idCategory;
 
-
     public Product(String id, String name, int price, int quantity, String color, String description, String idCategory) {
         this.id = id;
         this.name = name;

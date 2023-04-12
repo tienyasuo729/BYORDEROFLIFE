@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -33,39 +35,45 @@ public class ProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        String action = request.getParameter("action");
-        if (action == null) {
-            action = "";
-        }
-
-        switch (action) {
-            case "create":
-                showNewForm(request, response);
-                break;
-            case "edit":
-                edit(request, response);
-                break;
-            case "delete":
-                deleteNhanVien(request, response);
-                break;
-            default:
-                listProduct(request, response);
-                break;
-        }
+        listProduct(request, response);
+//        String action = request.getParameter("action");
+//        if (action == null) {
+//            action = "";
+//        }
+//        System.out.println("get");
+//        System.out.println(action);
+//        switch (action) {
+//            case "create":
+//                showNewForm(request, response);
+//                break;
+//            case "edit":
+//                edit(request, response);
+//                break;
+//            case "delete":
+//                deleteNhanVien(request, response);
+//                break;
+//            default:
+//                listProduct(request, response);
+//                break;
+//        }
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
+        String action2 = request.getParameter("action2");
         if (action == null) {
             action = "";
         }
-        switch (action) {
-            case "create":
+        if (action2 == null) {
+            action2 = "";
+        }
+        switch (action2) {
+            case "Save":
                 insertProduct(request, response);
                 break;
-            case "edit":
+            case "Edit":
                 updateUser(request, response);
                 break;
             case "search":
@@ -73,6 +81,17 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "delete":
                 deleteNhanVien(request, response);
+                break;
+        }
+        switch (action) {
+            case "create":
+                showNewForm(request, response);
+                break;
+            case "edit":
+                edit(request, response);
+                break;
+            case "list":
+                listProduct(request, response);
                 break;
         }
     }
@@ -83,13 +102,15 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("listProduct", categoryService.findAll());
+        request.setAttribute("listCategory", categoryService.findAll());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/create.jsp");
         dispatcher.forward(request, response);
     }
 
     private void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("listProduct", productService.listProduct());
+        String editId = request.getParameter("idEdit");
+        request.setAttribute("listCategory", categoryService.findAll());
+        request.setAttribute("product", editId);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/edit.jsp");
         dispatcher.forward(request, response);
     }
@@ -99,7 +120,9 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         int price = Integer.parseInt(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        String color = request.getParameter("color");
+        String [] colorAfter = request.getParameterValues("color");
+        String color = Arrays.toString(colorAfter);
+        color = color.substring(1, color.length() - 1);
         String description = request.getParameter("description");
         String category = request.getParameter("category");
 //        Product product = productService.findById(maCongViec);
@@ -134,9 +157,8 @@ public class ProductServlet extends HttpServlet {
     private void searchByCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String findName = request.getParameter("findName");
         List<Product> listProduct = productService.findByNameOfProduct(findName);
-        request.setAttribute("listProduct", listProduct);
+        request.setAttribute("listFindByName", listProduct);
         request.getRequestDispatcher("/findByName.jsp").forward(request, response);
-
     }
 
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -144,7 +166,9 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("name");
         int price = Integer.parseInt(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        String color = request.getParameter("color");
+        String [] colorAfter = request.getParameterValues("color");
+        String color = Arrays.toString(colorAfter);
+        color = color.substring(1, color.length() - 1);
         String description = request.getParameter("description");
         String category = request.getParameter("category");
 //        Product product = productService.findById(maCongViec);

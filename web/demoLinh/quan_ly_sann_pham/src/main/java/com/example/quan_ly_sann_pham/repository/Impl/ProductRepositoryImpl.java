@@ -111,7 +111,7 @@ public class ProductRepositoryImpl implements IProductRepository {
         List<Product> products = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(FIND_BY_NAME);
-            preparedStatement.setString(1, findName);
+            preparedStatement.setString(1, findName + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String id = resultSet.getString("id");
@@ -120,13 +120,13 @@ public class ProductRepositoryImpl implements IProductRepository {
                 int quantity = resultSet.getInt("quantity");
                 String color = resultSet.getString("color");
                 String description = resultSet.getString("description");
-                String category = resultSet.getString("category");
+                String category = resultSet.getString("idcategory");
                 products.add(new Product(id, name, price, quantity, color, description, category));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        return null;
+        return products;
     }
 }
