@@ -35,6 +35,7 @@ public class ProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+<<<<<<< HEAD
         listProduct(request, response);
 //        String action = request.getParameter("action");
 //        if (action == null) {
@@ -46,16 +47,34 @@ public class ProductServlet extends HttpServlet {
 //            case "create":
 //                showNewForm(request, response);
 //                break;
+=======
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+
+        switch (action) {
+            case "create":
+                showNewForm(request, response);
+                break;
+>>>>>>> 916e43cd9f5198db17a39f90af7ef65fdbd1de31
 //            case "edit":
 //                edit(request, response);
 //                break;
 //            case "delete":
 //                deleteNhanVien(request, response);
 //                break;
+<<<<<<< HEAD
 //            default:
 //                listProduct(request, response);
 //                break;
 //        }
+=======
+            default:
+                listProduct(request, response);
+                break;
+        }
+>>>>>>> 916e43cd9f5198db17a39f90af7ef65fdbd1de31
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -73,7 +92,12 @@ public class ProductServlet extends HttpServlet {
             case "Save":
                 insertProduct(request, response);
                 break;
+<<<<<<< HEAD
             case "Edit":
+=======
+            case "edit":
+                edit(request, response);
+>>>>>>> 916e43cd9f5198db17a39f90af7ef65fdbd1de31
                 updateUser(request, response);
                 break;
             case "search":
@@ -95,6 +119,7 @@ public class ProductServlet extends HttpServlet {
                 break;
         }
     }
+
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> listProduct = productService.listProduct();
         request.setAttribute("listProduct", listProduct);
