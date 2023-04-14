@@ -1,5 +1,6 @@
 package com.example.quan_ly_sann_pham.repository.Impl;
 
+import com.example.quan_ly_sann_pham.connection.BaseRepository;
 import com.example.quan_ly_sann_pham.model.Category;
 import com.example.quan_ly_sann_pham.repository.ICategoryRepository;
 

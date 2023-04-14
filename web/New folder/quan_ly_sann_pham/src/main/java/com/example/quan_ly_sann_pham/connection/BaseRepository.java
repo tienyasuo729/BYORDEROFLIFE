@@ -1,4 +1,4 @@
-package com.example.quan_ly_sann_pham.repository.Impl;
+package com.example.quan_ly_sann_pham.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,6 +11,7 @@ public class BaseRepository {
     private Connection connection;
 
     public BaseRepository() {
+
     }
 
     public Connection getConnectionJavaToDB() {

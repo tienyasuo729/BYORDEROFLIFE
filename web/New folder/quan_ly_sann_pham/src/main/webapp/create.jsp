@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: ASUS
@@ -12,19 +13,24 @@
     <title>Quản lý sản phẩm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .check{
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
 <center>
     <h1>Add new product</h1>
-    <h2>
+<%--    <h2>--%>
 <%--        <a href="list?action=list">List product</a>--%>
     <form action="/list" method="post">
         <input type="hidden" name="action" value="list">
         <input type="hidden" name="id" value="${product.id}">
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</button>
+        <button style="font-size: 30px" type="submit" class="btn btn-success">List Product</button>
     </form>
-    </h2>
+<%--    </h2>--%>
 </center>
 <div align="center">
     <form method="post" action="/list">
@@ -37,19 +43,21 @@
             <tr>
                 <th>ID:</th>
                 <td>
-                    <input type="text" name="id" size="45"/>
+                    <input type="text" name="id" size="45">
                 </td>
             </tr>
             <tr>
                 <th>NAME:</th>
                 <td>
-                    <input type="text" name="name" size="45"/>
+                    <input type="text" id="name" name="name" size="45" onblur="checkName()">
+                    <a class="check" id="messName"></a>
                 </td>
             </tr>
             <tr>
                 <th>PRICE:</th>
                 <td>
-                    <input type="number" name="price" size="45">
+                    <input type="number" id="price" name="price" size="45" onblur="checkPrice()">
+                    <a class="check" id="messPrice"></a>
                     <%--                    <a><c:out value="${checkPrice}"></a>--%>
                 </td>
             </tr>
@@ -95,11 +103,12 @@
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" name="action2" value="Save"/>
+                    <input type="submit" class="btn btn-outline-primary" name="action2" value="Save"/>
                 </td>
             </tr>
         </table>
     </form>
 </div>
+<script src="validate.js"></script>
 </body>
 </html>

@@ -81,7 +81,7 @@ public class ProductServlet extends HttpServlet {
         }
         switch (action) {
             case "create":
-                showNewForm(request, response);
+                createForm(request, response);
                 break;
             case "edit":
                 edit(request, response);
@@ -97,7 +97,7 @@ public class ProductServlet extends HttpServlet {
         request.getRequestDispatcher("/list.jsp").forward(request, response);
     }
 
-    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void createForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("listCategory", categoryService.findAll());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/create.jsp");
         dispatcher.forward(request, response);
@@ -105,6 +105,7 @@ public class ProductServlet extends HttpServlet {
 
     private void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String editId = request.getParameter("idEdit");
+        request.setAttribute("productDetail", productService.findByIdOfProduct(editId));
         request.setAttribute("listCategory", categoryService.findAll());
         request.setAttribute("product", editId);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/edit.jsp");

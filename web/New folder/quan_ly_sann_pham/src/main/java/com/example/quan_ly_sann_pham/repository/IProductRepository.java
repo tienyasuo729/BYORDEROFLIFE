@@ -6,13 +6,18 @@ import java.util.List;
 
 public interface IProductRepository {
     void addProduct(Product product);
+
     void updateProduct(Product product);
-//  int deleteProduct(String id);
+
+    //  int deleteProduct(String id);
     void deleteProduct(String id);
 
     List<Product> listProduct();
+
     List<Product> findByNameOfProduct(String findName);
-//    List<Employee> findByStartDateOfJob();
+
+    //    List<Employee> findByStartDateOfJob();
 //    List<Employee> findByEndDateOfJob();
+    Product findByIdOfProduct(String id);
 
 }

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: ASUS
@@ -31,19 +32,23 @@
             <tr>
                 <th>NAME:</th>
                 <td>
-                    <input type="text" name="name" size="45"/>
+                    <input type="text" id="name" name="name" size="45" onblur="checkName()" placeholder="${productDetail.name}">
+                    <br>
+                    <a class="check" id="messName"></a>
                 </td>
             </tr>
             <tr>
                 <th>PRICE:</th>
                 <td>
-                    <input type="number" name="price" size="45" >
+                    <input type="number" id="price" name="price" size="45" onblur="checkPrice()" placeholder="${productDetail.price}">
+                    <br>
+                    <a class="check" id="messPrice"></a>
                 </td>
             </tr>
             <tr>
                 <th>QUANTITY:</th>
                 <td>
-                    <input type="number" name="quantity" size="15"/>
+                    <input type="number" name="quantity" size="15" placeholder="${productDetail.quantity}">
                 </td>
             </tr>
             <tr>
@@ -59,7 +64,7 @@
             <tr>
                 <th>DESCRIPTION:</th>
                 <td>
-                    <input type="text" name="description" size="15"/>
+                    <input type="text" name="description" size="15" placeholder="${productDetail.description}">
                 </td>
             </tr>
             <tr>
@@ -82,5 +87,6 @@
         </table>
     </form>
 </div>
+<script src="validate.js"></script>
 </body>
 </html>

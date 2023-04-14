@@ -1,5 +1,6 @@
 package com.example.quan_ly_sann_pham.repository.Impl;
 
+import com.example.quan_ly_sann_pham.connection.BaseRepository;
 import com.example.quan_ly_sann_pham.model.Product;
 import com.example.quan_ly_sann_pham.repository.IProductRepository;
 
@@ -23,6 +24,7 @@ public class ProductRepositoryImpl implements IProductRepository {
 
     private static final String FIND_BY_NAME = "SELECT * FROM product WHERE name LIKE ?";
 
+    private static final String FIND_BY_ID = "SELECT * FROM product WHERE id = ?";
     @Override
     public void addProduct(Product product) {
         PreparedStatement preparedStatement = null;
@@ -56,7 +58,6 @@ public class ProductRepositoryImpl implements IProductRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -128,5 +129,28 @@ public class ProductRepositoryImpl implements IProductRepository {
         }
 
         return products;
+    }
+
+    @Override
+    public Product findByIdOfProduct(String id) {
+        Product product = null;
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(FIND_BY_ID);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                int price = resultSet.getInt("price");
+                int quantity = resultSet.getInt("quantity");
+                String color = resultSet.getString("color");
+                String description = resultSet.getString("description");
+                String category = resultSet.getString("idcategory");
+                product = new Product(id, name, price, quantity, color, description, category);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return product;
     }
 }
