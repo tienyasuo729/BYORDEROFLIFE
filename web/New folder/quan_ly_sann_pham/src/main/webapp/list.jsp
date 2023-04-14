@@ -12,6 +12,15 @@
 <head>
     <title>Quản lý nhân viên</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .form-edit, .form-delete {
+            display: inline-block;
+        }
+
+        .form-edit button, .form-delete button {
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
 <center>
@@ -35,6 +44,7 @@
 </center>
 <div align="center">
     <table class="table table-hover">
+        <h2>List of Users</h2>
         <caption><h2>List of Users</h2></caption>
         <tr>
             <th>STT</th>
@@ -59,13 +69,13 @@
 <%--                    <a href="/list?action=edit&idEdit=${product.id}">Edit</a>--%>
 <%--                    <a href="/list?action=delete&id=${product.id}" onclick="confirm('bạn chắc chưa')">Delete</a>--%>
 
-                    <form action="/list" method="post">
+                    <form action="/list" method="post" class="form-edit">
                     <input type="hidden" name="action" value="edit">
                     <input type="hidden" name="idEdit" value="${product.id}">
                     <button type="submit" class="btn btn-success" onclick="return confirm('Bạn chắc chắn có muốn sửa không ?')">Edit</button>
                     </form>
 
-                    <form action="/list" method="post">
+                    <form action="/list" method="post" class="form-delete">
                         <input type="hidden" name="action2" value="delete">
                         <input type="hidden" name="id" value="${product.id}">
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</button>
