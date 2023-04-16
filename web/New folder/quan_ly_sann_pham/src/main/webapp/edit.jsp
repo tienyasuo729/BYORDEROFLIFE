@@ -81,7 +81,7 @@
                 <td colspan="2" align="center">
                     <input type="hidden" name="idEdit" value="${product}">
                     <input type="hidden" value="Edit" name="action2">
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-outline-primary">Save</button>
                 </td>
             </tr>
         </table>
