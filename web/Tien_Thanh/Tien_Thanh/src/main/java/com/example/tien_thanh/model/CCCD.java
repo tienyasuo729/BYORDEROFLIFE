@@ -2,25 +2,42 @@ package com.example.tien_thanh.model;
 
 import java.util.Date;
 
-public class CCCD {
-    private String idCccd;
+public class CCCD{
+    private String cccd;
     private String name;
     private int price;
     private Date startDate;
+    private int checkForDetail;
 
-    public CCCD(String idCccd, String name, int price, Date startDate) {
-        this.idCccd = idCccd;
+    public CCCD(String cccd, String name, int price, Date startDate) {
+        this.cccd = cccd;
         this.name = name;
         this.price = price;
         this.startDate = startDate;
     }
 
-    public String getIdCccd() {
-        return idCccd;
+    public CCCD(String cccd, String name, int price, Date startDate, int checkForDetail) {
+        this.cccd = cccd;
+        this.name = name;
+        this.price = price;
+        this.startDate = startDate;
+        this.checkForDetail = checkForDetail;
     }
 
-    public void setIdCccd(String idCccd) {
-        this.idCccd = idCccd;
+    public int getCheckForDetail() {
+        return checkForDetail;
+    }
+
+    public void setCheckForDetail(int checkForDetail) {
+        this.checkForDetail = checkForDetail;
+    }
+
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
     }
 
     public String getName() {

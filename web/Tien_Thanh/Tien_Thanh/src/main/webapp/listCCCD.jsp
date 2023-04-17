@@ -37,7 +37,8 @@
         <form action="/list" method="post">
             <h2>Tìm kiếm CCCD theo mã số</h2>
             <input type="text" name="findName" placeholder="Tìm kiếm theo mã số CCCD">
-            <input type="submit" value="search" name="action2">
+            <input type="hidden" value="search" name="action2">
+            <button type="submit">Tìm kiếm</button>
         </form>
     </div>
 
@@ -45,7 +46,8 @@
         <form action="/list" method="post">
             <h2>Tìm kiếm CCCD theo tên</h2>
             <input type="text" name="findName" placeholder="Tìm CCCD theo tên">
-            <input type="submit" value="search" name="action2">
+            <input type="hidden" value="search" name="action2">
+            <button type="submit">Tìm kiếm</button>
         </form>
     </div>
 </center>
