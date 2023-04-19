@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "TienThanhServlet", value = "/TienThanhServlet")
+@WebServlet(name = "TienThanhServlet", value = "/tienthanh")
 public class TienThanhServlet extends HttpServlet {
     private ICccdService cccdService;
     private IDetailService detailService;
