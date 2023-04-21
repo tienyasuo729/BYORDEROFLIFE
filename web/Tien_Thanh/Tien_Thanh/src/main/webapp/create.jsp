@@ -30,7 +30,7 @@
             <tr>
                 <th>ID:</th>
                 <td>
-                    <input type="text" name="id" size="45"/>
+                    <input type="text" name="id" size="45" required="required"/>
                 </td>
             </tr>
             <tr>

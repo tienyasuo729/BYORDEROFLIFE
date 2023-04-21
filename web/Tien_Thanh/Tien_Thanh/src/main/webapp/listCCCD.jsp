@@ -36,7 +36,7 @@
     <div class="search">
         <form action="/tienthanh" method="post">
             <h2>Tìm kiếm CCCD theo mã số</h2>
-            <input type="text" name="findName" placeholder="Tìm kiếm theo mã số CCCD">
+            <input type="text" name="findByCccd" placeholder="Tìm kiếm theo mã số CCCD">
             <input type="hidden" value="search" name="action2">
             <button type="submit">Tìm kiếm</button>
         </form>
@@ -45,17 +45,18 @@
     <div class="search">
         <form action="/tienthanh" method="post">
             <h2>Tìm kiếm CCCD theo tên</h2>
-            <input type="text" name="findName" placeholder="Tìm CCCD theo tên">
+            <input type="text" name="findByName" placeholder="Tìm CCCD theo tên">
             <input type="hidden" value="search" name="action2">
             <button type="submit">Tìm kiếm</button>
         </form>
     </div>
 </center>
 <div align="center">
-    <table class="table table-hover">
+    <table class="table table-hover" STYLE="text-align: center">
         <h2>Danh sách CCCD cầm</h2>
         <caption><h2>Danh sách CCCD cầm</h2></caption>
         <tr>
+            <th>STT</th>
             <th>CCCD</th>
             <th>Họ và Tên</th>
             <th>Số tiền cầm</th>
@@ -63,8 +64,12 @@
             <th>Chi tiết</th>
 
         </tr>
+        <% int count = 1; %>
         <c:forEach items="${listCCCD}" var="CCCD">
             <tr>
+               <td><%=count%></td>
+                <%= count++ %>
+
                 <td><c:out value="${CCCD.cccd}"/></td>
                 <td><c:out value="${CCCD.name}"/></td>
                 <td><fmt:formatNumber value="${CCCD.price}" pattern="###,###,###,###"/></td>
@@ -116,7 +121,7 @@
 
                 <td>
                     <form action="/tienthanh" method="post" class="form-edit">
-                        <input type="hidden" name="action2" value="edit">
+                        <input type="hidden" name="action" value="edit">
                         <input type="hidden" name="idEdit" value="${CCCD.cccd}">
                         <button type="submit" class="btn btn-success">Chỉnh sửa</button>
                     </form>
@@ -133,15 +138,21 @@
         </c:forEach>
     </table>
 </div>
-<script>
-    function changeButtonText(button) {
-        if (button.value == 0) {
-            button.innerHTML = 'Xem chi tiết';
-        } else {
-            button.innerHTML = 'Không có chi tiết';
-        }
-    }
-</script>
+<%--<script> //  script này để ngăn người dùng nhấn chuột phải rồi nhấn kiểm tra để xem được code html--%>
+<%--    document.addEventListener("contextmenu", function(e){--%>
+<%--        e.preventDefault();--%>
+<%--    }, false);--%>
+<%--</script>--%>
+
+<%--<script>--%>
+<%--    function changeButtonText(button) {--%>
+<%--        if (button.value == 0) {--%>
+<%--            button.innerHTML = 'Xem chi tiết';--%>
+<%--        } else {--%>
+<%--            button.innerHTML = 'Không có chi tiết';--%>
+<%--        }--%>
+<%--    }--%>
+<%--</script>--%>
 </body>
 
 </html>

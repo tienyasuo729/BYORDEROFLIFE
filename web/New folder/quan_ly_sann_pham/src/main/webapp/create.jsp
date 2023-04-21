@@ -43,13 +43,13 @@
             <tr>
                 <th>ID:</th>
                 <td>
-                    <input type="text" name="id" size="45">
+                    <input type="text" name="id" size="45" required="required">
                 </td>
             </tr>
             <tr>
                 <th>NAME:</th>
                 <td>
-                    <input type="text" id="name" name="name" size="45" onblur="checkName()">
+                    <input type="text" id="name" name="name" size="45" onblur="checkName()" required="required">
                     <a class="check" id="messName"></a>
                 </td>
             </tr>
