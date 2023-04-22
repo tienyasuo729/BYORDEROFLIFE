@@ -30,7 +30,8 @@ public class TienThanhServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        listProduct(request, response);
+        listCCCD(request,response);
+//        listDetail(request, response);
 //        String action = request.getParameter("action");
 //        if (action == null) {
 //            action = "";
@@ -56,14 +57,14 @@ public class TienThanhServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        String action = request.getParameter("action");
-        String action2 = request.getParameter("action2");
-        if (action == null) {
-            action = "";
-        }
-        if (action2 == null) {
-            action2 = "";
-        }
+//        String action = request.getParameter("action");
+//        String action2 = request.getParameter("action2");
+//        if (action == null) {
+//            action = "";
+//        }
+//        if (action2 == null) {
+//            action2 = "";
+//        }
 //        switch (action2) {
 //            case "Save":
 //                insertProduct(request, response);
@@ -90,12 +91,14 @@ public class TienThanhServlet extends HttpServlet {
 //                break;
 //        }
     }
-    private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<CCCD> listProduct = productService.listProduct();
+    private void listCCCD(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("listCCCD", cccdService.displayCCCD());
         request.getRequestDispatcher("/listCCCD.jsp").forward(request, response);
     }
-
+    private void listDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("listDetail", detailService.displayDetail());
+        request.getRequestDispatcher("/listDetail.jsp").forward(request, response);
+    }
 //    private void createForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        request.setAttribute("listCategory", categoryService.findAll());
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("/create.jsp");

@@ -24,18 +24,18 @@
             <th>Danh mục</th>
 
         </tr>
-        <c:forEach items="${listProduct}" var="CCCD">
+        <c:forEach items="${listProduct}" var="detail">
             <tr>
-                <td><c:out value="${CCCD.id}"/></td>
-                <td><c:out value="${CCCD.name}"/></td>
-                <td><fmt:formatNumber value="${CCCD.price}" pattern="###,###,###,###"/></td>
-                <td><c:out value="${CCCD.quantity}"/></td>
-                <td><c:out value="${CCCD.color}"/></td>
-                <td><c:out value="${CCCD.description}"/></td>
-                <td><c:out value="${CCCD.idCategory}"/></td>
+                <td><c:out value="${detail.id}"/></td>
+                <td><c:out value="${detail.name}"/></td>
+                <td><fmt:formatNumber value="${detail.price}" pattern="###,###,###,###"/></td>
+                <td><c:out value="${detail.quantity}"/></td>
+                <td><c:out value="${detail.color}"/></td>
+                <td><c:out value="${detail.description}"/></td>
+                <td><c:out value="${detail.idCategory}"/></td>
                 <td>
-                    <a href="/list?action=edit&idEdit=${CCCD.id}">Edit</a>
-                    <a href="/list?action=delete&id=${CCCD.id}" onclick="confirm('bạn chắc chưa')">Delete</a>
+                    <a href="/list?action=edit&idEdit=${detail.id}">Edit</a>
+                    <a href="/list?action=delete&id=${detail.id}" onclick="confirm('bạn chắc chưa')">Delete</a>
                         <%--                    <form action="/list" method="post">--%>
                         <%--                        <input type="hidden" name="action" value="delete">--%>
                         <%--                        <input type="hidden" name="id" value="${product.id}">--%>
