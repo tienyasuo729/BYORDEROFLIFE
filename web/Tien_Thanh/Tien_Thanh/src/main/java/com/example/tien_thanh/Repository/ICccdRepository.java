@@ -1,5 +1,6 @@
 package com.example.tien_thanh.Repository;
 import com.example.tien_thanh.model.CCCD;
+
 import java.util.List;
 
 public interface ICccdRepository {

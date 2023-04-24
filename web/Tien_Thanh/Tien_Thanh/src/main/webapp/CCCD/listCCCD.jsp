@@ -29,15 +29,27 @@
         </form>
 
         <form method="post" action="/tienthanh">
-            <input type="hidden" name="action" value="create">
+            <input type="hidden" name="action" value="watchDetailList">
             <button class="btn btn-success">Xem danh sách chi tiết</button>
         </form>
+    <form method="post" action="/tienthanh">
+        <input type="hidden" name="action" value="reload">
+        <button class="btn btn-success">Tải lại trang</button>
+    </form>
+    <form method="post" action="/tienthanh">
+        <input type="hidden" name="action" value="watchLateList">
+        <button class="btn btn-success">Xem danh sách trễ hạn</button>
+    </form>
+    <form method="post" action="/tienthanh">
+        <input type="hidden" name="action" value="watchNearTermList">
+        <button class="btn btn-success">Xem danh sách gần tới hạn</button>
+    </form>
     <div class="search">
         <form action="/tienthanh" method="post">
             <h2>Tìm kiếm CCCD theo mã số</h2>
             <input type="text" name="findByCccd" placeholder="Tìm kiếm theo mã số CCCD">
             <input type="hidden" value="search" name="action2">
-            <button type="submit">Tìm kiếm</button>
+            <button type="submit">Tìm kiếm</button> 
         </form>
     </div>
 
@@ -51,7 +63,7 @@
     </div>
 </center>
 <div align="center">
-    <table class="table table-hover" STYLE="text-align: center">
+    <table class="table table-hover"    STYLE="text-align: center">
         <h2>Danh sách CCCD cầm</h2>
         <caption><h2>Danh sách CCCD cầm</h2></caption>
         <tr>
@@ -64,22 +76,22 @@
 
         </tr>
         <% int count = 1; %>
-        <c:forEach items="${listCCCD}" var="detail">
+        <c:forEach items="${listCCCD}" var="android_phone">
             <tr>
                <td><%=count%></td>
                 <% count++; %>
 
-                <td><c:out value="${detail.cccd}"/></td>
-                <td><c:out value="${detail.name}"/></td>
-                <td><fmt:formatNumber value="${detail.price}" pattern="###,###,###,###"/></td>
-                <td><fmt:formatDate value="${detail.startDate}" pattern="dd/MM/yyyy"/></td>
+                <td><c:out value="${android_phone.cccd}"/></td>
+                <td><c:out value="${android_phone.name}"/></td>
+                <td><fmt:formatNumber value="${android_phone.price}" pattern="###,###,###,###"/></td>
+                <td><fmt:formatDate value="${android_phone.startDate}" pattern="dd/MM/yyyy"/></td>
 <%--                <td><c:out value="${CCCD.checkForDetail}"/></td>--%>
                 <td>
                     <c:choose>
-                        <c:when test="${detail.checkForDetail == 0}">
+                        <c:when test="${android_phone.checkForDetail == 0}">
                             <form action="/tienthanh" method="post" class="form-edit">
                                 <input type="hidden" name="action2" value="watchDetail">
-                                <input type="hidden" name="idDetail" value="${detail.cccd}">
+                                <input type="hidden" name="idDetail" value="${android_phone.cccd}">
                                 <button type="submit" class="btn btn-success" onclick="changeButtonText(this)">Xem chi tiết</button>
                             </form>
                         </c:when>
@@ -121,20 +133,20 @@
                 <td>
                     <form action="/tienthanh" method="post" class="form-edit">
                         <input type="hidden" name="action" value="edit">
-                        <input type="hidden" name="idEdit" value="${detail.cccd}">
+                        <input type="hidden" name="idEdit" value="${android_phone.cccd}">
                         <button type="submit" class="btn btn-success">Chỉnh sửa</button>
                     </form>
 
                     <form action="/tienthanh" method="post" class="form-delete">
                         <input type="hidden" name="action2" value="delete">
-                        <input type="hidden" name="id" value="${detail.cccd}">
+                        <input type="hidden" name="id" value="${android_phone.cccd}">
                         <button type="submit" class="btn btn-danger"
                                 onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá
                         </button>
                     </form>
                     <form action="/tienthanh" method="post" class="form-pay">
                         <input type="hidden" name="action2" value="interestPayment">
-                        <input type="hidden" name="id" value="${detail.cccd}">
+                        <input type="hidden" name="id" value="${android_phone.cccd}">
                         <button type="submit" class="btn btn-warning">Tính lãi</button>
                     </form>
                 </td>

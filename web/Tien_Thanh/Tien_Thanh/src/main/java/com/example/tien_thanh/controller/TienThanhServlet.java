@@ -1,104 +1,91 @@
 package com.example.tien_thanh.controller;
 
+import com.example.tien_thanh.Service.IAndroid_PhoneService;
 import com.example.tien_thanh.Service.ICccdService;
 import com.example.tien_thanh.Service.IDetailService;
+import com.example.tien_thanh.Service.Impl.Android_PhoneServiceImpl;
 import com.example.tien_thanh.Service.Impl.CccdServiceImpl;
 import com.example.tien_thanh.Service.Impl.DetailServiceImpl;
-import com.example.tien_thanh.model.CCCD;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 @WebServlet(name = "TienThanhServlet", value = "/tienthanh")
 public class TienThanhServlet extends HttpServlet {
     private ICccdService cccdService;
     private IDetailService detailService;
+    private IAndroid_PhoneService android_phoneService;
 
     public void init() {
         cccdService = new CccdServiceImpl();
         detailService = new DetailServiceImpl();
+        android_phoneService = new Android_PhoneServiceImpl();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        listCCCD(request,response);
-//        listDetail(request, response);
-//        String action = request.getParameter("action");
-//        if (action == null) {
-//            action = "";
-//        }
-//        System.out.println("get");
-//        System.out.println(action);
-//        switch (action) {
-//            case "create":
-//                showNewForm(request, response);
-//                break;
-//            case "edit":
-//                edit(request, response);
-//                break;
-//            case "delete":
-//                deleteNhanVien(request, response);
-//                break;
-//            default:
-//                listProduct(request, response);
-//                break;
-//        }
+        listAndroid_Phone(request,response);
     }
+
+
+
+
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-//        String action = request.getParameter("action");
-//        String action2 = request.getParameter("action2");
-//        if (action == null) {
-//            action = "";
-//        }
-//        if (action2 == null) {
-//            action2 = "";
-//        }
-//        switch (action2) {
-//            case "Save":
-//                insertProduct(request, response);
-//                break;
-//            case "Edit":
-//                updateUser(request, response);
-//                break;
-//            case "search":
-//                searchByCountry(request, response);
-//                break;
-//            case "delete":
-//                deleteNhanVien(request, response);
-//                break;
-//        }
-//        switch (action) {
-//            case "create":
-//                createForm(request, response);
-//                break;
-//            case "edit":
-//                edit(request, response);
-//                break;
-//            case "list":
-//                listProduct(request, response);
-//                break;
-//        }
+        String action = request.getParameter("action");
+        String action2 = request.getParameter("action2");
+        if (action == null) {
+            action = "";
+        }
+        if (action2 == null) {
+            action2 = "";
+        }
+        switch (action2) {
+            case "submit_Create":
+                create_Android_Phone(request,response);
+                break;
+        }
+        switch (action) {
+            case "create":
+                Form_create_Android_Phone(request, response);
+                break;
+        }
     }
-    private void listCCCD(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("listCCCD", cccdService.displayCCCD());
-        request.getRequestDispatcher("/listCCCD.jsp").forward(request, response);
+
+
+
+    private void listAndroid_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("listAndroid_Phone", android_phoneService.displayAndroid_Phone());
+        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
     }
-    private void listDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("listDetail", detailService.displayDetail());
-        request.getRequestDispatcher("/listDetail.jsp").forward(request, response);
+    private void Form_create_Android_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request, response);
     }
+    private void create_Android_Phone(HttpServletRequest request, HttpServletResponse response) {
+
+    }
+
+//    private void watchDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String id = request.getParameter("idDetail");
+//        request.setAttribute("DETAIL", detailService.finDetailByid(id));
+//        request.getRequestDispatcher("").forward(request,response);
+//    }
+//
+//    private void listCCCD(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        request.setAttribute("listCCCD", cccdService.displayCCCD());
+//        request.getRequestDispatcher("/listCCCD.jsp").forward(request, response);
+//    }
+//    private void listDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        request.setAttribute("listDetail", detailService.displayDetail());
+//        request.getRequestDispatcher("/listDetail.jsp").forward(request, response);
+//    }
 //    private void createForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        request.setAttribute("listCategory", categoryService.findAll());
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("/create.jsp");

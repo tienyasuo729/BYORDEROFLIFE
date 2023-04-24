@@ -32,7 +32,7 @@ public class DetailServiceImpl implements IDetailService {
 
     @Override
     public Detail finDetailByid(String id) {
-        return null;
+        return detailRepository.finDetailByid(id);
     }
 
     @Override

@@ -10,11 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 public class DetailRepositoryImpl implements IDetailRepository {
     private BaseRepository baseRepository = new BaseRepository();
 
     private static String displayDetail = "select * from detail";
+
+    private static String WATCH_DETAIL = "select * from detail where idDetail = ?";
 
     @Override
     public List<Detail> displayDetail() {
@@ -56,7 +57,27 @@ public class DetailRepositoryImpl implements IDetailRepository {
 
     @Override
     public Detail finDetailByid(String id) {
-        return null;
+        Detail detail = null;
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(WATCH_DETAIL);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String idDetail = resultSet.getString("idDetail");
+                String nameDetail = resultSet.getString("name");
+                Date birthday = new Date(resultSet.getDate("birthday").getTime());
+                String gender = resultSet.getString("gender");
+                String address = resultSet.getString("address");
+                String phoneNumber = resultSet.getString("phoneNumber");
+                int times = resultSet.getInt("times");
+                String history = resultSet.getString("history");
+                detail = new Detail(idDetail,nameDetail,birthday,gender,address,phoneNumber,times,history);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return detail;
     }
 
     @Override

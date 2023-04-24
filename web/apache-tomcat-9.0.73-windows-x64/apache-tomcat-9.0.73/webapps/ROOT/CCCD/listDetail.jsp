@@ -70,30 +70,30 @@
       <th>Lịch sử cầm</th>
     </tr>
     <% int count = 1; %>
-    <c:forEach items="${listDetail}" var="detail">
+    <c:forEach items="${listDetail}" var="android_phone">
       <tr>
         <td><%=count%></td>
         <% count++; %>
 
-        <td><c:out value="${detail.idDetail}"/></td>
-        <td><c:out value="${detail.nameDetail}"/></td>
-        <td><fmt:formatDate value="${detail.birthday}" pattern="dd/MM/yyyy"/></td>
-        <td><c:out value="${detail.gender}"/></td>
-        <td class="address"><a><c:out value="${detail.address}"/></a></td>
-        <td><c:out value="${detail.phoneNumber}"/></td>
-        <td><c:out value="${detail.times}"/></td>
-        <td><c:out value="${detail.history}"/></td>
+        <td><c:out value="${android_phone.idDetail}"/></td>
+        <td><c:out value="${android_phone.nameDetail}"/></td>
+        <td><fmt:formatDate value="${android_phone.birthday}" pattern="dd/MM/yyyy"/></td>
+        <td><c:out value="${android_phone.gender}"/></td>
+        <td class="address"><a><c:out value="${android_phone.address}"/></a></td>
+        <td><c:out value="${android_phone.phoneNumber}"/></td>
+        <td><c:out value="${android_phone.times}"/></td>
+        <td><c:out value="${android_phone.history}"/></td>
 
         <td>
           <form action="/tienthanh" method="post" class="form-edit">
             <input type="hidden" name="action" value="edit">
-            <input type="hidden" name="idEdit" value="${detail.idDetail}">
+            <input type="hidden" name="idEdit" value="${android_phone.idDetail}">
             <button type="submit" class="btn btn-success">Chỉnh sửa</button>
           </form>
 
           <form action="/tienthanh" method="post" class="form-delete">
             <input type="hidden" name="action2" value="delete">
-            <input type="hidden" name="id" value="${detail.idDetail}">
+            <input type="hidden" name="id" value="${android_phone.idDetail}">
             <button type="submit" class="btn btn-danger"
                     onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá
             </button>
