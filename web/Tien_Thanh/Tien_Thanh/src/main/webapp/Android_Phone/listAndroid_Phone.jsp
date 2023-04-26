@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-        .form-edit, .form-delete,.form-pay {
+        .form-edit, .form-delete, .form-pay {
             display: inline-block;
         }
     </style>
@@ -23,10 +23,10 @@
 <center>
     <h1>Cầm đồ Tiến Thanh</h1>
 
-        <form method="post" action="/tienthanh">
-            <input type="hidden" name="action" value="create">
-            <button type="submit" class="btn btn-success">Thêm Điện thoại cầm</button>
-        </form>
+    <form method="post" action="/tienthanh">
+        <input type="hidden" name="action" value="create">
+        <button type="submit" class="btn btn-success">Thêm Điện thoại cầm</button>
+    </form>
     <form method="post" action="/tienthanh">
         <input type="hidden" name="action" value="reload">
         <button class="btn btn-success">Tải lại trang</button>
@@ -44,7 +44,7 @@
             <h2>Tìm kiếm CCCD theo mã số</h2>
             <input type="text" name="findByCccd" placeholder="Tìm kiếm theo mã số">
             <input type="hidden" value="search" name="action2">
-            <button type="submit">Tìm kiếm</button> 
+            <button type="submit">Tìm kiếm</button>
         </form>
     </div>
 
@@ -58,7 +58,7 @@
     </div>
 </center>
 <div align="center">
-    <table class="table table-hover"    STYLE="text-align: center">
+    <table class="table table-hover" STYLE="text-align: center">
         <h2>Danh sách CCCD cầm</h2>
         <caption><h2>Danh sách CCCD cầm</h2></caption>
         <tr>
@@ -76,7 +76,8 @@
         <% int count = 1; %>
         <c:forEach items="${listAndroid_Phone}" var="android_phone">
             <tr>
-               <td><%=count%></td>
+                <td><%=count%>
+                </td>
                 <% count++; %>
 
                 <td><c:out value="${android_phone.id}"/></td>
@@ -84,24 +85,25 @@
                 <td><c:out value="${android_phone.name_phone}"/></td>
                 <td><fmt:formatNumber value="${android_phone.price}" pattern="###,###,###,###"/></td>
                 <td><fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/></td>
+<%--                <td><c:out value="${android_phone.start_Date}"/></td>--%>
                 <td><c:out value="${android_phone.status}"/></td>
                 <td><c:out value="${android_phone.password}"/></td>
                 <td><c:out value="${android_phone.note}"/></td>
 
-<%--                <td>--%>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${android_phone.checkForDetail == 0}">--%>
-<%--                            <form action="/tienthanh" method="post" class="form-edit">--%>
-<%--                                <input type="hidden" name="action2" value="watchDetail">--%>
-<%--                                <input type="hidden" name="idDetail" value="${android_phone.id}">--%>
-<%--                                <button type="submit" class="btn btn-success" onclick="changeButtonText(this)">Xem chi tiết</button>--%>
-<%--                            </form>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <button class="btn btn-success" onclick="window.alert('Chưa có thông tin của người này')">Không có chi tiết</button>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
-<%--                </td>--%>
+                    <%--                <td>--%>
+                    <%--                    <c:choose>--%>
+                    <%--                        <c:when test="${android_phone.checkForDetail == 0}">--%>
+                    <%--                            <form action="/tienthanh" method="post" class="form-edit">--%>
+                    <%--                                <input type="hidden" name="action2" value="watchDetail">--%>
+                    <%--                                <input type="hidden" name="idDetail" value="${android_phone.id}">--%>
+                    <%--                                <button type="submit" class="btn btn-success" onclick="changeButtonText(this)">Xem chi tiết</button>--%>
+                    <%--                            </form>--%>
+                    <%--                        </c:when>--%>
+                    <%--                        <c:otherwise>--%>
+                    <%--                            <button class="btn btn-success" onclick="window.alert('Chưa có thông tin của người này')">Không có chi tiết</button>--%>
+                    <%--                        </c:otherwise>--%>
+                    <%--                    </c:choose>--%>
+                    <%--                </td>--%>
                 <td>
                     <form action="/tienthanh" method="post" class="form-edit">
                         <input type="hidden" name="action" value="edit_Android_phone">
@@ -118,8 +120,8 @@
                     </form>
                     <form action="/tienthanh" method="post" class="form-pay">
                         <input type="hidden" name="action2" value="interestPayment">
-                        <input type="hidden" name="id" value="${android_phone.id}">
-                        <button type="submit" class="btn btn-warning">Tính  lãi</button>
+                        <input type="hidden" id="start_date" name="start_date_to_interest_payment" value="<fmt:formatDate value="${android_phone.start_Date}" pattern="yyyy/MM/dd"/>">
+                        <button type="button" class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>
                     </form>
                 </td>
             </tr>
@@ -127,9 +129,18 @@
     </table>
 </div>
 <script> //  script này để ngăn người dùng nhấn chuột phải rồi nhấn kiểm tra để xem được code html
-    document.addEventListener("contextmenu", function(e){
-        e.preventDefault();
-    }, false);
+document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+}, false);
+
+function interest_payment() {
+    let startDateStr = document.getElementById("start_date").value;
+    let startDateArr = startDateStr.split("/"); // tách năm, tháng, ngày từ chuỗi ngày tháng
+    let startDate = new Date(startDateArr[0], startDateArr[1] - 1, startDateArr[2]); // tạo đối tượng Date từ năm, tháng, ngày
+    let today = new Date();
+    let days = Math.ceil((today - startDate) / (1000 * 60 * 60 * 24)); // tính số ngày giữa hai ngày
+    alert(days);
+}
 </script>
 </body>
 

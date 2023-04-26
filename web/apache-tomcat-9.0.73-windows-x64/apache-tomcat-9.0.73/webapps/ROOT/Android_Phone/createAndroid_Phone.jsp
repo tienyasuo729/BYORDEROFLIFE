@@ -131,6 +131,7 @@
         var otherBrandOption = select.querySelector('option[value="khac"]');
         otherBrandOption.value = otherBrandValue;
     }
+
 </script>
 </body>
 </html>

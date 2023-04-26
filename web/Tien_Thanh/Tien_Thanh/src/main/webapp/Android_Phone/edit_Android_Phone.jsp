@@ -39,12 +39,12 @@
                     Thêm mới
                 </h2>
             </caption>
-            <tr>
-                <th>Mã số:</th>
-                <td>
-                    <input type="number" name="idEdit" size="45" required="required"/>
-                </td>
-            </tr>
+<%--            <tr>--%>
+<%--                <th>Mã số:</th>--%>
+<%--                <td>--%>
+<%--                    <input type="number" name="idEdit" size="45" required="required"/>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
             <tr>
                 <th>Họ và tên:</th>
                 <td>
@@ -105,6 +105,7 @@
             <tr>
                 <td colspan="2" align="center">
                     <form>
+                        <input type="hidden" name="idEdit" value="${id_need_to_edit}">
                         <input type="hidden" name="action2" value="save_edit_android_phone">
                         <button type="submit">Save</button>
                     </form>
