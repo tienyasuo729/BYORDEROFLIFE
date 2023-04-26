@@ -21,32 +21,32 @@ public class Android_PhoneServiceImpl implements IAndroid_PhoneService {
     }
 
     @Override
-    public void editAndroid_Phone(Android_Phone android_phone) {
-
+    public void edit_Android_Phone(Android_Phone android_phone) {
+        android_phoneRepository.edit_Android_Phone(android_phone);
     }
 
     @Override
-    public void deleteAndroid_Phone(String id) {
-
+    public void delete_Android_Phone(String id) {
+        android_phoneRepository.delete_Android_Phone(id);
     }
 
     @Override
-    public CCCD findAndroid_PhoneByid(String id) {
+    public Android_Phone find_Android_Phone_By_id(String id) {
         return null;
     }
 
     @Override
-    public List<CCCD> listFindAndroid_PhoneSimilarById(String id) {
+    public List<Android_Phone> list_Find_Android_Phone_Similar_By_Id(String id) {
         return null;
     }
 
     @Override
-    public CCCD findAndroid_PhoneByName(String id) {
+    public Android_Phone find_Android_Phone_By_Name(String id) {
         return null;
     }
 
     @Override
-    public List<CCCD> listFindAndroid_PhoneSimilarByName(String id) {
+    public List<Android_Phone> list_Find_Android_Phone_Similar_By_Name(String id) {
         return null;
     }
 }

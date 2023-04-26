@@ -26,9 +26,10 @@
 
 <center>
     <h1>Thêm điện thoại </h1>
-    <h2>
-        <a href="list?action=list">List product</a>
-    </h2>
+    <form method="post" action="/tienthanh">
+        <input type="hidden" name="action" value="list_Android_phone">
+        <button class="btn btn-success">Quay lại</button>
+    </form>
 </center>
 <div align="center">
     <form method="post">
@@ -67,7 +68,7 @@
                             </optgroup>
                         </select>
                         <div id="otherBrand" style="display:none;">
-                            <input type="text" id="otherBrandInput" placeholder="Nhập tên hãng điện thoại khác...">
+                            <input type="text" id="otherBrandInput" onblur="gg()" placeholder="Nhập tên hãng điện thoại khác...">
                         </div>
                 </td>
             </tr>
@@ -103,7 +104,10 @@
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="Save"/>
+                    <form>
+                        <input type="hidden" name="action2" value="save_create_android_phone">
+                        <button type="submit">Save</button>
+                    </form>
                 </td>
             </tr>
         </table>
@@ -112,6 +116,7 @@
 <script>
     var select = document.getElementById("mySelect");
     var otherBrandDiv = document.getElementById("otherBrand");
+    var otherBrandInput = document.getElementById("otherBrandInput");
 
     select.addEventListener("change", function() {
         if (select.value === "khac") {
@@ -120,6 +125,12 @@
             otherBrandDiv.style.display = "none";
         }
     });
+
+    function gg() {
+        var otherBrandValue = otherBrandInput.value;
+        var otherBrandOption = select.querySelector('option[value="khac"]');
+        otherBrandOption.value = otherBrandValue;
+    }
 </script>
 </body>
 </html>

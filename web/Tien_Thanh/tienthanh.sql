@@ -11,6 +11,16 @@ create table android_phone(
     password text,
     note text
 );
+INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('0000101', 'bbbb', 'samsung', '12322', '2023-04-26', 'dsdf', 'd', 'd');
+INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('1', 'gg', '213123', '2023-04-25', 'áda', 's', 's');
+INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('2222', 'b', '0090993256', '4444', '2004-09-04', 'bình thường', '555', 'b');
+INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('2222222', 'ndd', 'samsung', '123', '2023-04-25', 'đ', 'đ', 'đ');
+INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('22222245', 'm', 'samsung', '123', '2023-04-25', 'm', 'm', 'm');
+INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('4445', 'h', '3434', '2023-04-25', 'dsdf', 'sdfsf', 'sdfs');
+INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('45646', 'ww', '222', '2023-04-13', 'đ', 's', 's');
+INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('456464333', 'q', 'gggg', '213', '2023-04-26', 'ád', 'ss', 'ss');
+INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('464634', 'n', '2312', '2023-04-29', 'm', 'đ', 'đ');
+INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('67676', 'd', '222', '2023-04-25', 'd', 'd', 'd');
 
 
 -- create table detail(

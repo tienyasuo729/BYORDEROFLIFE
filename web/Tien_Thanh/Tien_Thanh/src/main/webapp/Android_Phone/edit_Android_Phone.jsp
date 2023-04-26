@@ -25,7 +25,7 @@
 <body>
 
 <center>
-    <h1>Thêm điện thoại </h1>
+    <h1>Sửa thông tin điện thoại </h1>
     <form method="post" action="/tienthanh">
         <input type="hidden" name="action" value="list_Android_phone">
         <button class="btn btn-success">Quay lại</button>
@@ -42,19 +42,19 @@
             <tr>
                 <th>Mã số:</th>
                 <td>
-                    <input type="number" name="id" size="45" required="required"/>
+                    <input type="number" name="idEdit" size="45" required="required"/>
                 </td>
             </tr>
             <tr>
                 <th>Họ và tên:</th>
                 <td>
-                    <input type="text" name="name_owner" size="45" required="required"/>
+                    <input type="text" name="name_ownerEdit" size="45" required="required"/>
                 </td>
             </tr>
             <tr>
                 <th>Loại máy:</th>
                 <td>
-                        <select name="name_phone" id="mySelect">
+                        <select name="name_phoneEdit" id="mySelect">
                             <optgroup label="Các hãng điện thoại">
                                 <option value="samsung">SAMSUNG</option>
                                 <option value="oppo">OPPO</option>
@@ -75,37 +75,37 @@
             <tr>
                 <th>PRICE:</th>
                 <td>
-                    <input type="number" name="price" size="45" required="required">
+                    <input type="number" name="priceEdit" size="45" required="required">
                 </td>
             </tr>
             <tr>
                 <th>Ngày cầm:</th>
                 <td>
-                    <input type="date" name="start_Date" size="15"/>
+                    <input type="date" name="start_DateEdit" size="15"/>
                 </td>
             </tr>
             <tr>
                 <th>Tình trạng:</th>
                 <td>
-                    <input type="text" name="status" size="15"/>
+                    <input type="text" name="statusEdit" size="15"/>
                 </td>
             </tr>
             <tr>
                 <th>Mật khẩu:</th>
                 <td>
-                    <input type="text" name="password" size="15"/>
+                    <input type="text" name="passwordEdit" size="15"/>
                 </td>
             </tr>
             <tr>
                 <th>Ghi chú:</th>
                 <td>
-                    <input name="note" type="text" size="45">
+                    <input name="noteEdit" type="text" size="45">
                 </td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
                     <form>
-                        <input type="hidden" name="action2" value="save_create_android_phone">
+                        <input type="hidden" name="action2" value="save_edit_android_phone">
                         <button type="submit">Save</button>
                     </form>
                 </td>

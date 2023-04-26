@@ -104,14 +104,14 @@
 <%--                </td>--%>
                 <td>
                     <form action="/tienthanh" method="post" class="form-edit">
-                        <input type="hidden" name="action" value="edit">
-                        <input type="hidden" name="idEdit" value="${android_phone.id}">
+                        <input type="hidden" name="action" value="edit_Android_phone">
+                        <input type="hidden" name="id_need_to_edit" value="${android_phone.id}">
                         <button type="submit" class="btn btn-success">Chỉnh sửa</button>
                     </form>
 
                     <form action="/tienthanh" method="post" class="form-delete">
-                        <input type="hidden" name="action2" value="delete">
-                        <input type="hidden" name="id" value="${android_phone.id}">
+                        <input type="hidden" name="action2" value="delete_android_phone_by_id">
+                        <input type="hidden" name="id_need_to_delete" value="${android_phone.id}">
                         <button type="submit" class="btn btn-danger"
                                 onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá
                         </button>

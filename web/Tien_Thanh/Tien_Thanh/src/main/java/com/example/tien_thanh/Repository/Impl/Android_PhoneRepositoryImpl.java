@@ -14,8 +14,20 @@ import java.util.List;
 
 public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
     private BaseRepository baseRepository = new BaseRepository();
+//    private static final String LIST_PRODUCT = "select * from product;";
+//    private static final String ADD_NEW_PRODUCT = "INSERT INTO product(id,name, price, quantity, color, description, idcategory ) VALUES (?, ?, ?, ?, ?, ?, ?);";
+//
+//    private static final String DELETE_PRODUCT = "DELETE FROM PRODUCT WHERE id = ?;";
+//
+//    private static final String EDIT_PRODUCT = "UPDATE product SET name = ?, price = ?, quantity = ?, color = ?, description = ?, idcategory = ? WHERE id = ?;";
+//
+//    private static final String FIND_BY_NAME = "SELECT * FROM product WHERE name LIKE ?";
+//
+//    private static final String FIND_BY_ID = "SELECT * FROM product WHERE id = ?";
     private String DISPLAY_ANDROID_PHONE = "select * from android_phone";
     private String ADD_NEW_ANDROID_PHONE = "INSERT INTO android_phone(id,name_owner, name_phone, price, start_Date, status, password, note ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+    private String DELETE_ANDROID_PHONE_BY_ID = "delete from android_phone where id = ?";
+    private String EDIT_ANDROID_PHONE_BY_ID = "UPDATE android_phone SET name_owner = ?,name_phone = ?,price = ?,start_Date = ?,status = ?,password = ?,note = ? WHERE id = ?";
     @Override
     public List<Android_Phone> displayAndroid_Phone() {
         List<Android_Phone> androidPhoneList = new ArrayList<>();
@@ -59,32 +71,51 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
     }
 
     @Override
-    public void editAndroid_Phone(Android_Phone android_phone) {
-
+    public void edit_Android_Phone(Android_Phone android_phone) {
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(EDIT_ANDROID_PHONE_BY_ID);
+            preparedStatement.setString(1,android_phone.getName_owner());
+            preparedStatement.setString(2,android_phone.getName_phone());
+            preparedStatement.setInt(3,android_phone.getPrice());
+            preparedStatement.setDate(4,new java.sql.Date(android_phone.getStart_Date().getTime()));
+            preparedStatement.setString(5,android_phone.getStatus());
+            preparedStatement.setString(6,android_phone.getPassword());
+            preparedStatement.setString(7,android_phone.getNote());
+            preparedStatement.setString(8,android_phone.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void deleteAndroid_Phone(String id) {
-
+    public void delete_Android_Phone(String id) {
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(DELETE_ANDROID_PHONE_BY_ID);
+            preparedStatement.setString(1,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public CCCD findAndroid_PhoneByid(String id) {
+    public Android_Phone find_Android_Phone_By_id(String id) {
         return null;
     }
 
     @Override
-    public List<CCCD> listFindAndroid_PhoneSimilarById(String id) {
+    public List<Android_Phone> list_Find_Android_Phone_Similar_By_Id(String id) {
         return null;
     }
 
     @Override
-    public CCCD findAndroid_PhoneByName(String id) {
+    public Android_Phone find_Android_Phone_By_Name(String id) {
         return null;
     }
 
     @Override
-    public List<CCCD> listFindAndroid_PhoneSimilarByName(String id) {
+    public List<Android_Phone> list_Find_Android_Phone_Similar_By_Name(String id) {
         return null;
     }
 }
