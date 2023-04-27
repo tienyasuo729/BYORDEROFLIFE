@@ -13,6 +13,8 @@
     <title>Tiệm cầm đồ Tiến Thanh</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .form-edit, .form-delete, .form-pay {
             display: inline-block;
@@ -84,7 +86,7 @@
                 <td><c:out value="${android_phone.name_owner}"/></td>
                 <td><c:out value="${android_phone.name_phone}"/></td>
                 <td><fmt:formatNumber value="${android_phone.price}" pattern="###,###,###,###"/></td>
-                <td><fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/></td>
+                <td ><fmt:formatDate  value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/></td>
 <%--                <td><c:out value="${android_phone.start_Date}"/></td>--%>
                 <td><c:out value="${android_phone.status}"/></td>
                 <td><c:out value="${android_phone.password}"/></td>
@@ -118,11 +120,11 @@
                                 onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá
                         </button>
                     </form>
-                    <form action="/tienthanh" method="post" class="form-pay">
+<%--                    <form action="/tienthanh" method="post" class="form-pay">--%>
                         <input type="hidden" name="action2" value="interestPayment">
-                        <input type="hidden" id="start_date" name="start_date_to_interest_payment" value="<fmt:formatDate value="${android_phone.start_Date}" pattern="yyyy/MM/dd"/>">
-                        <button type="button" class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>
-                    </form>
+<%--                        <input type="hidden" id="start_date" value="${android_phone.start_Date}">--%>
+                        <button type="button" id="start_date" value="${android_phone.start_Date}" class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>
+<%--                    </form>--%>
                 </td>
             </tr>
         </c:forEach>
@@ -134,12 +136,8 @@ document.addEventListener("contextmenu", function (e) {
 }, false);
 
 function interest_payment() {
-    let startDateStr = document.getElementById("start_date").value;
-    let startDateArr = startDateStr.split("/"); // tách năm, tháng, ngày từ chuỗi ngày tháng
-    let startDate = new Date(startDateArr[0], startDateArr[1] - 1, startDateArr[2]); // tạo đối tượng Date từ năm, tháng, ngày
-    let today = new Date();
-    let days = Math.ceil((today - startDate) / (1000 * 60 * 60 * 24)); // tính số ngày giữa hai ngày
-    alert(days);
+    var startDate = document.getElementById("start_date").value;
+    console.log(startDate)
 }
 </script>
 </body>

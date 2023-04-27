@@ -20,7 +20,6 @@ import java.util.List;
 
 @WebServlet(name = "TienThanhServlet", value = "/tienthanh")
 public class TienThanhServlet extends HttpServlet {
-    private List<Android_Phone> androidPhones = new ArrayList<>();
     private ICccdService cccdService;
     private IDetailService detailService;
     private IAndroid_PhoneService android_phoneService;
@@ -118,7 +117,8 @@ public class TienThanhServlet extends HttpServlet {
     }
 
     private void listAndroid_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        androidPhones = android_phoneService.displayAndroid_Phone();
+        List<Android_Phone> androidPhones = android_phoneService.displayAndroid_Phone();
+        System.out.println(androidPhones.get(2).getStart_Date());
         request.setAttribute("listAndroid_Phone", androidPhones);
         request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
     }

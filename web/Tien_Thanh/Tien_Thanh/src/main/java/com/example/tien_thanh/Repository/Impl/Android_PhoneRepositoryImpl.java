@@ -44,6 +44,7 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
                 String password = resultSet.getString("password");
                 String note = resultSet.getString("note");
                 androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note));
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
