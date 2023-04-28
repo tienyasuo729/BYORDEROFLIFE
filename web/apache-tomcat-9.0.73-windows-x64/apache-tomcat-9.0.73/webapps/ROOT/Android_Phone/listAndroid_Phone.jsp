@@ -120,11 +120,12 @@
                                 onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá
                         </button>
                     </form>
-<%--                    <form action="/tienthanh" method="post" class="form-pay">--%>
+                    <form action="/tienthanh" method="post" class="form-pay">
                         <input type="hidden" name="action2" value="interestPayment">
-<%--                        <input type="hidden" id="start_date" value="${android_phone.start_Date}">--%>
-                        <button type="button" id="start_date" <c:set var="myDate" value="${requestScope.android_phone.start_Date}"/> class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>
-<%--                    </form>--%>
+                        <input type="hidden" id="start_date_interest_payment" value="${android_phone.start_Date}">
+                        <button type="submit" class="btn btn-warning">Tính lãi</button>
+<%--                        <button type="button" id="start_date" <c:set var="myDate" value="${requestScope.android_phone.start_Date}"/> class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>--%>
+                    </form>
                 </td>
             </tr>
         </c:forEach>
@@ -135,10 +136,10 @@ document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 }, false);
 
-function interest_payment() {
-    var startDate = document.getElementById("start_date").value;
-    console.log(startDate)
-}
+// function interest_payment() {
+//     var startDate = document.getElementById("start_date").value;
+//     console.log(startDate)
+// }
 </script>
 </body>
 

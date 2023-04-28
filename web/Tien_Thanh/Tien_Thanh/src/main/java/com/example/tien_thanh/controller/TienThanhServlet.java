@@ -60,7 +60,10 @@ public class TienThanhServlet extends HttpServlet {
                 break;
             case "save_edit_android_phone":
                 edit_android_phone(request,response);
-
+                break;
+            case "interestPayment":
+                calculator_interest_payment(request,response);
+                break;
 
 
         }
@@ -80,6 +83,18 @@ public class TienThanhServlet extends HttpServlet {
 
 
         }
+    }
+
+    private void calculator_interest_payment(HttpServletRequest request, HttpServletResponse response) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date_interest_payment = null;
+        try {
+            date_interest_payment = formatter.parse(request.getParameter("start_date_interest_payment"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println("hello");
+        System.out.println("/" + date_interest_payment.getTime());
     }
 
     private void edit_android_phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -143,6 +158,34 @@ public class TienThanhServlet extends HttpServlet {
         Android_Phone android_phone = new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note);
         android_phoneService.add_New_Android_Phone(android_phone);
         request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request,response);
+    }
+    private int count_date_for_interest_payment(int day, int month, int year){
+        int count_day = day;
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                count_day += 31;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                count_day += 30;
+                break;
+            case 2:
+                if(year % 4 == 0){
+                    count_day += 29;
+                }else {
+                    count_day += 28;
+                }
+                break;
+        }
+        return count_day;
     }
 
 //    private void watchDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
