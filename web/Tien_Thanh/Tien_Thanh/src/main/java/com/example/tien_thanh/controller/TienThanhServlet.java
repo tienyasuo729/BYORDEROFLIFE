@@ -118,7 +118,7 @@ public class TienThanhServlet extends HttpServlet {
 
     private void listAndroid_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Android_Phone> androidPhones = android_phoneService.displayAndroid_Phone();
-        System.out.println(androidPhones.get(2).getStart_Date());
+        System.out.println(androidPhones.get(2).getStart_Date().getTime() - androidPhones.get(0).getStart_Date().getTime());
         request.setAttribute("listAndroid_Phone", androidPhones);
         request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
     }

@@ -123,7 +123,7 @@
 <%--                    <form action="/tienthanh" method="post" class="form-pay">--%>
                         <input type="hidden" name="action2" value="interestPayment">
 <%--                        <input type="hidden" id="start_date" value="${android_phone.start_Date}">--%>
-                        <button type="button" id="start_date" value="${android_phone.start_Date}" class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>
+                        <button type="button" id="start_date" <c:set var="myDate" value="${requestScope.android_phone.start_Date}"/> class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>
 <%--                    </form>--%>
                 </td>
             </tr>
