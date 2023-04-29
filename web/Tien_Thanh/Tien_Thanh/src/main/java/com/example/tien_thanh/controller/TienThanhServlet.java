@@ -86,15 +86,34 @@ public class TienThanhServlet extends HttpServlet {
     }
 
     private void calculator_interest_payment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String dateString = "Sat Sep 04 00:00:00 ICT 2004";
         SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
-        Date date_interest_payment = null;
+        Date date = null;
         try {
-            date_interest_payment = formatter.parse(request.getParameter("start_date_interest_payment"));
+            date = formatter.parse(dateString);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println("hello");
-        System.out.println("/" + formatter.format(date_interest_payment));
+
+// Sử dụng đối tượng java.util.Date để làm bất kỳ điều gì bạn muốn
+        System.out.println(date); // Sat Sep 04 00:00:00 ICT 2004
+// Định dạng lại đối tượng java.util.Date thành chuỗi "dd-mm-yyyy"
+        formatter.applyPattern("dd-MM-yyyy");
+        String formattedDate = formatter.format(date);
+        System.out.println(formattedDate); // 04-09-2004
+
+//        SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+//        Date date_interest_payment = null;
+//        try {
+////            System.out.println(formatter.parse(request.getParameter("start_date_interest_payment")));
+//            date_interest_payment = formatter.parse(request.getParameter("start_date_interest_payment"));
+//            System.out.println(date_interest_payment);
+//        } catch (ParseException  e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println("hello");
+//        System.out.println("/" + date_interest_payment);
+
 //        String test = request.getParameter("start_date_interest_payment");
 //        System.out.println("// " + test);
 //        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request,response);
@@ -138,7 +157,7 @@ public class TienThanhServlet extends HttpServlet {
 
     private void listAndroid_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Android_Phone> androidPhones = android_phoneService.displayAndroid_Phone();
-        System.out.println(androidPhones.get(1).getStart_Date().getMonth());
+//        System.out.println(androidPhones.get(1).getStart_Date().getMonth());
         request.setAttribute("listAndroid_Phone", androidPhones);
         request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
     }
