@@ -14,9 +14,10 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @WebServlet(name = "TienThanhServlet", value = "/tienthanh")
 public class TienThanhServlet extends HttpServlet {
@@ -86,22 +87,21 @@ public class TienThanhServlet extends HttpServlet {
     }
 
     private void calculator_interest_payment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String dateString = "Sat Sep 04 00:00:00 ICT 2004";
-        SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
-        Date date = null;
-        try {
-            date = formatter.parse(dateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse(request.getParameter("start_date_interest_payment"), formatter.withZone(ZoneId.systemDefault()));
 
-// Sử dụng đối tượng java.util.Date để làm bất kỳ điều gì bạn muốn
-        System.out.println(date); // Sat Sep 04 00:00:00 ICT 2004
-// Định dạng lại đối tượng java.util.Date thành chuỗi "dd-mm-yyyy"
-        formatter.applyPattern("dd-MM-yyyy");
-        String formattedDate = formatter.format(date);
-        System.out.println(formattedDate); // 04-09-2004
+        ZoneId timeZone = ZoneId.of("Asia/Ho_Chi_Minh");
+        ZonedDateTime dateTimeWithTimeZone = zonedDateTime.withZoneSameInstant(timeZone);
 
+        Date date = Date.from(dateTimeWithTimeZone.toInstant());
+        System.out.println(date.getDate());
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        outputFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
+        String formattedDate = outputFormat.format(date);
+        System.out.println(formattedDate);
+
+        Date now = new Date();
+        System.out.println(now);
 //        SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
 //        Date date_interest_payment = null;
 //        try {
