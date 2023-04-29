@@ -85,8 +85,8 @@ public class TienThanhServlet extends HttpServlet {
         }
     }
 
-    private void calculator_interest_payment(HttpServletRequest request, HttpServletResponse response) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    private void calculator_interest_payment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
         Date date_interest_payment = null;
         try {
             date_interest_payment = formatter.parse(request.getParameter("start_date_interest_payment"));
@@ -94,7 +94,11 @@ public class TienThanhServlet extends HttpServlet {
             e.printStackTrace();
         }
         System.out.println("hello");
-        System.out.println("/" + date_interest_payment.getTime());
+        System.out.println("/" + formatter.format(date_interest_payment));
+//        String test = request.getParameter("start_date_interest_payment");
+//        System.out.println("// " + test);
+//        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request,response);
+
     }
 
     private void edit_android_phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -125,6 +129,7 @@ public class TienThanhServlet extends HttpServlet {
 
     private void delete_android_phone_by_id(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id_need_to_delete = request.getParameter("id_need_to_delete");
+//        System.out.println("/1 " + id_need_to_delete);
         android_phoneService.delete_Android_Phone(id_need_to_delete);
 //        tìm cách để quay lại trang list mà không cần phải tải lại nguyên danh sách cho tốn dung lượng
 //        request.setAttribute("listAndroid_Phone", androidPhones);
@@ -133,7 +138,7 @@ public class TienThanhServlet extends HttpServlet {
 
     private void listAndroid_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Android_Phone> androidPhones = android_phoneService.displayAndroid_Phone();
-        System.out.println(androidPhones.get(2).getStart_Date().getTime() - androidPhones.get(0).getStart_Date().getTime());
+        System.out.println(androidPhones.get(1).getStart_Date().getMonth());
         request.setAttribute("listAndroid_Phone", androidPhones);
         request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
     }
