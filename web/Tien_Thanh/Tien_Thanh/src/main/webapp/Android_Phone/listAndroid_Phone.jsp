@@ -59,6 +59,7 @@
         </form>
     </div>
 </center>
+
 <div align="center">
     <table class="table table-hover" STYLE="text-align: center">
         <h2>Danh sách CCCD cầm</h2>
@@ -73,7 +74,6 @@
             <th>Tình trạng</th>
             <th>Mật khẩu</th>
             <th>Ghi chú</th>
-
         </tr>
         <% int count = 1; %>
         <c:forEach items="${listAndroid_Phone}" var="android_phone">
@@ -87,25 +87,9 @@
                 <td><c:out value="${android_phone.name_phone}"/></td>
                 <td><fmt:formatNumber value="${android_phone.price}" pattern="###,###,###,###"/></td>
                 <td ><fmt:formatDate  value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/></td>
-<%--                <td><c:out value="${android_phone.start_Date}"/></td>--%>
                 <td><c:out value="${android_phone.status}"/></td>
                 <td><c:out value="${android_phone.password}"/></td>
                 <td><c:out value="${android_phone.note}"/></td>
-
-                    <%--                <td>--%>
-                    <%--                    <c:choose>--%>
-                    <%--                        <c:when test="${android_phone.checkForDetail == 0}">--%>
-                    <%--                            <form action="/tienthanh" method="post" class="form-edit">--%>
-                    <%--                                <input type="hidden" name="action2" value="watchDetail">--%>
-                    <%--                                <input type="hidden" name="idDetail" value="${android_phone.id}">--%>
-                    <%--                                <button type="submit" class="btn btn-success" onclick="changeButtonText(this)">Xem chi tiết</button>--%>
-                    <%--                            </form>--%>
-                    <%--                        </c:when>--%>
-                    <%--                        <c:otherwise>--%>
-                    <%--                            <button class="btn btn-success" onclick="window.alert('Chưa có thông tin của người này')">Không có chi tiết</button>--%>
-                    <%--                        </c:otherwise>--%>
-                    <%--                    </c:choose>--%>
-                    <%--                </td>--%>
                 <td>
                     <form action="/tienthanh" method="post" class="form-edit">
                         <input type="hidden" name="action" value="edit_Android_phone">
@@ -125,6 +109,24 @@
 <%--                        <input type="hidden" id="start_date_interest_payment" value="${android_phone.id}">--%>
                         <input type="hidden" name="start_date_interest_payment" value="${android_phone.start_Date}">
                         <button type="submit" class="btn btn-warning">Tính lãi</button>
+                        <div id="result-modal" class="modal fade" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Kết quả tính lãi</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p id="result"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 <%--                        <button type="button" id="start_date" <c:set var="myDate" value="${requestScope.android_phone.start_Date}"/> class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>--%>
                     </form>
                 </td>
@@ -141,6 +143,22 @@ document.addEventListener("contextmenu", function (e) {
 //     var startDate = document.getElementById("start_date").value;
 //     console.log(startDate)
 // }
+$(document).ready(function() {
+    $('#btn-calculate').click(function() {
+        var startDate = $('#start-date').val();
+        $.ajax({
+            type: 'POST',
+            url: 'CalculateInterestServlet',
+            data: {
+                start_date: startDate
+            },
+            success: function(data) {
+                $('#result').html(data);
+                $('#result-modal').modal('show');
+            }
+        });
+    });
+});
 </script>
 </body>
 

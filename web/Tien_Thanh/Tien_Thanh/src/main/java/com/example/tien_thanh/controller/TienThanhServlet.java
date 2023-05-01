@@ -12,12 +12,17 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @WebServlet(name = "TienThanhServlet", value = "/tienthanh")
 public class TienThanhServlet extends HttpServlet {
@@ -87,37 +92,16 @@ public class TienThanhServlet extends HttpServlet {
     }
 
     private void calculator_interest_payment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
-        ZonedDateTime zonedDateTime = ZonedDateTime.parse(request.getParameter("start_date_interest_payment"), formatter.withZone(ZoneId.systemDefault()));
+        String dateString = request.getParameter("start_date_interest_payment");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+        try {
+            LocalDate startDate = LocalDate.parse(dateString, dateFormat);
+            long daysBetween = ChronoUnit.DAYS.between(startDate, LocalDate.now());
+            System.out.println("Khoảng cách giữa hai ngày là " + daysBetween + " ngày.");
 
-        ZoneId timeZone = ZoneId.of("Asia/Ho_Chi_Minh");
-        ZonedDateTime dateTimeWithTimeZone = zonedDateTime.withZoneSameInstant(timeZone);
-
-        Date date = Date.from(dateTimeWithTimeZone.toInstant());
-        System.out.println(date.getDate());
-        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        outputFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
-        String formattedDate = outputFormat.format(date);
-        System.out.println(formattedDate);
-
-        Date now = new Date();
-        System.out.println(now);
-//        SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
-//        Date date_interest_payment = null;
-//        try {
-////            System.out.println(formatter.parse(request.getParameter("start_date_interest_payment")));
-//            date_interest_payment = formatter.parse(request.getParameter("start_date_interest_payment"));
-//            System.out.println(date_interest_payment);
-//        } catch (ParseException  e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println("hello");
-//        System.out.println("/" + date_interest_payment);
-
-//        String test = request.getParameter("start_date_interest_payment");
-//        System.out.println("// " + test);
-//        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request,response);
-
+        } catch (DateTimeParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private void edit_android_phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -183,33 +167,9 @@ public class TienThanhServlet extends HttpServlet {
         android_phoneService.add_New_Android_Phone(android_phone);
         request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request,response);
     }
-    private int count_date_for_interest_payment(int day, int month, int year){
-        int count_day = day;
-        switch (month) {
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-                count_day += 31;
-                break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                count_day += 30;
-                break;
-            case 2:
-                if(year % 4 == 0){
-                    count_day += 29;
-                }else {
-                    count_day += 28;
-                }
-                break;
-        }
-        return count_day;
+    private int count_date_for_interest_payment(int day){
+        int payment = day;
+        return payment;
     }
 
 //    private void watchDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
