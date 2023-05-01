@@ -107,28 +107,12 @@
                     <form action="/tienthanh" method="post" class="form-pay">
                         <input type="hidden" name="action2" value="interestPayment">
 <%--                        <input type="hidden" id="start_date_interest_payment" value="${android_phone.id}">--%>
-                        <input type="hidden" name="start_date_interest_payment" value="${android_phone.start_Date}">
-                        <button type="submit" class="btn btn-warning">Tính lãi</button>
-                        <div id="result-modal" class="modal fade" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Kết quả tính lãi</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p id="result"></p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <input type="hidden" id="start_date_interest_payment" value="${android_phone.start_Date}">
+                        <button type="button" class="btn btn-warning" onclick="calculate()">Tính lãi</button>
+
 <%--                        <button type="button" id="start_date" <c:set var="myDate" value="${requestScope.android_phone.start_Date}"/> class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>--%>
                     </form>
+                    <div id="result"></div>
                 </td>
             </tr>
         </c:forEach>
@@ -139,26 +123,22 @@ document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 }, false);
 
-// function interest_payment() {
-//     var startDate = document.getElementById("start_date").value;
-//     console.log(startDate)
-// }
-$(document).ready(function() {
-    $('#btn-calculate').click(function() {
-        var startDate = $('#start-date').val();
-        $.ajax({
-            type: 'POST',
-            url: 'CalculateInterestServlet',
-            data: {
-                start_date: startDate
-            },
-            success: function(data) {
-                $('#result').html(data);
-                $('#result-modal').modal('show');
-            }
-        });
-    });
-});
+function calculate() {
+    let startDate = document.getElementById("start_date_interest_payment").value;
+    console.log(startDate);
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var result = this.responseText;
+            alert(result);
+        }
+    };
+    xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
+    var data = "action2=interestPayment&start_date_interest_payment=" + encodeURIComponent(startDate); // Tạo dữ liệu gửi đi
+    xhr.send(data); // Gửi dữ liệu đi
+}
+
 </script>
 </body>
 

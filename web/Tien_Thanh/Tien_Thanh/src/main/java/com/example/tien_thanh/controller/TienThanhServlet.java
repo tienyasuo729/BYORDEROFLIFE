@@ -92,12 +92,28 @@ public class TienThanhServlet extends HttpServlet {
     }
 
     private void calculator_interest_payment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String dateString = request.getParameter("start_date_interest_payment");
+//        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+//        try {
+//            LocalDate startDate = LocalDate.parse(dateString, dateFormat);
+//            long daysBetween = ChronoUnit.DAYS.between(startDate, LocalDate.now());
+//            System.out.println("Khoảng cách giữa hai ngày là " + daysBetween + " ngày.");
+//
+//        } catch (DateTimeParseException e) {
+//            e.printStackTrace();
+//        }
+
         String dateString = request.getParameter("start_date_interest_payment");
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
         try {
             LocalDate startDate = LocalDate.parse(dateString, dateFormat);
             long daysBetween = ChronoUnit.DAYS.between(startDate, LocalDate.now());
-            System.out.println("Khoảng cách giữa hai ngày là " + daysBetween + " ngày.");
+            String result = "Khoảng cách giữa hai ngày là " + daysBetween + " ngày.";
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(result);
+            String jsCode = "alert(\"" + result + "\");";
+            response.getWriter().write("<script type='text/javascript'>" + jsCode + "</script>");
 
         } catch (DateTimeParseException e) {
             e.printStackTrace();
