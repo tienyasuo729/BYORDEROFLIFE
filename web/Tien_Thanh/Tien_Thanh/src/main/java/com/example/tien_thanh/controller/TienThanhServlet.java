@@ -92,28 +92,20 @@ public class TienThanhServlet extends HttpServlet {
     }
 
     private void calculator_interest_payment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String dateString = request.getParameter("start_date_interest_payment");
-//        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
-//        try {
-//            LocalDate startDate = LocalDate.parse(dateString, dateFormat);
-//            long daysBetween = ChronoUnit.DAYS.between(startDate, LocalDate.now());
-//            System.out.println("Khoảng cách giữa hai ngày là " + daysBetween + " ngày.");
-//
-//        } catch (DateTimeParseException e) {
-//            e.printStackTrace();
-//        }
-
         String dateString = request.getParameter("start_date_interest_payment");
+        int price = Integer.parseInt(request.getParameter("price_interest_payment"));
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+        int interest_payment = 0;
         try {
             LocalDate startDate = LocalDate.parse(dateString, dateFormat);
             long daysBetween = ChronoUnit.DAYS.between(startDate, LocalDate.now());
+            interest_payment = money(daysBetween, price);
             String result = "Khoảng cách giữa hai ngày là " + daysBetween + " ngày.";
             response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(result);
-            String jsCode = "alert(\"" + result + "\");";
-            response.getWriter().write("<script type='text/javascript'>" + jsCode + "</script>");
+//            String jsCode = "alert(\"" + result + "\");";
+//            response.getWriter().write("<script type='text/javascript'>" + jsCode + "</script>");
 
         } catch (DateTimeParseException e) {
             e.printStackTrace();
@@ -183,100 +175,30 @@ public class TienThanhServlet extends HttpServlet {
         android_phoneService.add_New_Android_Phone(android_phone);
         request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request,response);
     }
-    private int count_date_for_interest_payment(int day){
-        int payment = day;
+    private int money(int day, int price){
+        int payment = 0;
+//        if (day <= 10 && price <= 2000000){
+//            payment = ((price / 1000000) * 3000 + less_than_500(price)) * 10;
+//        }
+//        if (day > 10 && price <= 2000000){
+//            payment = ((price / 1000000) * 3000 + less_than_500(price)) * day;
+//        }
+        if (day <= 10){
+            payment = ((price / 1000000) * 3000 + less_than_500(price)) * 10;
+        }else {
+            payment = ((price / 1000000) * 3000 + less_than_500(price)) * day;
+        }
         return payment;
     }
 
-//    private void watchDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String id = request.getParameter("idDetail");
-//        request.setAttribute("DETAIL", detailService.finDetailByid(id));
-//        request.getRequestDispatcher("").forward(request,response);
-//    }
-//
-//    private void listCCCD(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.setAttribute("listCCCD", cccdService.displayCCCD());
-//        request.getRequestDispatcher("/listCCCD.jsp").forward(request, response);
-//    }
-//    private void listDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.setAttribute("listDetail", detailService.displayDetail());
-//        request.getRequestDispatcher("/listDetail.jsp").forward(request, response);
-//    }
-//    private void createForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.setAttribute("listCategory", categoryService.findAll());
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("/create.jsp");
-//        dispatcher.forward(request, response);
-//    }
-//
-//    private void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String editId = request.getParameter("idEdit");
-//        request.setAttribute("productDetail", productService.findByIdOfProduct(editId));
-//        request.setAttribute("listCategory", categoryService.findAll());
-//        request.setAttribute("product", editId);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("/edit.jsp");
-//        dispatcher.forward(request, response);
-//    }
-//
-//    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        String editId = request.getParameter("idEdit");
-//        String name = request.getParameter("name");
-//        int price = Integer.parseInt(request.getParameter("price"));
-//        int quantity = Integer.parseInt(request.getParameter("quantity"));
-//        String [] colorAfter = request.getParameterValues("color[]");
-//        String color = Arrays.toString(colorAfter);
-//        color = color.substring(1, color.length() - 1);
-//        String description = request.getParameter("description");
-//        String category = request.getParameter("category");
-////        Product product = productService.findById(maCongViec);
-//        Product product = new Product(editId, name, price, quantity, color, description, category);
-//        productService.update(product);
-//        response.sendRedirect("/list");
-//
-//    }
-//
-//    private void deleteNhanVien(HttpServletRequest request, HttpServletResponse response) {
-//        productService.delete(request.getParameter("id"));
-////        int check = productService.delete(request.getParameter("id"));
-////        if (check == 0){
-////            request.setAttribute("deleteById", "Xoá sản phẩm không thành công");
-////        }else {
-////            request.setAttribute("deleteById", "Xoá sản phẩm thành công");
-////        }
-////        try {
-////            request.getRequestDispatcher("/listCCCD.jsp").forward(request,response);
-////        } catch (ServletException e) {
-////            throw new RuntimeException(e);
-////        } catch (IOException e) {
-////            throw new RuntimeException(e);
-////        }
-//        try {
-//            response.sendRedirect("/list");
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//    }
-//    private void searchByCountry(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String findName = request.getParameter("findName");
-//        List<Product> listProduct = productService.findByNameOfProduct(findName);
-//        request.setAttribute("listFindByName", listProduct);
-//        request.getRequestDispatcher("/findByName.jsp").forward(request, response);
-//    }
-//
-//    private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String id = request.getParameter("id");
-//        String name = request.getParameter("name");
-//        int price = Integer.parseInt(request.getParameter("price"));
-//        int quantity = Integer.parseInt(request.getParameter("quantity"));
-//        String [] colorAfter = request.getParameterValues("color[]");
-//        String color = Arrays.toString(colorAfter);
-//        color = color.substring(1, color.length() - 1);
-//        String description = request.getParameter("description");
-//        String category = request.getParameter("category");
-////        Product product = productService.findById(maCongViec);
-//        Product product = new Product(id, name, price, quantity, color, description, category);
-//        productService.add(product);
-//        response.sendRedirect("/list");
-//    }
-
+    private int less_than_500 (int price){
+        int support = price % 1000000;
+        if ( support == 0){
+            return 0;
+        }else if (support < 500){
+            return 2000;
+        }else {
+            return 3000;
+        }
+    }
 }

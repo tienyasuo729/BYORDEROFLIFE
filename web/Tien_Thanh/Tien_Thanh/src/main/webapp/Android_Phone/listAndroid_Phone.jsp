@@ -105,10 +105,13 @@
                         </button>
                     </form>
                     <form action="/tienthanh" method="post" class="form-pay">
-                        <input type="hidden" name="action2" value="interestPayment">
+<%--                        <input type="hidden" name="action2" value="interestPayment">--%>
 <%--                        <input type="hidden" id="start_date_interest_payment" value="${android_phone.id}">--%>
-                        <input type="hidden" id="start_date_interest_payment" value="${android_phone.start_Date}">
-                        <button type="button" class="btn btn-warning" onclick="calculate()">Tính lãi</button>
+<%--                        <input type="hidden" id="start_date_interest_payment" value="${android_phone.start_Date}">--%>
+
+<%--                        <input type="hidden" id="start_date_interest_payment_${android_phone.id}" value="${android_phone.start_Date}">--%>
+<%--                        <a>value="${android_phone.start_Date}"</a>--%>
+                        <button type="button" class="btn btn-warning" onclick="calculate('${android_phone.start_Date}', '${android_phone.price}')">Tính lãi</button>
 
 <%--                        <button type="button" id="start_date" <c:set var="myDate" value="${requestScope.android_phone.start_Date}"/> class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>--%>
                     </form>
@@ -123,9 +126,10 @@ document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 }, false);
 
-function calculate() {
-    let startDate = document.getElementById("start_date_interest_payment").value;
-    console.log(startDate);
+function calculate(startDate,price) {
+    // let startDate = document.getElementById("start_date_interest_payment").value;
+    <%--let startDate = document.getElementById(`start_date_interest_payment_${android_phone.id}`).value;--%>
+    console.log(price);
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -135,7 +139,7 @@ function calculate() {
     };
     xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-    var data = "action2=interestPayment&start_date_interest_payment=" + encodeURIComponent(startDate); // Tạo dữ liệu gửi đi
+    var data = "action2=interestPayment&start_date_interest_payment=" + encodeURIComponent(startDate) + "&price_interest_payment=" + encodeURIComponent(price); // Tạo dữ liệu gửi đi
     xhr.send(data); // Gửi dữ liệu đi
 }
 
