@@ -6,6 +6,7 @@ import com.example.tien_thanh.Service.IAndroid_PhoneService;
 import com.example.tien_thanh.model.Android_Phone;
 import com.example.tien_thanh.model.CCCD;
 
+import java.util.Date;
 import java.util.List;
 
 public class Android_PhoneServiceImpl implements IAndroid_PhoneService {
@@ -28,6 +29,11 @@ public class Android_PhoneServiceImpl implements IAndroid_PhoneService {
     @Override
     public void delete_Android_Phone(String id) {
         android_phoneRepository.delete_Android_Phone(id);
+    }
+
+    @Override
+    public void interest_payment(String id, Date date) {
+        android_phoneRepository.interest_payment(id, date);
     }
 
     @Override

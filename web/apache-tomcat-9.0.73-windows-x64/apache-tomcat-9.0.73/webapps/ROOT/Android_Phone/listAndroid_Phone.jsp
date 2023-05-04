@@ -16,8 +16,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        .form-edit, .form-delete, .form-pay {
+        .form-edit, .form-delete {
             display: inline-block;
+        }
+        .form-payment{
+            display: inline;
         }
     </style>
 </head>
@@ -104,17 +107,10 @@
                                 onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá
                         </button>
                     </form>
-                    <form action="/tienthanh" method="post" class="form-pay">
-<%--                        <input type="hidden" name="action2" value="interestPayment">--%>
-<%--                        <input type="hidden" id="start_date_interest_payment" value="${android_phone.id}">--%>
-<%--                        <input type="hidden" id="start_date_interest_payment" value="${android_phone.start_Date}">--%>
+                        <button type="button" class="btn btn-warning" onclick="calculate('${android_phone.start_Date}', '${android_phone.price}')">Gia hạn</button>
+                        <button type="button" class="btn btn-warning" onclick="take_the_product('${android_phone.start_Date}', '${android_phone.price}')">lấy máy</button>
 
-<%--                        <input type="hidden" id="start_date_interest_payment_${android_phone.id}" value="${android_phone.start_Date}">--%>
-<%--                        <a>value="${android_phone.start_Date}"</a>--%>
-                        <button type="button" class="btn btn-warning" onclick="calculate('${android_phone.start_Date}', '${android_phone.price}')">Tính lãi</button>
-
-<%--                        <button type="button" id="start_date" <c:set var="myDate" value="${requestScope.android_phone.start_Date}"/> class="btn btn-warning" onclick="interest_payment()">Tính lãi</button>--%>
-                    </form>
+<%--                        <button type="button" class="btn btn-warning" onclick="calculate('${android_phone.start_Date}', '${android_phone.price}')">Tính lãi</button>--%>
                     <div id="result"></div>
                 </td>
             </tr>
@@ -126,7 +122,7 @@ document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 }, false);
 
-function calculate(startDate,price) {
+function take_the_product(startDate, price){
     // let startDate = document.getElementById("start_date_interest_payment").value;
     <%--let startDate = document.getElementById(`start_date_interest_payment_${android_phone.id}`).value;--%>
     console.log(price);
@@ -139,7 +135,22 @@ function calculate(startDate,price) {
     };
     xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-    var data = "action2=interestPayment&start_date_interest_payment=" + encodeURIComponent(startDate) + "&price_interest_payment=" + encodeURIComponent(price); // Tạo dữ liệu gửi đi
+    var data = "action2=take_the_product_out&start_date_interest_payment=" + encodeURIComponent(startDate) + "&price_interest_payment=" + encodeURIComponent(price); // Tạo dữ liệu gửi đi
+    xhr.send(data); // Gửi dữ liệu đi
+}
+
+function calculate(startDate, price) {
+    console.log(price);
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var result = this.responseText;
+            alert(result);
+        }
+    };
+    xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
+    var data = "action2=interestPayment&start_date_interest_payment=" + startDate + "&price_interest_payment=" + encodeURIComponent(price); // Tạo dữ liệu gửi đi
     xhr.send(data); // Gửi dữ liệu đi
 }
 

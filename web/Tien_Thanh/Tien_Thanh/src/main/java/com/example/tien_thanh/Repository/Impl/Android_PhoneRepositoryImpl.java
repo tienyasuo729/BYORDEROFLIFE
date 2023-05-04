@@ -28,6 +28,19 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
     private String ADD_NEW_ANDROID_PHONE = "INSERT INTO android_phone(id,name_owner, name_phone, price, start_Date, status, password, note ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     private String DELETE_ANDROID_PHONE_BY_ID = "delete from android_phone where id = ?";
     private String EDIT_ANDROID_PHONE_BY_ID = "UPDATE android_phone SET name_owner = ?,name_phone = ?,price = ?,start_Date = ?,status = ?,password = ?,note = ? WHERE id = ?";
+    private String INTEREST_PAYMENT = "UPDATE android_phone SET  start_Date = ? WHERE id = ?";
+    @Override
+    public void interest_payment(String id, Date date) {
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(INTEREST_PAYMENT);
+            preparedStatement.setDate(1, new java.sql.Date(date.getTime()));
+            preparedStatement.setString(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public List<Android_Phone> displayAndroid_Phone() {
         List<Android_Phone> androidPhoneList = new ArrayList<>();
