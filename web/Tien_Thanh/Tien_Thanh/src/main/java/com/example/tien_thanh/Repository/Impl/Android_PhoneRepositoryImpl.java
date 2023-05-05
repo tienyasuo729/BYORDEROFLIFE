@@ -29,6 +29,9 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
     private String DELETE_ANDROID_PHONE_BY_ID = "delete from android_phone where id = ?";
     private String EDIT_ANDROID_PHONE_BY_ID = "UPDATE android_phone SET name_owner = ?,name_phone = ?,price = ?,start_Date = ?,status = ?,password = ?,note = ? WHERE id = ?";
     private String INTEREST_PAYMENT = "UPDATE android_phone SET  start_Date = ? WHERE id = ?";
+    private String LIST_FIND_ANDROID_PHONE_SIMILAR_BY_ID = "SELECT * from android_phone where id like ?";
+    private String LIST_FIND_ANDROID_PHONE_SIMILAR_BY_NAME = "select * from android_phone where name_owner like ?";
+    private String WATCH_LATE_LIST_ANDROID_PHONE = "";
     @Override
     public void interest_payment(String id, Date date) {
         try {
@@ -114,22 +117,50 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
     }
 
     @Override
-    public Android_Phone find_Android_Phone_By_id(String id) {
-        return null;
-    }
-
-    @Override
     public List<Android_Phone> list_Find_Android_Phone_Similar_By_Id(String id) {
-        return null;
+        List<Android_Phone> androidPhoneList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(LIST_FIND_ANDROID_PHONE_SIMILAR_BY_ID);
+            preparedStatement.setString(1, id + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String find_by_id = resultSet.getString("id");
+                String name_owner = resultSet.getString("name_owner");
+                String name_phone = resultSet.getString("name_phone");
+                int price = resultSet.getInt("price");
+                Date start_Date  = new Date(resultSet.getDate("start_Date").getTime());
+                String status = resultSet.getString("status");
+                String password = resultSet.getString("password");
+                String note = resultSet.getString("note");
+                androidPhoneList.add(new Android_Phone(find_by_id,name_owner,name_phone,price,start_Date,status,password,note));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return androidPhoneList;
     }
 
     @Override
-    public Android_Phone find_Android_Phone_By_Name(String id) {
-        return null;
-    }
-
-    @Override
-    public List<Android_Phone> list_Find_Android_Phone_Similar_By_Name(String id) {
-        return null;
+    public List<Android_Phone> list_Find_Android_Phone_Similar_By_Name(String name) {
+        List<Android_Phone> androidPhoneList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(LIST_FIND_ANDROID_PHONE_SIMILAR_BY_NAME);
+            preparedStatement.setString(1, name + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String id = resultSet.getString("id");
+                String name_owner = resultSet.getString("name_owner");
+                String name_phone = resultSet.getString("name_phone");
+                int price = resultSet.getInt("price");
+                Date start_Date  = new Date(resultSet.getDate("start_Date").getTime());
+                String status = resultSet.getString("status");
+                String password = resultSet.getString("password");
+                String note = resultSet.getString("note");
+                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return androidPhoneList;
     }
 }

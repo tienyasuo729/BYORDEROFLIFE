@@ -62,7 +62,7 @@ public class TienThanhServlet extends HttpServlet {
                 break;
             case "delete_android_phone_by_id":
                 delete_android_phone_by_id(request,response);
-                listAndroid_Phone(request,response);
+//                listAndroid_Phone(request,response);
                 break;
             case "save_edit_android_phone":
                 edit_android_phone(request,response);
@@ -75,6 +75,12 @@ public class TienThanhServlet extends HttpServlet {
                 break;
             case "extend_interest_payment":
                 extend_interest_payment(request,response);
+                break;
+            case "list_find_android_phone_similar_by_id":
+                list_find_android_phone_similar_by_id(request,response);
+                break;
+            case "list_find_android_phone_similar_by_name":
+                list_find_android_phone_similar_by_name(request,response);
                 break;
         }
         switch (action) {
@@ -94,6 +100,21 @@ public class TienThanhServlet extends HttpServlet {
 
 
         }
+    }
+
+    private void list_find_android_phone_similar_by_name(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String find_by_name = request.getParameter("find_by_name");
+        List<Android_Phone> androidPhones = android_phoneService.list_Find_Android_Phone_Similar_By_Name(find_by_name);
+        request.setAttribute("listAndroid_Phone", androidPhones);
+        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
+
+    }
+
+    private void list_find_android_phone_similar_by_id(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String find_by_id = request.getParameter("find_by_id");
+        List<Android_Phone> androidPhones = android_phoneService.list_Find_Android_Phone_Similar_By_Id(find_by_id);
+        request.setAttribute("listAndroid_Phone", androidPhones);
+        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
     }
 
     private void extend_interest_payment(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -209,11 +230,11 @@ public class TienThanhServlet extends HttpServlet {
 
     private void delete_android_phone_by_id(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id_need_to_delete = request.getParameter("id_need_to_delete");
-//        System.out.println("/1 " + id_need_to_delete);
         android_phoneService.delete_Android_Phone(id_need_to_delete);
-//        tìm cách để quay lại trang list mà không cần phải tải lại nguyên danh sách cho tốn dung lượng
-//        request.setAttribute("listAndroid_Phone", androidPhones);
-//        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
+        String result = "- Xoá thành công";
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(result);
     }
 
     private void listAndroid_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -259,7 +280,6 @@ public class TienThanhServlet extends HttpServlet {
         payment = ((price / 1000000) * 3000 + less_than_500(price)) * 10;
         return payment;
     }
-
     private int less_than_500 (int price){
         int support = price % 1000000;
         if ( support == 0){

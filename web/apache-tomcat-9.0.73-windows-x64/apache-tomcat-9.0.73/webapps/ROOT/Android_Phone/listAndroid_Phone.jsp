@@ -22,11 +22,6 @@
         .form-payment{
             display: inline;
         }
-        .action-buttons {
-            display: inline-block;
-            flex-direction: column;
-            gap: 10px;
-        }
     </style>
 </head>
 <body>
@@ -51,18 +46,18 @@
     </form>
     <div class="search">
         <form action="/tienthanh" method="post">
-            <h2>Tìm kiếm CCCD theo mã số</h2>
-            <input type="text" name="findByCccd" placeholder="Tìm kiếm theo mã số">
-            <input type="hidden" value="search" name="action2">
+            <h2>Tìm kiếm theo mã số</h2>
+            <input type="number" name="find_by_id" placeholder="Tìm kiếm theo mã số">
+            <input type="hidden" value="list_find_android_phone_similar_by_id" name="action2">
             <button type="submit">Tìm kiếm</button>
         </form>
     </div>
 
     <div class="search">
         <form action="/tienthanh" method="post">
-            <h2>Tìm kiếm CCCD theo tên</h2>
-            <input type="text" name="findByName" placeholder="Tìm Điện Thoại theo tên">
-            <input type="hidden" value="search" name="action2">
+            <h2>Tìm kiếm theo tên</h2>
+            <input type="text" name="find_by_name" placeholder="Tìm Điện Thoại theo tên">
+            <input type="hidden" value="list_find_android_phone_similar_by_name" name="action2">
             <button type="submit">Tìm kiếm</button>
         </form>
     </div>
@@ -82,13 +77,13 @@
             <th>Tình trạng</th>
             <th>Mật khẩu</th>
             <th>Ghi chú</th>
+            <th>Thanh Công cụ</th>
         </tr>
-        <% int count = 1; %>
+        <c:set var="count" value="1" />
         <c:forEach items="${listAndroid_Phone}" var="android_phone">
             <tr>
-                <td><%=count%>
-                </td>
-                <% count++; %>
+                <td><c:out value="${count}" /></td>
+                <c:set var="count" value="${count + 1}" />
 
                 <td><c:out value="${android_phone.id}"/></td>
                 <td><c:out value="${android_phone.name_owner}"/></td>
@@ -99,26 +94,23 @@
                 <td><c:out value="${android_phone.password}"/></td>
                 <td><c:out value="${android_phone.note}"/></td>
                 <td>
-                    <div>
-                        <form action="/tienthanh" method="post" class="form-edit">
-                            <input type="hidden" name="action" value="edit_Android_phone">
-                            <input type="hidden" name="id_need_to_edit" value="${android_phone.id}">
-                            <button type="submit" class="btn btn-success">Chỉnh sửa</button>
-                        </form>
+                    <form action="/tienthanh" method="post" class="form-edit">
+                        <input type="hidden" name="action" value="edit_Android_phone">
+                        <input type="hidden" name="id_need_to_edit" value="${android_phone.id}">
+                        <button type="submit" class="btn btn-success">Chỉnh sửa</button>
+                    </form>
 
-                        <form action="/tienthanh" method="post" class="form-delete">
-                            <input type="hidden" name="action2" value="delete_android_phone_by_id">
-                            <input type="hidden" name="id_need_to_delete" value="${android_phone.id}">
-                            <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá
-                            </button>
-                        </form>
-                    </div>
+<%--                    <form action="/tienthanh" method="post" class="form-delete">--%>
+<%--                        <input type="hidden" name="action2" value="delete_android_phone_by_id">--%>
+<%--                        <input type="hidden" name="id_need_to_delete" value="${android_phone.id}">--%>
+                        <button type="button" class="btn btn-danger"
+                                onclick="delete_the_product('${android_phone.id}', this)">Xoá
+                        </button>
+<%--                    </form>--%>
 
-                    <div class="action-buttons">
-                        <button type="button" class="btn btn-warning" onclick="calculate('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}')">Gia hạn</button>
-                        <button type="button" class="btn btn-info" onclick="take_the_product('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}')">Lấy máy</button>
-                    </div>
+                    <button type="button" class="btn btn-warning" onclick="calculate('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}')">Gia hạn</button>
+
+                    <button type="button" class="btn btn-info" onclick="take_the_product('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}',this)">lấy máy</button>
                 </td>
             </tr>
         </c:forEach>
@@ -129,7 +121,36 @@ document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 }, false);
 
-function take_the_product(id,startDate,price){
+function delete_the_product(id, btn){
+    let check = confirm("bạn có muốn xoá người này không");
+    if (check === true){
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // bảng này để xoá một hàng trong bảng ( chỉ xoá hàng trong jsp mà không động tới servlet)
+                var row = btn.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+                // đoạn này để thay đổi cột STT sau khi xoá một hàng trong bảng
+                var tableRows = document.getElementsByTagName('tr');
+                for (var i = 1; i < tableRows.length; i++) {
+                    tableRows[i].getElementsByTagName('td')[0].innerHTML = i;
+                }
+                // đoạn này để in ra thông báo thành công sau khi xoá thành công trong servlet
+                var result = this.responseText;
+                alert(result);
+            }
+        };
+        xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
+        var data = "action2=delete_android_phone_by_id" + "&id_need_to_delete=" + encodeURIComponent(id); // Tạo dữ liệu gửi đi
+        xhr.send(data); // Gửi dữ liệu đi
+    }else {
+        alert("- Xoá không thành công");
+    }
+
+}
+
+function take_the_product(id,startDate,price,btn){
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -138,6 +159,8 @@ function take_the_product(id,startDate,price){
             let check = confirm("Khách đã chắc chắn lấy máy không");
             if (check === true){
                 delete_after_take_the_product(id,startDate);
+                var row = btn.parentNode.parentNode;
+                row.parentNode.removeChild(row);
             }
         }
     };

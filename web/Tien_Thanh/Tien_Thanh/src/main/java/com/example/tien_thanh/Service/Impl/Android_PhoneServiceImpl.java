@@ -37,22 +37,13 @@ public class Android_PhoneServiceImpl implements IAndroid_PhoneService {
     }
 
     @Override
-    public Android_Phone find_Android_Phone_By_id(String id) {
-        return null;
-    }
-
-    @Override
     public List<Android_Phone> list_Find_Android_Phone_Similar_By_Id(String id) {
-        return null;
+        return android_phoneRepository.list_Find_Android_Phone_Similar_By_Id(id);
     }
 
-    @Override
-    public Android_Phone find_Android_Phone_By_Name(String id) {
-        return null;
-    }
 
     @Override
-    public List<Android_Phone> list_Find_Android_Phone_Similar_By_Name(String id) {
-        return null;
+    public List<Android_Phone> list_Find_Android_Phone_Similar_By_Name(String name) {
+        return android_phoneRepository.list_Find_Android_Phone_Similar_By_Name(name);
     }
 }

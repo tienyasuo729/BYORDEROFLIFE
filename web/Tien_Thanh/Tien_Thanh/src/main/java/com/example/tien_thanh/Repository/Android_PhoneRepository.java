@@ -11,10 +11,8 @@ public interface Android_PhoneRepository {
     void edit_Android_Phone(Android_Phone android_phone);
     void delete_Android_Phone(String id);
     void interest_payment(String id, Date date);
-    Android_Phone find_Android_Phone_By_id(String id);
     List<Android_Phone> list_Find_Android_Phone_Similar_By_Id(String id);
-    Android_Phone find_Android_Phone_By_Name(String id);
-    List<Android_Phone> list_Find_Android_Phone_Similar_By_Name(String id);
+    List<Android_Phone> list_Find_Android_Phone_Similar_By_Name(String name);
 
 }
 
