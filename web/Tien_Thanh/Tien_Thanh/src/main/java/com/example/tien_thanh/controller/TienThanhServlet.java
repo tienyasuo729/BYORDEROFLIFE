@@ -73,12 +73,16 @@ public class TienThanhServlet extends HttpServlet {
             case "take_the_product_out":
                 take_the_product(request,response);
                 break;
+            case "extend_interest_payment":
+                extend_interest_payment(request,response);
+                break;
         }
         switch (action) {
             case "create":
                 Form_create_Android_Phone(request, response);
                 break;
             case "list_Android_phone":
+            case "reload":
                 listAndroid_Phone(request,response);
                 break;
             case "edit_Android_phone":
@@ -92,35 +96,58 @@ public class TienThanhServlet extends HttpServlet {
         }
     }
 
-    private void take_the_product(HttpServletRequest request, HttpServletResponse response) {
-        String dateString = request.getParameter("start_date_interest_payment");
-        int price = Integer.parseInt(request.getParameter("price_interest_payment"));
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
-        int interest_payment = 0;
+    private void extend_interest_payment(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String start_date = request.getParameter("start_date_interest_payment");
+        int days = Integer.parseInt(request.getParameter("days_interest_payment"));
+        String id = request.getParameter("id_extend_interest_payment");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
         try {
-            LocalDate startDate = LocalDate.parse(dateString, dateFormat);
-            long daysBetween = ChronoUnit.DAYS.between(startDate, LocalDate.now());
+            Date startDate = dateFormat.parse(start_date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startDate);
+            calendar.add(Calendar.DATE, days);
+            Date newDate = calendar.getTime();
+            android_phoneService.interest_payment(id, newDate); // sửa ngày sau khi gia hạn trong mySQL
+            String result = "- Gia hạn thành công";
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(result);
 
-            String result = "Khoảng cách giữa hai ngày là " + daysBetween + " ngày.";
+        } catch (Exception e) {
+            String result = "- Gia hạn Không thành công";
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(result);
+        }
+
+    }
+
+    private void take_the_product(HttpServletRequest request, HttpServletResponse response) {
+        String start_date = request.getParameter("start_date_interest_payment");
+        int price = Integer.parseInt(request.getParameter("price_interest_payment"));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+        try {
+            Date startDate = dateFormat.parse(start_date);
+            long daysBetween = ChronoUnit.DAYS.between(startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalDate.now());
+            String result = "- Khoảng cách giữa hai ngày là " + daysBetween + " ngày." + "\n- Số tiền lãi " + daysBetween + " ngày là : " + money_all_days((int) daysBetween,price);
             response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(result);
 //            String jsCode = "alert(\"" + result + "\");";
 //            response.getWriter().write("<script type='text/javascript'>" + jsCode + "</script>");
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private void interest_payment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String dateString = request.getParameter("start_date_interest_payment");
-//        System.out.println(dateString);
+//        String start_date = request.getParameter("start_date_interest_payment");
+//        System.out.println(start_date);
 ////        int price = Integer.parseInt(request.getParameter("price_interest_payment"));
 //        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
 ////        int interest_payment = 0;
 //        try {
-//            LocalDate startDate = LocalDate.parse(dateString, dateFormat);
+//            LocalDate startDate = LocalDate.parse(start_date, dateFormat);
 //            long daysBetween = ChronoUnit.DAYS.between(startDate, LocalDate.now());
 //            String result = "Khoảng cách giữa hai ngày là " + daysBetween + " ngày.";
 //            response.setContentType("text/plain");
@@ -129,13 +156,23 @@ public class TienThanhServlet extends HttpServlet {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-        String dateString = request.getParameter("start_date_interest_payment");
+
+        String start_date = request.getParameter("start_date_interest_payment");
+        int price = Integer.parseInt(request.getParameter("price_interest_payment"));
+        int days = Integer.parseInt(request.getParameter("days_interest_payment"));
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
         try {
-            Date startDate = dateFormat.parse(dateString);
-            Date newDate = startDate.plusDays(10);
+            Date startDate = dateFormat.parse(start_date);
             long daysBetween = ChronoUnit.DAYS.between(startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalDate.now());
-            String result = "Khoảng cách giữa hai ngày là " + daysBetween + " ngày.";
+
+            //            Calendar calendar = Calendar.getInstance();
+//            calendar.setTime(startDate);
+//            calendar.add(Calendar.DATE, 10);
+//            Date newDate = calendar.getTime();
+
+//            android_phoneService.interest_payment(id, newDate); // sửa ngày sau khi gia hạn trong mySQL
+
+            String result = "- Khoảng cách giữa hai ngày là " + daysBetween + " ngày." + "\n- Số tiền lãi " + days + " ngày là : " + money_all_days(days,price);
             response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(result);
@@ -207,13 +244,14 @@ public class TienThanhServlet extends HttpServlet {
         android_phoneService.add_New_Android_Phone(android_phone);
         request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request,response);
     }
-    private int money_all_days(int day, int price){
+    private int money_all_days(int days, int price){
         int payment = 0;
-        if (day <= 10){
-            payment = ((price / 1000000) * 3000 + less_than_500(price)) * 10;
-        }else {
-            payment = ((price / 1000000) * 3000 + less_than_500(price)) * day;
-        }
+//        if (day <= 10){
+//            payment = ((price / 1000000) * 3000 + less_than_500(price)) * 10;
+//        }else {
+//            payment = ((price / 1000000) * 3000 + less_than_500(price)) * day;
+//        }
+        payment = ((price / 1000000) * 3000 + less_than_500(price)) * days;
         return payment;
     }
     private int money_10_days(int price){
@@ -226,7 +264,7 @@ public class TienThanhServlet extends HttpServlet {
         int support = price % 1000000;
         if ( support == 0){
             return 0;
-        }else if (support < 500){
+        }else if (support < 500000){
             return 2000;
         }else {
             return 3000;

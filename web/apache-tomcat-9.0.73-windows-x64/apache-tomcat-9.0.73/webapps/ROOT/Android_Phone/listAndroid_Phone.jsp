@@ -22,6 +22,11 @@
         .form-payment{
             display: inline;
         }
+        .action-buttons {
+            display: inline-block;
+            flex-direction: column;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -94,24 +99,26 @@
                 <td><c:out value="${android_phone.password}"/></td>
                 <td><c:out value="${android_phone.note}"/></td>
                 <td>
-                    <form action="/tienthanh" method="post" class="form-edit">
-                        <input type="hidden" name="action" value="edit_Android_phone">
-                        <input type="hidden" name="id_need_to_edit" value="${android_phone.id}">
-                        <button type="submit" class="btn btn-success">Chỉnh sửa</button>
-                    </form>
+                    <div>
+                        <form action="/tienthanh" method="post" class="form-edit">
+                            <input type="hidden" name="action" value="edit_Android_phone">
+                            <input type="hidden" name="id_need_to_edit" value="${android_phone.id}">
+                            <button type="submit" class="btn btn-success">Chỉnh sửa</button>
+                        </form>
 
-                    <form action="/tienthanh" method="post" class="form-delete">
-                        <input type="hidden" name="action2" value="delete_android_phone_by_id">
-                        <input type="hidden" name="id_need_to_delete" value="${android_phone.id}">
-                        <button type="submit" class="btn btn-danger"
-                                onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá
-                        </button>
-                    </form>
-                        <button type="button" class="btn btn-warning" onclick="calculate('${android_phone.start_Date}', '${android_phone.price}')">Gia hạn</button>
-                        <button type="button" class="btn btn-warning" onclick="take_the_product('${android_phone.start_Date}', '${android_phone.price}')">lấy máy</button>
+                        <form action="/tienthanh" method="post" class="form-delete">
+                            <input type="hidden" name="action2" value="delete_android_phone_by_id">
+                            <input type="hidden" name="id_need_to_delete" value="${android_phone.id}">
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Xoá
+                            </button>
+                        </form>
+                    </div>
 
-<%--                        <button type="button" class="btn btn-warning" onclick="calculate('${android_phone.start_Date}', '${android_phone.price}')">Tính lãi</button>--%>
-                    <div id="result"></div>
+                    <div class="action-buttons">
+                        <button type="button" class="btn btn-warning" onclick="calculate('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}')">Gia hạn</button>
+                        <button type="button" class="btn btn-info" onclick="take_the_product('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}')">Lấy máy</button>
+                    </div>
                 </td>
             </tr>
         </c:forEach>
@@ -122,25 +129,48 @@ document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 }, false);
 
-function take_the_product(startDate, price){
-    // let startDate = document.getElementById("start_date_interest_payment").value;
-    <%--let startDate = document.getElementById(`start_date_interest_payment_${android_phone.id}`).value;--%>
-    console.log(price);
+function take_the_product(id,startDate,price){
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var result = this.responseText;
             alert(result);
+            let check = confirm("Khách đã chắc chắn lấy máy không");
+            if (check === true){
+                delete_after_take_the_product(id,startDate);
+            }
         }
     };
     xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-    var data = "action2=take_the_product_out&start_date_interest_payment=" + encodeURIComponent(startDate) + "&price_interest_payment=" + encodeURIComponent(price); // Tạo dữ liệu gửi đi
+    var data = "action2=take_the_product_out" + "&start_date_interest_payment=" + encodeURIComponent(startDate) + "&price_interest_payment=" + encodeURIComponent(price); // Tạo dữ liệu gửi đi
     xhr.send(data); // Gửi dữ liệu đi
 }
 
-function calculate(startDate, price) {
-    console.log(price);
+function calculate(id, startDate, price) {
+    let days;
+    do {
+        days = +prompt("Nhập số ngày cầm tính lãi");
+    }while (isNaN(days));
+    console.log(days);
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var result = this.responseText;
+            alert(result);
+            let check = confirm("bạn có muốn gia hạn không");
+            if (check === true){
+                extend_start_date(id,startDate,days);
+            }
+        }
+    };
+
+    xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
+    var data = "action2=interestPayment" + "&start_date_interest_payment=" + encodeURIComponent(startDate) + "&price_interest_payment=" + encodeURIComponent(price) + "&days_interest_payment=" + encodeURIComponent(days); // Tạo dữ liệu gửi đi
+    xhr.send(data); // Gửi dữ liệu đi
+}
+function extend_start_date(id, startDate, days){
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -148,9 +178,25 @@ function calculate(startDate, price) {
             alert(result);
         }
     };
+
     xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-    var data = "action2=interestPayment&start_date_interest_payment=" + startDate + "&price_interest_payment=" + encodeURIComponent(price); // Tạo dữ liệu gửi đi
+    var data = "action2=extend_interest_payment&id_extend_interest_payment=" + encodeURIComponent(id) + "&start_date_interest_payment=" + encodeURIComponent(startDate) + "&days_interest_payment=" + encodeURIComponent(days); // Tạo dữ liệu gửi đi
+    xhr.send(data); // Gửi dữ liệu đi
+}
+
+function delete_after_take_the_product(id,startDate){
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var result = this.responseText;
+            alert("Lấy máy thành công");
+        }
+    };
+
+    xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
+    var data = "action2=delete_android_phone_by_id&id_need_to_delete=" + encodeURIComponent(id) + "&start_date_interest_payment=" + encodeURIComponent(startDate); // Tạo dữ liệu gửi đi
     xhr.send(data); // Gửi dữ liệu đi
 }
 
