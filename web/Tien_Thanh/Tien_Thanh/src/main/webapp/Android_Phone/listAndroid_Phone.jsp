@@ -13,6 +13,7 @@
     <title>Tiệm cầm đồ Tiến Thanh</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -28,22 +29,31 @@
 <center>
     <h1>Cầm đồ Tiến Thanh</h1>
 
-    <form method="post" action="/tienthanh">
-        <input type="hidden" name="action" value="create">
-        <button type="submit" class="btn btn-success">Thêm Điện thoại cầm</button>
+<%--    <form method="post" action="/tienthanh">--%>
+<%--        <input type="hidden" name="action" value="create">--%>
+<%--        <button type="submit" class="btn btn-success">Thêm Điện thoại cầm</button>--%>
+<%--    </form>--%>
+
+    <form>
+        <button type="button" onclick="add()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Thêm Điện thoại cầm</button>d
     </form>
+
     <form method="post" action="/tienthanh">
         <input type="hidden" name="action" value="reload">
-        <button class="btn btn-success">Tải lại trang</button>
+        <button class="btn btn-success">Quay lại trang chính</button>
     </form>
+
     <form method="post" action="/tienthanh">
-        <input type="hidden" name="action2" value="watch_late_list">
+        <input type="hidden" name="action2" value="watch_late_list_android_phone">
         <button class="btn btn-success">Xem danh sách trễ hạn</button>
     </form>
+
     <form method="post" action="/tienthanh">
-        <input type="hidden" name="action2" value="watch_near_term_list">
+        <input type="hidden" name="action2" value="watch_near_term_list_android_phone">
         <button class="btn btn-success">Xem danh sách gần tới hạn</button>
     </form>
+
+
     <div class="search">
         <form action="/tienthanh" method="post">
             <h2>Tìm kiếm theo mã số</h2>
@@ -116,10 +126,118 @@
         </c:forEach>
     </table>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm điện thoại cầm mới</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="id_android_phone" class="col-form-label">Mã số:</label>
+                        <input type="number" name="id" class="form-control" id="id_android_phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name_android_phone" class="col-form-label">Họ và tên:</label>
+                        <input type="text" name="name_owner"  class="form-control" id="name_android_phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mySelect" class="col-form-label">Loại máy:</label>
+<%--                        <input type="number" name="id" class="form-control" id="type_android_phone">--%>
+                        <select name="name_phone" id="mySelect">
+                            <optgroup label="Các hãng điện thoại">
+                                <option value="samsung">SAMSUNG</option>
+                                <option value="oppo">OPPO</option>
+                                <option value="realme">REALME</option>
+                                <option value="vivo">VIVO</option>
+                                <option value="xiaomi">XIAOMI</option>
+                                <option value="one_plus">ONE PLUS</option>
+                            </optgroup>
+                            <optgroup label="Hãng điện thoại khác">
+                                <option value="khac">Khác</option>
+                            </optgroup>
+                        </select>
+                        <div id="otherBrand" style="display:none;">
+                            <input type="text" class="form-control" id="otherBrandInput" onblur="gg()" placeholder="Nhập tên hãng điện thoại khác...">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price_android_phone" class="col-form-label">PRICE:</label>
+                        <input type="number" name="price" class="form-control" id="price_android_phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="start_date_android_phone" class="col-form-label">Ngày cầm:</label>
+                        <input type="date" name="start_Date"  class="form-control" id="start_date_android_phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="status_android_phone" class="col-form-label">Tình trạng:</label>
+                        <input type="text" name="status" class="form-control" id="status_android_phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password_android_phone" class="col-form-label">Mật khẩu:</label>
+                        <input type="text" name="password" class="form-control" id="password_android_phone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="note_android_phone" class="col-form-label">Ghi chú:</label>
+                        <input type="text" name="note" class="form-control" id="note_android_phone">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script> //  script này để ngăn người dùng nhấn chuột phải rồi nhấn kiểm tra để xem được code html
 document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 }, false);
+
+var select = document.getElementById("mySelect");
+var otherBrandDiv = document.getElementById("otherBrand");
+var otherBrandInput = document.getElementById("otherBrandInput");
+
+select.addEventListener("change", function() {
+    if (select.value === "khac") {
+        otherBrandDiv.style.display = "block";
+    } else {
+        otherBrandDiv.style.display = "none";
+    }
+});
+
+function add(){
+    const exampleModal = document.getElementById('exampleModal')
+    if (exampleModal) {
+        exampleModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            const recipient = button.getAttribute('data-bs-whatever')
+            // If necessary, you could initiate an Ajax request here
+            // and then do the updating in a callback.
+
+            // Update the modal's content.
+            const modalTitle = exampleModal.querySelector('.modal-title')
+            const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+            modalTitle.textContent = `New message to ${recipient}`
+            modalBodyInput.value = recipient
+        })
+    }
+}
+
+function gg() {
+    var otherBrandValue = otherBrandInput.value;
+    var otherBrandOption = select.querySelector('option[value="khac"]');
+    otherBrandOption.value = otherBrandValue;
+}
 
 function delete_the_product(id, btn){
     let check = confirm("bạn có muốn xoá người này không");

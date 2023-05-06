@@ -12,17 +12,12 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 @WebServlet(name = "TienThanhServlet", value = "/tienthanh")
 public class TienThanhServlet extends HttpServlet {
@@ -82,6 +77,12 @@ public class TienThanhServlet extends HttpServlet {
             case "list_find_android_phone_similar_by_name":
                 list_find_android_phone_similar_by_name(request,response);
                 break;
+            case "watch_late_list_android_phone":
+                watch_late_list_android_phone(request,response);
+                break;
+            case "watch_near_term_list_android_phone":
+                watch_near_term_list_android_phone(request,response);
+                break;    
         }
         switch (action) {
             case "create":
@@ -100,6 +101,20 @@ public class TienThanhServlet extends HttpServlet {
 
 
         }
+    }
+
+    private void watch_near_term_list_android_phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Android_Phone> androidPhones = android_phoneService.near_term_list_android_phone();
+        request.setAttribute("listAndroid_Phone", androidPhones);
+        request.getRequestDispatcher("Android_Phone/near_term_list_android_phone.jsp").forward(request, response);
+
+    }
+
+    private void watch_late_list_android_phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Android_Phone> androidPhones = android_phoneService.late_list_android_phone();
+        request.setAttribute("listAndroid_Phone", androidPhones);
+        request.getRequestDispatcher("Android_Phone/late_list_android_phone.jsp").forward(request, response);
+
     }
 
     private void list_find_android_phone_similar_by_name(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -267,11 +282,6 @@ public class TienThanhServlet extends HttpServlet {
     }
     private int money_all_days(int days, int price){
         int payment = 0;
-//        if (day <= 10){
-//            payment = ((price / 1000000) * 3000 + less_than_500(price)) * 10;
-//        }else {
-//            payment = ((price / 1000000) * 3000 + less_than_500(price)) * day;
-//        }
         payment = ((price / 1000000) * 3000 + less_than_500(price)) * days;
         return payment;
     }

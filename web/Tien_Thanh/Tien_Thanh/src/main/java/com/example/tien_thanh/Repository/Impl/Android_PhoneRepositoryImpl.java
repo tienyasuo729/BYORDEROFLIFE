@@ -31,7 +31,8 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
     private String INTEREST_PAYMENT = "UPDATE android_phone SET  start_Date = ? WHERE id = ?";
     private String LIST_FIND_ANDROID_PHONE_SIMILAR_BY_ID = "SELECT * from android_phone where id like ?";
     private String LIST_FIND_ANDROID_PHONE_SIMILAR_BY_NAME = "select * from android_phone where name_owner like ?";
-    private String WATCH_LATE_LIST_ANDROID_PHONE = "";
+    private String WATCH_LATE_LIST_ANDROID_PHONE = "SELECT * from android_phone where DATEDIFF(CURRENT_DATE(), start_Date) > 10";
+    private String WATCH_NEAR_TERM_LIST_ANDROID_PHONE = "SELECT * from android_phone where DATEDIFF(CURRENT_DATE(), start_Date) BETWEEN 8 AND 10";
     @Override
     public void interest_payment(String id, Date date) {
         try {
@@ -157,6 +158,52 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
                 String password = resultSet.getString("password");
                 String note = resultSet.getString("note");
                 androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return androidPhoneList;
+    }
+
+    @Override
+    public List<Android_Phone> late_list_android_phone() {
+        List<Android_Phone> androidPhoneList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(WATCH_LATE_LIST_ANDROID_PHONE);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String id = resultSet.getString("id");
+                String name_owner = resultSet.getString("name_owner");
+                String name_phone = resultSet.getString("name_phone");
+                int price = resultSet.getInt("price");
+                Date start_Date  = new Date(resultSet.getDate("start_Date").getTime());
+                String status = resultSet.getString("status");
+                String password = resultSet.getString("password");
+                String note = resultSet.getString("note");
+                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return androidPhoneList;
+    }
+
+    @Override
+    public List<Android_Phone> near_term_list_android_phone() {
+        List<Android_Phone> androidPhoneList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(WATCH_NEAR_TERM_LIST_ANDROID_PHONE);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String name_owner = resultSet.getString("name_owner");
+                String name_phone = resultSet.getString("name_phone");
+                int price = resultSet.getInt("price");
+                Date start_Date = new Date(resultSet.getDate("start_Date").getTime());
+                String status = resultSet.getString("status");
+                String password = resultSet.getString("password");
+                String note = resultSet.getString("note");
+                androidPhoneList.add(new Android_Phone(id, name_owner, name_phone, price, start_Date, status, password, note));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

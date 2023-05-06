@@ -46,4 +46,14 @@ public class Android_PhoneServiceImpl implements IAndroid_PhoneService {
     public List<Android_Phone> list_Find_Android_Phone_Similar_By_Name(String name) {
         return android_phoneRepository.list_Find_Android_Phone_Similar_By_Name(name);
     }
+
+    @Override
+    public List<Android_Phone> late_list_android_phone() {
+        return android_phoneRepository.late_list_android_phone();
+    }
+
+    @Override
+    public List<Android_Phone> near_term_list_android_phone() {
+        return android_phoneRepository.near_term_list_android_phone();
+    }
 }

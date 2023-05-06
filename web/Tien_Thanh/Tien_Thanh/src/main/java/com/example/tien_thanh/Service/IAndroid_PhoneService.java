@@ -13,4 +13,6 @@ public interface IAndroid_PhoneService {
     void interest_payment(String id, Date date);
     List<Android_Phone> list_Find_Android_Phone_Similar_By_Id(String id);
     List<Android_Phone> list_Find_Android_Phone_Similar_By_Name(String name);
+    List<Android_Phone> late_list_android_phone();
+    List<Android_Phone> near_term_list_android_phone();
 }
