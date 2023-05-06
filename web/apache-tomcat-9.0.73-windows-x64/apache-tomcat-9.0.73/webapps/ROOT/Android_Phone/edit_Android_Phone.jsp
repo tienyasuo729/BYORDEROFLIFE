@@ -68,7 +68,7 @@
                             </optgroup>
                         </select>
                         <div id="otherBrand" style="display:none;">
-                            <input type="text" id="otherBrandInput" onblur="gg()" placeholder="Nhập tên hãng điện thoại khác...">
+                            <input type="text" id="otherBrandInput" onblur="gg()" f placeholder="Nhập tên hãng điện thoại khác...">
                         </div>
                 </td>
             </tr>

@@ -7,10 +7,12 @@ import com.example.tien_thanh.Service.Impl.Android_PhoneServiceImpl;
 import com.example.tien_thanh.Service.Impl.CccdServiceImpl;
 import com.example.tien_thanh.Service.Impl.DetailServiceImpl;
 import com.example.tien_thanh.model.Android_Phone;
+import org.json.JSONObject;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -262,6 +264,15 @@ public class TienThanhServlet extends HttpServlet {
         request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request, response);
     }
     private void create_Android_Phone(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+//        BufferedReader reader = request.getReader();
+//        StringBuilder stringBuilder = new StringBuilder();
+//        String line;
+//        while ((line = reader.readLine()) != null) {
+//            stringBuilder.append(line);
+//        }
+//        String jsonString = stringBuilder.toString();
+//        JSONObject jsonObject = new JSONObject(jsonString);
+
         String id = request.getParameter("id");
         String name_owner = request.getParameter("name_owner");
         String name_phone = request.getParameter("name_phone");
@@ -276,6 +287,22 @@ public class TienThanhServlet extends HttpServlet {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+
+//        String id = jsonObject.getString("id");
+//        String name_owner = jsonObject.getString("name_owner");
+//        String name_phone = jsonObject.getString("name_phone");
+//        int price = (int) jsonObject.getDouble("price");
+//        String status = jsonObject.getString("status");
+//        String password = jsonObject.getString("password");
+//        String note = jsonObject.getString("note");
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        Date start_Date = null;
+//        try {
+//            start_Date = dateFormat.parse(jsonObject.getString("start_Date"));
+//        } catch (ParseException e) {
+//            throw new RuntimeException(e);
+//        }
+
         Android_Phone android_phone = new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note);
         android_phoneService.add_New_Android_Phone(android_phone);
         request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request,response);

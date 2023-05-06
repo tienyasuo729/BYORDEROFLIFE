@@ -13,14 +13,17 @@
     <title>Tiệm cầm đồ Tiến Thanh</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .form-edit, .form-delete {
             display: inline-block;
         }
-        .form-payment{
+
+        .form-payment {
             display: inline;
         }
     </style>
@@ -29,13 +32,15 @@
 <center>
     <h1>Cầm đồ Tiến Thanh</h1>
 
-<%--    <form method="post" action="/tienthanh">--%>
-<%--        <input type="hidden" name="action" value="create">--%>
-<%--        <button type="submit" class="btn btn-success">Thêm Điện thoại cầm</button>--%>
-<%--    </form>--%>
+    <%--    <form method="post" action="/tienthanh">--%>
+    <%--        <input type="hidden" name="action" value="create">--%>
+    <%--        <button type="submit" class="btn btn-success">Thêm Điện thoại cầm</button>--%>
+    <%--    </form>--%>
 
     <form>
-        <button type="button" onclick="add()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Thêm Điện thoại cầm</button>d
+        <button type="button" onclick="add()" class="btn btn-success" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" data-bs-whatever="@mdo">Thêm Điện thoại cầm
+        </button>
     </form>
 
     <form method="post" action="/tienthanh">
@@ -89,17 +94,17 @@
             <th>Ghi chú</th>
             <th>Thanh Công cụ</th>
         </tr>
-        <c:set var="count" value="1" />
+        <c:set var="count" value="1"/>
         <c:forEach items="${listAndroid_Phone}" var="android_phone">
             <tr>
-                <td><c:out value="${count}" /></td>
-                <c:set var="count" value="${count + 1}" />
+                <td><c:out value="${count}"/></td>
+                <c:set var="count" value="${count + 1}"/>
 
                 <td><c:out value="${android_phone.id}"/></td>
                 <td><c:out value="${android_phone.name_owner}"/></td>
                 <td><c:out value="${android_phone.name_phone}"/></td>
                 <td><fmt:formatNumber value="${android_phone.price}" pattern="###,###,###,###"/></td>
-                <td ><fmt:formatDate  value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/></td>
+                <td><fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/></td>
                 <td><c:out value="${android_phone.status}"/></td>
                 <td><c:out value="${android_phone.password}"/></td>
                 <td><c:out value="${android_phone.note}"/></td>
@@ -110,17 +115,23 @@
                         <button type="submit" class="btn btn-success">Chỉnh sửa</button>
                     </form>
 
-<%--                    <form action="/tienthanh" method="post" class="form-delete">--%>
-<%--                        <input type="hidden" name="action2" value="delete_android_phone_by_id">--%>
-<%--                        <input type="hidden" name="id_need_to_delete" value="${android_phone.id}">--%>
-                        <button type="button" class="btn btn-danger"
-                                onclick="delete_the_product('${android_phone.id}', this)">Xoá
-                        </button>
-<%--                    </form>--%>
+                        <%--                    <form action="/tienthanh" method="post" class="form-delete">--%>
+                        <%--                        <input type="hidden" name="action2" value="delete_android_phone_by_id">--%>
+                        <%--                        <input type="hidden" name="id_need_to_delete" value="${android_phone.id}">--%>
+                    <button type="button" class="btn btn-danger"
+                            onclick="delete_the_product('${android_phone.id}', this)">Xoá
+                    </button>
+                        <%--                    </form>--%>
 
-                    <button type="button" class="btn btn-warning" onclick="calculate('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}')">Gia hạn</button>
+                    <button type="button" class="btn btn-warning"
+                            onclick="calculate('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}')">
+                        Gia hạn
+                    </button>
 
-                    <button type="button" class="btn btn-info" onclick="take_the_product('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}',this)">lấy máy</button>
+                    <button type="button" class="btn btn-info"
+                            onclick="take_the_product('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}',this)">
+                        lấy máy
+                    </button>
                 </td>
             </tr>
         </c:forEach>
@@ -142,11 +153,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="name_android_phone" class="col-form-label">Họ và tên:</label>
-                        <input type="text" name="name_owner"  class="form-control" id="name_android_phone">
+                        <input type="text" name="name_owner" class="form-control" id="name_android_phone">
                     </div>
                     <div class="mb-3">
                         <label for="mySelect" class="col-form-label">Loại máy:</label>
-<%--                        <input type="number" name="id" class="form-control" id="type_android_phone">--%>
+                        <%--                        <input type="number" name="id" class="form-control" id="type_android_phone">--%>
                         <select name="name_phone" id="mySelect">
                             <optgroup label="Các hãng điện thoại">
                                 <option value="samsung">SAMSUNG</option>
@@ -161,7 +172,8 @@
                             </optgroup>
                         </select>
                         <div id="otherBrand" style="display:none;">
-                            <input type="text" class="form-control" id="otherBrandInput" onblur="gg()" placeholder="Nhập tên hãng điện thoại khác...">
+                            <input type="text" class="form-control" id="otherBrandInput" onblur="gg()"
+                                   placeholder="Nhập tên hãng điện thoại khác...">
                         </div>
                     </div>
                     <div class="mb-3">
@@ -169,8 +181,10 @@
                         <input type="number" name="price" class="form-control" id="price_android_phone">
                     </div>
                     <div class="mb-3">
+                        <fmt:formatDate pattern="dd/MM/yyyy" value="${now}" var="formattedDate" />
                         <label for="start_date_android_phone" class="col-form-label">Ngày cầm:</label>
-                        <input type="date" name="start_Date"  class="form-control" id="start_date_android_phone">
+                        <input type="date" name="start_Date" class="form-control" id="start_date_android_phone" value="${formattedDate}">
+<%--                        <fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/>--%>
                     </div>
                     <div class="mb-3">
                         <label for="status_android_phone" class="col-form-label">Tình trạng:</label>
@@ -189,7 +203,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
+                <button type="submit" class="btn btn-primary" id="saveButton" onclick="submit_add()">Save</button>
             </div>
         </div>
     </div>
@@ -200,11 +214,50 @@ document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 }, false);
 
+<%--var select = document.getElementById("mySelect");--%>
+<%--var otherBrandDiv = document.getElementById("otherBrand");--%>
+<%--var otherBrandInput = document.getElementById("otherBrandInput");--%>
+
+<%--select.addEventListener("change", function () {--%>
+<%--    if (select.value === "khac") {--%>
+<%--        otherBrandDiv.style.display = "block";--%>
+<%--    } else {--%>
+<%--        otherBrandDiv.style.display = "none";--%>
+<%--    }--%>
+<%--});--%>
+
+<%--function add() {--%>
+<%--    const exampleModal = document.getElementById('exampleModal')--%>
+<%--    if (exampleModal) {--%>
+<%--        exampleModal.addEventListener('show.bs.modal', event => {--%>
+<%--            // Button that triggered the modal--%>
+<%--            const button = event.relatedTarget--%>
+<%--            // Extract info from data-bs-* attributes--%>
+<%--            const recipient = button.getAttribute('data-bs-whatever')--%>
+<%--            // If necessary, you could initiate an Ajax request here--%>
+<%--            // and then do the updating in a callback.--%>
+
+<%--            // Update the modal's content.--%>
+<%--            const modalTitle = exampleModal.querySelector('.modal-title')--%>
+<%--            const modalBodyInput = exampleModal.querySelector('.modal-body input')--%>
+
+<%--            modalTitle.textContent = `New message to ${recipient}`--%>
+<%--            modalBodyInput.value = recipient--%>
+<%--        })--%>
+<%--    }--%>
+<%--}--%>
+
+<%--function gg() {--%>
+<%--    var otherBrandValue = otherBrandInput.value;--%>
+<%--    var otherBrandOption = select.querySelector('option[value="khac"]');--%>
+<%--    otherBrandOption.value = otherBrandValue;--%>
+<%--}--%>
+
 var select = document.getElementById("mySelect");
 var otherBrandDiv = document.getElementById("otherBrand");
 var otherBrandInput = document.getElementById("otherBrandInput");
 
-select.addEventListener("change", function() {
+select.addEventListener("change", function () {
     if (select.value === "khac") {
         otherBrandDiv.style.display = "block";
     } else {
@@ -212,38 +265,21 @@ select.addEventListener("change", function() {
     }
 });
 
-function add(){
-    const exampleModal = document.getElementById('exampleModal')
-    if (exampleModal) {
-        exampleModal.addEventListener('show.bs.modal', event => {
-            // Button that triggered the modal
-            const button = event.relatedTarget
-            // Extract info from data-bs-* attributes
-            const recipient = button.getAttribute('data-bs-whatever')
-            // If necessary, you could initiate an Ajax request here
-            // and then do the updating in a callback.
+// Lấy giá trị của lựa chọn đầu tiên
+var firstOptionValue = select.options[0].value;
 
-            // Update the modal's content.
-            const modalTitle = exampleModal.querySelector('.modal-title')
-            const modalBodyInput = exampleModal.querySelector('.modal-body input')
-
-            modalTitle.textContent = `New message to ${recipient}`
-            modalBodyInput.value = recipient
-        })
-    }
-}
-
+// Thay đổi giá trị của lựa chọn khác thành giá trị của lựa chọn đầu tiên
 function gg() {
     var otherBrandValue = otherBrandInput.value;
     var otherBrandOption = select.querySelector('option[value="khac"]');
-    otherBrandOption.value = otherBrandValue;
+    otherBrandOption.value = otherBrandValue || firstOptionValue;
 }
 
-function delete_the_product(id, btn){
+function delete_the_product(id, btn) {
     let check = confirm("bạn có muốn xoá người này không");
-    if (check === true){
+    if (check === true) {
         let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 // bảng này để xoá một hàng trong bảng ( chỉ xoá hàng trong jsp mà không động tới servlet)
                 var row = btn.parentNode.parentNode;
@@ -262,21 +298,21 @@ function delete_the_product(id, btn){
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
         var data = "action2=delete_android_phone_by_id" + "&id_need_to_delete=" + encodeURIComponent(id); // Tạo dữ liệu gửi đi
         xhr.send(data); // Gửi dữ liệu đi
-    }else {
+    } else {
         alert("- Xoá không thành công");
     }
 
 }
 
-function take_the_product(id,startDate,price,btn){
+function take_the_product(id, startDate, price, btn) {
     let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var result = this.responseText;
             alert(result);
             let check = confirm("Khách đã chắc chắn lấy máy không");
-            if (check === true){
-                delete_after_take_the_product(id,startDate);
+            if (check === true) {
+                delete_after_take_the_product(id, startDate);
                 var row = btn.parentNode.parentNode;
                 row.parentNode.removeChild(row);
             }
@@ -292,16 +328,16 @@ function calculate(id, startDate, price) {
     let days;
     do {
         days = +prompt("Nhập số ngày cầm tính lãi");
-    }while (isNaN(days));
+    } while (isNaN(days));
     console.log(days);
     let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var result = this.responseText;
             alert(result);
             let check = confirm("bạn có muốn gia hạn không");
-            if (check === true){
-                extend_start_date(id,startDate,days);
+            if (check === true) {
+                extend_start_date(id, startDate, days);
             }
         }
     };
@@ -311,9 +347,10 @@ function calculate(id, startDate, price) {
     var data = "action2=interestPayment" + "&start_date_interest_payment=" + encodeURIComponent(startDate) + "&price_interest_payment=" + encodeURIComponent(price) + "&days_interest_payment=" + encodeURIComponent(days); // Tạo dữ liệu gửi đi
     xhr.send(data); // Gửi dữ liệu đi
 }
-function extend_start_date(id, startDate, days){
+
+function extend_start_date(id, startDate, days) {
     let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var result = this.responseText;
             alert(result);
@@ -326,9 +363,9 @@ function extend_start_date(id, startDate, days){
     xhr.send(data); // Gửi dữ liệu đi
 }
 
-function delete_after_take_the_product(id,startDate){
+function delete_after_take_the_product(id, startDate) {
     let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var result = this.responseText;
             alert("Lấy máy thành công");
@@ -341,6 +378,46 @@ function delete_after_take_the_product(id,startDate){
     xhr.send(data); // Gửi dữ liệu đi
 }
 
+function submit_add() {
+    // Lấy các giá trị được nhập vào từ các phần tử HTML
+    var id = document.getElementById("id_android_phone").value;
+    var name = document.getElementById("name_android_phone").value;
+    var type = document.getElementById("mySelect").value;
+    var price = document.getElementById("price_android_phone").value;
+    var startDate = document.getElementById("start_date_android_phone").value;
+    var status = document.getElementById("status_android_phone").value;
+    var password = document.getElementById("password_android_phone").value;
+    var note = document.getElementById("note_android_phone").value;
+
+    // Tạo đối tượng chứa dữ liệu để gửi đến máy chủ
+    let data = {
+        action2: "save_create_android_phone",
+        id: id,
+        name_owner: name,
+        name_phone: type,
+        price: price,
+        start_Date: startDate,
+        status: status,
+        password: password,
+        note: note
+    };
+
+    // Gửi dữ liệu đến máy chủ bằng Ajax
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var result = this.responseText;
+            alert("Thêm máy mới thành công");
+        }
+    };
+
+    xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var re = "action2=save_create_android_phone&id=" + encodeURIComponent(id) + "&name_owner=" + encodeURIComponent(name) + "&name_phone=" + encodeURIComponent(type) + "&price=" + encodeURIComponent(price) + "&status=" + encodeURIComponent(status) + "&password=" + encodeURIComponent(password) + "&note=" + encodeURIComponent(note) + "&start_Date=" + encodeURIComponent(startDate); // Tạo dữ liệu gửi đi
+    xhr.send(re);
+    // xhr.send(data);
+
+}
 </script>
 </body>
 
