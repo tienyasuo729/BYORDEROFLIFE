@@ -181,9 +181,8 @@
                         <input type="number" name="price" class="form-control" id="price_android_phone">
                     </div>
                     <div class="mb-3">
-                        <fmt:formatDate pattern="dd/MM/yyyy" value="${now}" var="formattedDate" />
                         <label for="start_date_android_phone" class="col-form-label">Ngày cầm:</label>
-                        <input type="date" name="start_Date" class="form-control" id="start_date_android_phone" value="${formattedDate}">
+                        <input type="date" name="start_Date" class="form-control" id="start_date_android_phone">
 <%--                        <fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/>--%>
                     </div>
                     <div class="mb-3">
@@ -213,6 +212,14 @@
 document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 }, false);
+
+// function kkk(){
+//     $(function() {
+//         $("#start_date_android_phone").datepicker({
+//             dateFormat: "dd/mm/yy"
+//         });
+//     });
+// }
 
 <%--var select = document.getElementById("mySelect");--%>
 <%--var otherBrandDiv = document.getElementById("otherBrand");--%>
