@@ -1,4 +1,4 @@
-function checkPrice(){
+    function checkPrice(){
     let price = document.getElementById("price").value;
     if(price == ""){
         document.getElementById("messPrice").innerHTML = "Không được để trống giá"

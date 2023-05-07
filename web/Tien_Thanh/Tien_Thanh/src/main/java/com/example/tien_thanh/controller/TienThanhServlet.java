@@ -305,7 +305,7 @@ public class TienThanhServlet extends HttpServlet {
 
         Android_Phone android_phone = new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note);
         android_phoneService.add_New_Android_Phone(android_phone);
-        request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request,response);
+//        request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request,response);
     }
     private int money_all_days(int days, int price){
         int payment = 0;

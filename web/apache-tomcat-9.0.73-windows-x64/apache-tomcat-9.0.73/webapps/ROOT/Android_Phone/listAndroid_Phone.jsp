@@ -38,7 +38,7 @@
     <%--    </form>--%>
 
     <form>
-        <button type="button" onclick="add()" class="btn btn-success" data-bs-toggle="modal"
+        <button type="button" class="btn btn-success" data-bs-toggle="modal"
                 data-bs-target="#exampleModal" data-bs-whatever="@mdo">Thêm Điện thoại cầm
         </button>
     </form>
@@ -396,33 +396,40 @@ function submit_add() {
     var password = document.getElementById("password_android_phone").value;
     var note = document.getElementById("note_android_phone").value;
 
-    // Tạo đối tượng chứa dữ liệu để gửi đến máy chủ
-    let data = {
-        action2: "save_create_android_phone",
-        id: id,
-        name_owner: name,
-        name_phone: type,
-        price: price,
-        start_Date: startDate,
-        status: status,
-        password: password,
-        note: note
-    };
+    if (id == "" || name == "" || type == "" || price == "" || startDate == "" || status == "" || password == "" || note == "") {
+        alert("Please fill out all fields before saving!");
+        return false;
+    }else {
+        // Tạo đối tượng chứa dữ liệu để gửi đến máy chủ
+        // let data = {
+        //     action2: "save_create_android_phone",
+        //     id: id,
+        //     name_owner: name,
+        //     name_phone: type,
+        //     price: price,
+        //     start_Date: startDate,
+        //     status: status,
+        //     password: password,
+        //     note: note
+        // };
 
-    // Gửi dữ liệu đến máy chủ bằng Ajax
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var result = this.responseText;
-            alert("Thêm máy mới thành công");
-        }
-    };
+        // Gửi dữ liệu đến máy chủ bằng Ajax
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var result = this.responseText;
+                alert("Thêm máy mới thành công");
+            }
+        };
 
-    xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var re = "action2=save_create_android_phone&id=" + encodeURIComponent(id) + "&name_owner=" + encodeURIComponent(name) + "&name_phone=" + encodeURIComponent(type) + "&price=" + encodeURIComponent(price) + "&status=" + encodeURIComponent(status) + "&password=" + encodeURIComponent(password) + "&note=" + encodeURIComponent(note) + "&start_Date=" + encodeURIComponent(startDate); // Tạo dữ liệu gửi đi
-    xhr.send(re);
-    // xhr.send(data);
+        xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var re = "action2=save_create_android_phone&id=" + encodeURIComponent(id) + "&name_owner=" + encodeURIComponent(name) + "&name_phone=" + encodeURIComponent(type) + "&price=" + encodeURIComponent(price) + "&status=" + encodeURIComponent(status) + "&password=" + encodeURIComponent(password) + "&note=" + encodeURIComponent(note) + "&start_Date=" + encodeURIComponent(startDate); // Tạo dữ liệu gửi đi
+        xhr.send(re);
+        // xhr.send(data);
+    }
+
+
 
 }
 </script>
