@@ -178,11 +178,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="price_android_phone" class="col-form-label">PRICE:</label>
-                        <input type="number" name="price" class="form-control" id="price_android_phone">
+                        <input type="number" name="price" class="form-control" id="price_android_phone" >
                     </div>
                     <div class="mb-3">
                         <label for="start_date_android_phone" class="col-form-label">Ngày cầm:</label>
-                        <input type="date" name="start_Date" class="form-control" id="start_date_android_phone">
+                        <input type="date" name="start_Date" class="form-control" id="start_date_android_phone" required="required">
 <%--                        <fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/>--%>
                     </div>
                     <div class="mb-3">

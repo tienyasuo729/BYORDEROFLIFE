@@ -261,6 +261,7 @@ public class TienThanhServlet extends HttpServlet {
         request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
     }
     private void Form_create_Android_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println();
         request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request, response);
     }
     private void create_Android_Phone(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
