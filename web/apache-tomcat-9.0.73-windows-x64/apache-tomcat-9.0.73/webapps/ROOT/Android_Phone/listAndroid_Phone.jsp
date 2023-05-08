@@ -410,48 +410,75 @@ function submit_add() {
     var note = document.getElementById("note_android_phone").value;
     var check = true;
 
-    var idValue = id.value.trim();
-    if (idValue == "") {
+    if (id === "") {
         var idError = document.querySelector("#id_android_phone + .input-error");
         idError.style.display = "block";
         check = false;
     }
-    var nameValue = name.value.trim();
-    if (nameValue == "") {
+    if (name === "") {
         var nameError = document.querySelector("#name_android_phone + .input-error");
         nameError.style.display = "block";
         check = false;
     }
-    var priceValue = price.value.trim();
-    if (priceValue == "") {
+    if (price === "") {
         var priceError = document.querySelector("#price_android_phone + .input-error");
         priceError.style.display = "block";
         check = false;
     }
-    var startDateValue = startDate.value.trim();
-    if (startDateValue == "") {
+    if (startDate === "") {
         var startDateError = document.querySelector("#start_date_android_phone + .input-error");
         startDateError.style.display = "block";
         check = false;
     }
-    var statusValue = status.value.trim();
-    if (statusValue.value.trim() == "") {
+    if (status === "") {
         var statusError = document.querySelector("#status_android_phone + .input-error");
         statusError.style.display = "block";
         check = false;
     }
-    var passwordValue = password.value.trim();
-    if (passwordValue == "") {
-        var passwordError = document.querySelector("#password_android_phone + .input-error");
-        passwordError.style.display = "block";
-        check = false;
-    }
-    var noteValue = note.value.trim();
-    if (noteValue == "") {
-        var noteError = document.querySelector("#note_android_phone + .input-error");
-        noteError.style.display = "block";
-        check = false;
-    }
+
+
+    // var idValue = id.value.trim();
+    // if (idValue === "") {
+    //     var idError = document.querySelector("#id_android_phone + .input-error");
+    //     idError.style.display = "block";
+    //     check = false;
+    // }
+    // var nameValue = name.value.trim();
+    // if (nameValue === "") {
+    //     var nameError = document.querySelector("#name_android_phone + .input-error");
+    //     nameError.style.display = "block";
+    //     check = false;
+    // }
+    // var priceValue = price.value.trim();
+    // if (priceValue === "") {
+    //     var priceError = document.querySelector("#price_android_phone + .input-error");
+    //     priceError.style.display = "block";
+    //     check = false;
+    // }
+    // var startDateValue = startDate.value.trim();
+    // if (startDateValue === "") {
+    //     var startDateError = document.querySelector("#start_date_android_phone + .input-error");
+    //     startDateError.style.display = "block";
+    //     check = false;
+    // }
+    // var statusValue = status.value.trim();
+    // if (statusValue.value.trim() === "") {
+    //     var statusError = document.querySelector("#status_android_phone + .input-error");
+    //     statusError.style.display = "block";
+    //     check = false;
+    // }
+    // var passwordValue = password.value.trim();
+    // if (passwordValue === "") {
+    //     var passwordError = document.querySelector("#password_android_phone + .input-error");
+    //     passwordError.style.display = "block";
+    //     check = false;
+    // }
+    // var noteValue = note.value.trim();
+    // if (noteValue === "") {
+    //     var noteError = document.querySelector("#note_android_phone + .input-error");
+    //     noteError.style.display = "block";
+    //     check = false;
+    // }
 
     // Nếu tất cả các ô input đã được nhập, thực hiện lưu dữ liệu
     if (check) {
