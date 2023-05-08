@@ -26,6 +26,11 @@
         .form-payment {
             display: inline;
         }
+
+        .input-error {
+            color: red;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -150,10 +155,12 @@
                     <div class="mb-3">
                         <label for="id_android_phone" class="col-form-label">Mã số:</label>
                         <input type="number" name="id" class="form-control" id="id_android_phone">
+                        <span class="input-error" style="display: none">Vui lòng nhập mã số</span>
                     </div>
                     <div class="mb-3">
                         <label for="name_android_phone" class="col-form-label">Họ và tên:</label>
                         <input type="text" name="name_owner" class="form-control" id="name_android_phone">
+                        <span class="input-error">Vui lòng nhập Họ và tên</span>
                     </div>
                     <div class="mb-3">
                         <label for="mySelect" class="col-form-label">Loại máy:</label>
@@ -174,28 +181,34 @@
                         <div id="otherBrand" style="display:none;">
                             <input type="text" class="form-control" id="otherBrandInput" onblur="gg()"
                                    placeholder="Nhập tên hãng điện thoại khác...">
+<%--                            <span class="input-error">Vui lòng nhập tên hãng điện thoại</span>--%>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="price_android_phone" class="col-form-label">PRICE:</label>
                         <input type="number" name="price" class="form-control" id="price_android_phone">
+                        <span class="input-error">Vui lòng nhập số tiền cầm</span>
                     </div>
                     <div class="mb-3">
                         <label for="start_date_android_phone" class="col-form-label">Ngày cầm:</label>
                         <input type="date" name="start_Date" class="form-control" id="start_date_android_phone">
 <%--                        <fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/>--%>
+                        <span class="input-error">Vui lòng nhập ngày cầm</span>
                     </div>
                     <div class="mb-3">
                         <label for="status_android_phone" class="col-form-label">Tình trạng:</label>
                         <input type="text" name="status" class="form-control" id="status_android_phone">
+                        <span class="input-error">Vui lòng mô tả tình trạng của máy</span>
                     </div>
                     <div class="mb-3">
                         <label for="password_android_phone" class="col-form-label">Mật khẩu:</label>
                         <input type="text" name="password" class="form-control" id="password_android_phone">
+                        <span class="input-error">Vui lòng nhập mật khẩu</span>
                     </div>
                     <div class="mb-3">
                         <label for="note_android_phone" class="col-form-label">Ghi chú:</label>
                         <input type="text" name="note" class="form-control" id="note_android_phone">
+                        <span class="input-error">Vui lòng nhập ghi chú</span>
                     </div>
 
                 </form>
@@ -395,11 +408,68 @@ function submit_add() {
     var status = document.getElementById("status_android_phone").value;
     var password = document.getElementById("password_android_phone").value;
     var note = document.getElementById("note_android_phone").value;
+    var check = true;
 
-    if (id == "" || name == "" || type == "" || price == "" || startDate == "" || status == "" || password == "" || note == "") {
-        alert("Please fill out all fields before saving!");
-        return false;
-    }else {
+    var idValue = id.value.trim();
+    if (idValue == "") {
+        var idError = document.querySelector("#id_android_phone + .input-error");
+        idError.style.display = "block";
+        check = false;
+    }
+    var nameValue = name.value.trim();
+    if (nameValue == "") {
+        var nameError = document.querySelector("#name_android_phone + .input-error");
+        nameError.style.display = "block";
+        check = false;
+    }
+    var priceValue = price.value.trim();
+    if (priceValue == "") {
+        var priceError = document.querySelector("#price_android_phone + .input-error");
+        priceError.style.display = "block";
+        check = false;
+    }
+    var startDateValue = startDate.value.trim();
+    if (startDateValue == "") {
+        var startDateError = document.querySelector("#start_date_android_phone + .input-error");
+        startDateError.style.display = "block";
+        check = false;
+    }
+    var statusValue = status.value.trim();
+    if (statusValue.value.trim() == "") {
+        var statusError = document.querySelector("#status_android_phone + .input-error");
+        statusError.style.display = "block";
+        check = false;
+    }
+    var passwordValue = password.value.trim();
+    if (passwordValue == "") {
+        var passwordError = document.querySelector("#password_android_phone + .input-error");
+        passwordError.style.display = "block";
+        check = false;
+    }
+    var noteValue = note.value.trim();
+    if (noteValue == "") {
+        var noteError = document.querySelector("#note_android_phone + .input-error");
+        noteError.style.display = "block";
+        check = false;
+    }
+
+    // Nếu tất cả các ô input đã được nhập, thực hiện lưu dữ liệu
+    if (check) {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var result = this.responseText;
+                alert("Thêm máy mới thành công");
+            }
+        };
+
+        xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var re = "action2=save_create_android_phone&id=" + encodeURIComponent(id) + "&name_owner=" + encodeURIComponent(name) + "&name_phone=" + encodeURIComponent(type) + "&price=" + encodeURIComponent(price) + "&status=" + encodeURIComponent(status) + "&password=" + encodeURIComponent(password) + "&note=" + encodeURIComponent(note) + "&start_Date=" + encodeURIComponent(startDate); // Tạo dữ liệu gửi đi
+        xhr.send(re);
+    }
+
+
         // Tạo đối tượng chứa dữ liệu để gửi đến máy chủ
         // let data = {
         //     action2: "save_create_android_phone",
@@ -414,22 +484,19 @@ function submit_add() {
         // };
 
         // Gửi dữ liệu đến máy chủ bằng Ajax
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var result = this.responseText;
-                alert("Thêm máy mới thành công");
-            }
-        };
-
-        xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        var re = "action2=save_create_android_phone&id=" + encodeURIComponent(id) + "&name_owner=" + encodeURIComponent(name) + "&name_phone=" + encodeURIComponent(type) + "&price=" + encodeURIComponent(price) + "&status=" + encodeURIComponent(status) + "&password=" + encodeURIComponent(password) + "&note=" + encodeURIComponent(note) + "&start_Date=" + encodeURIComponent(startDate); // Tạo dữ liệu gửi đi
-        xhr.send(re);
+        // let xhr = new XMLHttpRequest();
+        // xhr.onreadystatechange = function () {
+        //     if (this.readyState == 4 && this.status == 200) {
+        //         var result = this.responseText;
+        //         alert("Thêm máy mới thành công");
+        //     }
+        // };
+        //
+        // xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+        // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // var re = "action2=save_create_android_phone&id=" + encodeURIComponent(id) + "&name_owner=" + encodeURIComponent(name) + "&name_phone=" + encodeURIComponent(type) + "&price=" + encodeURIComponent(price) + "&status=" + encodeURIComponent(status) + "&password=" + encodeURIComponent(password) + "&note=" + encodeURIComponent(note) + "&start_Date=" + encodeURIComponent(startDate); // Tạo dữ liệu gửi đi
+        // xhr.send(re);
         // xhr.send(data);
-    }
-
-
 
 }
 </script>
