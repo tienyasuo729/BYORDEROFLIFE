@@ -97,11 +97,6 @@ public class TienThanhServlet extends HttpServlet {
             case "edit_Android_phone":
                 Form_edit_android_phone(request,response);
                 break;
-
-
-
-
-
         }
     }
 
@@ -265,19 +260,14 @@ public class TienThanhServlet extends HttpServlet {
         request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request, response);
     }
     private void create_Android_Phone(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        BufferedReader reader = request.getReader();
-//        StringBuilder stringBuilder = new StringBuilder();
-//        String line;
-//        while ((line = reader.readLine()) != null) {
-//            stringBuilder.append(line);
-//        }
-//        String jsonString = stringBuilder.toString();
-//        JSONObject jsonObject = new JSONObject(jsonString);
-
         String id = request.getParameter("id");
         String name_owner = request.getParameter("name_owner");
         String name_phone = request.getParameter("name_phone");
-        int price = Integer.parseInt(request.getParameter("price"));
+
+        // ở JSP gửi về kiểu string và định dạng là  ###,###,###,### nên phải xoá dấu , mới có thể có một số
+        String numericValue = request.getParameter("price").replace(",", "");
+        int price = Integer.parseInt(numericValue);
+
         String status = request.getParameter("status");
         String password = request.getParameter("password");
         String note = request.getParameter("note");
@@ -288,6 +278,25 @@ public class TienThanhServlet extends HttpServlet {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+
+        if (status.equals("")){
+            status = "Bình thường";
+        }
+        if (note.equals("")){
+            note = "Không có";
+        }
+        if (password.equals("")){
+            password = "Không có";
+        }
+
+//        BufferedReader reader = request.getReader();
+//        StringBuilder stringBuilder = new StringBuilder();
+//        String line;
+//        while ((line = reader.readLine()) != null) {
+//            stringBuilder.append(line);
+//        }
+//        String jsonString = stringBuilder.toString();
+//        JSONObject jsonObject = new JSONObject(jsonString);
 
 //        String id = jsonObject.getString("id");
 //        String name_owner = jsonObject.getString("name_owner");
