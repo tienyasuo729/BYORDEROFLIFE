@@ -246,12 +246,26 @@
         var priceBefore = document.getElementById("price_android_phone");
 
         var startDateBefore = document.getElementById("start_date_android_phone");
-        var date = new Date(startDateAfter); // chuyển đổi chuỗi ngày tháng thành đối tượng Date
-        var month = date.getMonth() + 1; // lấy tháng và cộng thêm 1 vì tháng trong đối tượng Date bắt đầu từ 0
-        var day = date.getDate(); // lấy ngày
-        var year = date.getFullYear(); // lấy năm
-        var formattedStartDate = month.toString().padStart(2, '0') + "/" + day.toString().padStart(2, '0') + "/" + year; // định dạng ngày tháng
-        startDateBefore.value = formattedStartDate;
+        var dateObj = new Date("Sun May 07 00:00:00 ICT 2023");
+        alert(dateObj.toDateString())
+
+        const dateString = "Sun May 07 00:00:00 ICT 2023";
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const [dayOfWeek, monthName, day, time, timezone, year] = dateString.split(" ");
+        const month = months.indexOf(monthName.substring(0, 3));
+        const formattedDateString = `${year}-${(month + 1).toString().padStart(2, "0")}-${day.padStart(2, "0")}`;
+        const dateObj = new Date(`${formattedDateString}T${time}${timezone.replace("ICT", "+0700")}`);
+
+
+// Lấy giá trị ngày, tháng và năm
+        var year = dateObj.getFullYear();
+        var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+        var day = ("0" + dateObj.getDate()).slice(-2);
+
+// Định dạng lại chuỗi ngày tháng theo định dạng YYYY-MM-DD
+        var formattedDate = year + "-" + month + "-" + day;
+        alert(formattedDate);
+        startDateBefore.value = formattedDate;
 
 
 
