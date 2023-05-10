@@ -147,7 +147,7 @@
     </table>
 </div>
 
-// form để thêm mới điện thoại cầm
+<%--form để thêm mới điện thoại cầm--%>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -171,9 +171,8 @@
                     <div class="mb-3">
                         <label for="mySelect" class="col-form-label">Loại máy:</label>
                         <%--                        <input type="number" name="id" class="form-control" id="type_android_phone">--%>
-                        <select name="name_phone" id="mySelect" >
-                            <option value="" hidden selected disabled>phone</option>
-
+                        <select name="name_phone" id="mySelect" onblur="typeError()">
+                            <option id="hiddenSelect" value="" hidden selected disabled>phone</option>
                             <optgroup label="Các hãng điện thoại">
                                 <option value="samsung">SAMSUNG</option>
                                 <option value="oppo">OPPO</option>
@@ -186,11 +185,13 @@
                                 <option value="khac">Khác</option>
                             </optgroup>
                         </select>
+                        <span class="input-error">Vui lòng chọn loại máy</span>
                         <div id="otherBrand" style="display:none;">
                             <input type="text" class="form-control" id="otherBrandInput" onblur="gg()"
                                    placeholder="Nhập tên hãng điện thoại khác...">
                             <%--                            <span class="input-error">Vui lòng nhập tên hãng điện thoại</span>--%>
                         </div>
+
                     </div>
                     <div class="mb-3">
                         <label for="price_android_phone" class="col-form-label">PRICE:</label>
@@ -223,7 +224,6 @@
                                placeholder="Không có">
                         <%--                        <span class="input-error">Vui lòng nhập ghi chú</span>--%>
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">
@@ -245,7 +245,7 @@
         inputId.type = "hidden";
 
         var nameBefore = document.getElementById("name_android_phone");
-        // var typeBefore = document.getElementById("mySelect");
+        var typeBefore = document.getElementById("mySelect");
         var priceBefore = document.getElementById("price_android_phone");
 
         var startDateBefore = document.getElementById("start_date_android_phone");
@@ -274,14 +274,31 @@
         var passwordBefore = document.getElementById("password_android_phone");
         var noteBefore = document.getElementById("note_android_phone");
 
-
         nameBefore.value = nameAfter;
-        // typeBefore.value = typeAfter;
+
+        // for (var i = 0; i < typeBefore.options.length; i++) {
+        //     if (typeBefore.options[i].value === typeAfter) {
+        //         typeBefore.options[i].selected = true;
+        //         break;
+        //     }
+        // }
+        var select = document.getElementById("mySelect");
+        var newOptionValue = "newOptionValue";
+        var newOptionText = "New Option";
+        var newOption = document.createElement("option");
+        newOption.value = newOptionValue;
+        newOption.textContent = newOptionText;
+        select.add(newOption);
+        
+        // nếu có giá trị khác thì vẫn chưa thể hiển th ra được
+        typeBefore.value = typeAfter
+
         priceBefore.value = priceAfter;
         startDateBefore.value = formattedDate;
         statusBefore.value = statusAfter;
         passwordBefore.value = passwordAfter;
         noteBefore.value = noteAfter;
+
     }
 
     //  script này để ngăn người dùng nhấn chuột phải rồi nhấn kiểm tra để xem được code html
@@ -477,6 +494,12 @@
         }
     }
 
+    function typeError() {
+        var type = document.getElementById("mySelect");
+        if (type.value.trim() !== "") {
+            type.nextElementSibling.style.display = "none";
+        }
+    }
 
     function submit_add() {
         // Lấy các giá trị được nhập vào từ các phần tử HTML
@@ -485,9 +508,9 @@
         var type = document.getElementById("mySelect");
         var price = document.getElementById("price_android_phone");
         var startDate = document.getElementById("start_date_android_phone");
-        var status = document.getElementById("status_android_phone");
-        var password = document.getElementById("password_android_phone");
-        var note = document.getElementById("note_android_phone");
+        // var status = document.getElementById("status_android_phone");
+        // var password = document.getElementById("password_android_phone");
+        // var note = document.getElementById("note_android_phone");
         var check = true;
 
         // alert(id + " + " + name + " + " + price);
@@ -499,6 +522,11 @@
 
         if (name.value.trim() === "") {
             name.nextElementSibling.style.display = "block";
+            check = false;
+        }
+
+        if (type.value.trim() === "") {
+            type.nextElementSibling.style.display = "block";
             check = false;
         }
 
