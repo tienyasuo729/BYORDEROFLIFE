@@ -171,7 +171,9 @@
                     <div class="mb-3">
                         <label for="mySelect" class="col-form-label">Loại máy:</label>
                         <%--                        <input type="number" name="id" class="form-control" id="type_android_phone">--%>
-                        <select name="name_phone" id="mySelect">
+                        <select name="name_phone" id="mySelect" >
+                            <option value="" hidden selected disabled>phone</option>
+
                             <optgroup label="Các hãng điện thoại">
                                 <option value="samsung">SAMSUNG</option>
                                 <option value="oppo">OPPO</option>
@@ -239,6 +241,7 @@
         document.getElementById("exampleModalLabel").innerHTML = "Chỉnh sửa thông tin";
         labelId.style.display = "none";
         inputId.value = idAfter;
+        inputId.style.display = "none";
         inputId.type = "hidden";
 
         var nameBefore = document.getElementById("name_android_phone");
@@ -246,29 +249,36 @@
         var priceBefore = document.getElementById("price_android_phone");
 
         var startDateBefore = document.getElementById("start_date_android_phone");
-        var dateObj = new Date("Sun May 07 00:00:00 ICT 2023");
-        alert(dateObj.toDateString())
-// Lấy giá trị ngày, tháng và năm
-        var year = dateObj.getFullYear();
-        var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
-        var day = ("0" + dateObj.getDate()).slice(-2);
-
-// Định dạng lại chuỗi ngày tháng theo định dạng YYYY-MM-DD
-        var formattedDate = year + "-" + month + "-" + day;
-        alert(formattedDate);
-        startDateBefore.value = formattedDate;
-
-
+        var dateString = startDateAfter;
+        var dateParts = dateString.split(" ");
+        var monthNames = {
+            Jan: "01",
+            Feb: "02",
+            Mar: "03",
+            Apr: "04",
+            May: "05",
+            Jun: "06",
+            Jul: "07",
+            Aug: "08",
+            Sep: "09",
+            Oct: "10",
+            Nov: "11",
+            Dec: "12"
+        };
+        var yyyy = dateParts[5];
+        var MM = monthNames[dateParts[1]];
+        var dd = dateParts[2];
+        var formattedDate = yyyy + "-" + MM + "-" + dd;
 
         var statusBefore = document.getElementById("status_android_phone");
         var passwordBefore = document.getElementById("password_android_phone");
         var noteBefore = document.getElementById("note_android_phone");
 
-        // alert(startDateAfter);
+
         nameBefore.value = nameAfter;
         // typeBefore.value = typeAfter;
         priceBefore.value = priceAfter;
-        // startDateBefore.value = startDateAfter;
+        startDateBefore.value = formattedDate;
         statusBefore.value = statusAfter;
         passwordBefore.value = passwordAfter;
         noteBefore.value = noteAfter;
@@ -301,6 +311,7 @@
     });
 
     // Lấy giá trị của lựa chọn đầu tiên
+    // vị trí số 0 đã là tiêu đề rồi
     var firstOptionValue = select.options[0].value;
 
     // Thay đổi giá trị của lựa chọn khác thành giá trị của lựa chọn đầu tiên
