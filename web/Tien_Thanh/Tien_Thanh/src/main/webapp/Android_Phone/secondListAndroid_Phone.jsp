@@ -234,74 +234,9 @@
     </div>
 </div>
 
+<%--form chỉnh sửa thông tin--%>
+
 <script>
-    function edit_form(idAfter,nameAfter,typeAfter,priceAfter,startDateAfter,statusAfter,passwordAfter,noteAfter){
-        var inputId = document.getElementById("id_android_phone");
-        var labelId = document.querySelector("label[for='id_android_phone']");
-        document.getElementById("exampleModalLabel").innerHTML = "Chỉnh sửa thông tin";
-        labelId.style.display = "none";
-        inputId.value = idAfter;
-        inputId.style.display = "none";
-        inputId.type = "hidden";
-
-        var nameBefore = document.getElementById("name_android_phone");
-        var typeBefore = document.getElementById("mySelect");
-        var priceBefore = document.getElementById("price_android_phone");
-
-        var startDateBefore = document.getElementById("start_date_android_phone");
-        var dateString = startDateAfter;
-        var dateParts = dateString.split(" ");
-        var monthNames = {
-            Jan: "01",
-            Feb: "02",
-            Mar: "03",
-            Apr: "04",
-            May: "05",
-            Jun: "06",
-            Jul: "07",
-            Aug: "08",
-            Sep: "09",
-            Oct: "10",
-            Nov: "11",
-            Dec: "12"
-        };
-        var yyyy = dateParts[5];
-        var MM = monthNames[dateParts[1]];
-        var dd = dateParts[2];
-        var formattedDate = yyyy + "-" + MM + "-" + dd;
-
-        var statusBefore = document.getElementById("status_android_phone");
-        var passwordBefore = document.getElementById("password_android_phone");
-        var noteBefore = document.getElementById("note_android_phone");
-
-        nameBefore.value = nameAfter;
-
-        for (var i = 0; i < typeBefore.options.length; i++) {
-            if (typeBefore.options[i].value === typeAfter) {
-                typeBefore.options[i].selected = true;
-                break;
-            }
-        }
-
-        var select = document.getElementById("mySelect");
-        var newOptionValue = "newOptionValue";
-        var newOptionText = "New Option";
-        var newOption = document.createElement("option");
-        newOption.value = newOptionValue;
-        newOption.textContent = newOptionText;
-        select.add(newOption);
-
-        // nếu có giá trị khác thì vẫn chưa thể hiển th ra được
-        typeBefore.value = typeAfter
-
-        priceBefore.value = priceAfter;
-        startDateBefore.value = formattedDate;
-        statusBefore.value = statusAfter;
-        passwordBefore.value = passwordAfter;
-        noteBefore.value = noteAfter;
-
-    }
-
     //  script này để ngăn người dùng nhấn chuột phải rồi nhấn kiểm tra để xem được code html
     document.addEventListener("contextmenu", function (e) {
         e.preventDefault();

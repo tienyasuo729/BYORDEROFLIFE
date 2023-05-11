@@ -254,6 +254,9 @@ public class TienThanhServlet extends HttpServlet {
 //        System.out.println(androidPhones.get(1).getStart_Date().getMonth());
         request.setAttribute("listAndroid_Phone", androidPhones);
         request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
+        Scanner scanner = new Scanner(System.in);
+        int a  = Integer.parseInt(scanner.nextLine());
+
     }
     private void Form_create_Android_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println();
