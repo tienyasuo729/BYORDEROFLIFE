@@ -16,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -157,6 +158,7 @@
             </div>
             <div class="modal-body">
                 <form>
+                    <input type="hidden" value="save_create_android_phone" id="action2">
                     <div class="mb-3">
                         <label for="id_android_phone" class="col-form-label">Mã số:</label>
                         <input type="number" name="id" class="form-control" id="id_android_phone" onblur="idError()">
@@ -244,6 +246,7 @@
             inputId.style.display = "none";
             inputId.type = "hidden";
 
+            var action2 = document.getElementById("action2");
             var nameBefore = document.getElementById("name_android_phone");
             var typeBefore = document.getElementById("mySelect");
             var priceBefore = document.getElementById("price_android_phone");
@@ -292,6 +295,12 @@
             // newOption.style.display = "none"
             newOption.setAttribute('data-added-by-js', 'true');
             select.add(newOption);
+            var optgroup = document.createElement('optgroup');
+            optgroup.label = 'Loại điện thoại đã chọn';
+            optgroup.id = 'myOptgroup';
+            optgroup.appendChild(newOption);
+            select.appendChild(optgroup);
+
 
             // nếu có giá trị khác thì vẫn chưa thể hiển th ra được
             typeBefore.options[typeBefore.options.length - 1].selected = true;
@@ -301,9 +310,23 @@
             statusBefore.value = statusAfter;
             passwordBefore.value = passwordAfter;
             noteBefore.value = noteAfter;
-
+            action2.value = "save_edit_android_phone";
+            alert(action2.value);
         }
 
+        $('#exampleModal').on('hidden.bs.modal', function () {
+            var select = document.getElementById("mySelect");
+            var options = select.options;
+            for (var i = options.length - 1; i >= 0; i--) {
+                if (options[i].getAttribute('data-added-by-js') === 'true') {
+                    select.remove(i);
+                    var optgroupToRemove = document.getElementById('myOptgroup');
+                    select.removeChild(optgroupToRemove);
+                    var action2 = document.getElementById("action2");
+                    action2.value = "save_create_android_phone";
+                }
+            }
+        });
 
     //  script này để ngăn người dùng nhấn chuột phải rồi nhấn kiểm tra để xem được code html
     document.addEventListener("contextmenu", function (e) {
@@ -506,15 +529,17 @@
     }
 
     function submit_add() {
+        var action2 = document.getElementById("action2");
+
         // Lấy các giá trị được nhập vào từ các phần tử HTML
         var id = document.getElementById("id_android_phone");
         var name = document.getElementById("name_android_phone");
         var type = document.getElementById("mySelect");
         var price = document.getElementById("price_android_phone");
         var startDate = document.getElementById("start_date_android_phone");
-        // var status = document.getElementById("status_android_phone");
-        // var password = document.getElementById("password_android_phone");
-        // var note = document.getElementById("note_android_phone");
+        var status = document.getElementById("status_android_phone");
+        var password = document.getElementById("password_android_phone");
+        var note = document.getElementById("note_android_phone");
         var check = true;
 
         // alert(id + " + " + name + " + " + price);
@@ -543,6 +568,7 @@
             startDate.nextElementSibling.style.display = "block";
             check = false;
         }
+        alert(id.value + " / " + name.value + " / " + startDate.value);
 
         // var idError = document.querySelector("#id_android_phone + .input-error");
         // if (id === "") {
@@ -590,12 +616,17 @@
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var result = this.responseText;
-                    alert("Thêm máy mới thành công");
+                    if (action2.value === "save_create_android_phone"){
+                        alert("Thêm máy mới thành công");
+                    }
+                    if (action2.value === "save_edit_android_phone"){
+                        alert("Chỉnh sửa thành công");
+                    }
 
                     // Xoá dữ liệu nhập vào sau khi gửi thành công
                     id.value = "";
                     name.value = "";
-                    type.value = "";
+                    // type.value = "";
                     price.value = "";
                     startDate.value = "";
                     status.value = "";
@@ -607,7 +638,7 @@
 
             xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            var href = "action2=save_create_android_phone&id=" + encodeURIComponent(id.value) + "&name_owner=" + encodeURIComponent(name.value) + "&name_phone=" + encodeURIComponent(type.value) + "&price=" + encodeURIComponent(price.value) + "&status=" + encodeURIComponent(status.value) + "&password=" + encodeURIComponent(password.value) + "&note=" + encodeURIComponent(note.value) + "&start_Date=" + encodeURIComponent(startDate.value); // Tạo dữ liệu gửi đi
+            var href = "action2=" + encodeURIComponent(action2.value) +"&id=" + encodeURIComponent(id.value) + "&name_owner=" + encodeURIComponent(name.value) + "&name_phone=" + encodeURIComponent(type.value) + "&price=" + encodeURIComponent(price.value) + "&status=" + encodeURIComponent(status.value) + "&password=" + encodeURIComponent(password.value) + "&note=" + encodeURIComponent(note.value) + "&start_Date=" + encodeURIComponent(startDate.value); // Tạo dữ liệu gửi đi
             xhr.send(href);
         }
 
@@ -641,17 +672,6 @@
         // xhr.send(data);
 
     }
-
-        $('#exampleModal').on('hidden.bs.modal', function () {
-            var select = document.getElementById("mySelect");
-            var options = select.options;
-            alert("222");
-            for (var i = options.length - 1; i >= 0; i--) {
-                if (options[i].getAttribute('added-by-js') === 'true') {
-                    select.remove(i);
-                }
-            }
-        });
 </script>
 </body>
 

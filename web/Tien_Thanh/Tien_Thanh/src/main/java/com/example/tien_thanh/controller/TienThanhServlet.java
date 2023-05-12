@@ -215,23 +215,27 @@ public class TienThanhServlet extends HttpServlet {
     }
 
     private void edit_android_phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("idEdit");
-        String name_owner = request.getParameter("name_ownerEdit");
-        String name_phone = request.getParameter("name_phoneEdit");
-        int price = Integer.parseInt(request.getParameter("priceEdit"));
-        String status = request.getParameter("statusEdit");
-        String password = request.getParameter("passwordEdit");
-        String note = request.getParameter("noteEdit");
+        String id = request.getParameter("id");
+        String name_owner = request.getParameter("name_owner");
+        String name_phone = request.getParameter("name_phone");
+
+        // ở JSP gửi về kiểu string và định dạng là  ###,###,###,### nên phải xoá dấu , mới có thể có một số
+        String numericValue = request.getParameter("price").replace(",", "");
+        int price = Integer.parseInt(numericValue);
+
+        String status = request.getParameter("status");
+        String password = request.getParameter("password");
+        String note = request.getParameter("note");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date start_Date = null;
         try {
-            start_Date = dateFormat.parse(request.getParameter("start_DateEdit"));
+            start_Date = dateFormat.parse(request.getParameter("start_Date"));
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
         Android_Phone android_phone = new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note);
         android_phoneService.edit_Android_Phone(android_phone);
-        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request,response);
+//        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request,response);
     }
 
     private void Form_edit_android_phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
