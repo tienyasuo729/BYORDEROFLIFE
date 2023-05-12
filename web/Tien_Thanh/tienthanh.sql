@@ -1,6 +1,9 @@
 create database tien_thanh;
 use tien_thanh;
-SELECT * FROM android_phone WHERE start_Date < '2023-04-22';
+-- SELECT * FROM android_phone WHERE start_Date < '2023-04-22';
+
+alter table android_phone add name_of_the_phone text;
+
 
 create table android_phone(
 	id varchar(20) primary key,

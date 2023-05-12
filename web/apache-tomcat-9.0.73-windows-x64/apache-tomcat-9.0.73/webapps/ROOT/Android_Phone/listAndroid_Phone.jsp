@@ -86,8 +86,8 @@
 
 <div align="center">
     <table class="table table-hover" STYLE="text-align: center">
-        <h2>Danh sách CCCD cầm</h2>
-        <caption><h2>Danh sách CCCD cầm</h2></caption>
+        <h2>Danh sách điện thoại cầm</h2>
+        <caption><h2>Danh sách điện thoại cầm</h2></caption>
         <tr>
             <th>STT</th>
             <th>Mã Số</th>
@@ -311,7 +311,6 @@
             passwordBefore.value = passwordAfter;
             noteBefore.value = noteAfter;
             action2.value = "save_edit_android_phone";
-            alert(action2.value);
         }
 
         $('#exampleModal').on('hidden.bs.modal', function () {
@@ -405,6 +404,12 @@
                     delete_after_take_the_product(id, startDate);
                     var row = btn.parentNode.parentNode;
                     row.parentNode.removeChild(row);
+
+                    // đoạn này để thay đổi cột STT sau khi xoá một hàng trong bảng
+                    var tableRows = document.getElementsByTagName('tr');
+                    for (var i = 1; i < tableRows.length; i++) {
+                        tableRows[i].getElementsByTagName('td')[0].innerHTML = i;
+                    }
                 }
             }
         };
@@ -443,6 +448,7 @@
             if (this.readyState == 4 && this.status == 200) {
                 var result = this.responseText;
                 alert(result);
+
             }
         };
 
@@ -568,7 +574,7 @@
             startDate.nextElementSibling.style.display = "block";
             check = false;
         }
-        alert(id.value + " / " + name.value + " / " + startDate.value);
+        // alert(id.value + " / " + name.value + " / " + startDate.value);
 
         // var idError = document.querySelector("#id_android_phone + .input-error");
         // if (id === "") {

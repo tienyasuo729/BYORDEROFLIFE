@@ -59,7 +59,6 @@ public class TienThanhServlet extends HttpServlet {
                 break;
             case "delete_android_phone_by_id":
                 delete_android_phone_by_id(request,response);
-//                listAndroid_Phone(request,response);
                 break;
             case "save_edit_android_phone":
                 edit_android_phone(request,response);
