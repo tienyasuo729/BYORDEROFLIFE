@@ -304,28 +304,6 @@
 
         }
 
-        $('#exampleModal').on('hidden.bs.modal', function () {
-            var select = document.getElementById("mySelect");
-            var options = select.options;
-
-            for (var i = options.length - 1; i >= 0; i--) {
-                if (options[i].getAttribute('added-by-js') === 'true') {
-                    select.remove(i);
-                }
-            }
-        });
-
-
-        // $('#exampleModal').on('hidden.bs.modal', function () {
-    //     var select = document.getElementById("mySelect");
-    //     var options = select.options;
-    //     alert("222");
-    //     for (var i = options.length - 1; i >= 0; i--) {
-    //         if (options[i].getAttribute('added-by-js') === 'true') {
-    //             select.remove(i);
-    //         }
-    //     }
-    // });
 
     //  script này để ngăn người dùng nhấn chuột phải rồi nhấn kiểm tra để xem được code html
     document.addEventListener("contextmenu", function (e) {
@@ -663,6 +641,17 @@
         // xhr.send(data);
 
     }
+
+        $('#exampleModal').on('hidden.bs.modal', function () {
+            var select = document.getElementById("mySelect");
+            var options = select.options;
+            alert("222");
+            for (var i = options.length - 1; i >= 0; i--) {
+                if (options[i].getAttribute('added-by-js') === 'true') {
+                    select.remove(i);
+                }
+            }
+        });
 </script>
 </body>
 
