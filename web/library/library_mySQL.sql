@@ -17,11 +17,13 @@ create table student(
 
 create table book_loan_card(
 	id_loan_card varchar(50) not null primary key,
-    id_book text,
-    id_student text,
+    id_book varchar(50),
+    id_student varchar(50),
     status_loan_card bit,
     borrowed_date date,
     return_date date,
     foreign key (id_book) references book(id_book),
 	foreign key (id_student) references student(id_student)
 );
+
+INSERT INTO `library`.`book` (`id_book`, `name_book`, `author_book`, `describe_book`, `quantity_book`) VALUES ('a1', 'tt', 'tien', 'romace', '1');
