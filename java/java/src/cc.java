@@ -1,27 +1,38 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class cc {
     private static Scanner scanner = new Scanner(System.in);
-    public static void main(String args[]) {
-        // TODO code application logic here
-        System.out.print("- Nh?p vào ?ây tên c?a b?n: ");
-        String name = checkIntInPut("^[\\p{L}\\s]+$", "Nh?p sai tên r?i, xin nh?p l?i: ");
-        int age = Integer.parseInt(checkIntInPut("^[0-9]$)", "Không nhập chữ, xin vui lòng nh?p l?i: "));
-        System.out.print("- Tên c?a b?n là : " + name + "\n-Tu?i c?a b?n là: " + age);
+        public void main(String args[]) {
+    //        int sp;
+           int [] a = {9,5,3,11,7};
+    //       Arrays.sort(a);
+    //        for (int i = 0; i < a.length; i++) {
+    //            for (int j = 0; j < a.length; j++) {
+    //              if (a[i] > a[j]){
+    //                  sp = a[j];
+    //                  a[j] = a[i];
+    //                  a[i] = sp;
+    //              }
+    //            }
+    //        }
+    //        System.out.println(Arrays.toString(a));
 
-    }
-    private static String checkIntInPut(String regex, String print) { // ki?m tra d? li?u nh?p vào có b? l?i v? c? tình nh?p ch? hay v??t ph?m vi int không { theo regex }
-        String input = null;
-        boolean check = true;
-        do {
-            input = scanner.nextLine();
-            if (input.matches(regex)){
-                check = false;
-            }else {
-                System.out.print(print);
+            sort(a);
+        }
+
+        private static void sort(int [] a){
+            int sp;
+            for (int i = 0; i < a.length; i++) {
+                for (int j = i+1; j < a.length; j++) {
+                    if (a[i] > a[j]){
+                        sp = a[j];
+                        a[j] = a[i];
+                        a[i] = sp;
+                    }
+                }
             }
-        }while (check);
+            System.out.println(Arrays.toString(a));
 
-        return input;
-    }
+        }
 }
