@@ -4,6 +4,14 @@ use tien_thanh;
 
 alter table android_phone add name_of_the_phone text;
 
+CREATE TABLE LichSuThayDoi (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Action VARCHAR(10),
+    ThoiGianChinhSua TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    DuLieuCu JSON,
+    DuLieuMoi JSON
+);
+
 
 create table android_phone(
 	id varchar(20) primary key,
