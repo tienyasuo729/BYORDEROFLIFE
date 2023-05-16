@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Check {
     private static Scanner scanner = new Scanner(System.in);
-    private static int checkChoose(int numbersOfChoose) {
+    public static int checkChoose(int numbersOfChoose) {
         int choose = 0;
         boolean check = true;
         do {

@@ -27,7 +27,7 @@
 
 <div align="center">
     <table class="table table-hover" STYLE="text-align: center">
-<%--        <h2>Danh sách sách</h2>--%>
+        <h2>Danh sách sách</h2>
         <caption><h2>Danh sách sách</h2></caption>
         <tr>
             <th>Mã sách</th>
@@ -45,7 +45,7 @@
                 <td><fmt:formatNumber value="${book.quantity_book}" pattern="###,###,###,###"/></td>
                 <td><c:out value="${book.describe_book}"/></td>
                 <td>
-                    <button type="button" class="btn btn-success">Mượn sách
+                    <button type="button" class="btn btn-danger">Xoá
                     </button>
                 </td>
             </tr>

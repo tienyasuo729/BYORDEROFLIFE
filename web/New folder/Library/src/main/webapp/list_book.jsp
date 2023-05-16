@@ -45,7 +45,7 @@
                 <td><fmt:formatNumber value="${book.quantity_book}" pattern="###,###,###,###"/></td>
                 <td><c:out value="${book.describe_book}"/></td>
                 <td>
-                    <button type="button" class="btn btn-success">Mượn sách
+                    <button type="button" class="btn btn-danger">Mượn sách
                     </button>
                 </td>
             </tr>

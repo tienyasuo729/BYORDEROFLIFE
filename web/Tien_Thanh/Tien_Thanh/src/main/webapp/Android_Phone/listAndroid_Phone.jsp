@@ -128,9 +128,9 @@
                         <%--                    <form action="/tienthanh" method="post" class="form-delete">--%>
                         <%--                        <input type="hidden" name="action2" value="delete_android_phone_by_id">--%>
                         <%--                        <input type="hidden" name="id_need_to_delete" value="${android_phone.id}">--%>
-                    <button type="button" class="btn btn-danger"
-                            onclick="delete_the_product('${android_phone.id}', this)">Xoá
-                    </button>
+                        <button type="button" class="btn btn-danger"
+                                onclick="delete_the_product('${android_phone.id}', this)">Xoá
+                        </button>
                         <%--                    </form>--%>
 
                     <button type="button" class="btn btn-warning"
