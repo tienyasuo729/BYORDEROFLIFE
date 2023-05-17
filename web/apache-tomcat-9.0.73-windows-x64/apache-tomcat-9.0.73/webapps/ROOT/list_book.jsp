@@ -48,9 +48,6 @@
                 <td>
 <%--                    do đề chưa đầy đủ nên làm theo kiểu của em--%>
 
-<%--                    <button type="button" class="btn btn-success" onclick="button_borrow_book('${book.id_book}','${book.name_book}','${book.quantity_book}')">Mượn sách</button>--%>
-
-
                     <c:choose>
                         <c:when test="${book.quantity_book == 0}">
                             <button type="button" class="btn btn-success" onclick="alert('Hết sách để mượn')">Mượn sách</button>
@@ -89,6 +86,8 @@
     //         xhr.send(data); // Gửi dữ liệu đi
     //     }
     // }
+
+
 </script>
 </body>
 </html>

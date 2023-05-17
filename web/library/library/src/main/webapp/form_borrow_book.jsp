@@ -45,7 +45,7 @@
       <tr>
         <th>Ngày mượn sách:</th>
         <td>
-          <input type="date" name="create_date_borrow_book" size="45" readonly/>
+          <input type="date" name="create_date_borrow_book" size="45" value= "2023-05-17"/>
         </td>
       </tr>
       <tr>

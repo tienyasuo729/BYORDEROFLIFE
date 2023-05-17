@@ -31,7 +31,7 @@
       <tr>
         <th>Tên sách:</th>
         <td>
-          <input type="hidden" value="${create_name_book}">
+          <input type="hidden" name="create_id_book" value="${create_name_book}">
           <input type="text" name="create_name_book" size="45" value="${create_id_book}" readonly/>
         </td>
       </tr>
@@ -45,7 +45,7 @@
       <tr>
         <th>Ngày mượn sách:</th>
         <td>
-          <input type="date" name="create_date_borrow_book" size="45" readonly/>
+          <input type="date" name="create_date_borrow_book" size="45" value= "2023-05-17"/>
         </td>
       </tr>
       <tr>
