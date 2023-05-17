@@ -21,11 +21,31 @@ public class Library_Servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        String post_action = request.getParameter("post_action");
 
+        if (post_action == null) {
+            post_action = "";
+        }
+
+        switch (post_action){
+            case "button_borrow_book":
+                Form_borrow_book(request,response);
+                break;
+        }
     }
+
+
 
     private void List_book(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("list_book", bookService.find_all_book());
         request.getRequestDispatcher("list_book.jsp").forward(request,response);
+    }
+
+    private void Form_borrow_book(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("create_id_book", request.getParameter("id_book_borrow"));
+        request.setAttribute("create_name_book", request.getParameter("name_borrow_book"));
+        request.getRequestDispatcher("form_borrow_book.jsp").forward(request,response);
     }
 }
