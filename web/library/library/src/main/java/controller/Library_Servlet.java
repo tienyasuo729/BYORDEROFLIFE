@@ -1,7 +1,8 @@
 package controller;
 
 
-import service.Impl.IBookServiceImpl;
+import service.Impl.BookServiceImpl;
+import service.Impl.StudentServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 @WebServlet(name = "library_Servlet", value = "/library_Servlet")
 public class Library_Servlet extends HttpServlet {
-    private IBookServiceImpl bookService = new IBookServiceImpl();
+    private BookServiceImpl bookService = new BookServiceImpl();
 
+    private StudentServiceImpl studentService = new StudentServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List_book(request,response);
@@ -47,11 +48,12 @@ public class Library_Servlet extends HttpServlet {
     }
 
     private void Form_borrow_book(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+        // Lấy ngày hiện tại để chuyển sang cho ngày mượn trong trang mượn sách
         Date now = new Date();
-        switch ()
-        String date_borrow_book = (now.getYear() + 1900) + "-" + (now.getMonth() + 1) + "-" + now.getDate();
-        System.out.println(date_borrow_book);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date_borrow_book = dateFormat.format(now);
+
+        //truyền dữ liệu gồm id, tên, ngày mượn vào trang mượn sách
         request.setAttribute("create_id_book", request.getParameter("id_book_borrow"));
         request.setAttribute("create_name_book", request.getParameter("name_borrow_book"));
         request.setAttribute("create_date_borrow_book", date_borrow_book);

@@ -7,7 +7,7 @@ import service.IBookService;
 
 import java.util.List;
 
-public class IBookServiceImpl implements IBookService {
+public class BookServiceImpl implements IBookService {
     private BookRepositoryImpl bookRepository = new BookRepositoryImpl();
     @Override
     public List<Book> find_all_book() {

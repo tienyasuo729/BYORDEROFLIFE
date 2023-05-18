@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c9dc791-dc34-464a-ad7c-84b0f90d64e1" name="Changes" comment="" />
+    <list default="true" id="6c9dc791-dc34-464a-ad7c-84b0f90d64e1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/java/src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/cc.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +27,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/codegym/text/java/java"
+    "last_opened_file_path": "C:/codegym/text/java/java"
   }
 }]]></component>
   <component name="RunManager">
@@ -54,6 +57,7 @@
       <workItem from="1668596102954" duration="58000" />
       <workItem from="1668774301850" duration="45000" />
       <workItem from="1669831267096" duration="32000" />
+      <workItem from="1684371358550" duration="9000" />
     </task>
     <servers />
   </component>
