@@ -1,8 +1,10 @@
 package controller;
 
 
+import model.Book_loan_card;
 import model.Student;
 import service.Impl.BookServiceImpl;
+import service.Impl.Book_loan_cardServiceImpl;
 import service.Impl.StudentServiceImpl;
 
 import javax.servlet.ServletException;
@@ -11,16 +13,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
-@WebServlet(name = "library_Servlet", value = "/library_Servlet")
+@WebServlet(name = "library_Servlet", value = "/library")
 public class Library_Servlet extends HttpServlet {
     private BookServiceImpl bookService = new BookServiceImpl();
 
     private StudentServiceImpl studentService = new StudentServiceImpl();
+
+    private Book_loan_cardServiceImpl book_loan_cardService = new Book_loan_cardServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List_book(request,response);
@@ -49,8 +55,22 @@ public class Library_Servlet extends HttpServlet {
         }
     }
 
-    private void Create_loan_card(HttpServletRequest request, HttpServletResponse response) {
-        String create_id_loan_card = request.getParameter("");
+    private void Create_loan_card(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String create_id_loan_card = request.getParameter("create_id_loan_card");
+        String create_id_book = request.getParameter("create_id_book");
+        String create_id_student = request.getParameter("create_name_student");
+        Boolean create_status_loan_card = true;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+        Date create_borrowed_date = null;
+        Date create_return_date = null;
+        try {
+            create_borrowed_date = dateFormat.parse(request.getParameter("create_date_borrow_book"));
+            create_return_date = dateFormat.parse(request.getParameter("create_date_return_book"));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        book_loan_cardService.create_book_loan_card(new Book_loan_card(create_id_loan_card,create_id_book,create_id_student,create_status_loan_card,create_borrowed_date,create_return_date));
+        List_book(request,response);
     }
 
 

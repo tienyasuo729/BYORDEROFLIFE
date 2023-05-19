@@ -30,7 +30,7 @@
     <h1>Mượn sách</h1>
 </center>
 <div align="center">
-    <form method="post" action="/library_Servlet">
+    <form method="post" action="/library">
         <table border="1" cellpadding="5">
             <caption>
                 <h2>Mượn sách</h2>
@@ -45,7 +45,7 @@
                 <th>Tên sách:</th>
                 <td>
                     <input type="hidden" name="create_id_book" value="${create_name_book}">
-                    <input type="text" name="create_name_book" size="45" value="${create_id_book}" readonly/>
+                    <input type="text" size="45" value="${create_id_book}" readonly/>
                 </td>
             </tr>
             <tr>
@@ -53,8 +53,7 @@
                 <td>
                     <select name="create_name_student" required="required">
                         <c:forEach items="${list_student_for_form_create_loan_card}" var="student">
-                            <option value="${student.id_Student}"><c:out
-                                    value="${student.name_Student}"></c:out></option>
+                            <option value="${student.id_Student}"><c:out value="${student.name_Student}"></c:out></option>
                         </c:forEach>
                     </select>
                 </td>
@@ -74,7 +73,7 @@
             </tr>
         </table>
         <button type="submit" name="submit_create_loan_card">Mượn sách</button>
-        <form method="post" action="/library_Servlet">
+        <form method="post" action="/library">
             <input type="hidden" name="post_action" value="return_form_create_loan_card">
             <button type="submit" name="return_form_create_loan_card">Huỷ</button>
         </form>

@@ -53,7 +53,7 @@
                             <button type="button" class="btn btn-success" onclick="alert('Hết sách để mượn')">Mượn sách</button>
                         </c:when>
                         <c:otherwise>
-                            <form action="/library_Servlet" method="post">
+                            <form action="/library" method="post">
                                 <input type="hidden" name="id_book_borrow" value="${book.id_book}">
                                 <input type="hidden" name="name_borrow_book" value="${book.name_book}">
                                 <input type="hidden" name="post_action" value="button_borrow_book">

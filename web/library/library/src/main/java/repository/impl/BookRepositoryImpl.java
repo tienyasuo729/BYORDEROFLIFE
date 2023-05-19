@@ -37,14 +37,6 @@ public class BookRepositoryImpl implements IBookRepository {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
-            try {
-                resultSet.close();
-                preparedStatement.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-            BaseRepository.close();
         }
         return bookList;
     }
