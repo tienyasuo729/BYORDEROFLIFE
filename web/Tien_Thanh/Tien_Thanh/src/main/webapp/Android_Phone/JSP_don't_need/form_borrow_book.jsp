@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
@@ -82,11 +82,27 @@
             <tr>
                 <th>Tên học sinh:</th>
                 <td>
-                    <select name="create_name_student">
-                    <c:forEach items="${list_student_for_form_create_loan_card}" var="student">
-                        <option value="${student.id_Student}"><c:out value="${student.name_Student}"></c:out></option>
+                    <%--                    <input type="text" name="create_name_student" size="45">--%>
+
+                    <div class="dropdown">
+                        <input class="dropdown-input" type="text" placeholder="Tìm kiếm...">
+                        <div class="dropdown-list">
+                            <c:forEach items="${list_student_for_form_create_loan_card}" var="student">
+                                <div class="dropdown-list-item">
+                                        <%--                                        <ul>--%>
+                                        <%--                                            <li value="${student.id_Student}">--%>
+                                        <%--                                                <c:out value="${student.name_Student}"/>--%>
+                                        <%--                                            </li>--%>
+                                        <%--                                        </ul>--%>
+
+                                            <div class="dropdown-list-item">
+                                                <input type="hidden" name="student_id" value="${student.id_Student}">
+                                                <span class="dropdown-item-text">${student.name_Student}</span>
+                                            </div>
+                                </div>
                             </c:forEach>
-                    </select>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
