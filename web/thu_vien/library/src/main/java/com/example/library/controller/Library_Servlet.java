@@ -2,9 +2,11 @@ package com.example.library.controller;
 
 
 import com.example.library.model.Book_loan_card;
+import com.example.library.model.Form_borrow_book;
 import com.example.library.model.Student;
 import com.example.library.service.Impl.BookServiceImpl;
 import com.example.library.service.Impl.Book_loan_cardServiceImpl;
+import com.example.library.service.Impl.List_borrow_bookServiceImpl;
 import com.example.library.service.Impl.StudentServiceImpl;
 
 
@@ -27,6 +29,8 @@ public class Library_Servlet extends HttpServlet {
     private StudentServiceImpl studentService = new StudentServiceImpl();
 
     private Book_loan_cardServiceImpl book_loan_cardService = new Book_loan_cardServiceImpl();
+
+    private List_borrow_bookServiceImpl list_borrow_bookService = new List_borrow_bookServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -53,7 +57,39 @@ public class Library_Servlet extends HttpServlet {
             case "submit_create_loan_card":
                 Create_loan_card(request,response);
                 break;
+            case "list_borrow_book":
+                List_borrow_book(request,response);
+                break;
+            case "find_list_borrow_book_by_name_book":
+                Find_list_borrow_book_by_name_book(request,response);
+                break;
+            case "find_list_borrow_book_by_name_student":
+                Find_list_borrow_book_by_name_student(request,response);
+                break;
         }
+    }
+
+    private void Find_list_borrow_book_by_name_student(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name_student = request.getParameter("name_student_to_find_list_borrow_book");
+        request.setAttribute("list_borrow_books", list_borrow_bookService.find_list_borrow_book_by_name_student(name_student));
+        request.getRequestDispatcher("list_borrow_book.jsp").forward(request,response);
+    }
+
+    private void Find_list_borrow_book_by_name_book(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name_book = request.getParameter("name_book_to_find_list_borrow_book");
+        request.setAttribute("list_borrow_books", list_borrow_bookService.find_list_borrow_book_by_name(name_book));
+        request.getRequestDispatcher("list_borrow_book.jsp").forward(request,response);
+    }
+
+    private void List_borrow_book(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        List<Form_borrow_book> list_borrow_books = list_borrow_bookService.display_list_borrow_book();
+//        for (Form_borrow_book e: list_borrow_books) {
+//            e.getStudent().get
+//        }
+
+        List<Form_borrow_book> list_borrow_books = list_borrow_bookService.display_list_borrow_book();
+        request.setAttribute("list_borrow_books",list_borrow_books);
+        request.getRequestDispatcher("list_borrow_book.jsp").forward(request,response);
     }
 
     private void Create_loan_card(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

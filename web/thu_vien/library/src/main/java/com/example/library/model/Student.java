@@ -5,8 +5,8 @@ public class Student {
     private String name_Student;
     private String class_Student;
 
-    public Student(String id_or_name_Student, String name_Student) {
-        this.id_Student = id_or_name_Student;
+    public Student(String id_or_class_Student, String name_Student) {
+        this.id_Student = id_or_class_Student;
         this.name_Student = name_Student;
     }
 
