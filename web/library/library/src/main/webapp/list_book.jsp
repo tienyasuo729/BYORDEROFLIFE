@@ -25,7 +25,9 @@
 <center>
     <h1>Danh sách sách</h1>
 </center>
-
+<form action="/library" method="post">
+    <button type="submit" name="post_action" value="list_borrow_book">Danh sách mượn</button>
+</form>
 <div align="center">
     <table class="table table-hover" STYLE="text-align: center">
         <%--        <h2>Danh sách sách</h2>--%>

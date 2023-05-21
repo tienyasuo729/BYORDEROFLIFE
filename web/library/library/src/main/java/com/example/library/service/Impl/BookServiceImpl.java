@@ -17,7 +17,7 @@ public class BookServiceImpl implements IBookService {
     }
 
     @Override
-    public void check_and_update_quantity(String id_book, int n) {
-        bookRepository.check_and_update_quantity(id_book, n);
+    public void check_and_update_quantity(String id_book) {
+        bookRepository.check_and_update_quantity(id_book);
     }
 }

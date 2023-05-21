@@ -33,8 +33,7 @@ public class Library_Servlet extends HttpServlet {
     private List_borrow_bookServiceImpl list_borrow_bookService = new List_borrow_bookServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
+
         List_book(request,response);
     }
 
@@ -70,27 +69,11 @@ public class Library_Servlet extends HttpServlet {
             case "check_id_from_form_borrow_book":
                 check_id_from_form_borrow_book(request,response);
                 break;
-            case "return_book_borrow":
-                return_book_borrow(request,response);
-                break;
         }
-    }
-
-    private void return_book_borrow(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id_loan_card = request.getParameter("id_book_loan_card_need_return");
-        book_loan_cardService.return_book_borrow(id_loan_card);
-        List_book(request,response);
     }
 
     private void check_id_from_form_borrow_book(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            String id_loan_card_need_to_check = request.getParameter("id_loan_card_need_to_check");
-            response.setContentType("text/plain");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(String.valueOf(book_loan_cardService.check_id_loan_card(id_loan_card_need_to_check)));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     private void Find_list_borrow_book_by_name_student(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

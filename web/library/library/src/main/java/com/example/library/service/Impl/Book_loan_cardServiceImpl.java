@@ -18,9 +18,4 @@ public class Book_loan_cardServiceImpl implements IBook_loan_cardService {
     public Boolean check_id_loan_card(String id_need_check) {
         return book_loan_cardRepository.check_id_loan_card(id_need_check);
     }
-
-    @Override
-    public void return_book_borrow(String id_loan_card) {
-        book_loan_cardRepository.return_book_borrow(id_loan_card);
-    }
 }

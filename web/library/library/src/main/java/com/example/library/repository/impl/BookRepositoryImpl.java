@@ -18,7 +18,7 @@ public class BookRepositoryImpl implements IBookRepository {
     private String UPDATE_QUANTITY_BOOK = "UPDATE book SET quantity_book = ? WHERE id_book = ?";
 
     @Override
-    public void check_and_update_quantity(String id_book, int n) {
+    public void check_and_update_quantity(String id_book) {
         try {
             PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(CHECK_QUANTITY_BOOK);
             preparedStatement.setString(1, id_book);
@@ -27,7 +27,7 @@ public class BookRepositoryImpl implements IBookRepository {
             int quantity_book = resultSet.getInt("quantity_book");
             if (quantity_book > 0){
                 PreparedStatement preparedStatement1 = this.baseRepository.getConnectionJavaToDB().prepareStatement(UPDATE_QUANTITY_BOOK);
-                preparedStatement1.setInt(1, quantity_book + n);
+                preparedStatement1.setInt(1, quantity_book - 1);
                 preparedStatement1.setString(2,id_book);
                 preparedStatement1.executeUpdate();
             }

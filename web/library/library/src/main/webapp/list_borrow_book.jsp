@@ -59,10 +59,7 @@
         <td><fmt:formatDate value="${listBorrowBook.getBook_loan_card().getBorrowed_date()}" pattern="dd/MM/yyyy"/></td>
         <td><fmt:formatDate value="${listBorrowBook.getBook_loan_card().getReturn_date()}" pattern="dd/MM/yyyy"/></td>
         <td>
-          <form action="/library" method="post">
-            <input type="hidden" name="id_book_loan_card_need_return" value="${listBorrowBook.getBook_loan_card().getId_loan_card()}">
-            <button type="button" id="return_button" name="post_action" value="return_book_borrow" onclick="check_return_button('${listBorrowBook.getStudent().getName_Student()}', '${listBorrowBook.getBook().getName_book()}')">Trả sách</button>
-          </form>
+          <button type="button">Trả sách</button>
         </td>
       </tr>
     </c:forEach>
@@ -70,15 +67,7 @@
 </div>
 
 <script>
-  function check_return_button(name_student, name_book) {
-    let tra_sach = document.getElementById("return_button");
-    let check = confirm("Học viên " + name_student + " thực hiện trả sách " + name_book);
-    if (check) {
-      tra_sach.type = "submit";
-    } else {
-      tra_sach.type = "button";
-    }
-  }
+
 </script>
 </body>
 </html>

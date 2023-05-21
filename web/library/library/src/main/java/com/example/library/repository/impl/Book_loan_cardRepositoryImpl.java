@@ -19,25 +19,6 @@ public class Book_loan_cardRepositoryImpl implements IBook_loan_cardRepositrory 
     private BookServiceImpl bookService = new BookServiceImpl();
     private String CHECK_ID_LOAN_CARD = "select id_loan_card from book_loan_card";
     private String CREATE_BOOK_LOAN_CARD = "INSERT into book_loan_card(id_loan_card, id_book, id_student, status_loan_card, borrowed_date, return_date) values (?,?,?,?,?,?)";
-    private String DELETE_BOOK_LOAN_CARD = "DELETE from book_loan_card WHERE id_loan_card = ?";
-    private String TAKE_ID_BOOK_FORM_BOOK_LOAN_CARD = "SELECT id_book from book_loan_card where id_loan_card = ?";
-    @Override
-    public void return_book_borrow(String id_loan_card) {
-        try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(TAKE_ID_BOOK_FORM_BOOK_LOAN_CARD);
-            preparedStatement.setString(1, id_loan_card);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-            String id_book = resultSet.getString("id_book");
-
-            preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(DELETE_BOOK_LOAN_CARD);
-            preparedStatement.setString(1, id_loan_card);
-            preparedStatement.executeUpdate();
-            bookService.check_and_update_quantity(id_book,1);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @Override
     public Boolean check_id_loan_card(String id_need_check) {
@@ -73,7 +54,7 @@ public class Book_loan_cardRepositoryImpl implements IBook_loan_cardRepositrory 
 
             preparedStatement.setDate(5, new Date(book_loan_card.getBorrowed_date().getTime()));
             preparedStatement.setDate(6, new Date(book_loan_card.getReturn_date().getTime()));
-            bookService.check_and_update_quantity(book_loan_card.getId_book(), -1);
+            bookService.check_and_update_quantity(book_loan_card.getId_book());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

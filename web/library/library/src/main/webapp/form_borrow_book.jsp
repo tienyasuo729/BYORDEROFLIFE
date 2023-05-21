@@ -44,8 +44,8 @@
             <tr>
                 <th>Tên sách:</th>
                 <td>
-                    <input type="hidden" name="create_id_book" value="${create_name_book}">
-                    <input type="text" size="45" value="${create_id_book}" readonly/>
+                    <input type="hidden" name="create_id_book" value="${create_id_book}">
+                    <input type="text" size="45" value="${create_name_book}" readonly/>
                 </td>
             </tr>
             <tr>
@@ -72,7 +72,7 @@
                 </td>
             </tr>
         </table>
-        <button type="submit" name="submit_create_loan_card">Mượn sách</button>
+        <button type="submit" name="post_action" value="submit_create_loan_card">Mượn sách</button>
         <form method="post" action="/library">
             <input type="hidden" name="post_action" value="return_form_create_loan_card">
             <button type="submit" name="return_form_create_loan_card">Huỷ</button>
