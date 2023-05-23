@@ -21,7 +21,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-
+    .form_gg{
+      display: inline;
+    }
   </style>
 </head>
 <body>
@@ -31,12 +33,12 @@
 <h1>Tên sách</h1>
 <form action="/library" method="post">
   <input type="text" name="name_book_to_find_list_borrow_book">
-  <button type="submit" name="post_action" value="find_list_borrow_book_by_name_book">Tìm Kiếm</button>
+  <button type="submit" class="form_gg" name="post_action" value="find_list_borrow_book_by_name_book">Tìm Kiếm</button>
 </form>
 <h1>Tên hs</h1>
 <form action="/library" method="post">
   <input type="text" name="name_student_to_find_list_borrow_book">
-  <button type="submit" name="post_action" value="find_list_borrow_book_by_name_student">Tìm Kiếm</button>
+  <button type="submit" class="form_gg" name="post_action" value="find_list_borrow_book_by_name_student">Tìm Kiếm</button>
 </form>
 <div align="center">
   <table class="table table-hover" STYLE="text-align: center">

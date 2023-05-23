@@ -3,7 +3,6 @@ package com.example.library.repository.impl;
 
 import com.example.library.connections.BaseRepository;
 import com.example.library.model.Book_loan_card;
-import com.example.library.model.Form_borrow_book;
 import com.example.library.repository.IBook_loan_cardRepositrory;
 import com.example.library.service.Impl.BookServiceImpl;
 
@@ -11,8 +10,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Book_loan_cardRepositoryImpl implements IBook_loan_cardRepositrory {
     private BaseRepository baseRepository = new BaseRepository();

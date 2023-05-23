@@ -26,14 +26,15 @@ create table book_loan_card(
 	foreign key (id_student) references student(id_student)
 );
 
-INSERT INTO `library`.`book` (`id_book`, `name_book`, `author_book`, `describe_book`, `quantity_book`) VALUES ('a1', 'tt', 'tien', 'romace', '9');
-INSERT INTO `library`.`book` (`id_book`, `name_book`, `author_book`, `describe_book`, `quantity_book`) VALUES ('a2', 'cách làm người', 'huấn rose', 'đạo đức', '8');
-INSERT INTO `library`.`book` (`id_book`, `name_book`, `author_book`, `describe_book`, `quantity_book`) VALUES ('a3', 'còn cái nịt', 'tiến bịp', 'đạo chít', '2');
+INSERT INTO `library`.`book` (`id_book`, `name_book`, `author_book`, `describe_book`, `quantity_book`) VALUES ('a1', 'tt', 'tien', 'romace', 9);
+INSERT INTO `library`.`book` (`id_book`, `name_book`, `author_book`, `describe_book`, `quantity_book`) VALUES ('a2', 'cách làm người', 'huấn rose', 'đạo đức', 8);
+INSERT INTO `library`.`book` (`id_book`, `name_book`, `author_book`, `describe_book`, `quantity_book`) VALUES ('a3', 'còn cái nịt', 'tiến bịp', 'đạo chít', 2);
+
+INSERT INTO `library`.`student` (`id_student`, `name_student`, `class_student`) VALUES ('1', 'tien', 'gg');
+INSERT INTO `library`.`student` (`id_student`, `name_student`, `class_student`) VALUES ('2', 'nam', 'hh');
+INSERT INTO `library`.`student` (`id_student`, `name_student`, `class_student`) VALUES ('3', 'linh', 'jj');
 
 INSERT INTO `library`.`book_loan_card` (`id_loan_card`, `id_book`, `id_student`, `status_loan_card`, `borrowed_date`, `return_date`) VALUES ('ms-1', 'a1', '3', 1, '2023-05-21', '2023-05-31');
 INSERT INTO `library`.`book_loan_card` (`id_loan_card`, `id_book`, `id_student`, `status_loan_card`, `borrowed_date`, `return_date`) VALUES ('ms-4', 'a1', '1', 1, '2023-05-21', '2023-05-31');
 INSERT INTO `library`.`book_loan_card` (`id_loan_card`, `id_book`, `id_student`, `status_loan_card`, `borrowed_date`, `return_date`) VALUES ('ms-5', 'a1', '1', 1, '2023-05-21', '2023-06-07');
 
-INSERT INTO `library`.`student` (`id_student`, `name_student`, `class_student`) VALUES ('1', 'tien', 'gg');
-INSERT INTO `library`.`student` (`id_student`, `name_student`, `class_student`) VALUES ('2', 'nam', 'hh');
-INSERT INTO `library`.`student` (`id_student`, `name_student`, `class_student`) VALUES ('3', 'linh', 'jj');
