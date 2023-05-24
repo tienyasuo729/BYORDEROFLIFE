@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hình tròn và tọa độ</title>
+    <style>
+        #canvas {
+            border: 1px solid #d3d3d3;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var circleSize = canvas.width / 3; // Kích thước của mỗi hình tròn
+        var circles = []; // Mảng chứa thông tin về các hình tròn
+        var isDrawing = false; // Biến kiểm tra xem có đang vẽ hay không
+        var connections = []; // Mảng chứa thông tin về các đường nối giữa các hình tròn
+        var prevCircle = null; // Biến lưu trữ hình tròn trước đó
+
+        // Tạo mảng circles chứa thông tin về các hình tròn
+        for (var row = 0; row < 3; row++) {
+            for (var col = 0; col < 3; col++) {
+                var circleX = col * circleSize + circleSize / 2;
+                var circleY = row * circleSize + circleSize / 2;
+                var radius = circleSize / 2;
+
+                circles.push({
+                    x: circleX,
+                    y: circleY,
+                    radius: radius,
+                    isConnected: false // Thêm thuộc tính isConnected để kiểm tra xem hình tròn đã được nối hay chưa
+                });
+            }
+        }
+
+        // Vẽ các hình tròn đen ban đầu
+        circles.forEach(function(circle) {
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+            ctx.fillStyle = 'black';
+            ctx.fill();
+            ctx.closePath();
+        });
+
+        // Xử lý sự kiện mousedown trên khung canvas
+        $('#canvas').mousedown(function(event) {
+            var rect = canvas.getBoundingClientRect();
+            var mouseX = event.clientX - rect.left;
+            var mouseY = event.clientY - rect.top;
+
+            // Tìm hình tròn mà chuột đang nằm trên và chưa được nối
+            var hoveredCircle = circles.find(function(circle) {
+                var distance = Math.sqrt(Math.pow(mouseX - circle.x, 2) + Math.pow(mouseY - circle.y, 2));
+                return distance <= circle.radius && !circle.isConnected;
+            });
+
+            if (hoveredCircle) {
+                // Lưu thông tin của hình tròn được nhấn chuột
+                isDrawing = true;
+                prevCircle = hoveredCircle;
+            }
+        });
+
+        // Xử lý sự kiện mousemove trên khung canvas
+        $('#canvas').mousemove(function(event) {
+            if (isDrawing) {
+                var rect = canvas.getBoundingClientRect();
+                var mouseX = event.clientX - rect.left;
+                var mouseY = event.clientY - rect.top;
+
+                // Xóa nội dung canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Vẽ lại các hình tròn đen
+                circles.forEach(function(circle) {
+                    ctx.beginPath();
+                    ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+                    ctx.fillStyle = 'black';
+                    ctx.fill();
+                    ctx.closePath();
+                });
+
+                // Vẽ lại các đường nối giữa các hình tròn
+                connections.forEach(function(connection) {
+                    var fromCircle = circles[connection.from];
+                    var toCircle = circles[connection.to];
+
+                    ctx.beginPath();
+                    ctx.moveTo(fromCircle.x, fromCircle.y);
+                    ctx.lineTo(toCircle.x, toCircle.y);
+                    ctx.strokeStyle = 'red';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    ctx.closePath();
+                });
+
+                // Vẽ đường nối từ hình tròn trước đó tới vị trí con trỏ chuột
+                ctx.beginPath();
+                ctx.moveTo(prevCircle.x, prevCircle.y);
+                ctx.lineTo(mouseX, mouseY);
+                ctx.strokeStyle = 'red';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.closePath();
+            }
+        });
+
+        // Xử lý sự kiện mouseup trên khung canvas
+        $('#canvas').mouseup(function(event) {
+            if (isDrawing) {
+                var rect = canvas.getBoundingClientRect();
+                var mouseX = event.clientX - rect.left;
+                var mouseY = event.clientY - rect.top;
+
+                // Tìm hình tròn mà chuột đang nằm trên và chưa được nối
+                var hoveredCircle = circles.find(function(circle) {
+                    var distance = Math.sqrt(Math.pow(mouseX - circle.x, 2) + Math.pow(mouseY - circle.y, 2));
+                    return distance <= circle.radius && !circle.isConnected;
+                });
+
+                if (hoveredCircle) {
+                    // Thêm đường nối giữa hai hình tròn
+                    connections.push({
+                        from: circles.indexOf(prevCircle),
+                        to: circles.indexOf(hoveredCircle)
+                    });
+
+                    // Đánh dấu hai hình tròn đã được nối
+                    prevCircle.isConnected = true;
+                    hoveredCircle.isConnected = true;
+                }
+
+                // Xóa nội dung canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Vẽ lại các hình tròn đen
+                circles.forEach(function(circle) {
+                    ctx.beginPath();
+                    ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+                    ctx.fillStyle = 'black';
+                    ctx.fill();
+                    ctx.closePath();
+                });
+
+                // Vẽ lại các đường nối giữa các hình tròn
+                connections.forEach(function(connection) {
+                    var fromCircle = circles[connection.from];
+                    var toCircle = circles[connection.to];
+
+                    ctx.beginPath();
+                    ctx.moveTo(fromCircle.x, fromCircle.y);
+                    ctx.lineTo(toCircle.x, toCircle.y);
+                    ctx.strokeStyle = 'red';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    ctx.closePath();
+                });
+
+                isDrawing = false;
+                prevCircle = null;
+            }
+        });
+    });
+
+
+</script>
+</body>
+</html>
