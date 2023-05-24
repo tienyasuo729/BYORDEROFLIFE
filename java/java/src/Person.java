@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class Person {
     private int id;
@@ -39,20 +38,4 @@ public class Person {
         this.gender = gender;
     }
 
-    public void scanInfo() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter ID: ");
-        this.id = input.nextInt();
-        input.nextLine();
-        System.out.print("Enter Name:");
-        this.name = input.nextLine();
-        System.out.print("Enter Gender: ");
-        this.gender = input.nextBoolean();
-    }
-
-    public void printInfo() {
-        System.out.println("-----------------------------------");
-        System.out.println("| ID | Name | Male 1");
-        System.out.printf("| %d | %s | %b |\n", this.id, this.name, this.gender);
-    }
 }
