@@ -1,34 +1,39 @@
-import java.util.Scanner;
+    import java.util.Scanner;
 
-public class Test {
-    public static void main(String[] args) {
-//tao doi tuong cua lop Person
-        Person p = new Person();
-//goi phuong thuc cua doi tuong Person
-        p.scanInfo();
-        p.printInfo();
-    }
-}
-class Person {
-    private int id;
-    private String name;
-    private boolean gender;
+    public class Test {
+        private static Person [] person = new Person[4];
 
-    public void scanInfo() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter ID: ");
-        id = input.nextInt();
-        // Consume the remaining newline character
-        input.nextLine();
-        System.out.print("Enter Name: ");
-        name = input.nextLine();
-        System.out.print("Enter Gender: ");
-        gender = Boolean.parseBoolean(input.nextLine());
+        public static void main(String[] args) {
+            person[0]= new Person(1, "nguyen van a", true);
+            person[1]= new Person(2, "nguyen van b", true);
+            scanInfo();
+            printInfo();
+        }
+
+        public static void scanInfo() {
+            for (int i = 0; i < person.length; i++) {
+                if (person[i] == null){
+                    Scanner input = new Scanner(System.in);
+                    person[i] = new Person();
+                    System.out.print("Enter ID: ");
+                    int id = input.nextInt();
+                    input.nextLine();
+                    person[i].setId(id);
+                    System.out.print("Enter Name: ");
+                    person[i].setName(input.nextLine());
+                    System.out.print("Enter Gender: ");
+                    person[i].setGender(Boolean.parseBoolean(input.nextLine()));
+                }
+            }
+        }
+
+        public static void printInfo() {
+            for (int i = 0; i < person.length; i++) {
+                System.out.println("-------------------");
+                System.out.println("| ID  | Name  | Gender |");
+                System.out.printf("| %d | %s | %s    |\n", person[i].getId(), person[i].getName(), (person[i].isGender() ? "Male" : "Female"));
+            }
+        }
     }
 
-    public void printInfo() {
-        System.out.println("-------------------");
-        System.out.println("| ID  | Name  | Gender |");
-        System.out.printf("| %d | %s | %s    |\n", id, name, (gender ? "Male" : "Female"));
-    }
-}
+
