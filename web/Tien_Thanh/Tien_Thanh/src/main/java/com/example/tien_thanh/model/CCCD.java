@@ -2,6 +2,16 @@ package com.example.tien_thanh.model;
 
 import java.util.Date;
 
+//createCircle(100, 100, 40);
+//        createCircle(200, 100, 40);
+//        createCircle(300, 100, 40);
+//        createCircle(100, 200, 40);
+//        createCircle(200, 200, 40);
+//        createCircle(300, 200, 40);
+//        createCircle(100, 300, 40);
+//        createCircle(200, 300, 40);
+//        createCircle(300, 300, 40);
+
 public class CCCD{
     private String cccd;
     private String name;
