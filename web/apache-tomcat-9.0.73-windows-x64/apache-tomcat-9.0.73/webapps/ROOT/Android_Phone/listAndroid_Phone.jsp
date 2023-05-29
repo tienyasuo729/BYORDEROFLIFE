@@ -179,6 +179,7 @@
                         <label for="id_android_phone" class="col-form-label">Mã số:</label>
                         <input type="number" name="id" class="form-control" id="id_android_phone" onblur="idError()">
                         <span class="input-error">Vui lòng nhập mã số</span>
+                        <span class="input-error" id="check_if_id_exist">mã số đã tồn tại</span>
                     </div>
                     <div class="mb-3">
                         <label for="name_android_phone" class="col-form-label">Họ và tên:</label>
@@ -385,6 +386,7 @@
         if (check === true) {
             let xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
+                alert(this.readyState + "///" + this.status);
                 if (this.readyState == 4 && this.status == 200) {
                     // bảng này để xoá một hàng trong bảng ( chỉ xoá hàng trong jsp mà không động tới servlet)
                     var row = btn.parentNode.parentNode;
@@ -490,9 +492,31 @@
     }
 
     function idError() {
+        let check = true;
         var id = document.getElementById("id_android_phone");
-        if (id.value.trim() !== "") {
-            id.nextElementSibling.style.display = "none";
+        let spanCheckIdExist = document.getElementById("check_if_id_exist");
+        // if (id.value.trim() !== "") {
+        //     id.nextElementSibling.style.display = "none";
+        // }
+        if (check) {
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                alert(this.readyState + "///" + this.status);
+                if (this.readyState == 4 && this.status == 200) {
+
+                    var result = this.responseText;
+                    if (result === "true") {
+                        spanCheckIdExist.style.display = "block";
+                    } else {
+                        spanCheckIdExist.style.display = "none";
+                    }
+                }
+            };
+
+            xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
+            var data = "action2=check_if_id_exist&id_need_to_check=" + encodeURIComponent(id.value); // Tạo dữ liệu gửi đi
+            xhr.send(data); // Gửi dữ liệu đi
         }
     }
 

@@ -1,11 +1,11 @@
     import java.util.Scanner;
 
     public class Test {
-        private static Person [] person = new Person[4];
+        private static lab3a.Person[] person = new lab3a.Person[4];
 
         public static void main(String[] args) {
-            person[0]= new Person(1, "nguyen van a", true);
-            person[1]= new Person(2, "nguyen van b", true);
+            person[0]= new lab3a.Person(1, "nguyen van a", true);
+            person[1]= new lab3a.Person(2, "nguyen van b", true);
             scanInfo();
             printInfo();
         }
@@ -14,7 +14,7 @@
             for (int i = 0; i < person.length; i++) {
                 if (person[i] == null){
                     Scanner input = new Scanner(System.in);
-                    person[i] = new Person();
+                    person[i] = new lab3a.Person();
                     System.out.print("Enter ID: ");
                     int id = input.nextInt();
                     input.nextLine();
@@ -31,7 +31,7 @@
             for (int i = 0; i < person.length; i++) {
                 System.out.println("-------------------");
                 System.out.println("| ID  | Name  | Gender |");
-                System.out.printf("| %d | %s | %s    |\n", person[i].getId(), person[i].getName(), (person[i].isGender() ? "Male" : "Female"));
+                System.out.printf("| %d | %s | %s    |\n", person[i].getId(), person[i].getName(), (person[i].getGender() ? "Male" : "Female"));
             }
         }
     }

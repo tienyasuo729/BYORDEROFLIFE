@@ -1,6 +1,4 @@
 
-package lab3a;
-
 import java.util.Scanner;
 
 
