@@ -1,17 +1,21 @@
 
+package lab3a;
+
+import java.util.Scanner;
+
+
 public class Person {
-    private int id;
-    private String name;
-    private boolean gender;
+    int id;
+    String name;
+    boolean gender;
+
+    public Person() {
+    }
 
     public Person(int id, String name, boolean gender) {
         this.id = id;
         this.name = name;
         this.gender = gender;
-    }
-
-    public Person() {
-
     }
 
     public int getId() {
@@ -30,7 +34,7 @@ public class Person {
         this.name = name;
     }
 
-    public boolean isGender() {
+    public boolean getGender() {
         return gender;
     }
 
@@ -38,4 +42,29 @@ public class Person {
         this.gender = gender;
     }
 
+    public void scanInfo() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter ID: ");
+        this.id = input.nextInt();
+        System.out.println("Enter Name: ");
+        input.nextLine();
+        this.name = input.nextLine();
+        System.out.print("Enter Gender: ");
+        this.gender = input.nextBoolean();
+    }
+
+    public void printInfo() {
+        System.out.println("---------------------------");
+        System.out.println("| ID  | Name  | Gender |");
+        System.out.printf("| %d  | %s   | %b     |\n", this.id, this.name, this.gender);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                '}';
+    }
 }
