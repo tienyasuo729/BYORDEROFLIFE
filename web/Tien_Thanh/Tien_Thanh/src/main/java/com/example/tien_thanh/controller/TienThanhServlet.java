@@ -54,6 +54,8 @@ public class TienThanhServlet extends HttpServlet {
             action2 = "";
         }
         switch (action2) {
+            case "check_if_id_exist":
+                check_if_id_exist(request,response);
             case "save_create_android_phone":
                 create_Android_Phone(request,response);
                 break;
@@ -99,17 +101,21 @@ public class TienThanhServlet extends HttpServlet {
         }
     }
 
+    private void check_if_id_exist(HttpServletRequest request, HttpServletResponse response) {
+
+    }
+
     private void watch_near_term_list_android_phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Android_Phone> androidPhones = android_phoneService.near_term_list_android_phone();
         request.setAttribute("listAndroid_Phone", androidPhones);
-        request.getRequestDispatcher("Android_Phone/near_term_list_android_phone.jsp").forward(request, response);
+        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
 
     }
 
     private void watch_late_list_android_phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Android_Phone> androidPhones = android_phoneService.late_list_android_phone();
         request.setAttribute("listAndroid_Phone", androidPhones);
-        request.getRequestDispatcher("Android_Phone/late_list_android_phone.jsp").forward(request, response);
+        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
 
     }
 

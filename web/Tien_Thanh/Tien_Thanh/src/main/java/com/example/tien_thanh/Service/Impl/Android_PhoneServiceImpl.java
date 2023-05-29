@@ -37,6 +37,11 @@ public class Android_PhoneServiceImpl implements IAndroid_PhoneService {
     }
 
     @Override
+    public Boolean check_if_id_exist(String idToCheck) {
+        return android_phoneRepository.check_if_id_exist(idToCheck);
+    }
+
+    @Override
     public List<Android_Phone> list_Find_Android_Phone_Similar_By_Id(String id) {
         return android_phoneRepository.list_Find_Android_Phone_Similar_By_Id(id);
     }

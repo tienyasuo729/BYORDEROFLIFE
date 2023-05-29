@@ -33,6 +33,7 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
     private String LIST_FIND_ANDROID_PHONE_SIMILAR_BY_NAME = "select * from android_phone where name_owner like ?";
     private String WATCH_LATE_LIST_ANDROID_PHONE = "SELECT * from android_phone where DATEDIFF(CURRENT_DATE(), start_Date) > 10";
     private String WATCH_NEAR_TERM_LIST_ANDROID_PHONE = "SELECT * from android_phone where DATEDIFF(CURRENT_DATE(), start_Date) BETWEEN 8 AND 10";
+    private String CHECK_IF_ID_EXIST = "SELECT id from android_phone where id = ?";
     @Override
     public void interest_payment(String id, Date date) {
         try {
@@ -55,12 +56,13 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
                 String id = resultSet.getString("id");
                 String name_owner = resultSet.getString("name_owner");
                 String name_phone = resultSet.getString("name_phone");
+                String id_of_phone = resultSet.getString("id_of_phone");
                 int price = resultSet.getInt("price");
                 Date start_Date  = new Date(resultSet.getDate("start_Date").getTime());
                 String status = resultSet.getString("status");
                 String password = resultSet.getString("password");
                 String note = resultSet.getString("note");
-                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note));
+                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,id_of_phone,price,start_Date,status,password,note));
 
             }
         } catch (SQLException e) {
@@ -112,6 +114,18 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
             PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(DELETE_ANDROID_PHONE_BY_ID);
             preparedStatement.setString(1,id);
             preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Boolean check_if_id_exist(String idToCheck) {
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(CHECK_IF_ID_EXIST);
+            preparedStatement.setString(1,idToCheck);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

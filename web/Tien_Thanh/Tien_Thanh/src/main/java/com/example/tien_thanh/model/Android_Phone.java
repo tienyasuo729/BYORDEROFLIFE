@@ -6,11 +6,24 @@ public class Android_Phone {
     private String id;
     private String name_owner;
     private String name_phone;
+    private String id_of_phone;
     private int price;
     private Date start_Date;
     private String status;
     private String password;
     private String note;
+
+    public Android_Phone(String id, String name_owner, String name_phone, String id_of_phone, int price, Date start_Date, String status, String password, String note) {
+        this.id = id;
+        this.name_owner = name_owner;
+        this.name_phone = name_phone;
+        this.id_of_phone = id_of_phone;
+        this.price = price;
+        this.start_Date = start_Date;
+        this.status = status;
+        this.password = password;
+        this.note = note;
+    }
 
     public Android_Phone(String id, String name_owner, String name_phone, int price, Date start_Date, String status, String password, String note) {
         this.id = id;
@@ -21,6 +34,14 @@ public class Android_Phone {
         this.status = status;
         this.password = password;
         this.note = note;
+    }
+
+    public String getId_of_phone() {
+        return id_of_phone;
+    }
+
+    public void setId_of_phone(String id_of_phone) {
+        this.id_of_phone = id_of_phone;
     }
 
     public String getName_phone() {

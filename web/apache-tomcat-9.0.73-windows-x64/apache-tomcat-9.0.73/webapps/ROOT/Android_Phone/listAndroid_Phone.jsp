@@ -20,6 +20,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        .form-add, .form-return, .form-late, .form-extend {
+            display: inline-block;
+        }
         .form-edit, .form-delete {
             display: inline-block;
         }
@@ -32,9 +35,20 @@
             color: red;
             display: none;
         }
+        /*#background {*/
+        /*    background-image: url("https://flc-event.vn/wp-content/uploads/2020/02/backgound-about-1.jpg");*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-size: cover;*/
+        /*    position: fixed;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    z-index: -1;*/
+        /*}*/
     </style>
 </head>
-<body>
+<body id="background">
 <center>
     <h1>Cầm đồ Tiến Thanh</h1>
 
@@ -43,23 +57,23 @@
     <%--        <button type="submit" class="btn btn-success">Thêm Điện thoại cầm</button>--%>
     <%--    </form>--%>
 
-    <form>
+    <form class="form-add">
         <button type="button" class="btn btn-success" data-bs-toggle="modal"
                 data-bs-target="#exampleModal" data-bs-whatever="@mdo">Thêm Điện thoại cầm
         </button>
     </form>
 
-    <form method="post" action="/tienthanh">
+    <form method="post" action="/tienthanh" class="form-return">
         <input type="hidden" name="action" value="reload">
         <button class="btn btn-success">Quay lại trang chính</button>
     </form>
 
-    <form method="post" action="/tienthanh">
+    <form method="post" action="/tienthanh" class="form-late">
         <input type="hidden" name="action2" value="watch_late_list_android_phone">
         <button class="btn btn-success">Xem danh sách trễ hạn</button>
     </form>
 
-    <form method="post" action="/tienthanh">
+    <form method="post" action="/tienthanh" class="form-extend">
         <input type="hidden" name="action2" value="watch_near_term_list_android_phone">
         <button class="btn btn-success">Xem danh sách gần tới hạn</button>
     </form>
@@ -93,6 +107,7 @@
             <th>Mã Số</th>
             <th>Họ và tên</th>
             <th>Loại máy</th>
+            <th>Tên máy</th>
             <th>Số tiền cầm</th>
             <th>Ngày cầm</th>
             <th>Tình trạng</th>
@@ -109,6 +124,7 @@
                 <td><c:out value="${android_phone.id}"/></td>
                 <td><c:out value="${android_phone.name_owner}"/></td>
                 <td><c:out value="${android_phone.name_phone}"/></td>
+                <td><c:out value="${android_phone.id_of_phone}"/></td>
                 <td><fmt:formatNumber value="${android_phone.price}" pattern="###,###,###,###"/></td>
                 <td><fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/></td>
                 <td><c:out value="${android_phone.status}"/></td>
