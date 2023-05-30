@@ -502,7 +502,7 @@
             let xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
                 alert(this.readyState + "///" + this.status);
-                if (this.readyState == 4 && this.status == 200) {
+                if (this.readyState == 4 && this.status == 500) {
 
                     var result = this.responseText;
                     if (result === "true") {

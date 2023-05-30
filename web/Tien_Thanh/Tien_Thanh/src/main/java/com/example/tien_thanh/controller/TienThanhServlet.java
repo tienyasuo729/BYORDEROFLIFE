@@ -102,14 +102,13 @@ public class TienThanhServlet extends HttpServlet {
     }
 
     private void check_if_id_exist(HttpServletRequest request, HttpServletResponse response) {
-
+        boolean check = android_phoneService.check_if_id_exist(request.getParameter("id_need_to_check"));
         try {
-            boolean check = android_phoneService.check_if_id_exist(request.getParameter("id_need_to_check"));
             response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(String.valueOf(check));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+
         }
     }
 
