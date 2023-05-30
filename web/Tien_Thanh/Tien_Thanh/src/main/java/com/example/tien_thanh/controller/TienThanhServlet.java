@@ -56,6 +56,7 @@ public class TienThanhServlet extends HttpServlet {
         switch (action2) {
             case "check_if_id_exist":
                 check_if_id_exist(request,response);
+                break;
             case "save_create_android_phone":
                 create_Android_Phone(request,response);
                 break;
@@ -270,12 +271,8 @@ public class TienThanhServlet extends HttpServlet {
 //        System.out.println(androidPhones.get(1).getStart_Date().getMonth());
         request.setAttribute("listAndroid_Phone", androidPhones);
         request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
-        Scanner scanner = new Scanner(System.in);
-        int a  = Integer.parseInt(scanner.nextLine());
-
     }
     private void Form_create_Android_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println();
         request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request, response);
     }
     private void create_Android_Phone(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -339,11 +336,6 @@ public class TienThanhServlet extends HttpServlet {
     private int money_all_days(int days, int price){
         int payment = 0;
         payment = ((price / 1000000) * 3000 + less_than_500(price)) * days;
-        return payment;
-    }
-    private int money_10_days(int price){
-        int payment = 0;
-        payment = ((price / 1000000) * 3000 + less_than_500(price)) * 10;
         return payment;
     }
     private int less_than_500 (int price){
