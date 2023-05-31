@@ -27,89 +27,13 @@
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
 
     <style>
-        .form-add, .form-return, .form-late, .form-extend {
-            display: inline-block;
-        }
 
-        .form-edit, .form-delete {
-            display: inline-block;
-        }
-
-        .form-payment {
-            display: inline;
-        }
-
-        .input-error {
-            color: red;
-            display: none;
-        }
-
-        /*.dataTables_wrapper .dataTables_paginate a.paginate_button {*/
-        /*    margin: 0px;*/
-        /*}*/
-
-        /*#background {*/
-        /*    background-image: url("https://flc-event.vn/wp-content/uploads/2020/02/backgound-about-1.jpg");*/
-        /*    background-repeat: no-repeat;*/
-        /*    background-size: cover;*/
-        /*    position: fixed;*/
-        /*    top: 0;*/
-        /*    left: 0;*/
-        /*    width: 100%;*/
-        /*    height: 100%;*/
-        /*    z-index: -1;*/
-        /*}*/
     </style>
 </head>
 <body id="background">
 <center>
     <h1>Cầm đồ Tiến Thanh</h1>
 
-    <%--    <form method="post" action="/tienthanh">--%>
-    <%--        <input type="hidden" name="action" value="create">--%>
-    <%--        <button type="submit" class="btn btn-success">Thêm Điện thoại cầm</button>--%>
-    <%--    </form>--%>
-
-    <form class="form-add">
-        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">Thêm Điện thoại cầm
-        </button>
-    </form>
-
-    <form method="post" action="/tienthanh" class="form-return">
-        <input type="hidden" name="action" value="reload">
-        <button class="btn btn-success">Quay lại trang chính</button>
-    </form>
-
-    <form method="post" action="/tienthanh" class="form-late">
-        <input type="hidden" name="action2" value="watch_late_list_android_phone">
-        <button class="btn btn-success">Xem danh sách trễ hạn</button>
-    </form>
-
-    <form method="post" action="/tienthanh" class="form-extend">
-        <input type="hidden" name="action2" value="watch_near_term_list_android_phone">
-        <button class="btn btn-success">Xem danh sách gần tới hạn</button>
-    </form>
-
-
-    <div class="search">
-        <form action="/tienthanh" method="post">
-            <h2>Tìm kiếm theo mã số</h2>
-            <input type="number" name="find_by_id" placeholder="Tìm kiếm theo mã số">
-            <input type="hidden" value="list_find_android_phone_similar_by_id" name="action2">
-            <button type="submit">Tìm kiếm</button>
-        </form>
-    </div>
-
-    <div class="search">
-        <form action="/tienthanh" method="post">
-            <h2>Tìm kiếm theo tên</h2>
-            <input type="text" name="find_by_name" placeholder="Tìm Điện Thoại theo tên">
-            <input type="hidden" value="list_find_android_phone_similar_by_name" name="action2">
-            <button type="submit">Tìm kiếm</button>
-        </form>
-    </div>
-</center>
 
 <div align="center">
     <table id="myTable" class="table table-hover" STYLE="text-align: center">
@@ -117,67 +41,29 @@
 <%--        <caption><h2>Danh sách điện thoại cầm</h2></caption>--%>
         <thead>
         <tr>
-            <th>STT</th>
-            <th>Mã Số Phiếu</th>
-            <th>Họ và tên</th>
-            <th>Loại máy</th>
-            <th>Tên máy</th>
-            <th>Số tiền cầm</th>
-            <th>Ngày cầm</th>
-            <th>Số điện thoại</th>
-            <th>Tình trạng</th>
-            <th>Mật khẩu</th>
-            <th>Ghi chú</th>
-            <th>Thanh Công cụ</th>
+            <th>id</th>
+            <th>full name</th>
+            <th>code</th>
+            <th>Ngày sinh</th>
+            <th>thời gian khởi tạo</th>
+            <th>Quyền</th>
+            <th>công cụ</th>
+
+
         </tr>
         </thead>
         <tbody>
-        <c:set var="count" value="1"/>
-        <c:forEach items="${listAndroid_Phone}" var="android_phone">
+        <c:forEach items="${listMidd}" var="l">
             <tr>
-                <td><c:out value="${count}"/></td>
-                <c:set var="count" value="${count + 1}"/>
+                <td><c:out value="${l.user.getIdUser}"/></td>
+                <td><c:out value="${l.user.getFullName}"/></td>
+                <td><c:out value="${l.user.getCode}"/></td>
+                <td><fmt:formatDate value="${l.user.getBirthdate}" pattern="dd/MM/yyyy"/></td>
+                <td><c:out value="${l.user.getTimeBuild}"/></td>
+                <td><c:out value="${l.user.getRoleName}"/></td>
 
-                <td><c:out value="${android_phone.id}"/></td>
-                <td><c:out value="${android_phone.name_owner}"/></td>
-                <td><c:out value="${android_phone.name_phone}"/></td>
-                <td><c:out value="${android_phone.id_of_phone}"/></td>
-                <td><fmt:formatNumber value="${android_phone.price}" pattern="###,###,###,###"/></td>
-                <td><fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/></td>
-                <td><c:out value="${android_phone.phone_number_owner}"/></td>
-                <td><c:out value="${android_phone.status}"/></td>
-                <td><c:out value="${android_phone.password}"/></td>
-                <td><c:out value="${android_phone.note}"/></td>
                 <td>
-                        <%--thanh công cụ--%>
-                        <%--                    <form action="/tienthanh" method="post" class="form-edit">--%>
-                        <%--                        <input type="hidden" name="action" value="edit_Android_phone">--%>
-                        <%--                        <input type="hidden" name="id_need_to_edit" value="${android_phone.id}">--%>
-                        <%--                        <button type="submit" class="btn btn-success" >Chỉnh sửa</button>--%>
-                        <%--                    </form>--%>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" data-bs-whatever="@mdo"
-                            onclick="edit_form('${android_phone.id}','${android_phone.name_owner}','${android_phone.name_phone}','${android_phone.id_of_phone}','${android_phone.price}','${android_phone.start_Date}','${android_phone.phone_number_owner}','${android_phone.status}','${android_phone.password}','${android_phone.note}')">
-                        Chỉnh sửa
-                    </button>
 
-                        <%--                    <form action="/tienthanh" method="post" class="form-delete">--%>
-                        <%--                        <input type="hidden" name="action2" value="delete_android_phone_by_id">--%>
-                        <%--                        <input type="hidden" name="id_need_to_delete" value="${android_phone.id}">--%>
-                    <button type="button" class="btn btn-danger"
-                            onclick="delete_the_product('${android_phone.id}', this)">Xoá
-                    </button>
-                        <%--                    </form>--%>
-
-                    <button type="button" class="btn btn-warning"
-                            onclick="calculate('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}')">
-                        Gia hạn
-                    </button>
-
-                    <button type="button" class="btn btn-info"
-                            onclick="take_the_product('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}',this)">
-                        lấy máy
-                    </button>
                 </td>
             </tr>
         </c:forEach>

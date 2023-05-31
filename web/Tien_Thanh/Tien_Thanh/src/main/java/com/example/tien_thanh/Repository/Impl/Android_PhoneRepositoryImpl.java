@@ -14,16 +14,6 @@ import java.util.List;
 
 public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
     private BaseRepository baseRepository = new BaseRepository();
-//    private static final String LIST_PRODUCT = "select * from product;";
-//    private static final String ADD_NEW_PRODUCT = "INSERT INTO product(id,name, price, quantity, color, description, idcategory ) VALUES (?, ?, ?, ?, ?, ?, ?);";
-//
-//    private static final String DELETE_PRODUCT = "DELETE FROM PRODUCT WHERE id = ?;";
-//
-//    private static final String EDIT_PRODUCT = "UPDATE product SET name = ?, price = ?, quantity = ?, color = ?, description = ?, idcategory = ? WHERE id = ?;";
-//
-//    private static final String FIND_BY_NAME = "SELECT * FROM product WHERE name LIKE ?";
-//
-//    private static final String FIND_BY_ID = "SELECT * FROM product WHERE id = ?";
     private String DISPLAY_ANDROID_PHONE = "select * from android_phone";
     private String ADD_NEW_ANDROID_PHONE = "INSERT INTO android_phone(id,name_owner, name_phone, price, start_Date, status, password, note ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     private String DELETE_ANDROID_PHONE_BY_ID = "delete from android_phone where id = ?";
@@ -59,11 +49,11 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
                 String id_of_phone = resultSet.getString("id_of_phone");
                 int price = resultSet.getInt("price");
                 Date start_Date  = new Date(resultSet.getDate("start_Date").getTime());
+                String phone_number_owner = resultSet.getString("phone_number_owner");
                 String status = resultSet.getString("status");
                 String password = resultSet.getString("password");
                 String note = resultSet.getString("note");
-                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,id_of_phone,price,start_Date,status,password,note));
-
+                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,id_of_phone,price,start_Date,phone_number_owner,status,password,note));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -142,12 +132,14 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
                 String find_by_id = resultSet.getString("id");
                 String name_owner = resultSet.getString("name_owner");
                 String name_phone = resultSet.getString("name_phone");
+                String id_of_phone = resultSet.getString("id_of_phone");
                 int price = resultSet.getInt("price");
                 Date start_Date  = new Date(resultSet.getDate("start_Date").getTime());
+                String phone_number_owner = resultSet.getString("phone_number_owner");
                 String status = resultSet.getString("status");
                 String password = resultSet.getString("password");
                 String note = resultSet.getString("note");
-                androidPhoneList.add(new Android_Phone(find_by_id,name_owner,name_phone,price,start_Date,status,password,note));
+                androidPhoneList.add(new Android_Phone(find_by_id,name_owner,name_phone,id_of_phone,price,start_Date,phone_number_owner,status,password,note));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -166,12 +158,14 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
                 String id = resultSet.getString("id");
                 String name_owner = resultSet.getString("name_owner");
                 String name_phone = resultSet.getString("name_phone");
+                String id_of_phone = resultSet.getString("id_of_phone");
                 int price = resultSet.getInt("price");
                 Date start_Date  = new Date(resultSet.getDate("start_Date").getTime());
+                String phone_number_owner = resultSet.getString("phone_number_owner");
                 String status = resultSet.getString("status");
                 String password = resultSet.getString("password");
                 String note = resultSet.getString("note");
-                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note));
+                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,id_of_phone,price,start_Date,phone_number_owner,status,password,note));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -189,12 +183,14 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
                 String id = resultSet.getString("id");
                 String name_owner = resultSet.getString("name_owner");
                 String name_phone = resultSet.getString("name_phone");
+                String id_of_phone = resultSet.getString("id_of_phone");
                 int price = resultSet.getInt("price");
                 Date start_Date  = new Date(resultSet.getDate("start_Date").getTime());
+                String phone_number_owner = resultSet.getString("phone_number_owner");
                 String status = resultSet.getString("status");
                 String password = resultSet.getString("password");
                 String note = resultSet.getString("note");
-                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note));
+                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,id_of_phone,price,start_Date,phone_number_owner,status,password,note));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -212,12 +208,14 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
                 String id = resultSet.getString("id");
                 String name_owner = resultSet.getString("name_owner");
                 String name_phone = resultSet.getString("name_phone");
+                String id_of_phone = resultSet.getString("id_of_phone");
                 int price = resultSet.getInt("price");
                 Date start_Date = new Date(resultSet.getDate("start_Date").getTime());
+                String phone_number_owner = resultSet.getString("phone_number_owner");
                 String status = resultSet.getString("status");
                 String password = resultSet.getString("password");
                 String note = resultSet.getString("note");
-                androidPhoneList.add(new Android_Phone(id, name_owner, name_phone, price, start_Date, status, password, note));
+                androidPhoneList.add(new Android_Phone(id,name_owner,name_phone,id_of_phone,price,start_Date,phone_number_owner,status,password,note));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

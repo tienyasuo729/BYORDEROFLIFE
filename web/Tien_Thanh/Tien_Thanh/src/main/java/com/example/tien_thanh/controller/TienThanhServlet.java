@@ -246,7 +246,9 @@ public class TienThanhServlet extends HttpServlet {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        Android_Phone android_phone = new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note);
+        String id_of_phone = request.getParameter("id_of_phone");
+        String phone_number_owner = request.getParameter("phone_number_owner");
+        Android_Phone android_phone = new Android_Phone(id,name_owner,name_phone,id_of_phone,price,start_Date,phone_number_owner,status,password,note);
         android_phoneService.edit_Android_Phone(android_phone);
 //        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request,response);
     }
@@ -294,6 +296,8 @@ public class TienThanhServlet extends HttpServlet {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+        String id_of_phone = request.getParameter("id_of_phone");
+        String phone_number_owner = request.getParameter("phone_number_owner");
 
         if (status.equals("")){
             status = "Bình thường";
@@ -304,6 +308,10 @@ public class TienThanhServlet extends HttpServlet {
         if (password.equals("")){
             password = "Không có";
         }
+        if (phone_number_owner.equals("")){
+            phone_number_owner = "Không có";
+        }
+
 
 //        BufferedReader reader = request.getReader();
 //        StringBuilder stringBuilder = new StringBuilder();
@@ -329,7 +337,7 @@ public class TienThanhServlet extends HttpServlet {
 //            throw new RuntimeException(e);
 //        }
 
-        Android_Phone android_phone = new Android_Phone(id,name_owner,name_phone,price,start_Date,status,password,note);
+        Android_Phone android_phone = new Android_Phone(id,name_owner,name_phone,id_of_phone,price,start_Date,phone_number_owner,status,password,note);
         android_phoneService.add_New_Android_Phone(android_phone);
 //        request.getRequestDispatcher("Android_Phone/createAndroid_Phone.jsp").forward(request,response);
     }

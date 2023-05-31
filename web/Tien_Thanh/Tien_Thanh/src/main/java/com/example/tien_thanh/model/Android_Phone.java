@@ -9,31 +9,30 @@ public class Android_Phone {
     private String id_of_phone;
     private int price;
     private Date start_Date;
+        private String phone_number_owner;
     private String status;
     private String password;
     private String note;
 
-    public Android_Phone(String id, String name_owner, String name_phone, String id_of_phone, int price, Date start_Date, String status, String password, String note) {
+    public Android_Phone(String id, String name_owner, String name_phone, String id_of_phone, int price, Date start_Date, String phone_number_owner, String status, String password, String note) {
         this.id = id;
         this.name_owner = name_owner;
         this.name_phone = name_phone;
         this.id_of_phone = id_of_phone;
         this.price = price;
         this.start_Date = start_Date;
+        this.phone_number_owner = phone_number_owner;
         this.status = status;
         this.password = password;
         this.note = note;
     }
 
-    public Android_Phone(String id, String name_owner, String name_phone, int price, Date start_Date, String status, String password, String note) {
-        this.id = id;
-        this.name_owner = name_owner;
-        this.name_phone = name_phone;
-        this.price = price;
-        this.start_Date = start_Date;
-        this.status = status;
-        this.password = password;
-        this.note = note;
+    public String getPhone_number_owner() {
+        return phone_number_owner;
+    }
+
+    public void setPhone_number_owner(String phone_number_owner) {
+        this.phone_number_owner = phone_number_owner;
     }
 
     public String getId_of_phone() {
