@@ -1,4 +1,6 @@
 
+package data;
+
 import java.util.Scanner;
 import lab3a.Person;
 
@@ -28,7 +30,7 @@ public class test3c {
             perArr[i] = new Person(id, name, isMale);
             }
             for (int i = 0; i < 4; i++) {
-
+//            perArr[i].printInfo();
                 }
             }
     }

@@ -1,4 +1,6 @@
 
+package lab3a;
+
 import java.util.Scanner;
 import lab3a.Person;
 
