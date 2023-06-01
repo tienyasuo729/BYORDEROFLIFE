@@ -13,4 +13,10 @@ public class IMiddServiceImpl implements IMiddService {
     public List<Midd> list_midd() {
         return middRepository.list_midd();
     }
+
+    @Override
+    public Boolean add_midd(Midd midd) {
+        return middRepository.add_midd(midd);
+    }
+
 }

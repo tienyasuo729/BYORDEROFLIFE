@@ -1,7 +1,6 @@
-package lab3a;
+package lab3;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,15 +12,19 @@ public class test3D {
         personArrayList.add(new Person(1,"SE17d10",true));
         personArrayList.add(new Person(2,"SE17d10",false));
 
+        // nhập thêm 2 phần tử
         for (int i = 0; i < 2; i++) {
             personArrayList.add(writeInformation(i));
         }
 
+        // sắp xếp rồi in ra
         personArrayList = sapxep(personArrayList);
         System.out.println("--------------------------");
         for (int i = 0; i < personArrayList.size(); i++) {
             System.out.println(personArrayList.get(i));
         }
+
+        // tìm kiếm
         search(personArrayList);
     }
     private static ArrayList<Person> sapxep(ArrayList<Person> personArrayList){
@@ -57,7 +60,7 @@ public class test3D {
             System.out.print("- Nhập tên cho người thứ " + (i + 1) + " : ");
             String name = scanner.nextLine();
             System.out.print("- Nhập giới tính cho người dùng: " + (i + 1) + " : ");
-            Boolean gender = Boolean.valueOf(scanner.nextLine());
+            Boolean gender = checkGender();
             return new Person(id,name,gender);
     }
 
@@ -69,10 +72,24 @@ public class test3D {
                 id = Integer.parseInt(idToCheck);
                 check = false;
             }catch (Exception e){
-                System.out.print("- Chỉ nhập số, xin mời nhập lại: ");
+                System.out.print("- Chỉ nhập số tối đa 10 chữ số, xin mời nhập lại: ");
                 check = true;
             }
         }while (check);
         return id;
+    }
+
+    private static Boolean checkGender(){
+        Boolean gender;
+        do {
+                String input = scanner.nextLine().toLowerCase();
+                if (input.matches("^(true|false)$")) {
+                    gender = Boolean.parseBoolean(input);
+                    break;
+                } else {
+                    System.out.print("- Chỉ nhập true hoặc false: ");
+                }
+        } while (true);
+        return gender;
     }
 }

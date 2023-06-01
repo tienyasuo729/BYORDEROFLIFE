@@ -1,5 +1,6 @@
 package com.example.test_many_to_many.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class User {
@@ -7,9 +8,9 @@ public class User {
     private String fullName;
     private String code;
     private Date birthdate;
-    private Date timeBuild;
+    private LocalDateTime timeBuild;
 
-    public User(int idUser, String fullName, String code, Date birthdate, Date timeBuild) {
+    public User(int idUser, String fullName, String code, Date birthdate, LocalDateTime timeBuild) {
         this.idUser = idUser;
         this.fullName = fullName;
         this.code = code;
@@ -49,11 +50,11 @@ public class User {
         this.birthdate = birthdate;
     }
 
-    public Date getTimeBuild() {
+    public LocalDateTime getTimeBuild() {
         return timeBuild;
     }
 
-    public void setTimeBuild(Date timeBuild) {
+    public void setTimeBuild(LocalDateTime timeBuild) {
         this.timeBuild = timeBuild;
     }
 }

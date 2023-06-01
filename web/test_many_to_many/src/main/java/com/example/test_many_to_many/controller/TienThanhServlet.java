@@ -1,7 +1,11 @@
 package com.example.test_many_to_many.controller;
 
 import com.example.test_many_to_many.Service.Impl.IMiddServiceImpl;
+import com.example.test_many_to_many.Service.Impl.RoleServiceImpl;
 import com.example.test_many_to_many.Service.Impl.UserServiceImpl;
+import com.example.test_many_to_many.model.Midd;
+import com.example.test_many_to_many.model.Role;
+import com.example.test_many_to_many.model.User;
 
 
 import javax.servlet.ServletException;
@@ -13,6 +17,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
@@ -24,18 +29,20 @@ import java.util.Locale;
 public class TienThanhServlet extends HttpServlet {
     private UserServiceImpl userService;
     private IMiddServiceImpl middService;
+    private RoleServiceImpl roleService;
 
 
     public void init() {
         userService = new UserServiceImpl();
         middService = new IMiddServiceImpl();
+        roleService = new RoleServiceImpl();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        listUser(request,response);
+        listUser(request, response);
     }
 
     @Override
@@ -52,16 +59,44 @@ public class TienThanhServlet extends HttpServlet {
             action2 = "";
         }
         switch (action2) {
-
+            case "addUserAndRole":
+                add_user_and_role(request, response);
+                break;
         }
         switch (action) {
 
         }
     }
 
+    private void add_user_and_role(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idUser = Integer.parseInt(request.getParameter("idUser"));
+        String fullname = request.getParameter("fullName");
+        String code = request.getParameter("code");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthdate = null;
+        try {
+            birthdate = dateFormat.parse(request.getParameter("birthdate"));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        LocalDateTime timeBuild = LocalDateTime.now();
+        int idRole = Integer.parseInt(request.getParameter("idRole"));
+
+        User user = new User(idUser, fullname, code, birthdate, timeBuild);
+        Role role = new Role(idRole);
+        Midd midd = new Midd(user, role);
+        if (userService.add_user(user)) {
+            middService.add_midd(midd);
+        } else {
+            middService.add_midd(midd);
+        }
+        listUser(request, response);
+    }
+
     private void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("listMidd", middService.list_midd());
-        request.getRequestDispatcher("listAndroid_Phone.jsp").forward(request,response);
+        request.setAttribute("listRole", roleService.display_role());
+        request.getRequestDispatcher("listAndroid_Phone.jsp").forward(request, response);
     }
 
 }

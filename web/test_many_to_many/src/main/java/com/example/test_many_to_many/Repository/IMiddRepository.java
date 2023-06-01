@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IMiddRepository {
     List<Midd> list_midd();
+    Boolean add_midd(Midd midd);
 }

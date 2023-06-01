@@ -20,4 +20,9 @@ public class UserServiceImpl implements IUserService {
     public List<User> display_list_user() {
         return userRepository.display_list_user();
     }
+
+    @Override
+    public Boolean add_user(User user) {
+        return userRepository.add_user(user);
+    }
 }

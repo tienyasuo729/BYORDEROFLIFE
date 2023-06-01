@@ -1,8 +1,6 @@
-
-package data;
+package lab3;
 
 import java.util.Scanner;
-import lab3a.Person;
 
 public class test3c {
 
