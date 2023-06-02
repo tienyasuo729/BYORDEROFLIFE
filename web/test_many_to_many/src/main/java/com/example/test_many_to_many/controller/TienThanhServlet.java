@@ -16,14 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+
 
 @WebServlet(name = "TienThanhServlet", value = "/tienthanh")
 public class TienThanhServlet extends HttpServlet {
@@ -85,11 +80,9 @@ public class TienThanhServlet extends HttpServlet {
         User user = new User(idUser, fullname, code, birthdate, timeBuild);
         Role role = new Role(idRole);
         Midd midd = new Midd(user, role);
-        if (userService.add_user(user)) {
-            middService.add_midd(midd);
-        } else {
-            middService.add_midd(midd);
-        }
+        userService.add_user(user);
+        middService.add_midd(midd);
+
         listUser(request, response);
     }
 

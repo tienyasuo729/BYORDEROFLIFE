@@ -38,6 +38,11 @@
                 data-bs-target="#exampleModal">Thêm người dùng
         </button>
     </form>
+    <form action="/tienthanh" method="post">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                data-bs-target="#example">Chỉnh sửa
+        </button>
+    </form>
 
     <div align="center">
         <table id="myTable" class="table table-hover" STYLE="text-align: center">
@@ -57,6 +62,8 @@
             </tr>
             </thead>
             <tbody>
+            <%@ page import="java.time.LocalDateTime" %>
+
             <c:forEach items="${listMidd}" var="l">
                 <tr>
                     <td><c:out value="${l.user.getIdUser()}"/></td>
@@ -76,6 +83,52 @@
         </table>
     </div>
 
+    <div class="modal fade" id="example" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel2">chỉnh sửa thông tin người dùng</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/tienthanh" method="post">
+
+<%--                        <div class="mb-3">--%>
+<%--                            <label for="idUserEdit" class="col-form-label">Mã số:</label>--%>
+<%--                            <input type="number" name="idUser" class="form-control" id="idUserEdit">--%>
+<%--                        </div>--%>
+                        <div class="mb-3">
+                            <label for="fullNameEdit" class="col-form-label">Họ và tên:</label>
+                            <input type="text" name="fullName" class="form-control" id="fullNameEdit">
+                        </div>
+                        <div class="mb-3">
+                            <label for="codeEdit" class="col-form-label">Code:</label>
+                            <input type="text" name="code" class="form-control" id="codeEdit">
+                        </div>
+                        <div class="mb-3">
+                            <label for="birthdateEdit" class="col-form-label">Ngày cầm:</label>
+                            <input type="date" name="birthdate" class="form-control" id="birthdateEdit">
+                        </div>
+                        <div class="mb-3">
+                            <label for="birthdateEdit" class="col-form-label">Ngày cầm:</label>
+
+                            <select name="idRoleEdit">
+                                <c:forEach items="${listRole}" var="l">
+                                    <option value="${l.getIdRole()}"><c:out value="${l.getRoleName()}"></c:out></option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="action2" value="editUserAndRole">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <%--form để thêm mới điện thoại cầm--%>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -86,7 +139,6 @@
                 </div>
                 <div class="modal-body">
                     <form action="/tienthanh" method="post">
-                        <input type="hidden" value="save_create_android_phone" id="action2">
                         <div class="mb-3">
                             <label for="idUser" class="col-form-label">Mã số:</label>
                             <input type="number" name="idUser" class="form-control" id="idUser">
@@ -124,7 +176,13 @@
     </div>
 
     <script>
-
+        // đoạn jquery này để phân trang cho một trang wed
+        $(document).ready( function () {
+            $('#myTable').DataTable({
+                "pageLength": 10, // này để điều số hàng mặc định sẽ hiển thị
+                "lengthChange": false, // này để xoá ô cho người dùng lựa chọn số hàng hiển thị
+            });
+        } );
     </script>
 </body>
 

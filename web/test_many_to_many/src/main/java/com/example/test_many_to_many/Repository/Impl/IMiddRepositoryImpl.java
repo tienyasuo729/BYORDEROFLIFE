@@ -21,6 +21,7 @@ public class IMiddRepositoryImpl implements IMiddRepository {
     private BaseRepository baseRepository = new BaseRepository();
     private String Display_all = "SELECT user.*, role.role FROM user JOIN midd ON user.idUser = midd.idUser JOIN role ON midd.idRole = role.idRole ORDER BY user.idUser;";
     private String add_midd = "INSERT INTO `midd` (`idUser`, `idRole`) VALUES (?,?)";
+
     @Override
     public List<Midd> list_midd() {
         List<Midd> middList = new ArrayList<>();
