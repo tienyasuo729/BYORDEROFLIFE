@@ -62,8 +62,6 @@
             </tr>
             </thead>
             <tbody>
-            <%@ page import="java.time.LocalDateTime" %>
-
             <c:forEach items="${listMidd}" var="l">
                 <tr>
                     <td><c:out value="${l.user.getIdUser()}"/></td>
