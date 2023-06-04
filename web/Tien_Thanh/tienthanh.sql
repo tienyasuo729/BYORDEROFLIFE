@@ -58,6 +58,10 @@ INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `pri
 INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('766666666666666666', '6', 'oppo', '6', '2023-05-07', '6', '6', '6');
 INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `price`, `start_Date`, `status`, `password`, `note`) VALUES ('777777777777', '7', 'samsung', '7', '2023-05-07', '7', '7', '7');
 
+
+
+
+
 INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `id_of_phone`, `price`, `start_Date`, `phone_number_owner`, `status`, `password`, `note`) VALUES ('0000101', 'bbbb', 'samsung', '1', '1232200', '2023-04-26', '0935444445', 'dsdf', 'd', 'd');
 INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `id_of_phone`, `price`, `start_Date`, `phone_number_owner`, `status`, `password`, `note`) VALUES ('000101010101', '1', 'samsung', '2', '1000000', '2023-05-09', '0935444445', '1', '1', '1');
 INSERT INTO `tien_thanh`.`android_phone` (`id`, `name_owner`, `name_phone`, `id_of_phone`, `price`, `start_Date`, `phone_number_owner`, `status`, `password`, `note`) VALUES ('00011', 'tii', 'oppo', '3', '1122389', '2023-05-26', '0935444445', 'Bình thường', 'Không có', 'Không có');
