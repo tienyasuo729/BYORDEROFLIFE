@@ -254,7 +254,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="phone_number_owner" class="col-form-label">Số điện thoại của người cầm: </label>
-                        <input type="number" name="phone_number_owner" class="form-control" id="phone_number_owner">
+                        <input type="number" name="phone_number_owner" class="form-control" id="phone_number_owner" placeholder="Không có">
 <%--                        <span class="input-error" id="check_phone_number_owner_null">Vui lòng số điện thoại.</span>--%>
                     </div>
                     <div class="mb-3">
@@ -292,30 +292,10 @@
         $('#myTable').DataTable({
             "pageLength": 10,
             "lengthChange": false,
-            "columns": [
-                null, // STT column
-                null,
-                null,
-                {
-                    "searchable": true,
-                    "render": function(data, type, full, meta) {
-                        if (type === 'filter') {
-                            return ''; // Exclude the column from filtering
-                        }
-                        return data; // Render the column normally
-                    }
-                },
-                null, // Tên máy column
-                null, // Số tiền cầm column
-                null, // Ngày cầm column
-                null, // Số điện thoại column
-                null, // Tình trạng column
-                null, // Mật khẩu column
-                null, // Ghi chú column
-                null // Thanh Công cụ column
-            ]
+
         });
     });
+
 
     // Đặt lại giá trị của các trường nhập liệu khi modal được đóng
     $('#exampleModal').on('hidden.bs.modal', function () {

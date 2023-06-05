@@ -6,7 +6,7 @@ public class Test {
         System.out.println("Temporary Employee Information:");
         tempEmployee.displayInfo();
 
-        System.out.println();
+        System.out.println("----------------------------------------");
 
         // Tạo đối tượng PermanentEmployee
         PermanentEmployee permEmployee = new PermanentEmployee(2, "Jane", "Smith", 30, "01/01/1993", 25, 10);

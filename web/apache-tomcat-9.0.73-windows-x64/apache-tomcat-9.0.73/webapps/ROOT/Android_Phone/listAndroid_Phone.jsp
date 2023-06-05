@@ -109,6 +109,7 @@
             <button type="submit">Tìm kiếm</button>
         </form>
     </div>
+    <button type="button" onclick="xoa()">xoá</button>
 </center>
 
 <div align="center">
@@ -292,30 +293,19 @@
         $('#myTable').DataTable({
             "pageLength": 10,
             "lengthChange": false,
-            "columns": [
-                null, // STT column
-                null,
-                null,
-                {
-                    "searchable": true,
-                    "render": function(data, type, full, meta) {
-                        if (type === 'filter') {
-                            return ''; // Exclude the column from filtering
-                        }
-                        return data; // Render the column normally
-                    }
-                },
-                null, // Tên máy column
-                null, // Số tiền cầm column
-                null, // Ngày cầm column
-                null, // Số điện thoại column
-                null, // Tình trạng column
-                null, // Mật khẩu column
-                null, // Ghi chú column
-                null // Thanh Công cụ column
-            ]
+
         });
     });
+
+    function xoa() {
+        var table = document.getElementById("myTable");
+        var rowCount = table.rows.length;
+
+        // Bắt đầu từ hàng thứ 1 để không xóa hàng tiêu đề
+        for (var i = 1; i < rowCount; i++) {
+            table.deleteRow(1);
+        }
+    }
 
     // Đặt lại giá trị của các trường nhập liệu khi modal được đóng
     $('#exampleModal').on('hidden.bs.modal', function () {
