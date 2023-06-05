@@ -4,7 +4,6 @@ import com.example.tien_thanh.Repository.Android_PhoneRepository;
 import com.example.tien_thanh.Repository.Impl.Android_PhoneRepositoryImpl;
 import com.example.tien_thanh.Service.IAndroid_PhoneService;
 import com.example.tien_thanh.model.Android_Phone;
-import com.example.tien_thanh.model.CCCD;
 
 import java.util.Date;
 import java.util.List;

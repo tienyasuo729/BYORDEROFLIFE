@@ -4,6 +4,8 @@ use tien_thanh;
 
 alter table android_phone add name_of_the_phone text;
 
+select * from android_phone order by android_phone.id desc;
+
 CREATE TABLE LichSuThayDoi (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Action VARCHAR(10),

@@ -1,18 +1,12 @@
 package com.example.tien_thanh.controller;
 
 import com.example.tien_thanh.Service.IAndroid_PhoneService;
-import com.example.tien_thanh.Service.ICccdService;
-import com.example.tien_thanh.Service.IDetailService;
 import com.example.tien_thanh.Service.Impl.Android_PhoneServiceImpl;
-import com.example.tien_thanh.Service.Impl.CccdServiceImpl;
-import com.example.tien_thanh.Service.Impl.DetailServiceImpl;
 import com.example.tien_thanh.model.Android_Phone;
-import org.json.JSONObject;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,13 +17,9 @@ import java.util.*;
 
 @WebServlet(name = "TienThanhServlet", value = "/tienthanh")
 public class TienThanhServlet extends HttpServlet {
-    private ICccdService cccdService;
-    private IDetailService detailService;
     private IAndroid_PhoneService android_phoneService;
 
     public void init() {
-        cccdService = new CccdServiceImpl();
-        detailService = new DetailServiceImpl();
         android_phoneService = new Android_PhoneServiceImpl();
     }
 
