@@ -1,21 +1,21 @@
-create database module3;
-use module3;
+create database module;
+use module;
 -- alter table product change column category idcategory text;
 
+create table category(
+	idcategory int not null primary key auto_increment,
+    namecategory text
+);
+
 CREATE TABLE product (
---   stt INT NOT NULL AUTO_INCREMENT,
-  id VARCHAR(50) NOT NULL,
+  id int primary key NOT NULL auto_increment,
   name TEXT,
   price INT,
   quantity INT,
   color TEXT,
   description TEXT,
-  idcategory TEXT,
-  PRIMARY KEY (id)
---   UNIQUE (stt)
+  idcategory int,
+	foreign key (idcategory) references category(idcategory)
+	
 );
 
-create table category(
-	idcategory varchar(50) not null primary key,
-    namecategory text
-);

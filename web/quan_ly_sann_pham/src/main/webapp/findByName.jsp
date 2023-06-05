@@ -25,22 +25,17 @@
 </head>
 <body>
 <div align="center">
-    <h2>Find By Name</h2>
-    <form action="/list" method="post">
-        <input type="hidden" name="action" value="list">
-        <button style="font-size: 30px" type="submit" class="btn btn-success">List Product</button>
-    </form>
     <table border="1" cellpadding="5" class="table table-hover">
+        <h2>Find By Name</h2>
         <caption><h2>Find By Name</h2></caption>
         <tr>
-            <th>#</th>
+            <th>STT</th>
             <th>Tên sản phẩm</th>
             <th>Giá</th>
             <th>Số lượng</th>
             <th>màu sắc</th>
             <th>Mô tả</th>
             <th>Danh mục</th>
-            <th>Thanh công cụ</th>
 
         </tr>
         <c:forEach items="${listFindByName}" var="product">

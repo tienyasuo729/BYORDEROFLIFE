@@ -27,6 +27,7 @@
 <%--        <a href="list?action=list">List product</a>--%>
     <form action="/list" method="post">
         <input type="hidden" name="action" value="list">
+        <input type="hidden" name="id" value="${product.id}">
         <button style="font-size: 30px" type="submit" class="btn btn-success">List Product</button>
     </form>
 <%--    </h2>--%>
@@ -55,7 +56,7 @@
             <tr>
                 <th>PRICE:</th>
                 <td>
-                    <input type="number" id="price" name="price" size="45" required="required">
+                    <input type="number" id="price" name="price" size="45" onblur="checkPrice()">
                     <a class="check" id="messPrice"></a>
                     <%--                    <a><c:out value="${checkPrice}"></a>--%>
                 </td>
@@ -63,7 +64,7 @@
             <tr>
                 <th>QUANTITY:</th>
                 <td>
-                    <input type="number" name="quantity" size="15" required="required"/>
+                    <input type="number" name="quantity" size="15"/>
                 </td>
             </tr>
             <tr>
@@ -76,16 +77,11 @@
                     <%--                        <option value="white">white</option>--%>
                     <%--                        <option value="yellow">yellow</option>--%>
                     <%--                    </select>--%>
-                    <label><input type="checkbox" name="color[]" value="red"> Red</label>
-                    <label><input type="checkbox" name="color[]" value="blue"> Blue</label>
-                    <label><input type="checkbox" name="color[]" value="Black"> Black</label>
-                    <label><input type="checkbox" name="color[]" value="white"> White</label>
-                    <label><input type="checkbox" name="color[]" value="yellow"> Yellow</label><br>
-                    <label><input type="checkbox" name="color[]" value="Purple"> Purple</label>
-                    <label><input type="checkbox" name="color[]" value="Coral"> Coral</label>
-                    <label><input type="checkbox" name="color[]" value="Prism White"> Prism White</label>
-                    <label><input type="checkbox" name="color[]" value="Prism Blue"> Prism Blue</label>
-                    <label><input type="checkbox" name="color[]" value="Ceramic Black"> Ceramic Black</label>
+                    <label><input type="checkbox" name="color[]" value="red"> Red</label><br>
+                    <label><input type="checkbox" name="color[]" value="blue"> Blue</label><br>
+                    <label><input type="checkbox" name="color[]" value="Black"> Black</label><br>
+                    <label><input type="checkbox" name="color[]" value="white"> White</label><br>
+                    <label><input type="checkbox" name="color[]" value="yellow"> Yellow</label>
 
                 </td>
             </tr>
@@ -113,18 +109,6 @@
         </table>
     </form>
 </div>
-<script>
-    function checkName(){
-        let name = document.getElementById("name").value;
-        let regex = /^([a-zA-Zàáạảãăắằẳẵặâấầẩẫậèéẹẻẽêếềểễệđìíịỉĩòóọỏõôốồổỗộơớờởỡợùúụủũưứừửữựỳýỵỷỹ]+\s)*[a-zA-Zàáạảãăắằẳẵặâấầẩẫậèéẹẻẽêếềểễệđìíịỉĩòóọỏõôốồổỗộơớờởỡợùúụủũưứừửữựỳýỵỷỹ]+$/;
-        if(name == ""){
-            document.getElementById("messName").innerHTML = "Không được để trống tên"
-        }else if (regex.test(name)){
-            document.getElementById("messName").innerHTML = ""
-        }else {
-            document.getElementById("messName").innerHTML = "Tên không được chứa số hoặc kí tự đặc biệt"
-        }
-    }
-</script>
+<script src="validate.js"></script>
 </body>
 </html>

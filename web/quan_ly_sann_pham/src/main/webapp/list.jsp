@@ -24,7 +24,7 @@
 </head>
 <body>
 <center>
-    <h1>Quản lý sản phẩm</h1>
+    <h1>Quản lý nhân viên</h1>
     <h2>
 <%--        <a href="/list?action=create">Thêm mới sản phẩm mới</a>--%>
 <%--        <br>--%>
@@ -47,14 +47,13 @@
         <h2>List of Users</h2>
         <caption><h2>List of Users</h2></caption>
         <tr>
-            <th>#</th>
+            <th>STT</th>
             <th>Tên sản phẩm</th>
             <th>Giá</th>
             <th>Số lượng</th>
             <th>màu sắc</th>
             <th>Mô tả</th>
             <th>Danh mục</th>
-            <th>Thanh công cụ</th>
 
         </tr>
         <c:forEach items="${listProduct}" var="product">
@@ -73,13 +72,13 @@
                     <form action="/list" method="post" class="form-edit">
                     <input type="hidden" name="action" value="edit">
                     <input type="hidden" name="idEdit" value="${product.id}">
-                    <button type="submit" class="btn btn-success" onclick="return confirm('Bạn chắc chắn có muốn sửa ${product.name} không ?')">Edit</button>
+                    <button type="submit" class="btn btn-success" onclick="return confirm('Bạn chắc chắn có muốn sửa không ?')">Edit</button>
                     </form>
 
                     <form action="/list" method="post" class="form-delete">
                         <input type="hidden" name="action2" value="delete">
                         <input type="hidden" name="id" value="${product.id}">
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xoá ${product.name} không?')">Delete</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</button>
                     </form>
 
                 </td>

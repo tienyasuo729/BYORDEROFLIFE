@@ -118,17 +118,8 @@ public class ProductServlet extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String [] colorAfter = request.getParameterValues("color[]");
-        String color = null;
-        try {
-            color = Arrays.toString(colorAfter);
-            color = color.substring(1, color.length() - 1);
-
-        }catch (Exception e){
-            System.out.println(color);
-        }
-        if (color.equals("ul")){
-            color = "No color";
-        }
+        String color = Arrays.toString(colorAfter);
+        color = color.substring(1, color.length() - 1);
         String description = request.getParameter("description");
         String category = request.getParameter("category");
 //        Product product = productService.findById(maCongViec);
@@ -173,17 +164,8 @@ public class ProductServlet extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String [] colorAfter = request.getParameterValues("color[]");
-        String color = null;
-        try {
-            color = Arrays.toString(colorAfter);
-            color = color.substring(1, color.length() - 1);
-
-        }catch (Exception e){
-            System.out.println(color);
-        }
-        if (color.equals("ul")){
-            color = "No color";
-        }
+        String color = Arrays.toString(colorAfter);
+        color = color.substring(1, color.length() - 1);
         String description = request.getParameter("description");
         String category = request.getParameter("category");
 //        Product product = productService.findById(maCongViec);
