@@ -251,7 +251,13 @@ public class TienThanhServlet extends HttpServlet {
 
     private void delete_android_phone_by_id(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id_need_to_delete = request.getParameter("id_need_to_delete");
-        android_phoneService.delete_Android_Phone(id_need_to_delete);
+        String action_stored_procedure = request.getParameter("action_stored_procedure");
+        if (action_stored_procedure.equals("take_the_product")){
+            android_phoneService.delete_Android_Phone(id_need_to_delete);
+            android_phoneService.stored_procedure(action_stored_procedure);
+        }else {
+            android_phoneService.delete_Android_Phone(id_need_to_delete);
+        }
         String result = "- Xoá thành công";
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");

@@ -36,6 +36,11 @@ public class Android_PhoneServiceImpl implements IAndroid_PhoneService {
     }
 
     @Override
+    public void stored_procedure(String action) {
+        android_phoneRepository.stored_procedure(action);
+    }
+
+    @Override
     public Boolean check_if_id_exist(String idToCheck) {
         return android_phoneRepository.check_if_id_exist(idToCheck);
     }

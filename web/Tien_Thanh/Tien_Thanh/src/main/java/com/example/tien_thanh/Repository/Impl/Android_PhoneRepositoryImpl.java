@@ -4,6 +4,7 @@ import com.example.tien_thanh.Connections.BaseRepository;
 import com.example.tien_thanh.Repository.Android_PhoneRepository;
 import com.example.tien_thanh.model.Android_Phone;
 
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
     private String WATCH_LATE_LIST_ANDROID_PHONE = "SELECT * from android_phone where DATEDIFF(CURRENT_DATE(), start_Date) > 10";
     private String WATCH_NEAR_TERM_LIST_ANDROID_PHONE = "SELECT * from android_phone where DATEDIFF(CURRENT_DATE(), start_Date) BETWEEN 8 AND 10";
     private String CHECK_IF_ID_EXIST = "SELECT id from android_phone where id = ?";
+    private String CALL_STORED_PROCEDURE_ANDROID_PHONE = "CALL history_for_update__extend_edit_take_product(?);";
     @Override
     public void interest_payment(String id, Date date) {
         try {
@@ -106,6 +108,18 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void stored_procedure(String action) {
+        try {
+            CallableStatement callableStatement = this.baseRepository.getConnectionJavaToDB().prepareCall(CALL_STORED_PROCEDURE_ANDROID_PHONE);
+            callableStatement.setString(1,action);
+            callableStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override

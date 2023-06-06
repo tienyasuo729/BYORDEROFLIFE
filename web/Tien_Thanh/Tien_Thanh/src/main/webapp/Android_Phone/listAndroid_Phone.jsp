@@ -494,7 +494,7 @@
                 alert(result);
                 let check = confirm("Khách đã chắc chắn lấy máy không");
                 if (check === true) {
-                    delete_after_take_the_product(id, startDate);
+                    delete_after_take_the_product(id);
                     var row = btn.parentNode.parentNode;
                     row.parentNode.removeChild(row);
 
@@ -551,7 +551,7 @@
         xhr.send(data); // Gửi dữ liệu đi
     }
 
-    function delete_after_take_the_product(id, startDate) {
+    function delete_after_take_the_product(id) {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -562,7 +562,7 @@
 
         xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-        var data = "action2=delete_android_phone_by_id&id_need_to_delete=" + encodeURIComponent(id) + "&start_date_interest_payment=" + encodeURIComponent(startDate); // Tạo dữ liệu gửi đi
+        var data = "action2=delete_android_phone_by_id&id_need_to_delete=" + encodeURIComponent(id) + "&action_stored_procedure=take_the_product" ; // Tạo dữ liệu gửi đi
         xhr.send(data); // Gửi dữ liệu đi
     }
 
