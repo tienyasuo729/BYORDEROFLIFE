@@ -10,3 +10,5 @@ khác như samsung thì khi nhấn lại vào ô khác thì sẽ không hiện l
  nếu giá trị à không có hoặc dữ liệu là chữ chứ không phải số thì sẽ hiển thị giá trị đó vào placeholder đó 
 
 + Rãnh thì chỉnh khung alert thành modal hay gì đó cho đẹp đi và chỉnh luôn thanh phân trang luôn
+
++ chuyển kiểu dữ liệu của cột id trong android_phone thành kiểu int và sửa code lại cho phù hợp
