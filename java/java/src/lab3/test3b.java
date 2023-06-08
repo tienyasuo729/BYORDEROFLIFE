@@ -1,8 +1,8 @@
+package lab3;
 
-package lab3a;
+import lab3.Person;
 
 import java.util.Scanner;
-import lab3a.Person;
 
 public class test3b {
 
