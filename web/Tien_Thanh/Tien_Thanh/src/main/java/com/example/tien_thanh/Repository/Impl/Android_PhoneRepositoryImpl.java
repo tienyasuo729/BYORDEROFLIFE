@@ -25,6 +25,10 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
     private String WATCH_NEAR_TERM_LIST_ANDROID_PHONE = "SELECT * from android_phone where DATEDIFF(CURRENT_DATE(), start_Date) BETWEEN 8 AND 10";
     private String CHECK_IF_ID_EXIST = "SELECT id from android_phone where id = ?";
     private String CALL_STORED_PROCEDURE_ANDROID_PHONE = "CALL history_for_update__extend_edit_take_product(?);";
+//    private String DELETE_HISTORY = "INSERT INTO LichSuThayDoi (Action, DuLieuCu, DuLieuMoi) VALUES (?, ?, ?)";
+    private String TAKE_PRODUCT_HISTORY = "";
+    private String EDIT_HISTORY = "";
+    private String EXTEND_HISTORY = "";
     @Override
     public void interest_payment(String id, Date date) {
         try {
@@ -105,6 +109,12 @@ public class Android_PhoneRepositoryImpl implements Android_PhoneRepository {
             PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(DELETE_ANDROID_PHONE_BY_ID);
             preparedStatement.setString(1,id);
             preparedStatement.executeUpdate();
+
+//            PreparedStatement insertStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(DELETE_HISTORY);
+//            insertStatement.setString(1, "DELETE");
+//            insertStatement.setString(2, "{'DAS': 'SADASDA'}");
+//            insertStatement.setString(3, "{'DĐ': 'DDD'  }");
+//            insertStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
