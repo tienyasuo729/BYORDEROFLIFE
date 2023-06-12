@@ -1,7 +1,3 @@
-package TestPRO192;
-
-import test_retake_module_2.util.Check;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -44,7 +40,7 @@ public class Test {
             int age = Integer.parseInt(checkIntInPut("^(?:[1-9]|[1-2][0-9]|30)$","-Chỉ được nhập số và nhỏ hơn 30, xin vui lòng nhập lại: "));
 
             System.out.print("Nhập khoa của sinh viên này (IT hay Biz): ");
-            String faculty = Check.checkIntInPut("^(?i)(it|biz)$");
+            String faculty = checkIntInPut("^(?i)(it|biz)$", "-Chỉ được nhập ngành IT hoặc Biz, xin nhập lại: ");
             if (faculty.toLowerCase().equals("it")) {
                 System.out.print("Điểm Java: ");
                 double javaScore = Double.parseDouble(checkIntInPut("^-?\\d+(\\.\\d+)?$", "-Chỉ được nhập số, xin vui lòng nhập lại: "));

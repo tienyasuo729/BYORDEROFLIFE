@@ -1,5 +1,3 @@
-package TestPRO192;
-
 class CNTT extends Student {
     private double javaScore;
     private double cssScore;

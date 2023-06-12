@@ -1,5 +1,3 @@
-package TestPRO192;
-
 abstract class Student {
     protected String fullName;
     protected String address;

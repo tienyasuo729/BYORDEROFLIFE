@@ -1,5 +1,3 @@
-package TestPRO192;
-
 class Biz extends Student {
     private double accountingScore;
     private double marketingScore;

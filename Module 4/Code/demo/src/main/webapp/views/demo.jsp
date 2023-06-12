@@ -12,5 +12,12 @@
 </head>
 <body>
 <h1>Hello world</h1>
+<form action="/hello/add" method="post">
+    <label>id: <input type="text" name="id"></label><br>
+    <label>name: <input type="text" name="name"></label><br>
+    <button>save</button>
+</form>
+<h1>${showif}</h1>
+
 </body>
 </html>
