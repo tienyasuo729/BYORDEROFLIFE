@@ -1,4 +1,4 @@
-package com.Codegym.controller;
+package com.codegym.controller;
 
 
 import org.springframework.ui.Model;
