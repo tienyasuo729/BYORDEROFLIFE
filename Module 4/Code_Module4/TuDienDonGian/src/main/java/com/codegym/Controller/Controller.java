@@ -1,4 +1,4 @@
-package com.codegym.Controller;
+package com.codegym.controller;
 
 import com.codegym.Service.IDictionary;
 import org.springframework.beans.factory.annotation.Autowired;
