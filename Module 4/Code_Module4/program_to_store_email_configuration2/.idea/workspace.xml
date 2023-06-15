@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec01b57c-e3b7-4fdd-a9a2-51123cc6135c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Code/demo_databinding/demo_spring_mvc/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Code/demo/src/main/webapp/views/AdmissionForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Code/demo/src/main/webapp/views/AdmissionForm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/email.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/email.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/codegym/text/Module 4/Code_Module4/program_to_store_email_configuration2/src/main/webapp/views",
+    "last_opened_file_path": "D:/codegym/text/Module 4/Code_Module4/program_to_store_email_configuration2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,6 +55,7 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "spring",
+    "spring.configuration.checksum": "4ed64c08d6102a58a7a8ec77f6f1aa75",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -163,6 +165,7 @@
       <option name="presentableId" value="Default" />
       <updated>1686813467526</updated>
       <workItem from="1686813468597" duration="1080000" />
+      <workItem from="1686839879122" duration="1019000" />
     </task>
     <servers />
   </component>

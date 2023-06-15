@@ -15,6 +15,7 @@
 
 </head>
 <body>
+<%--@elvariable id="email" type="com.codegym.controller"--%>
 <form:form modelAttribute="email" method="post">
     <table>
         <tr>
