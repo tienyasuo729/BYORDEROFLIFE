@@ -6,6 +6,7 @@
     <title>Title</title>
 </head>
 <body>
+<%--@elvariable id="student" type="com.codegym.controller"--%>
 <form:form modelAttribute="student" method="post">
     ID
     <form:input path="id"/><br>

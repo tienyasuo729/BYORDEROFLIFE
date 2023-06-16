@@ -13,7 +13,6 @@
 <html>
 <head>
     <title>Title</title>
-
 </head>
 <body>
 <%--@elvariable id="music" type="com.codegym.controller"--%>

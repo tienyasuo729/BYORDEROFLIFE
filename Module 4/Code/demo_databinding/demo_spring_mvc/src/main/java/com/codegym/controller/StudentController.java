@@ -50,7 +50,6 @@ public class StudentController {
     }
     @PostMapping("/add")
     public ModelAndView save(@ModelAttribute Student student){
-
         serviceStudent.add(student);
         ModelAndView modelAndView = new ModelAndView("list");
         modelAndView.addObject("mess","Them moi thanh cong");
