@@ -5,36 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec01b57c-e3b7-4fdd-a9a2-51123cc6135c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Code/demo/src/main/java/com/Codegym/controller/StudentAdmissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Code/demo/src/main/java/com/Codegym/controller/StudentAdmissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../medical_declaration/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../medical_declaration/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/Android_Phone/JSP_don't_need/createAndroid_Phone.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/Android_Phone/JSP_don't_need/edit_Android_Phone.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/Android_Phone/JSP_don't_need/form_borrow_book.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/Android_Phone/JSP_don't_need/late_list_android_phone.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/Android_Phone/JSP_don't_need/near_term_list_android_phone.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/Android_Phone/JSP_don't_need/secondListAndroid_Phone.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/Android_Phone/JSP_don't_need/test.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/Android_Phone/listAndroid_Phone.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/Android_Phone/validate/validate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/CCCD/create.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/CCCD/edit.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/CCCD/findByName.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/CCCD/listCCCD.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/CCCD/listDetail.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/CCCD/validate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/CCCD/watchDetail.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/tien_thanh/Connections/BaseRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/tien_thanh/Repository/Android_PhoneRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/tien_thanh/Repository/Impl/Android_PhoneRepositoryImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/tien_thanh/Service/IAndroid_PhoneService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/tien_thanh/Service/Impl/Android_PhoneServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/tien_thanh/controller/TienThanhServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/classes/com/example/tien_thanh/model/Android_Phone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/lib/javascript-3.1.3.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/lib/json-20210307.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/lib/mysql-connector-java-8.0.26.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../apache-tomcat-9.0.73-windows-x64/apache-tomcat-9.0.73/webapps/ROOT/WEB-INF/lib/protobuf-java-3.11.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tien_thanh/tiem_cam_do_tien_thanh/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../tien_thanh/tiem_cam_do_tien_thanh/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tien_thanh/tiem_cam_do_tien_thanh/src/main/java/com/tienthanh/controller/Android_PhoneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../tien_thanh/tiem_cam_do_tien_thanh/src/main/java/com/tienthanh/controller/Android_PhoneController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +63,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/codegym/text/Module 4/Code_Module4/program_to_store_email_configuration2",
+    "last_opened_file_path": "C:/codegym/text/Module 4/Code/a10_demo_thymeleaf",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -212,6 +184,7 @@
       <workItem from="1686813468597" duration="1080000" />
       <workItem from="1686839879122" duration="1019000" />
       <workItem from="1687006329446" duration="97000" />
+      <workItem from="1687036726458" duration="31000" />
     </task>
     <servers />
   </component>

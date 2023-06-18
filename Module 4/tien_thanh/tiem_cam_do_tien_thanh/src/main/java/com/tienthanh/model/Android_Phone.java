@@ -9,7 +9,7 @@ public class Android_Phone {
     private String id_of_phone;
     private int price;
     private Date start_Date;
-        private String phone_number_owner;
+    private String phone_number_owner;
     private String status;
     private String password;
     private String note;

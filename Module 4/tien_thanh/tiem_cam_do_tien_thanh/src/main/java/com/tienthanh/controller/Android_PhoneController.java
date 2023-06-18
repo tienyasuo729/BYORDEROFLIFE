@@ -5,6 +5,8 @@ import com.tienthanh.service.IAndroid_PhoneService;
 import com.tienthanh.service.Impl.Android_PhoneServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,10 +22,11 @@ import java.util.List;
 public class Android_PhoneController {
     @Autowired
     private IAndroid_PhoneService android_phoneService = new Android_PhoneServiceImpl();
-    private void listAndroid_Phone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @GetMapping("")
+    private String listAndroid_Phone(Model model) {
         List<Android_Phone> androidPhones = android_phoneService.displayAndroid_Phone();
 //        System.out.println(androidPhones.get(1).getStart_Date().getMonth());
-        request.setAttribute("listAndroid_Phone", androidPhones);
-        request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
+        model.addAttribute("listAndroid_Phone", androidPhones);
+        return "listAndroid_Phone";
     }
 }
