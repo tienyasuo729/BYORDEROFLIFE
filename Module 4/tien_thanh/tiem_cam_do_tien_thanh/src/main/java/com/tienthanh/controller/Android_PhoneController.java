@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping("/tienthanh")
 public class Android_PhoneController {
     @Autowired
-    private IAndroid_PhoneService android_phoneService = new Android_PhoneServiceImpl();
+    private IAndroid_PhoneService android_phoneService;
     @GetMapping("")
     private String listAndroid_Phone(Model model) {
         List<Android_Phone> androidPhones = android_phoneService.displayAndroid_Phone();
