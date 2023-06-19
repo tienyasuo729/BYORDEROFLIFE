@@ -1,7 +1,7 @@
-package lab5;
+package lab5.view;
 
-import lab5.model.Company;
 import lab5.model.Customer;
+import lab5.model.Company;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,62 +10,26 @@ public class CompanyManagement {
     private static Company company = new Company();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        while (true) {
-            printMenu();
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (choice) {
-                case 1:
-                    addCustomer();
-                    break;
-                case 2:
-                    displayAllCustomers();
-                    break;
-                case 3:
-                    searchCustomer();
-                    break;
-                case 4:
-                    sortCustomerList();
-                    break;
-                case 5:
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
-        }
-    }
-
-    private static void printMenu() {
+    public static void printMenu() {
         System.out.println("----- Company Management Menu -----");
         System.out.println("1. Add new customer");
         System.out.println("2. Display all customers");
         System.out.println("3. Search customer");
         System.out.println("4. Sort customer list");
         System.out.println("5. Exit");
-        System.out.print("Enter your choice: ");
     }
 
-    private static void addCustomer() {
-        System.out.print("Enter customer ID: ");
-        int customerID = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline character
-
-        System.out.print("Enter customer name: ");
-        String name = scanner.nextLine();
-
-        System.out.print("Enter customer phone: ");
-        String phone = scanner.nextLine();
-
+    public static void addCustomer() {
+        int customerID = Integer.parseInt(checkIntInPut("^-?\\d+$", "-Enter customer ID: ", "-Id contains only numbers, please re-enter: "));
+        String name = checkIntInPut("^[a-zA-Z\\s]+$", "-Enter customer name: ", "-Name does not contain numbers or special characters, please re-enter: ");
+        String phone = checkIntInPut("^\\d{10}$", "-Enter customer phone: ","-Phone number consists of only numbers and 10 digits, please re-enter: ");
         Customer customer = new Customer(customerID, name, phone);
         company.addCustomer(customer);
         System.out.println("Customer added successfully.");
     }
 
-    private static void displayAllCustomers() {
+    public static void displayAllCustomers() {
         List<Customer> customerList = company.getCustomerList();
-
         if (customerList.isEmpty()) {
             System.out.println("No customers found.");
         } else {
@@ -76,37 +40,35 @@ public class CompanyManagement {
         }
     }
 
-    private static void searchCustomer() {
+    public static void searchCustomer() {
         System.out.println("----- Customer Search -----");
         System.out.println("Search by:");
         System.out.println("1. Customer ID");
         System.out.println("2. Name");
         System.out.println("3. Phone");
         System.out.print("Enter your choice: ");
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline character
+        int choice = Integer.parseInt(checkIntInPut("^-?\\d+$","-Enter your choice: ","-Select contains only numbers, please re-enter: "));
 
         String criteria;
+        String value;
         switch (choice) {
             case 1:
                 criteria = "CustomerID";
+                value = checkIntInPut("^-?\\d+$", "-Enter customer ID to find: ", "-Id contains only numbers, please re-enter: ");
                 break;
             case 2:
                 criteria = "Name";
+                value = checkIntInPut("^[a-zA-Z\\s]+$", "-Enter customer name to find: ", "-Name does not contain numbers or special characters, please re-enter: ");
                 break;
             case 3:
                 criteria = "Phone";
+                value = checkIntInPut("^\\d{10}$", "-Enter customer phone to find: ","-Phone number consists of only numbers and 10 digits, please re-enter: ");
                 break;
             default:
                 System.out.println("Invalid choice. Returning to the main menu.");
                 return;
         }
-
-        System.out.print("Enter the value to search: ");
-        String value = scanner.nextLine();
-
         List<Customer> searchResults = company.searchCustomers(criteria, value);
-
         if (searchResults.isEmpty()) {
             System.out.println("No customers found.");
         } else {
@@ -117,8 +79,18 @@ public class CompanyManagement {
         }
     }
 
-    private static void sortCustomerList() {
+    public static void sortCustomerList() {
         company.sortCustomerList();
         System.out.println("Customer list sorted by customerCode in ascending order.");
+    }
+
+    public static String checkIntInPut(String regex, String firstEnter, String errorEnter) { // kiểm tra dữ liệu nhập vào có bị lỗi về cố tình nhập chữ hay vượt phạm vi int không { theo regex }
+        System.out.print(firstEnter);
+        String input = scanner.nextLine();
+        while (!input.matches(regex)){
+            System.out.print(errorEnter);
+            input = scanner.nextLine();
+        }
+        return input;
     }
 }
