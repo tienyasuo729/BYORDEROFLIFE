@@ -2,11 +2,9 @@ package lab5.controller;
 
 import lab5.view.CompanyManagement;
 
-import java.util.Scanner;
 
 public class Controller {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         while (true) {
             CompanyManagement.printMenu();
             int choice = Integer.parseInt(CompanyManagement.checkIntInPut("^-?\\d+$","-Enter your choice: ","-Select contains only numbers, please re-enter: "));

@@ -11,20 +11,14 @@ public class CompanyManagement {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void printMenu() {
-        System.out.println("----- Company Management Menu -----");
-        System.out.println("1. Add new customer");
-        System.out.println("2. Display all customers");
-        System.out.println("3. Search customer");
-        System.out.println("4. Sort customer list");
-        System.out.println("5. Exit");
+        System.out.println("----- Company Management Menu -----\n1. Add new customer\n2. Display all customers\n3. Search customer\n4. Sort customer list\n5. Exit");
     }
 
     public static void addCustomer() {
         int customerID = Integer.parseInt(checkIntInPut("^-?\\d+$", "-Enter customer ID: ", "-Id contains only numbers, please re-enter: "));
         String name = checkIntInPut("^[a-zA-Z\\s]+$", "-Enter customer name: ", "-Name does not contain numbers or special characters, please re-enter: ");
         String phone = checkIntInPut("^\\d{10}$", "-Enter customer phone: ","-Phone number consists of only numbers and 10 digits, please re-enter: ");
-        Customer customer = new Customer(customerID, name, phone);
-        company.addCustomer(customer);
+        company.addCustomer(new Customer(customerID, name, phone));
         System.out.println("Customer added successfully.");
     }
 
@@ -41,16 +35,12 @@ public class CompanyManagement {
     }
 
     public static void searchCustomer() {
-        System.out.println("----- Customer Search -----");
-        System.out.println("Search by:");
-        System.out.println("1. Customer ID");
-        System.out.println("2. Name");
-        System.out.println("3. Phone");
-        System.out.print("Enter your choice: ");
-        int choice = Integer.parseInt(checkIntInPut("^-?\\d+$","-Enter your choice: ","-Select contains only numbers, please re-enter: "));
-
         String criteria;
         String value;
+
+        System.out.println("----- Customer Search -----\nSearch by:\n1. Customer ID\n2. Name\n3. Phone");
+        int choice = Integer.parseInt(checkIntInPut("^-?\\d+$","-Enter your choice: ","-Select contains only numbers, please re-enter: "));
+
         switch (choice) {
             case 1:
                 criteria = "CustomerID";
@@ -84,7 +74,7 @@ public class CompanyManagement {
         System.out.println("Customer list sorted by customerCode in ascending order.");
     }
 
-    public static String checkIntInPut(String regex, String firstEnter, String errorEnter) { // kiểm tra dữ liệu nhập vào có bị lỗi về cố tình nhập chữ hay vượt phạm vi int không { theo regex }
+    public static String checkIntInPut(String regex, String firstEnter, String errorEnter) {
         System.out.print(firstEnter);
         String input = scanner.nextLine();
         while (!input.matches(regex)){

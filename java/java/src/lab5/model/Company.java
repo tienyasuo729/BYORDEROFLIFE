@@ -1,7 +1,5 @@
 package lab5.model;
 
-import lab5.model.Customer;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
