@@ -2,9 +2,10 @@ package com.tienthanh.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Android_Phone {
+public class Android_Phone implements Serializable {
     private String id;
     private String name_owner;
     private String name_phone;

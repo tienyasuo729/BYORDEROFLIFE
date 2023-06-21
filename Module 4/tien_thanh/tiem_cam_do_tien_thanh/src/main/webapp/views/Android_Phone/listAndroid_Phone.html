@@ -185,8 +185,7 @@
                     <div class="mb-3">
                         <label for="start_date_android_phone" class="col-form-label">Ngày cầm:</label>
                         <input type="text" name="start_Date" class="form-control" id="start_date_android_phone"
-                               onblur="startDateError()" th:value="${#dates.format(android_phone.start_Date, 'yyyy-MM-dd')}"
-                               th:field="*{start_Date}">
+                               onblur="startDateError()" th:field="*{start_Date}">
                         <span class="input-error" id="check_if_start_date_null">Vui lòng nhập ngày cầm</span>
                     </div>
                     <div class="mb-3">
