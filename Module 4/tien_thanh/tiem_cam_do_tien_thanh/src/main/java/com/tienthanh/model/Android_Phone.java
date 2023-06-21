@@ -1,5 +1,7 @@
 package com.tienthanh.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Android_Phone {
@@ -8,6 +10,7 @@ public class Android_Phone {
     private String name_phone;
     private String id_of_phone;
     private int price;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date start_Date;
     private String phone_number_owner;
     private String status;
