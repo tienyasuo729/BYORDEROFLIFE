@@ -14,6 +14,9 @@ public class Android_Phone {
     private String password;
     private String note;
 
+    public Android_Phone() {
+    }
+
     public Android_Phone(String id, String name_owner, String name_phone, String id_of_phone, int price, Date start_Date, String phone_number_owner, String status, String password, String note) {
         this.id = id;
         this.name_owner = name_owner;

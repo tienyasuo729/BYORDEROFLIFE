@@ -3,7 +3,7 @@ use tien_thanh;
 
 CREATE TABLE LichSuThayDoi (
     ID INT AUTO_INCREMENT PRIMARY KEY,
-    Action VARCHAR(10),
+    Action TEXT,
     ThoiGianChinhSua TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     DuLieuCu JSON,
     DuLieuMoi JSON

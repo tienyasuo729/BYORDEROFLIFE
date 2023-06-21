@@ -6,9 +6,8 @@ import com.tienthanh.service.Impl.Android_PhoneServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +22,23 @@ public class Android_PhoneController {
     @Autowired
     private IAndroid_PhoneService android_phoneService;
     @GetMapping("")
-    private String listAndroid_Phone(Model model) {
-        List<Android_Phone> androidPhones = android_phoneService.displayAndroid_Phone();
-//        System.out.println(androidPhones.get(1).getStart_Date().getMonth());
-        model.addAttribute("listAndroid_Phone", androidPhones);
+    public String listAndroid_Phone(Model model) {
+        model.addAttribute("listAndroid_Phone", android_phoneService.displayAndroid_Phone());
+        model.addAttribute("android_phone", new Android_Phone());
+
+//        ModelAndView modelAndView = new ModelAndView("listAndroid_Phone");
+//        modelAndView.addObject("listAndroid_Phone", android_phoneService.displayAndroid_Phone());
+//        modelAndView.addObject("Android_phone", new Android_Phone());
+//        return modelAndView;
+        return "listAndroid_Phone";
+    }
+
+    @PostMapping("save_create_android_phone")
+        public String aaaa(@ModelAttribute Android_Phone android_phone, Model model){
+        model.addAttribute("listAndroid_Phone", android_phoneService.displayAndroid_Phone());
+        model.addAttribute("Android_phone", new Android_Phone());
+//        android_phoneService.add_New_Android_Phone(android_phone);
+        System.out.println("kkkkkkkkkkkk");
         return "listAndroid_Phone";
     }
 }

@@ -1,9 +1,7 @@
 package com.tienthanh.configHTML;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
+
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.MessageSource;
@@ -19,8 +17,6 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
-//import javax.persistence.EntityManager;
-//import javax.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableWebMvc
@@ -70,9 +66,9 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         return messageSource;
     }
 
-    @Bean
-    @Qualifier(value = "entityManager")
-    public EntityManager entityManager(EntityManagerFactory entityManagerFactory){
-        return entityManagerFactory.createEntityManager();
-    }
+//    @Bean
+//    @Qualifier(value = "entityManager")
+//    public EntityManager entityManager(EntityManagerFactory entityManagerFactory){
+//        return entityManagerFactory.createEntityManager();
+//    }
 }

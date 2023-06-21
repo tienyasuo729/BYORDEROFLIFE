@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping("/student")
+    @RequestMapping("/student")
 public class StudentController {
     @Autowired
     private IServiceStudent serviceStudent;
