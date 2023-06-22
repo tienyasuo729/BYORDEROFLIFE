@@ -2,10 +2,7 @@ package FuramaResort.util;
 
 import FuramaResort.Model.Employee;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.List;
 
 public class ReadAndWrite {

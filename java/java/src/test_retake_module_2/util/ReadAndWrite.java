@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ReadAndWrite {
     public static void writeAll(List<Student> studentList){ // truyền vào 1 cái list để ghi vào file
         try {
