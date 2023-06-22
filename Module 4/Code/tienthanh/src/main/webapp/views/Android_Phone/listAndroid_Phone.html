@@ -47,39 +47,6 @@
         </button>
     </form>
 
-    <form method="post" action="/tienthanh" class="form-return">
-        <input type="hidden" name="action" value="reload">
-        <button class="btn btn-success">Quay lại trang chính</button>
-    </form>
-
-    <form method="post" action="/tienthanh" class="form-late">
-        <input type="hidden" name="action2" value="watch_late_list_android_phone">
-        <button class="btn btn-success">Xem danh sách trễ hạn</button>
-    </form>
-
-    <form method="post" action="/tienthanh" class="form-extend">
-        <input type="hidden" name="action2" value="watch_near_term_list_android_phone">
-        <button class="btn btn-success">Xem danh sách gần tới hạn</button>
-    </form>
-
-
-    <div class="search">
-        <form action="/tienthanh" method="post">
-            <h2>Tìm kiếm theo mã số</h2>
-            <input type="number" name="find_by_id" placeholder="Tìm kiếm theo mã số">
-            <input type="hidden" value="list_find_android_phone_similar_by_id" name="action2">
-            <button type="submit">Tìm kiếm</button>
-        </form>
-    </div>
-
-    <div class="search">
-        <form action="/tienthanh" method="post">
-            <h2>Tìm kiếm theo tên</h2>
-            <input type="text" name="find_by_name" placeholder="Tìm Điện Thoại theo tên">
-            <input type="hidden" value="list_find_android_phone_similar_by_name" name="action2">
-            <button type="submit">Tìm kiếm</button>
-        </form>
-    </div>
 </center>
 
 <div align="center">
@@ -136,80 +103,49 @@
 <!--                    <input type="hidden" value="save_create_android_phone" id="action2">-->
                     <div class="mb-3">
                         <label for="id_android_phone" class="col-form-label">Mã số:</label>
-                        <input type="number" name="id" class="form-control" id="id_android_phone" onblur="idError()" oninput="removeLeadingZeros(this)" th:field="*{id}">
-                        <span class="input-error" id="check_if_id_null">Vui lòng nhập mã số</span>
-                        <span class="input-error" id="check_if_id_exist">mã số đã tồn tại</span>
+                        <input type="number" id="id_android_phone" th:field="*{id}">
                     </div>
                     <div class="mb-3">
                         <label for="name_android_phone" class="col-form-label">Họ và tên:</label>
-                        <input type="text" name="name_owner" class="form-control" id="name_android_phone"
-                               onblur="nameError()" th:field="*{name_owner}">
-                        <span class="input-error" id="check_if_name_null">Vui lòng nhập Họ và tên</span>
+                        <input type="text" id="name_android_phone" th:field="*{name_owner}">
                     </div>
                     <div class="mb-3">
                         <label for="mySelect" class="col-form-label">Loại máy:</label>
-                        <select name="name_phone" id="mySelect" onblur="typeError()" th:field="*{name_phone}">
-                            <option id="hiddenSelect" value="" hidden selected disabled>phone</option>
-                            <optgroup label="Các hãng điện thoại">
+                        <select id="mySelect" th:field="*{name_phone}">
                                 <option value="samsung">SAMSUNG</option>
                                 <option value="oppo">OPPO</option>
-                                <%--                                <option value="iphone">IPHONE</option>--%>
+                                <option value="iphone">IPHONE</option>
                                 <option value="realme">REALME</option>
                                 <option value="vivo">VIVO</option>
                                 <option value="xiaomi">XIAOMI</option>
                                 <option value="one_plus">ONE PLUS</option>
-                            </optgroup>
-                            <optgroup label="Hãng điện thoại khác">
-                                <option value="khac">Khác</option>
-                            </optgroup>
+
                         </select>
-                        <span class="input-error" id="check_if_type_null">Vui lòng chọn loại máy</span>
-                        <div id="otherBrand" style="display:none;">
-                            <input type="text" class="form-control" id="otherBrandInput" onblur="gg()"
-                                   placeholder="Nhập tên hãng điện thoại khác...">
-                            <span class="input-error">Vui lòng nhập tên hãng điện thoại</span>
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_of_phone" class="col-form-label">Tên của điện thoại: </label>
-                            <input type="text" name="id_of_phone" class="form-control" id="id_of_phone"
-                                   onblur="idPhoneError()" th:field="*{id_of_phone}">
-                            <span class="input-error" id="check_if_id_of_phone_null">Vui lòng tên của điện thoại.</span>
-                        </div>
+
                     </div>
                     <div class="mb-3">
                         <label for="price_android_phone" class="col-form-label">PRICE:</label>
-                        <input type="text" name="price" class="form-control" id="price_android_phone"
-                               oninput="formatNumberInput(this)" onblur="priceError()" th:field="*{price}">
-                        <span class="input-error" id="check_if_price_null">Vui lòng nhập số tiền cầm</span>
+                        <input type="text" name="price" id="price_android_phone" th:field="*{price}">
                     </div>
                     <div class="mb-3">
                         <label for="start_date_android_phone" class="col-form-label">Ngày cầm:</label>
-                        <input type="text" name="start_Date" class="form-control" id="start_date_android_phone"
-                               onblur="startDateError()" th:field="*{start_Date}">
-                        <span class="input-error" id="check_if_start_date_null">Vui lòng nhập ngày cầm</span>
+                        <input type="date" id="start_date_android_phone" th:field="*{start_Date}">
                     </div>
                     <div class="mb-3">
                         <label for="phone_number_owner" class="col-form-label">Số điện thoại của người cầm: </label>
-                        <input type="number" name="phone_number_owner" class="form-control" id="phone_number_owner" placeholder="Không có" th:field="*{phone_number_owner}">
-<!--                        <span class="input-error" id="check_phone_number_owner_null">Vui lòng số điện thoại.</span>&#45;&#45;%>-->
+                        <input type="number" id="phone_number_owner" th:field="*{phone_number_owner}">
                     </div>
                     <div class="mb-3">
                         <label for="status_android_phone" class="col-form-label">Tình trạng:</label>
-                        <input type="text" name="status" class="form-control" id="status_android_phone"
-                               placeholder="Bình thường" th:field="*{status}">
-<!--                        <span class="input-error">Vui lòng mô tả tình trạng của máy</span>&#45;&#45;%>-->
+                        <input type="text" id="status_android_phone" th:field="*{status}">
                     </div>
                     <div class="mb-3">
                         <label for="password_android_phone" class="col-form-label">Mật khẩu:</label>
-                        <input type="text" name="password" class="form-control" id="password_android_phone"
-                               placeholder="Không có" th:field="*{password}">
-                        <%--                        <span class="input-error">Vui lòng nhập mật khẩu</span>--%>
+                        <input type="text" id="password_android_phone" th:field="*{password}">
                     </div>
                     <div class="mb-3">
                         <label for="note_android_phone" class="col-form-label">Ghi chú:</label>
-                        <input type="text" name="note" class="form-control" id="note_android_phone"
-                               placeholder="Không có" th:field="*{note}">
-<!--                        <span class="input-error">Vui lòng nhập ghi chú</span>-->
+                        <input type="text" id="note_android_phone" th:field="*{note}">
                     </div>
                     <button type="submit">sss</button>
                 </form>
