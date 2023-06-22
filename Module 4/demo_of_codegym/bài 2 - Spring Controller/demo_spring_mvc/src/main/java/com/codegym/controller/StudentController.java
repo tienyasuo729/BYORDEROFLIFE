@@ -28,9 +28,9 @@ public class StudentController {
          return "add";
     }
     @GetMapping("/detail")
-    public String showEdit(@RequestParam int id, Model model){
+    public String showEdit(@RequestParam("id") int aa, Model model){
         // database
-        System.out.println(id);
+        System.out.println(aa);
 
         return "detail";
     }

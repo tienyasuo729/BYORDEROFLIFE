@@ -113,4 +113,20 @@ public class Android_Phone implements Serializable {
     public void setNote(String note) {
         this.note = note;
     }
+
+    @Override
+    public String toString() {
+        return "Android_Phone{" +
+                "id='" + id + '\'' +
+                ", name_owner='" + name_owner + '\'' +
+                ", name_phone='" + name_phone + '\'' +
+                ", id_of_phone='" + id_of_phone + '\'' +
+                ", price=" + price +
+                ", start_Date=" + start_Date +
+                ", phone_number_owner='" + phone_number_owner + '\'' +
+                ", status='" + status + '\'' +
+                ", password='" + password + '\'' +
+                ", note='" + note + '\'' +
+                '}';
+    }
 }
