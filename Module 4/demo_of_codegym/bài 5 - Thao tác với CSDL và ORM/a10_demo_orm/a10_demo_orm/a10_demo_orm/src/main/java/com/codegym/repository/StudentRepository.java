@@ -21,7 +21,7 @@ public class StudentRepository implements IStudentRepository {
     public List<Student> findAll() {
         List<Student> studentList = new ArrayList<>();
         Session session = ConnectionUtil.sessionFactory.openSession();
-        TypedQuery<Student> query =session.createQuery("from Student",Student.class);
+            TypedQuery<Student> query =session.createQuery("from Student",Student.class);
         studentList = query.getResultList();
         return studentList;
     }

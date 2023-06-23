@@ -103,18 +103,18 @@
         </tr>
         </thead>
         <tbody>
-            <tr th:each="android_phone,stt: ${listAndroid_Phone}">
+            <tr th:each="android_phoneJDBC,stt: ${listAndroid_Phone}">
                 <td th:text="${stt.count}"></td>
-                <td th:text="${android_phone.id}"></td>
-                <td th:text="${android_phone.name_owner}"></td>
-                <td th:text="${android_phone.name_phone}"></td>
-                <td th:text="${android_phone.id_of_phone}"></td>
-                <td th:text="${#numbers.formatInteger(android_phone.price, 3, 'POINT')}"></td>
-                <td th:text="${#dates.format(android_phone.start_Date, 'dd/MM/yyyy')}"></td>
-                <td th:text="${android_phone.phone_number_owner}"></td>
-                <td th:text="${android_phone.status}"></td>
-                <td th:text="${android_phone.password}"></td>
-                <td th:text="${android_phone.note}"></td>
+                <td th:text="${android_phoneJDBC.id}"></td>
+                <td th:text="${android_phoneJDBC.name_owner}"></td>
+                <td th:text="${android_phoneJDBC.name_phone}"></td>
+                <td th:text="${android_phoneJDBC.id_of_phone}"></td>
+                <td th:text="${#numbers.formatInteger(android_phoneJDBC.price, 3, 'POINT')}"></td>
+                <td th:text="${#dates.format(android_phoneJDBC.start_Date, 'dd/MM/yyyy')}"></td>
+                <td th:text="${android_phoneJDBC.phone_number_owner}"></td>
+                <td th:text="${android_phoneJDBC.status}"></td>
+                <td th:text="${android_phoneJDBC.password}"></td>
+                <td th:text="${android_phoneJDBC.note}"></td>
                 <td>
                 chưa có
                 </td>
@@ -132,7 +132,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form th:object="${android_phone}" th:action="@{/tienthanh/save_create_android_phone}" method="post">
+                <form th:object="${android_phoneJDBC}" th:action="@{/tienthanh/save_create_android_phone}" method="post">
                     <div class="mb-3">
                         <label for="id_android_phone" class="col-form-label">Mã số:</label>
                         <input type="number" class="form-control" id="id_android_phone" onblur="idError()" oninput="removeLeadingZeros(this)" th:field="*{id}">
