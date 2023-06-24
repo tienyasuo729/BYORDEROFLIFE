@@ -1,11 +1,14 @@
-package com.tienthanh.model;
+package com.tienthanh.modelORM;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
-
-public class Android_Phone implements Serializable {
+@Entity
+public class Android_PhoneORM {
+    @Id
+//    @Column(name = "student_id") // dòng này để Đặt tên cột là "tên bạn muốn đặt" cho table trong sql mà không phải lấy tên của thuộc tính
     private String id;
     private String name_owner;
     private String name_phone;
@@ -18,10 +21,10 @@ public class Android_Phone implements Serializable {
     private String password;
     private String note;
 
-    public Android_Phone() {
+    public Android_PhoneORM() {
     }
 
-    public Android_Phone(String id, String name_owner, String name_phone, String id_of_phone, int price, Date start_Date, String phone_number_owner, String status, String password, String note) {
+    public Android_PhoneORM(String id, String name_owner, String name_phone, String id_of_phone, int price, Date start_Date, String phone_number_owner, String status, String password, String note) {
         this.id = id;
         this.name_owner = name_owner;
         this.name_phone = name_phone;
