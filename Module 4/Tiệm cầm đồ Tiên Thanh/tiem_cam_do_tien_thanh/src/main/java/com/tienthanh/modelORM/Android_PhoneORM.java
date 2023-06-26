@@ -5,8 +5,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 @Entity
+@Table(name = "android_phone")
 public class Android_PhoneORM {
     @Id
 //    @Column(name = "student_id") // dòng này để Đặt tên cột là "tên bạn muốn đặt" cho table trong sql mà không phải lấy tên của thuộc tính

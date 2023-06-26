@@ -5,6 +5,7 @@ import com.tienthanh.modelORM.Android_PhoneORM;
 import com.tienthanh.repositoryORM.IAndroid_PhoneRepositoryORM;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
@@ -20,5 +21,20 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
         TypedQuery<Android_PhoneORM> query = session.createQuery("from Android_PhoneORM", Android_PhoneORM.class);
         androidPhoneORMList = query.getResultList();
         return androidPhoneORMList;
+    }
+
+    @Override
+    public Boolean add_new_android_phone(Android_PhoneORM androidPhoneORM) {
+        Session session = ConnectionUtilORM.sessionFactory.openSession();
+        try {
+            Transaction transaction = session.getTransaction();
+            transaction.begin();
+            session.save(androidPhoneORM);
+            transaction.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }

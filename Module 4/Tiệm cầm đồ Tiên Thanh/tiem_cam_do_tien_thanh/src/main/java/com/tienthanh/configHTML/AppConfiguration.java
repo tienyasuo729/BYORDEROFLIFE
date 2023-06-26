@@ -66,9 +66,4 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         return messageSource;
     }
 
-//    @Bean
-//    @Qualifier(value = "entityManager")
-//    public EntityManager entityManager(EntityManagerFactory entityManagerFactory){
-//        return entityManagerFactory.createEntityManager();
-//    }
 }
