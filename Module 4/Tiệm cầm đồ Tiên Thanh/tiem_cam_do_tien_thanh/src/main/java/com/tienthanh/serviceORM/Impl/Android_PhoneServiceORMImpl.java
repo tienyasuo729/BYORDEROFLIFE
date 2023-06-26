@@ -20,4 +20,9 @@ public class Android_PhoneServiceORMImpl implements IAndroid_PhoneServiceORM {
     public Boolean add_new_android_phone(Android_PhoneORM androidPhoneORM) {
         return androidPhoneRepositoryORM.add_new_android_phone(androidPhoneORM);
     }
+
+    @Override
+    public Boolean check_if_id_exist(String idToCheck) {
+        return androidPhoneRepositoryORM.check_if_id_exist(idToCheck);
+    }
 }

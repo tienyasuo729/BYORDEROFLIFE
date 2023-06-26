@@ -18,7 +18,7 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
     public List<Android_PhoneORM> displayAndroid_Phone() {
         List<Android_PhoneORM> androidPhoneORMList = new ArrayList<>();
         Session session = ConnectionUtilORM.sessionFactory.openSession();
-        TypedQuery<Android_PhoneORM> query = session.createQuery("from Android_PhoneORM", Android_PhoneORM.class);
+        TypedQuery<Android_PhoneORM> query = session.createQuery("from Android_PhoneORM order by id", Android_PhoneORM.class);
         androidPhoneORMList = query.getResultList();
         return androidPhoneORMList;
     }
@@ -36,5 +36,11 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Boolean check_if_id_exist(String idToCheck) {
+
+        return null;
     }
 }

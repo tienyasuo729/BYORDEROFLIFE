@@ -25,6 +25,6 @@ public class Android_PhoneControllerORM {
     @PostMapping("save_create_android_phone")
     public String save_create_android_phone(@ModelAttribute Android_PhoneORM androidPhoneORM){
         System.out.println(androidPhoneServiceORM.add_new_android_phone(androidPhoneORM));
-        return "listAndroid_Phone";
+        return "redirect:/tienthanhORM";
     }
 }
