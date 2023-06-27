@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--    <%&#45;&#45;    đoạn link này để phân trang cho một trang wed&#45;&#45;%>-->
+<!--    đoạn link này để phân trang cho một trang wed-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
@@ -505,35 +505,74 @@
         input.value = input.value.replace(/^0+(?!$)/, "");
     }
 
-    function idError() {
-        let check = true;
-        var id = document.getElementById("id_android_phone");
-        let spanCheckIdExist = document.getElementById("check_if_id_exist");
-        if (id.value.trim() !== "") {
-            id.nextElementSibling.style.display = "none";
-        } else {
-            id.nextElementSibling.style.display = "block";
-        }
-        if (check) {
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                // alert(this.readyState + "///" + this.status);
-                if (this.readyState == 4 && this.status == 200) {
-                    var result = this.responseText;
-                    if (result === "true") {
-                        spanCheckIdExist.style.display = "block";
-                    } else {
-                        spanCheckIdExist.style.display = "none";
+        function idError() {
+            let check;
+            var id = document.getElementById("id_android_phone");
+            let spanCheckIdExist = document.getElementById("check_if_id_exist");
+            if (id.value.trim() !== "") {
+                check = true
+                id.nextElementSibling.style.display = "none";
+            } else {
+                check = false
+                id.nextElementSibling.style.display = "block";
+            }
+            if (check) {
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    alert(this.readyState + "///" + this.status);
+                    if (this.readyState == 4) {
+                        alert("5555");
+                        // alert(this.responseText);
+                        // var result = JSON.parse(this.responseText);
+                        var result = this.responseText;
+                        alert(result +"   llll");
+                        if (result === "true") {
+                            alert("true");
+                            spanCheckIdExist.style.display = "block";
+                        } else {
+                            alert("false");
+                            spanCheckIdExist.style.display = "none";
+                        }
                     }
-                }
-            };
+                };
 
-            xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-            var data = "action2=check_if_id_exist&id_need_to_check=" + encodeURIComponent(id.value); // Tạo dữ liệu gửi đi
-            xhr.send(data); // Gửi dữ liệu đi
+                xhr.open("POST", "/tienthanhORM/check_if_id_exist", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                var data = "id_need_to_check=" + encodeURIComponent(id.value);
+                xhr.send(data);
+            }
         }
-    }
+
+
+    // function idError() {
+    //     let check = true;
+    //     var id = document.getElementById("id_android_phone");
+    //     let spanCheckIdExist = document.getElementById("check_if_id_exist");
+    //     if (id.value.trim() !== "") {
+    //         id.nextElementSibling.style.display = "none";
+    //     } else {
+    //         id.nextElementSibling.style.display = "block";
+    //     }
+    //     if (check) {
+    //         let xhr = new XMLHttpRequest();
+    //         xhr.onreadystatechange = function () {
+    //             // alert(this.readyState + "///" + this.status);
+    //             if (this.readyState == 4 && this.status == 200) {
+    //                 var result = this.responseText;
+    //                 if (result === "true") {
+    //                     spanCheckIdExist.style.display = "block";
+    //                 } else {
+    //                     spanCheckIdExist.style.display = "none";
+    //                 }
+    //             }
+    //         };
+    //
+    //         xhr.open("POST", "/tienthanhORM/check_if_id_exist", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+    //         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
+    //         var data = "id_need_to_check=" + encodeURIComponent(id.value); // Tạo dữ liệu gửi đi
+    //         xhr.send(data); // Gửi dữ liệu đi
+    //     }
+    // }
 
     function nameError() {
         var name = document.getElementById("name_android_phone");

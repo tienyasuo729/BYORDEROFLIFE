@@ -6,6 +6,7 @@ import com.tienthanh.repositoryORM.IAndroid_PhoneRepositoryORM;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
@@ -31,7 +32,7 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
             transaction.begin();
             session.save(androidPhoneORM);
             transaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -40,7 +41,10 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
 
     @Override
     public Boolean check_if_id_exist(String idToCheck) {
-
-        return null;
+        Session session = ConnectionUtilORM.sessionFactory.openSession();
+        TypedQuery<Android_PhoneORM> query = session.createQuery("from Android_PhoneORM where id =:idToCheck", Android_PhoneORM.class);
+        query.setParameter("idToCheck", idToCheck);
+        List<Android_PhoneORM> resultList = query.getResultList();
+        return !resultList.isEmpty();
     }
 }
