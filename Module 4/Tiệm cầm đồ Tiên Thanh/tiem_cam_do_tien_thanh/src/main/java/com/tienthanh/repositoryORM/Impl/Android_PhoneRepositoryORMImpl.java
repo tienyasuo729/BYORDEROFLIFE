@@ -47,4 +47,22 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
         List<Android_PhoneORM> resultList = query.getResultList();
         return !resultList.isEmpty();
     }
+
+    @Override
+    public Boolean delete_Android_Phone(String idToDelete) {
+        Session session = ConnectionUtilORM.sessionFactory.openSession();
+        try {
+            Transaction transaction = session.getTransaction();
+            transaction.begin();
+            session.delete(session.get(Android_PhoneORM.class, idToDelete));
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+//        Query query = session.createQuery("DELETE from Android_PhoneORM where id =: idToDelete",Android_PhoneORM.class);
+//        query.setParameter("idToDelete", idToDelete);
+
+    }
 }

@@ -1,5 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: ASUS
+  Date: 27-Mar-23
+  Time: 6:40 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <title>Tiệm cầm đồ Tiến Thanh</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -12,8 +21,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--    đoạn link này để phân trang cho một trang wed-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css"/>
+<%--    đoạn link này để phân trang cho một trang wed--%>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
 
@@ -35,11 +44,31 @@
             display: none;
         }
 
+        /*.dataTables_wrapper .dataTables_paginate a.paginate_button {*/
+        /*    margin: 0px;*/
+        /*}*/
+
+        /*#background {*/
+        /*    background-image: url("https://flc-event.vn/wp-content/uploads/2020/02/backgound-about-1.jpg");*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-size: cover;*/
+        /*    position: fixed;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    z-index: -1;*/
+        /*}*/
     </style>
 </head>
 <body id="background">
 <center>
     <h1>Cầm đồ Tiến Thanh</h1>
+
+    <%--    <form method="post" action="/tienthanh">--%>
+    <%--        <input type="hidden" name="action" value="create">--%>
+    <%--        <button type="submit" class="btn btn-success">Thêm Điện thoại cầm</button>--%>
+    <%--    </form>--%>
 
     <form class="form-add">
         <button type="button" class="btn btn-success" data-bs-toggle="modal"
@@ -85,7 +114,7 @@
 <div align="center">
     <table id="myTable" class="table table-hover" STYLE="text-align: center">
         <h2>Danh sách điện thoại cầm</h2>
-        <caption><h2>Danh sách điện thoại cầm</h2></caption>
+<%--        <caption><h2>Danh sách điện thoại cầm</h2></caption>--%>
         <thead>
         <tr>
             <th>STT</th>
@@ -103,32 +132,61 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="android_phoneJDBC,stt: ${listAndroid_Phone}">
-            <td th:text="${stt.count}"></td>
-            <td th:text="${android_phoneJDBC.id}"></td>
-            <td th:text="${android_phoneJDBC.name_owner}"></td>
-            <td th:text="${android_phoneJDBC.name_phone}"></td>
-            <td th:text="${android_phoneJDBC.id_of_phone}"></td>
-            <td th:text="${#numbers.formatInteger(android_phoneJDBC.price, 3, 'POINT')}"></td>
-            <td th:text="${#dates.format(android_phoneJDBC.start_Date, 'dd/MM/yyyy')}"></td>
-            <td th:text="${android_phoneJDBC.phone_number_owner}"></td>
-            <td th:text="${android_phoneJDBC.status}"></td>
-            <td th:text="${android_phoneJDBC.password}"></td>
-            <td th:text="${android_phoneJDBC.note}"></td>
-            <td>
-                <button type="button" class="btn btn-danger"
-                        onclick="delete_the_product('${android_phoneJDBC.id}', this)">Xoá
-                </button>
-                <button type="button" class="btn btn-danger"
-                        onclick="delete_the_product(${#strings.replace(JSON.stringify(android_phoneJDBC.id), '\'', '\\\'')}, this)">Xoá
-                </button>
-            </td>
-        </tr>
+        <c:set var="count" value="1"/>
+        <c:forEach items="${listAndroid_Phone}" var="android_phone">
+            <tr>
+                <td><c:out value="${count}"/></td>
+                <c:set var="count" value="${count + 1}"/>
+
+                <td><c:out value="${android_phone.id}"/></td>
+                <td><c:out value="${android_phone.name_owner}"/></td>
+                <td><c:out value="${android_phone.name_phone}"/></td>
+                <td><c:out value="${android_phone.id_of_phone}"/></td>
+                <td><fmt:formatNumber value="${android_phone.price}" pattern="###,###,###,###"/></td>
+                <td><fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/></td>
+                <td><c:out value="${android_phone.phone_number_owner}"/></td>
+                <td><c:out value="${android_phone.status}"/></td>
+                <td><c:out value="${android_phone.password}"/></td>
+                <td><c:out value="${android_phone.note}"/></td>
+                <td>
+                        <%--thanh công cụ--%>
+                        <%--                    <form action="/tienthanh" method="post" class="form-edit">--%>
+                        <%--                        <input type="hidden" name="action" value="edit_Android_phone">--%>
+                        <%--                        <input type="hidden" name="id_need_to_edit" value="${android_phone.id}">--%>
+                        <%--                        <button type="submit" class="btn btn-success" >Chỉnh sửa</button>--%>
+                        <%--                    </form>--%>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" data-bs-whatever="@mdo"
+                            onclick="edit_form('${android_phone.id}','${android_phone.name_owner}','${android_phone.name_phone}','${android_phone.id_of_phone}','${android_phone.price}','${android_phone.start_Date}','${android_phone.phone_number_owner}','${android_phone.status}','${android_phone.password}','${android_phone.note}')">
+                        Chỉnh sửa
+                    </button>
+
+                        <%--                    <form action="/tienthanh" method="post" class="form-delete">--%>
+                        <%--                        <input type="hidden" name="action2" value="delete_android_phone_by_id">--%>
+                        <%--                        <input type="hidden" name="id_need_to_delete" value="${android_phone.id}">--%>
+                    <button type="button" class="btn btn-danger"
+                            onclick="delete_the_product('${android_phone.id}', this)">Xoá
+                    </button>
+                        <%--                    </form>--%>
+
+                    <button type="button" class="btn btn-warning"
+                            onclick="calculate('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}')">
+                        Gia hạn
+                    </button>
+
+                    <button type="button" class="btn btn-info"
+                            onclick="take_the_product('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}',this)">
+                        lấy máy
+                    </button>
+                </td>
+            </tr>
+        </c:forEach>
         </tbody>
 
     </table>
 </div>
 
+<%--form để thêm mới điện thoại cầm--%>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -137,30 +195,29 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form th:object="${android_phone}" th:action="@{/tienthanhORM/save_create_android_phone}" method="post">
+                <form>
+                    <input type="hidden" value="save_create_android_phone" id="action2">
                     <div class="mb-3">
                         <label for="id_android_phone" class="col-form-label">Mã số:</label>
-                        <input type="number" class="form-control" id="id_android_phone" onblur="idError()"
-                               oninput="removeLeadingZeros(this)" th:field="*{id}">
+                        <input type="number" name="id" class="form-control" id="id_android_phone" onblur="idError()" oninput="removeLeadingZeros(this)">
                         <span class="input-error" id="check_if_id_null">Vui lòng nhập mã số</span>
                         <span class="input-error" id="check_if_id_exist">mã số đã tồn tại</span>
                     </div>
                     <div class="mb-3">
                         <label for="name_android_phone" class="col-form-label">Họ và tên:</label>
-                        <input type="text" class="form-control" id="name_android_phone"
-                               onblur="nameError()" th:field="*{name_owner}">
+                        <input type="text" name="name_owner" class="form-control" id="name_android_phone"
+                               onblur="nameError()">
                         <span class="input-error" id="check_if_name_null">Vui lòng nhập Họ và tên</span>
                     </div>
                     <div class="mb-3">
                         <label for="mySelect" class="col-form-label">Loại máy:</label>
-                        <select id="mySelect" onblur="typeError()" th:field="*{name_phone}">
+                        <%--                        <input type="number" name="id" class="form-control" id="type_android_phone">--%>
+                        <select name="name_phone" id="mySelect" onblur="typeError()">
                             <option id="hiddenSelect" value="" hidden selected disabled>phone</option>
                             <optgroup label="Các hãng điện thoại">
                                 <option value="samsung">SAMSUNG</option>
                                 <option value="oppo">OPPO</option>
-                                <%--
-                                <option value="iphone">IPHONE</option>
-                                --%>
+<%--                                <option value="iphone">IPHONE</option>--%>
                                 <option value="realme">REALME</option>
                                 <option value="vivo">VIVO</option>
                                 <option value="xiaomi">XIAOMI</option>
@@ -174,65 +231,66 @@
                         <div id="otherBrand" style="display:none;">
                             <input type="text" class="form-control" id="otherBrandInput" onblur="gg()"
                                    placeholder="Nhập tên hãng điện thoại khác...">
-                            <span class="input-error">Vui lòng nhập tên hãng điện thoại</span>
+                            <%--                            <span class="input-error">Vui lòng nhập tên hãng điện thoại</span>--%>
                         </div>
                         <div class="mb-3">
                             <label for="id_of_phone" class="col-form-label">Tên của điện thoại: </label>
-                            <input type="text" class="form-control" id="id_of_phone"
-                                   onblur="idPhoneError()" th:field="*{id_of_phone}">
+                            <input type="text" name="id_of_phone" class="form-control" id="id_of_phone"
+                                   onblur="idPhoneError()">
                             <span class="input-error" id="check_if_id_of_phone_null">Vui lòng tên của điện thoại.</span>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="price_android_phone" class="col-form-label">PRICE:</label>
-                        <input type="text" class="form-control" id="price_android_phone"
-                               oninput="formatNumberInput(this)" onblur="priceError()" th:field="*{price}">
+                        <input type="text" name="price" class="form-control" id="price_android_phone"
+                               oninput="formatNumberInput(this)" onblur="priceError()">
                         <span class="input-error" id="check_if_price_null">Vui lòng nhập số tiền cầm</span>
                     </div>
                     <div class="mb-3">
                         <label for="start_date_android_phone" class="col-form-label">Ngày cầm:</label>
-                        <input type="date" class="form-control" id="start_date_android_phone"
-                               onblur="startDateError()" th:field="*{start_Date}">
+                        <input type="date" name="start_Date" class="form-control" id="start_date_android_phone"
+                               onblur="startDateError()">
+                        <%--                        <fmt:formatDate value="${android_phone.start_Date}" pattern="dd/MM/yyyy"/>--%>
                         <span class="input-error" id="check_if_start_date_null">Vui lòng nhập ngày cầm</span>
                     </div>
                     <div class="mb-3">
                         <label for="phone_number_owner" class="col-form-label">Số điện thoại của người cầm: </label>
-                        <input type="number" class="form-control" id="phone_number_owner" placeholder="Không có"
-                               th:field="*{phone_number_owner}">
-                        <!--                        <span class="input-error" id="check_phone_number_owner_null">Vui lòng số điện thoại.</span>&#45;&#45;%>-->
+                        <input type="number" name="phone_number_owner" class="form-control" id="phone_number_owner" placeholder="Không có">
+<%--                        <span class="input-error" id="check_phone_number_owner_null">Vui lòng số điện thoại.</span>--%>
                     </div>
                     <div class="mb-3">
                         <label for="status_android_phone" class="col-form-label">Tình trạng:</label>
-                        <input type="text" class="form-control" id="status_android_phone"
-                               placeholder="Bình thường" th:field="*{status}">
-                        <!--                        <span class="input-error">Vui lòng mô tả tình trạng của máy</span>&#45;&#45;%>-->
+                        <input type="text" name="status" class="form-control" id="status_android_phone"
+                               placeholder="Bình thường">
+                        <%--                        <span class="input-error">Vui lòng mô tả tình trạng của máy</span>--%>
                     </div>
                     <div class="mb-3">
                         <label for="password_android_phone" class="col-form-label">Mật khẩu:</label>
-                        <input type="text" class="form-control" id="password_android_phone"
-                               placeholder="Không có" th:field="*{password}">
-                        <%-- <span class="input-error">Vui lòng nhập mật khẩu</span>--%>
+                        <input type="text" name="password" class="form-control" id="password_android_phone"
+                               placeholder="Không có">
+                        <%--                        <span class="input-error">Vui lòng nhập mật khẩu</span>--%>
                     </div>
                     <div class="mb-3">
                         <label for="note_android_phone" class="col-form-label">Ghi chú:</label>
-                        <input type="text" class="form-control" id="note_android_phone"
-                               placeholder="Không có" th:field="*{note}">
-                        <!--                        <span class="input-error">Vui lòng nhập ghi chú</span>-->
+                        <input type="text" name="note" class="form-control" id="note_android_phone"
+                               placeholder="Không có">
+                        <%--                        <span class="input-error">Vui lòng nhập ghi chú</span>--%>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" id="saveButton">Save</button>
-                    </div>
+
                 </form>
             </div>
-
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveButton" onclick="submit_add()">Save</button>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
+
     // đoạn jquery này để phân trang cho một trang wed
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#myTable').DataTable({
             "pageLength": 15,
             "lengthChange": false,
@@ -336,9 +394,9 @@
         priceBefore.value = priceAfter;
         startDateBefore.value = formattedDate;
 
-        if (phone_number_owner_after === "Không có") {
+        if (phone_number_owner_after === "Không có"){
             phone_number_owner_before.placeholder = "Không có";
-        } else {
+        }else {
             phone_number_owner_before.value = phone_number_owner_after;
         }
 
@@ -405,7 +463,7 @@
         if (check === true) {
             let xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
-                // alert(this.readyState + "///" + this.status);
+                alert(this.readyState + "///" + this.status);
                 if (this.readyState == 4 && this.status == 200) {
                     // bảng này để xoá một hàng trong bảng ( chỉ xoá hàng trong jsp mà không động tới servlet)
                     var row = btn.parentNode.parentNode;
@@ -420,9 +478,9 @@
                     alert(result);
                 }
             };
-            xhr.open("POST", "/tienthanhORM/delete_android_phone_by_id", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+            xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-            var data = "&id_need_to_delete=" + encodeURIComponent(id); // Tạo dữ liệu gửi đi
+            var data = "action2=delete_android_phone_by_id" + "&id_need_to_delete=" + encodeURIComponent(id); // Tạo dữ liệu gửi đi
             xhr.send(data); // Gửi dữ liệu đi
         } else {
             alert("- Xoá không thành công");
@@ -506,7 +564,7 @@
 
         xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-        var data = "action2=delete_android_phone_by_id&id_need_to_delete=" + encodeURIComponent(id) + "&action_stored_procedure=take_the_product"; // Tạo dữ liệu gửi đi
+        var data = "action2=delete_android_phone_by_id&id_need_to_delete=" + encodeURIComponent(id) + "&action_stored_procedure=take_the_product" ; // Tạo dữ liệu gửi đi
         xhr.send(data); // Gửi dữ liệu đi
     }
 
@@ -515,14 +573,12 @@
     }
 
     function idError() {
-        let check;
+        let check = true;
         var id = document.getElementById("id_android_phone");
         let spanCheckIdExist = document.getElementById("check_if_id_exist");
         if (id.value.trim() !== "") {
-            check = true
             id.nextElementSibling.style.display = "none";
         } else {
-            check = false
             id.nextElementSibling.style.display = "block";
         }
         if (check) {
@@ -530,10 +586,7 @@
             xhr.onreadystatechange = function () {
                 // alert(this.readyState + "///" + this.status);
                 if (this.readyState == 4 && this.status == 200) {
-                    // alert(this.responseText);
-                    // var result = JSON.parse(this.responseText);
                     var result = this.responseText;
-                    // alert(result +"   llll");
                     if (result === "true") {
                         spanCheckIdExist.style.display = "block";
                     } else {
@@ -542,43 +595,12 @@
                 }
             };
 
-            xhr.open("POST", "/tienthanhORM/check_if_id_exist", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            var data = "id_need_to_check=" + encodeURIComponent(id.value);
-            xhr.send(data);
+            xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
+            var data = "action2=check_if_id_exist&id_need_to_check=" + encodeURIComponent(id.value); // Tạo dữ liệu gửi đi
+            xhr.send(data); // Gửi dữ liệu đi
         }
     }
-
-
-    // function idError() {
-    //     let check = true;
-    //     var id = document.getElementById("id_android_phone");
-    //     let spanCheckIdExist = document.getElementById("check_if_id_exist");
-    //     if (id.value.trim() !== "") {
-    //         id.nextElementSibling.style.display = "none";
-    //     } else {
-    //         id.nextElementSibling.style.display = "block";
-    //     }
-    //     if (check) {
-    //         let xhr = new XMLHttpRequest();
-    //         xhr.onreadystatechange = function () {
-    //             // alert(this.readyState + "///" + this.status);
-    //             if (this.readyState == 4 && this.status == 200) {
-    //                 var result = this.responseText;
-    //                 if (result === "true") {
-    //                     spanCheckIdExist.style.display = "block";
-    //                 } else {
-    //                     spanCheckIdExist.style.display = "none";
-    //                 }
-    //             }
-    //         };
-    //
-    //         xhr.open("POST", "/tienthanhORM/check_if_id_exist", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
-    //         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-    //         var data = "id_need_to_check=" + encodeURIComponent(id.value); // Tạo dữ liệu gửi đi
-    //         xhr.send(data); // Gửi dữ liệu đi
-    //     }
-    // }
 
     function nameError() {
         var name = document.getElementById("name_android_phone");
@@ -602,7 +624,7 @@
 
     }
 
-    function idPhoneError() {
+    function idPhoneError(){
         var idPhone = document.getElementById("id_of_phone");
         var spanIdPhone = document.getElementById("check_if_id_of_phone_null");
         if (idPhone.value.trim() !== "") {
@@ -768,7 +790,7 @@
 
             xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            var href = "action2=" + encodeURIComponent(action2.value) + "&id=" + encodeURIComponent(id.value) + "&name_owner=" + encodeURIComponent(name.value) + "&name_phone=" + encodeURIComponent(type.value) + "&id_of_phone=" + encodeURIComponent(id_of_phone.value) + "&price=" + encodeURIComponent(price.value) + "&phone_number_owner=" + encodeURIComponent(phone_number_owner.value) + "&status=" + encodeURIComponent(status.value) + "&password=" + encodeURIComponent(password.value) + "&note=" + encodeURIComponent(note.value) + "&start_Date=" + encodeURIComponent(startDate.value); // Tạo dữ liệu gửi đi
+            var href = "action2=" + encodeURIComponent(action2.value) + "&id=" + encodeURIComponent(id.value) + "&name_owner=" + encodeURIComponent(name.value) + "&name_phone=" + encodeURIComponent(type.value)+ "&id_of_phone=" + encodeURIComponent(id_of_phone.value) + "&price=" + encodeURIComponent(price.value) + "&phone_number_owner=" + encodeURIComponent(phone_number_owner.value)  + "&status=" + encodeURIComponent(status.value) + "&password=" + encodeURIComponent(password.value) + "&note=" + encodeURIComponent(note.value) + "&start_Date=" + encodeURIComponent(startDate.value); // Tạo dữ liệu gửi đi
             xhr.send(href);
         }
 
@@ -805,4 +827,4 @@
 </script>
 </body>
 
-
+</html>

@@ -25,4 +25,9 @@ public class Android_PhoneServiceORMImpl implements IAndroid_PhoneServiceORM {
     public Boolean check_if_id_exist(String idToCheck) {
         return androidPhoneRepositoryORM.check_if_id_exist(idToCheck);
     }
+
+    @Override
+    public Boolean delete_Android_Phone(String idToDelete) {
+        return androidPhoneRepositoryORM.delete_Android_Phone(idToDelete);
+    }
 }

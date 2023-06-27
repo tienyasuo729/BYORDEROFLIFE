@@ -12,8 +12,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--    đoạn link này để phân trang cho một trang wed-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <!--    đoạn link này để phân trang cho một trang wed-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css"/>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
 
@@ -103,22 +103,24 @@
         </tr>
         </thead>
         <tbody>
-            <tr th:each="android_phoneJDBC,stt: ${listAndroid_Phone}">
-                <td th:text="${stt.count}"></td>
-                <td th:text="${android_phoneJDBC.id}"></td>
-                <td th:text="${android_phoneJDBC.name_owner}"></td>
-                <td th:text="${android_phoneJDBC.name_phone}"></td>
-                <td th:text="${android_phoneJDBC.id_of_phone}"></td>
-                <td th:text="${#numbers.formatInteger(android_phoneJDBC.price, 3, 'POINT')}"></td>
-                <td th:text="${#dates.format(android_phoneJDBC.start_Date, 'dd/MM/yyyy')}"></td>
-                <td th:text="${android_phoneJDBC.phone_number_owner}"></td>
-                <td th:text="${android_phoneJDBC.status}"></td>
-                <td th:text="${android_phoneJDBC.password}"></td>
-                <td th:text="${android_phoneJDBC.note}"></td>
-                <td>
-                chưa có
-                </td>
-            </tr>
+        <tr th:each="android_phoneJDBC,stt: ${listAndroid_Phone}">
+            <td th:text="${stt.count}"></td>
+            <td th:text="${android_phoneJDBC.id}"></td>
+            <td th:text="${android_phoneJDBC.name_owner}"></td>
+            <td th:text="${android_phoneJDBC.name_phone}"></td>
+            <td th:text="${android_phoneJDBC.id_of_phone}"></td>
+            <td th:text="${#numbers.formatInteger(android_phoneJDBC.price, 3, 'POINT')}"></td>
+            <td th:text="${#dates.format(android_phoneJDBC.start_Date, 'dd/MM/yyyy')}"></td>
+            <td th:text="${android_phoneJDBC.phone_number_owner}"></td>
+            <td th:text="${android_phoneJDBC.status}"></td>
+            <td th:text="${android_phoneJDBC.password}"></td>
+            <td th:text="${android_phoneJDBC.note}"></td>
+            <td>
+                <button type="button" class="btn btn-danger"
+                        onclick="delete_the_product('${android_phoneJDBC.id}', this)">Xoá
+                </button>
+            </td>
+        </tr>
         </tbody>
 
     </table>
@@ -135,7 +137,8 @@
                 <form th:object="${android_phone}" th:action="@{/tienthanhORM/save_create_android_phone}" method="post">
                     <div class="mb-3">
                         <label for="id_android_phone" class="col-form-label">Mã số:</label>
-                        <input type="number" class="form-control" id="id_android_phone" onblur="idError()" oninput="removeLeadingZeros(this)" th:field="*{id}">
+                        <input type="number" class="form-control" id="id_android_phone" onblur="idError()"
+                               oninput="removeLeadingZeros(this)" th:field="*{id}">
                         <span class="input-error" id="check_if_id_null">Vui lòng nhập mã số</span>
                         <span class="input-error" id="check_if_id_exist">mã số đã tồn tại</span>
                     </div>
@@ -152,7 +155,9 @@
                             <optgroup label="Các hãng điện thoại">
                                 <option value="samsung">SAMSUNG</option>
                                 <option value="oppo">OPPO</option>
-                                <%--                                <option value="iphone">IPHONE</option>--%>
+                                <%--
+                                <option value="iphone">IPHONE</option>
+                                --%>
                                 <option value="realme">REALME</option>
                                 <option value="vivo">VIVO</option>
                                 <option value="xiaomi">XIAOMI</option>
@@ -189,30 +194,31 @@
                     </div>
                     <div class="mb-3">
                         <label for="phone_number_owner" class="col-form-label">Số điện thoại của người cầm: </label>
-                        <input type="number" class="form-control" id="phone_number_owner" placeholder="Không có" th:field="*{phone_number_owner}">
-<!--                        <span class="input-error" id="check_phone_number_owner_null">Vui lòng số điện thoại.</span>&#45;&#45;%>-->
+                        <input type="number" class="form-control" id="phone_number_owner" placeholder="Không có"
+                               th:field="*{phone_number_owner}">
+                        <!--                        <span class="input-error" id="check_phone_number_owner_null">Vui lòng số điện thoại.</span>&#45;&#45;%>-->
                     </div>
                     <div class="mb-3">
                         <label for="status_android_phone" class="col-form-label">Tình trạng:</label>
                         <input type="text" class="form-control" id="status_android_phone"
                                placeholder="Bình thường" th:field="*{status}">
-<!--                        <span class="input-error">Vui lòng mô tả tình trạng của máy</span>&#45;&#45;%>-->
+                        <!--                        <span class="input-error">Vui lòng mô tả tình trạng của máy</span>&#45;&#45;%>-->
                     </div>
                     <div class="mb-3">
                         <label for="password_android_phone" class="col-form-label">Mật khẩu:</label>
                         <input type="text" class="form-control" id="password_android_phone"
                                placeholder="Không có" th:field="*{password}">
-                        <%--                        <span class="input-error">Vui lòng nhập mật khẩu</span>--%>
+                        <%-- <span class="input-error">Vui lòng nhập mật khẩu</span>--%>
                     </div>
                     <div class="mb-3">
                         <label for="note_android_phone" class="col-form-label">Ghi chú:</label>
                         <input type="text" class="form-control" id="note_android_phone"
                                placeholder="Không có" th:field="*{note}">
-<!--                        <span class="input-error">Vui lòng nhập ghi chú</span>-->
+                        <!--                        <span class="input-error">Vui lòng nhập ghi chú</span>-->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" id="saveButton" >Save</button>
+                        <button type="submit" class="btn btn-primary" id="saveButton">Save</button>
                     </div>
                 </form>
             </div>
@@ -223,7 +229,7 @@
 
 <script>
     // đoạn jquery này để phân trang cho một trang wed
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#myTable').DataTable({
             "pageLength": 15,
             "lengthChange": false,
@@ -327,9 +333,9 @@
         priceBefore.value = priceAfter;
         startDateBefore.value = formattedDate;
 
-        if (phone_number_owner_after === "Không có"){
+        if (phone_number_owner_after === "Không có") {
             phone_number_owner_before.placeholder = "Không có";
-        }else {
+        } else {
             phone_number_owner_before.value = phone_number_owner_after;
         }
 
@@ -396,7 +402,7 @@
         if (check === true) {
             let xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
-                alert(this.readyState + "///" + this.status);
+                // alert(this.readyState + "///" + this.status);
                 if (this.readyState == 4 && this.status == 200) {
                     // bảng này để xoá một hàng trong bảng ( chỉ xoá hàng trong jsp mà không động tới servlet)
                     var row = btn.parentNode.parentNode;
@@ -411,9 +417,9 @@
                     alert(result);
                 }
             };
-            xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+            xhr.open("POST", "/tienthanhORM/delete_android_phone_by_id", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-            var data = "action2=delete_android_phone_by_id" + "&id_need_to_delete=" + encodeURIComponent(id); // Tạo dữ liệu gửi đi
+            var data = "&id_need_to_delete=" + encodeURIComponent(id); // Tạo dữ liệu gửi đi
             xhr.send(data); // Gửi dữ liệu đi
         } else {
             alert("- Xoá không thành công");
@@ -497,7 +503,7 @@
 
         xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-        var data = "action2=delete_android_phone_by_id&id_need_to_delete=" + encodeURIComponent(id) + "&action_stored_procedure=take_the_product" ; // Tạo dữ liệu gửi đi
+        var data = "action2=delete_android_phone_by_id&id_need_to_delete=" + encodeURIComponent(id) + "&action_stored_procedure=take_the_product"; // Tạo dữ liệu gửi đi
         xhr.send(data); // Gửi dữ liệu đi
     }
 
@@ -505,43 +511,40 @@
         input.value = input.value.replace(/^0+(?!$)/, "");
     }
 
-        function idError() {
-            let check;
-            var id = document.getElementById("id_android_phone");
-            let spanCheckIdExist = document.getElementById("check_if_id_exist");
-            if (id.value.trim() !== "") {
-                check = true
-                id.nextElementSibling.style.display = "none";
-            } else {
-                check = false
-                id.nextElementSibling.style.display = "block";
-            }
-            if (check) {
-                let xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    alert(this.readyState + "///" + this.status);
-                    if (this.readyState == 4) {
-                        alert("5555");
-                        // alert(this.responseText);
-                        // var result = JSON.parse(this.responseText);
-                        var result = this.responseText;
-                        alert(result +"   llll");
-                        if (result === "true") {
-                            alert("true");
-                            spanCheckIdExist.style.display = "block";
-                        } else {
-                            alert("false");
-                            spanCheckIdExist.style.display = "none";
-                        }
-                    }
-                };
-
-                xhr.open("POST", "/tienthanhORM/check_if_id_exist", true);
-                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                var data = "id_need_to_check=" + encodeURIComponent(id.value);
-                xhr.send(data);
-            }
+    function idError() {
+        let check;
+        var id = document.getElementById("id_android_phone");
+        let spanCheckIdExist = document.getElementById("check_if_id_exist");
+        if (id.value.trim() !== "") {
+            check = true
+            id.nextElementSibling.style.display = "none";
+        } else {
+            check = false
+            id.nextElementSibling.style.display = "block";
         }
+        if (check) {
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                // alert(this.readyState + "///" + this.status);
+                if (this.readyState == 4 && this.status == 200) {
+                    // alert(this.responseText);
+                    // var result = JSON.parse(this.responseText);
+                    var result = this.responseText;
+                    // alert(result +"   llll");
+                    if (result === "true") {
+                        spanCheckIdExist.style.display = "block";
+                    } else {
+                        spanCheckIdExist.style.display = "none";
+                    }
+                }
+            };
+
+            xhr.open("POST", "/tienthanhORM/check_if_id_exist", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var data = "id_need_to_check=" + encodeURIComponent(id.value);
+            xhr.send(data);
+        }
+    }
 
 
     // function idError() {
@@ -596,7 +599,7 @@
 
     }
 
-    function idPhoneError(){
+    function idPhoneError() {
         var idPhone = document.getElementById("id_of_phone");
         var spanIdPhone = document.getElementById("check_if_id_of_phone_null");
         if (idPhone.value.trim() !== "") {
@@ -762,7 +765,7 @@
 
             xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            var href = "action2=" + encodeURIComponent(action2.value) + "&id=" + encodeURIComponent(id.value) + "&name_owner=" + encodeURIComponent(name.value) + "&name_phone=" + encodeURIComponent(type.value)+ "&id_of_phone=" + encodeURIComponent(id_of_phone.value) + "&price=" + encodeURIComponent(price.value) + "&phone_number_owner=" + encodeURIComponent(phone_number_owner.value)  + "&status=" + encodeURIComponent(status.value) + "&password=" + encodeURIComponent(password.value) + "&note=" + encodeURIComponent(note.value) + "&start_Date=" + encodeURIComponent(startDate.value); // Tạo dữ liệu gửi đi
+            var href = "action2=" + encodeURIComponent(action2.value) + "&id=" + encodeURIComponent(id.value) + "&name_owner=" + encodeURIComponent(name.value) + "&name_phone=" + encodeURIComponent(type.value) + "&id_of_phone=" + encodeURIComponent(id_of_phone.value) + "&price=" + encodeURIComponent(price.value) + "&phone_number_owner=" + encodeURIComponent(phone_number_owner.value) + "&status=" + encodeURIComponent(status.value) + "&password=" + encodeURIComponent(password.value) + "&note=" + encodeURIComponent(note.value) + "&start_Date=" + encodeURIComponent(startDate.value); // Tạo dữ liệu gửi đi
             xhr.send(href);
         }
 

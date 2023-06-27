@@ -27,9 +27,18 @@
             System.out.println(androidPhoneServiceORM.add_new_android_phone(androidPhoneORM));
             return "redirect:/tienthanhORM";
         }
+
+
+        // có anotation @ResponeBody là ajax
         @PostMapping("check_if_id_exist")
-        public String check_if_id_exist(@RequestParam("id_need_to_check") String id, HttpServletResponse response){
+        @ResponseBody
+        public String check_if_id_exist(@RequestParam("id_need_to_check") String id){
             return androidPhoneServiceORM.check_if_id_exist(id).toString();
+        }
+        @PostMapping("delete_android_phone_by_id")
+        @ResponseBody
+        public String delete_android_phone_by_id(@RequestParam("") String idToDelete){
+            return androidPhoneServiceORM.delete_Android_Phone(idToDelete).toString();
         }
 
 //        @PostMapping("check_if_id_exist")
@@ -43,4 +52,6 @@
 //                // Xử lý ngoại lệ nếu cần thiết
 //            }
 //        }
+
+
     }
