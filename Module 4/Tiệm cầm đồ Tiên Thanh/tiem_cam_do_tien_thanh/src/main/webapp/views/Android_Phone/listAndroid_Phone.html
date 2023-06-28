@@ -116,9 +116,23 @@
             <td th:text="${android_phoneJDBC.password}"></td>
             <td th:text="${android_phoneJDBC.note}"></td>
             <td>
-
-                <button type="button" id="lll" class="btn btn-danger" th:aaaa="${android_phoneJDBC.id}"
-                        onclick="delete_the_product('${android_phoneJDBC.id}', this)">Xoá
+                <button type="button" id="editButton" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" data-bs-whatever="@mdo"
+                        th:idBefore="${android_phoneJDBC.id}"
+                        th:nameBefore="${android_phoneJDBC.name_owner}"
+                        th:namePhoneBefore="${android_phoneJDBC.name_phone}"
+                        th:idOfPhonePhoneBefore="${android_phoneJDBC.id_of_phone}"
+                        th:priceBefore="${android_phoneJDBC.price}"
+                        th:startDateBefore="${android_phoneJDBC.start_Date}"
+                        th:phoneNumberOwnerBefore="${android_phoneJDBC.phone_number_owner}"
+                        th:statusBefore="${android_phoneJDBC.status}"
+                        th:passwordBefore="${android_phoneJDBC.password}"
+                        th:noteBefore="${android_phoneJDBC.note}"
+                        onclick="edit_form()">
+                    Chỉnh sửa
+                </button>
+                <button type="button" id="deleteButton" class="btn btn-danger" th:idToDelete="${android_phoneJDBC.id}"
+                        onclick="delete_the_product(this)">Xoá
                 </button>
 
             </td>
@@ -260,61 +274,70 @@
         inputId.type = "number";
     });
 
-    function edit_form(idAfter, nameAfter, typeAfter, idPhoneAfter, priceAfter, startDateAfter, phone_number_owner_after, statusAfter, passwordAfter, noteAfter) {
+    function edit_form() {
+        var idBefore = document.getElementById("editButton").getAttribute("idBefore");
+        var nameBefore = document.getElementById("editButton").getAttribute("nameBefore");
+        var namePhoneBefore = document.getElementById("editButton").getAttribute("namePhoneBefore");
+        var idOfPhonePhoneBefore = document.getElementById("editButton").getAttribute("idOfPhonePhoneBefore");
+        var priceBefore = document.getElementById("editButton").getAttribute("priceBefore");
+        var startDateBefore = document.getElementById("editButton").getAttribute("startDateBefore");
+        var phoneNumberOwnerBefore = document.getElementById("editButton").getAttribute("phoneNumberOwnerBefore");
+        var statusBefore = document.getElementById("editButton").getAttribute("statusBefore");
+        var passwordBefore = document.getElementById("editButton").getAttribute("passwordBefore");
+        var noteBefore = document.getElementById("editButton").getAttribute("noteBefore");
+        alert(startDateBefore);
         var inputId = document.getElementById("id_android_phone");
         var labelId = document.querySelector("label[for='id_android_phone']");
         document.getElementById("exampleModalLabel").innerHTML = "Chỉnh sửa thông tin";
         labelId.style.display = "none";
-        inputId.value = idAfter;
+        inputId.value = idBefore;
         inputId.style.display = "none";
         inputId.type = "hidden";
 
-        var action2 = document.getElementById("action2");
-        var nameBefore = document.getElementById("name_android_phone");
-        var typeBefore = document.getElementById("mySelect");
-        var priceBefore = document.getElementById("price_android_phone");
-        var idPhoneBefore = document.getElementById("id_of_phone");
+        var nameAfter = document.getElementById("name_android_phone");
+        var typeAfter = document.getElementById("mySelect");
+        var priceAfter = document.getElementById("price_android_phone");
+        var idPhoneAfter = document.getElementById("id_of_phone");
+        var startDateAfter = document.getElementById("start_date_android_phone");
+        var phone_number_owner_after = document.getElementById("phone_number_owner");
+        var statusAfter = document.getElementById("status_android_phone");
+        var passwordAfter = document.getElementById("password_android_phone");
+        var noteAfter = document.getElementById("note_android_phone");
 
-        var startDateBefore = document.getElementById("start_date_android_phone");
-        var phone_number_owner_before = document.getElementById("phone_number_owner");
-        // alert(phone_number_owner_after + " / " + typeof phone_number_owner_after);
-        var dateString = startDateAfter;
-        var dateParts = dateString.split(" ");
-        var monthNames = {
-            Jan: "01",
-            Feb: "02",
-            Mar: "03",
-            Apr: "04",
-            May: "05",
-            Jun: "06",
-            Jul: "07",
-            Aug: "08",
-            Sep: "09",
-            Oct: "10",
-            Nov: "11",
-            Dec: "12"
-        };
-        var yyyy = dateParts[5];
-        var MM = monthNames[dateParts[1]];
-        var dd = dateParts[2];
-        var formattedDate = yyyy + "-" + MM + "-" + dd;
+        // var dateString = startDateBefore;
+        // var dateParts = dateString.split(" ");
+        // alert(dateParts);
+        // var monthNames = {
+        //     Jan: "01",
+        //     Feb: "02",
+        //     Mar: "03",
+        //     Apr: "04",
+        //     May: "05",
+        //     Jun: "06",
+        //     Jul: "07",
+        //     Aug: "08",
+        //     Sep: "09",
+        //     Oct: "10",
+        //     Nov: "11",
+        //     Dec: "12"
+        // };
+        // var yyyy = dateParts[5];
+        // var MM = monthNames[dateParts[1]];
+        // var dd = dateParts[2];
+        // var formattedDate = yyyy + "-" + MM + "-" + dd;
 
-        var statusBefore = document.getElementById("status_android_phone");
-        var passwordBefore = document.getElementById("password_android_phone");
-        var noteBefore = document.getElementById("note_android_phone");
+        nameAfter.value = nameBefore;
 
-        nameBefore.value = nameAfter;
-
-        for (var i = 0; i < typeBefore.options.length; i++) {
-            if (typeBefore.options[i].value === typeAfter) {
-                typeBefore.options[i].selected = true;
+        for (var i = 0; i < typeAfter.options.length; i++) {
+            if (typeAfter.options[i].value === namePhoneBefore) {
+                typeAfter.options[i].selected = true;
                 break;
             }
         }
 
         var select = document.getElementById("mySelect");
-        var newOptionValue = typeAfter;
-        var newOptionText = typeAfter;
+        var newOptionValue = namePhoneBefore;
+        var newOptionText = namePhoneBefore;
         var newOption = document.createElement("option");
         newOption.value = newOptionValue;
         newOption.textContent = newOptionText;
@@ -329,23 +352,22 @@
 
 
         // nếu có giá trị khác thì vẫn chưa thể hiển th ra được
-        typeBefore.options[typeBefore.options.length - 1].selected = true;
+        typeAfter.options[typeAfter.options.length - 1].selected = true;
 
-        idPhoneBefore.value = idPhoneAfter;
-        priceBefore.value = priceAfter;
-        startDateBefore.value = formattedDate;
+        idPhoneAfter.value = idOfPhonePhoneBefore;
+        priceAfter.value = priceBefore;
+        startDateAfter.value = startDateBefore.split(" ")[1];
 
-        if (phone_number_owner_after === "Không có") {
-            phone_number_owner_before.placeholder = "Không có";
+        if (phoneNumberOwnerBefore === "Không có") {
+            phone_number_owner_after.placeholder = "Không có";
         } else {
-            phone_number_owner_before.value = phone_number_owner_after;
+            phone_number_owner_after.value = phoneNumberOwnerBefore;
         }
 
 
-        statusBefore.value = statusAfter;
-        passwordBefore.value = passwordAfter;
-        noteBefore.value = noteAfter;
-        action2.value = "save_edit_android_phone";
+        statusAfter.value = statusBefore;
+        passwordAfter.value = passwordBefore;
+        noteAfter.value = noteBefore;
     }
 
     $('#exampleModal').on('hidden.bs.modal', function () {
@@ -400,7 +422,7 @@
     }
 
     function delete_the_product(btn) {
-        var id = document.getElementById("lll").getAttribute("idToDelete");
+        var id = document.getElementById("deleteButton").getAttribute("idToDelete");
         let check = confirm("bạn có muốn xoá người này không");
         if (check === true) {
             let xhr = new XMLHttpRequest();
@@ -417,7 +439,11 @@
                     }
                     // đoạn này để in ra thông báo thành công sau khi xoá thành công trong servlet
                     var result = this.responseText;
-                    alert(result);
+                    if (result === "true"){
+                        alert("Xoá thành công");
+                    }else {
+                        alert("Lỗi xảy ra, Xoá không thành công");
+                    }
                 }
             };
             xhr.open("POST", "/tienthanhORM/delete_android_phone_by_id", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
