@@ -37,7 +37,7 @@
         }
         @PostMapping("delete_android_phone_by_id")
         @ResponseBody
-        public String delete_android_phone_by_id(@RequestParam("") String idToDelete){
+        public String delete_android_phone_by_id(@RequestParam("id_need_to_delete") String idToDelete){
             return androidPhoneServiceORM.delete_Android_Phone(idToDelete).toString();
         }
 

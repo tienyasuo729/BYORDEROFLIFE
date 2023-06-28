@@ -116,9 +116,11 @@
             <td th:text="${android_phoneJDBC.password}"></td>
             <td th:text="${android_phoneJDBC.note}"></td>
             <td>
-                <button type="button" class="btn btn-danger"
-                        onclick="delete_the_product('${android_phoneJDBC.id}', this)">Xoá
+
+                <button th:with="yourObject=${android_phoneJDBC.id}" type="button" class="btn btn-danger"
+                        onclick="delete_the_product([[${yourObject}]], this)">Xoá
                 </button>
+
             </td>
         </tr>
         </tbody>

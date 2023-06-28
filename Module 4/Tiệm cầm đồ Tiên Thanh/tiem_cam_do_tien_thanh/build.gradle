@@ -47,6 +47,7 @@ dependencies {
     // gradle này cho kết nối với SQL ( ORM )
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.3.Final'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+
 }
 
 test {
