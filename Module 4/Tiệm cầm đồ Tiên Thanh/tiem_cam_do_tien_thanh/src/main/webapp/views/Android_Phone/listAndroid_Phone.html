@@ -117,8 +117,8 @@
             <td th:text="${android_phoneJDBC.note}"></td>
             <td>
 
-                <button th:with="yourObject=${android_phoneJDBC.id}" type="button" class="btn btn-danger"
-                        onclick="delete_the_product([[${yourObject}]], this)">Xoá
+                <button type="button" id="lll" class="btn btn-danger" th:aaaa="${android_phoneJDBC.id}"
+                        onclick="delete_the_product('${android_phoneJDBC.id}', this)">Xoá
                 </button>
 
             </td>
@@ -399,7 +399,8 @@
         otherBrandOption.value = otherBrandValue || firstOptionValue;
     }
 
-    function delete_the_product(id, btn) {
+    function delete_the_product(btn) {
+        var id = document.getElementById("lll").getAttribute("idToDelete");
         let check = confirm("bạn có muốn xoá người này không");
         if (check === true) {
             let xhr = new XMLHttpRequest();

@@ -117,8 +117,8 @@
             <td th:text="${android_phoneJDBC.note}"></td>
             <td>
 
-                <button th:with="yourObject=${android_phoneJDBC.id}" type="button" class="btn btn-danger"
-                        onclick="delete_the_product([[${yourObject}]], this)">Xoá
+                <button type="button" id="lll" class="btn btn-danger" th:aaaa="${android_phoneJDBC.id}"
+                        onclick="delete_the_product('${android_phoneJDBC.id}', this)">Xoá
                 </button>
 
             </td>
@@ -399,33 +399,35 @@
         otherBrandOption.value = otherBrandValue || firstOptionValue;
     }
 
-    function delete_the_product(id, btn) {
-        let check = confirm("bạn có muốn xoá người này không");
-        if (check === true) {
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                // alert(this.readyState + "///" + this.status);
-                if (this.readyState == 4 && this.status == 200) {
-                    // bảng này để xoá một hàng trong bảng ( chỉ xoá hàng trong jsp mà không động tới servlet)
-                    var row = btn.parentNode.parentNode;
-                    row.parentNode.removeChild(row);
-                    // đoạn này để thay đổi cột STT sau khi xoá một hàng trong bảng
-                    var tableRows = document.getElementsByTagName('tr');
-                    for (var i = 1; i < tableRows.length; i++) {
-                        tableRows[i].getElementsByTagName('td')[0].innerHTML = i;
-                    }
-                    // đoạn này để in ra thông báo thành công sau khi xoá thành công trong servlet
-                    var result = this.responseText;
-                    alert(result);
-                }
-            };
-            xhr.open("POST", "/tienthanhORM/delete_android_phone_by_id", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-            var data = "&id_need_to_delete=" + encodeURIComponent(id); // Tạo dữ liệu gửi đi
-            xhr.send(data); // Gửi dữ liệu đi
-        } else {
-            alert("- Xoá không thành công");
-        }
+    function delete_the_product(id2, btn) {
+        var id = document.getElementById("lll").getAttribute("aaaa");
+        alert(id);
+        // let check = confirm("bạn có muốn xoá người này không");
+        // if (check === true) {
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.onreadystatechange = function () {
+        //         // alert(this.readyState + "///" + this.status);
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             // bảng này để xoá một hàng trong bảng ( chỉ xoá hàng trong jsp mà không động tới servlet)
+        //             var row = btn.parentNode.parentNode;
+        //             row.parentNode.removeChild(row);
+        //             // đoạn này để thay đổi cột STT sau khi xoá một hàng trong bảng
+        //             var tableRows = document.getElementsByTagName('tr');
+        //             for (var i = 1; i < tableRows.length; i++) {
+        //                 tableRows[i].getElementsByTagName('td')[0].innerHTML = i;
+        //             }
+        //             // đoạn này để in ra thông báo thành công sau khi xoá thành công trong servlet
+        //             var result = this.responseText;
+        //             alert(result);
+        //         }
+        //     };
+        //     xhr.open("POST", "/tienthanhORM/delete_android_phone_by_id", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+        //     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
+        //     var data = "&id_need_to_delete=" + encodeURIComponent(id); // Tạo dữ liệu gửi đi
+        //     xhr.send(data); // Gửi dữ liệu đi
+        // } else {
+        //     alert("- Xoá không thành công");
+        // }
 
     }
 
