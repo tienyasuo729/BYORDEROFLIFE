@@ -28,7 +28,6 @@
             return "redirect:/tienthanhORM";
         }
 
-
         // có anotation @ResponeBody là ajax
         @PostMapping("check_if_id_exist")
         @ResponseBody

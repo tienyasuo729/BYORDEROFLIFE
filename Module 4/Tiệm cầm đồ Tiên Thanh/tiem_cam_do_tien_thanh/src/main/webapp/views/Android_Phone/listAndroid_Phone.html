@@ -41,16 +41,11 @@
 <center>
     <h1>Cầm đồ Tiến Thanh</h1>
 
-    <form class="form-add">
         <button type="button" class="btn btn-success" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">Thêm Điện thoại cầm
         </button>
-    </form>
-
-    <form method="post" action="/tienthanh" class="form-return">
-        <input type="hidden" name="action" value="reload">
-        <button class="btn btn-success">Quay lại trang chính</button>
-    </form>
+<!--        cần xem lại-->
+        <button th:href="@{/tienthanhORM/}" class="btn btn-success">Quay lại trang chính</button>
 
     <form method="post" action="/tienthanh" class="form-late">
         <input type="hidden" name="action2" value="watch_late_list_android_phone">
