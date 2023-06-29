@@ -24,6 +24,7 @@ public class Android_PhoneORM {
     private String note;
 
     public Android_PhoneORM() {
+
     }
 
     public Android_PhoneORM(String id, String name_owner, String name_phone, String id_of_phone, int price, Date start_Date, String phone_number_owner, String status, String password, String note) {

@@ -30,7 +30,7 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
         try {
             Transaction transaction = session.getTransaction();
             transaction.begin();
-            session.save(androidPhoneORM);
+            session.saveOrUpdate(androidPhoneORM);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

@@ -44,7 +44,7 @@
         <button type="button" class="btn btn-success" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">Thêm Điện thoại cầm
         </button>
-
+<!--        cần xem lại-->
         <button th:href="@{/tienthanhORM/}" class="btn btn-success">Quay lại trang chính</button>
 
     <form method="post" action="/tienthanh" class="form-late">
@@ -126,7 +126,7 @@
                         onclick="edit_form(this)">
                     Chỉnh sửa
                 </button>
-                <button type="button" id="deleteButton" class="btn btn-danger" th:idToDelete="${android_phoneJDBC.id}"
+                <button type="button" class="btn btn-danger" th:idToDelete="${android_phoneJDBC.id}"
                         onclick="delete_the_product(this)">Xoá
                 </button>
 
@@ -218,8 +218,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="note_android_phone" class="col-form-label">Ghi chú:</label>
-                        <input type="text" class="form-control" id="note_android_phone"
-                               value="Không có" placeholder="Không có" th:field="*{note}">
+                        <input type="text" value="Không có" class="form-control" id="note_android_phone"
+                               th:field="*{note}" placeholder="Không có">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -390,7 +390,7 @@
     }
 
     function delete_the_product(btn) {
-        var id = document.getElementById("deleteButton").getAttribute("idToDelete");
+        var id = btn.getAttribute("idToDelete");
         let check = confirm("bạn có muốn xoá người này không");
         if (check === true) {
             let xhr = new XMLHttpRequest();
