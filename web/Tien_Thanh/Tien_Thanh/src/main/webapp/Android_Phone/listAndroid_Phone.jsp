@@ -371,24 +371,24 @@
             }
         }
 
-        var select = document.getElementById("mySelect");
-        var newOptionValue = typeAfter;
-        var newOptionText = typeAfter;
-        var newOption = document.createElement("option");
-        newOption.value = newOptionValue;
-        newOption.textContent = newOptionText;
-        // newOption.style.display = "none"
-        newOption.setAttribute('data-added-by-js', 'true');
-        select.add(newOption);
-        var optgroup = document.createElement('optgroup');
-        optgroup.label = 'Loại điện thoại đã chọn';
-        optgroup.id = 'myOptgroup';
-        optgroup.appendChild(newOption);
-        select.appendChild(optgroup);
-
-
-        // nếu có giá trị khác thì vẫn chưa thể hiển th ra được
-        typeBefore.options[typeBefore.options.length - 1].selected = true;
+        // var select = document.getElementById("mySelect");
+        // var newOptionValue = typeAfter;
+        // var newOptionText = typeAfter;
+        // var newOption = document.createElement("option");
+        // newOption.value = newOptionValue;
+        // newOption.textContent = newOptionText;
+        // // newOption.style.display = "none"
+        // newOption.setAttribute('data-added-by-js', 'true');
+        // select.add(newOption);
+        // var optgroup = document.createElement('optgroup');
+        // optgroup.label = 'Loại điện thoại đã chọn';
+        // optgroup.id = 'myOptgroup';
+        // optgroup.appendChild(newOption);
+        // select.appendChild(optgroup);
+        //
+        //
+        // // nếu có giá trị khác thì vẫn chưa thể hiển th ra được
+        // typeBefore.options[typeBefore.options.length - 1].selected = true;
 
         idPhoneBefore.value = idPhoneAfter;
         priceBefore.value = priceAfter;

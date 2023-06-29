@@ -128,7 +128,7 @@
                         th:statusBefore="${android_phoneJDBC.status}"
                         th:passwordBefore="${android_phoneJDBC.password}"
                         th:noteBefore="${android_phoneJDBC.note}"
-                        onclick="edit_form()">
+                        onclick="edit_form(this)">
                     Chỉnh sửa
                 </button>
                 <button type="button" id="deleteButton" class="btn btn-danger" th:idToDelete="${android_phoneJDBC.id}"
@@ -171,9 +171,7 @@
                             <optgroup label="Các hãng điện thoại">
                                 <option value="samsung">SAMSUNG</option>
                                 <option value="oppo">OPPO</option>
-                                <%--
                                 <option value="iphone">IPHONE</option>
-                                --%>
                                 <option value="realme">REALME</option>
                                 <option value="vivo">VIVO</option>
                                 <option value="xiaomi">XIAOMI</option>
@@ -212,25 +210,21 @@
                         <label for="phone_number_owner" class="col-form-label">Số điện thoại của người cầm: </label>
                         <input type="number" class="form-control" id="phone_number_owner" placeholder="Không có"
                                th:field="*{phone_number_owner}">
-                        <!--                        <span class="input-error" id="check_phone_number_owner_null">Vui lòng số điện thoại.</span>&#45;&#45;%>-->
                     </div>
                     <div class="mb-3">
                         <label for="status_android_phone" class="col-form-label">Tình trạng:</label>
                         <input type="text" class="form-control" id="status_android_phone"
-                               placeholder="Bình thường" th:field="*{status}">
-                        <!--                        <span class="input-error">Vui lòng mô tả tình trạng của máy</span>&#45;&#45;%>-->
+                               value="Bình thường" placeholder="Bình thường" th:field="*{status}">
                     </div>
                     <div class="mb-3">
                         <label for="password_android_phone" class="col-form-label">Mật khẩu:</label>
-                        <input type="text" class="form-control" id="password_android_phone"
-                               placeholder="Không có" th:field="*{password}">
-                        <%-- <span class="input-error">Vui lòng nhập mật khẩu</span>--%>
+                        <input type="text" class="form-control" id="password_android_phone" value="Không có" placeholder="Không có" th:field="*{password}">
+                        <span class="input-error">Vui lòng nhập mật khẩu</span>
                     </div>
                     <div class="mb-3">
                         <label for="note_android_phone" class="col-form-label">Ghi chú:</label>
                         <input type="text" class="form-control" id="note_android_phone"
-                               placeholder="Không có" th:field="*{note}">
-                        <!--                        <span class="input-error">Vui lòng nhập ghi chú</span>-->
+                               value="Không có" placeholder="Không có" th:field="*{note}">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -274,18 +268,18 @@
         inputId.type = "number";
     });
 
-    function edit_form() {
-        var idBefore = document.getElementById("editButton").getAttribute("idBefore");
-        var nameBefore = document.getElementById("editButton").getAttribute("nameBefore");
-        var namePhoneBefore = document.getElementById("editButton").getAttribute("namePhoneBefore");
-        var idOfPhonePhoneBefore = document.getElementById("editButton").getAttribute("idOfPhonePhoneBefore");
-        var priceBefore = document.getElementById("editButton").getAttribute("priceBefore");
-        var startDateBefore = document.getElementById("editButton").getAttribute("startDateBefore");
-        var phoneNumberOwnerBefore = document.getElementById("editButton").getAttribute("phoneNumberOwnerBefore");
-        var statusBefore = document.getElementById("editButton").getAttribute("statusBefore");
-        var passwordBefore = document.getElementById("editButton").getAttribute("passwordBefore");
-        var noteBefore = document.getElementById("editButton").getAttribute("noteBefore");
-        alert(startDateBefore);
+    function edit_form(button) {
+        var idBefore = button.getAttribute("idBefore");
+        var nameBefore = button.getAttribute("nameBefore");
+        var namePhoneBefore = button.getAttribute("namePhoneBefore");
+        var idOfPhonePhoneBefore = button.getAttribute("idOfPhonePhoneBefore");
+        var priceBefore = button.getAttribute("priceBefore");
+        var startDateBefore = button.getAttribute("startDateBefore");
+        var phoneNumberOwnerBefore = button.getAttribute("phoneNumberOwnerBefore");
+        var statusBefore = button.getAttribute("statusBefore");
+        var passwordBefore = button.getAttribute("passwordBefore");
+        var noteBefore = button.getAttribute("noteBefore");
+        alert(idBefore);
         var inputId = document.getElementById("id_android_phone");
         var labelId = document.querySelector("label[for='id_android_phone']");
         document.getElementById("exampleModalLabel").innerHTML = "Chỉnh sửa thông tin";
@@ -296,35 +290,14 @@
 
         var nameAfter = document.getElementById("name_android_phone");
         var typeAfter = document.getElementById("mySelect");
-        var priceAfter = document.getElementById("price_android_phone");
         var idPhoneAfter = document.getElementById("id_of_phone");
+        var priceAfter = document.getElementById("price_android_phone");
         var startDateAfter = document.getElementById("start_date_android_phone");
         var phone_number_owner_after = document.getElementById("phone_number_owner");
         var statusAfter = document.getElementById("status_android_phone");
         var passwordAfter = document.getElementById("password_android_phone");
         var noteAfter = document.getElementById("note_android_phone");
 
-        // var dateString = startDateBefore;
-        // var dateParts = dateString.split(" ");
-        // alert(dateParts);
-        // var monthNames = {
-        //     Jan: "01",
-        //     Feb: "02",
-        //     Mar: "03",
-        //     Apr: "04",
-        //     May: "05",
-        //     Jun: "06",
-        //     Jul: "07",
-        //     Aug: "08",
-        //     Sep: "09",
-        //     Oct: "10",
-        //     Nov: "11",
-        //     Dec: "12"
-        // };
-        // var yyyy = dateParts[5];
-        // var MM = monthNames[dateParts[1]];
-        // var dd = dateParts[2];
-        // var formattedDate = yyyy + "-" + MM + "-" + dd;
 
         nameAfter.value = nameBefore;
 
@@ -356,7 +329,7 @@
 
         idPhoneAfter.value = idOfPhonePhoneBefore;
         priceAfter.value = priceBefore;
-        startDateAfter.value = startDateBefore.split(" ")[1];
+        startDateAfter.value = startDateBefore.split(" ")[0];
 
         if (phoneNumberOwnerBefore === "Không có") {
             phone_number_owner_after.placeholder = "Không có";
