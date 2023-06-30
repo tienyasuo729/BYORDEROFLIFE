@@ -1,6 +1,8 @@
 package model.entity;
 
-public class AccompaniedService {
+import java.io.Serializable;
+
+public class AccompaniedService implements Serializable {
     private int id;
     private String accompaniedService;
     private int unit;

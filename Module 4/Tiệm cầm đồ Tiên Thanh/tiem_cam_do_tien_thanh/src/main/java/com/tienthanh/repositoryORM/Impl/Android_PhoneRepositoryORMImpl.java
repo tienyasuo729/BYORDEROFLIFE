@@ -70,7 +70,7 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
     public List<Android_PhoneORM> list_Find_Android_Phone_Similar_By_Id(String id) {
         List<Android_PhoneORM> androidPhoneORMList= new ArrayList<>();
         Session session = ConnectionUtilORM.sessionFactory.openSession();
-        TypedQuery<Android_PhoneORM> typedQuery = session.createQuery("from Android_PhoneORM where id_of_phone like : id", Android_PhoneORM.class);
+        TypedQuery<Android_PhoneORM> typedQuery = session.createQuery("from Android_PhoneORM where id_of_phone like :  id", Android_PhoneORM.class);
         typedQuery.setParameter("id", id + "%");
         androidPhoneORMList = typedQuery.getResultList();
         return androidPhoneORMList;

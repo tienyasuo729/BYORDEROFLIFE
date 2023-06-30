@@ -18,6 +18,7 @@ import model.service.CustomerService;
 import model.service.EmployeeService;
 import model.service.RentalTypeService;
 import model.service.ServiceService;
+import validate.Validate;
 
 public class MainController {
     static Scanner sc=new Scanner(System.in);
@@ -30,7 +31,7 @@ public class MainController {
     public static void main(String[] args)throws Exception {
         while (true) {
             displayMainMenu();
-            int key=Integer.parseInt(sc.nextLine());
+            int key= Integer.parseInt(Validate.checkIntInPut("^[1-7]$","- Enter your choice: ","- Enter only numbers from 1 to 7, please re-enter: "));
             switch (key) {
                 case 1: addNewService();
                         break;
@@ -45,8 +46,6 @@ public class MainController {
                 case 6: showInforOfEmployee();
                         break;
                 case 7: System.exit(0);
-                default:
-                    break;
             }
         }
     
@@ -172,7 +171,8 @@ public class MainController {
     }
 
     public static void displayMainMenu(){
-        System.out.println("1. Add New Services\n"+
+        System.out.println("--------------- MAIN MENU ---------------\n" +
+                            "1. Add New Services\n"+
                             "2. Show Services\n"+
                             "3. Add New Customer\n"+
                             "4. Show Information of Customer\n"+
@@ -182,25 +182,33 @@ public class MainController {
     }
 
     public static void addNewService()throws Exception{
-        while (true) {
-            System.out.println( "1. Add New Villa\n"+
-                            "2. Add New House\n"+
-                            "3. Add New Room\n"+
-                            "4. Back to menu\n"+
-                            "5. Exit");
-            int key=Integer.parseInt(sc.nextLine());
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("--------------- ADD NEW SERVICE ---------------\n" +
+                                "1. Add New Villa\n" +
+                                "2. Add New House\n" +
+                                "3. Add New Room\n" +
+                                "4. Back to main menu\n" +
+                                "5. Exit");
+            int key = Integer.parseInt(Validate.checkIntInPut("^[1-5]$", "- Enter your choice: ", "- Enter only numbers from 1 to 5, please re-enter: "));
             switch (key) {
-                case 1: addVilla();
-                        break;
-                case 2: addHouse();
-                        break;
-                case 3: addRoom();
-                        break;
-                case 4: continue;
-                case 5: System.exit(0);
+                case 1:
+                    addVilla();
+                    break;
+                case 2:
+                    addHouse();
+                    break;
+                case 3:
+                    addRoom();
+                    break;
+                case 4:
+                    exit = true; // Đặt exit = true để thoát khỏi vòng lặp
+                    break;
+                case 5:
+                    System.exit(0);
                 default:
                     break;
-        }
+            }
         }
     }
 
@@ -271,14 +279,10 @@ public class MainController {
     }
 
     private static void addVilla()throws Exception {
-        System.out.println("name");
-        String serviceName=sc.nextLine();
-        System.out.println("usable area");
-        String usableArea=sc.nextLine();
-        System.out.println("double expense");
-        double expense=Double.parseDouble(sc.nextLine());
-        System.out.println("int max number of people");
-        int maxNumOfPeople=Integer.parseInt(sc.nextLine());
+        String serviceName= Validate.checkIntInPut("^[a-zA-Z]+$","- Enter villa name: ","- Please do not include numbers, please re-enter: ");
+        String usableArea= Validate.checkIntInPut(".*","- Enter usable Area: ","- Please do not include numbers, please re-enter: ");
+        double expense=Double.parseDouble(Validate.checkIntInPut("^[-+]?\\d*\\.?\\d+$","- Enter double expense: ","- Please do not enter characters, please re-enter: "));
+        int maxNumOfPeople=Integer.parseInt(Validate.checkIntInPut("^\\d+$","- Enter max number of people: ","- Enter numbers only, please re-enter: "));
         ArrayList<RentalType> rentalTypes=rentalTypeService.getAllRentalTypes();
         System.out.println("rental type");
         for (RentalType rentalType : rentalTypes) {
