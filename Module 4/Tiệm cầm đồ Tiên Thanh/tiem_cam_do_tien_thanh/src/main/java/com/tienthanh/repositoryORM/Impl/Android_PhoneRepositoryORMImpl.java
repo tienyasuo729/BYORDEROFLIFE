@@ -1,6 +1,7 @@
 package com.tienthanh.repositoryORM.Impl;
 
 import com.tienthanh.ConnectionsORM.ConnectionUtilORM;
+import com.tienthanh.modelJDBC.Android_PhoneJDBC;
 import com.tienthanh.modelORM.Android_PhoneORM;
 import com.tienthanh.repositoryORM.IAndroid_PhoneRepositoryORM;
 
@@ -63,6 +64,23 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
         return true;
 //        Query query = session.createQuery("DELETE from Android_PhoneORM where id =: idToDelete",Android_PhoneORM.class);
 //        query.setParameter("idToDelete", idToDelete);
+    }
 
+    @Override
+    public List<Android_PhoneORM> late_list_android_phone() {
+        List<Android_PhoneORM> androidPhoneORMList = new ArrayList<>();
+        Session session = ConnectionUtilORM.sessionFactory.openSession();
+        TypedQuery<Android_PhoneORM> typedQuery = session.createQuery("from Android_PhoneORM where DATEDIFF(CURRENT_DATE(), start_Date) >10 ", Android_PhoneORM.class);
+        androidPhoneORMList = typedQuery.getResultList();
+        return androidPhoneORMList;
+    }
+
+    @Override
+    public List<Android_PhoneORM> near_term_list_android_phone() {
+        List<Android_PhoneORM> androidPhoneORMList = new ArrayList<>();
+        Session session = ConnectionUtilORM.sessionFactory.openSession();
+        TypedQuery<Android_PhoneORM> typedQuery = session.createQuery("from Android_PhoneORM where DATEDIFF(CURRENT_DATE(), start_Date) between 8 and 10", Android_PhoneORM.class);
+        androidPhoneORMList = typedQuery.getResultList();
+        return androidPhoneORMList;
     }
 }

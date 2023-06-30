@@ -30,4 +30,14 @@ public class Android_PhoneServiceORMImpl implements IAndroid_PhoneServiceORM {
     public Boolean delete_Android_Phone(String idToDelete) {
         return androidPhoneRepositoryORM.delete_Android_Phone(idToDelete);
     }
+
+    @Override
+    public List<Android_PhoneORM> late_list_android_phone() {
+        return androidPhoneRepositoryORM.late_list_android_phone();
+    }
+
+    @Override
+    public List<Android_PhoneORM> near_term_list_android_phone() {
+        return androidPhoneRepositoryORM.near_term_list_android_phone();
+    }
 }

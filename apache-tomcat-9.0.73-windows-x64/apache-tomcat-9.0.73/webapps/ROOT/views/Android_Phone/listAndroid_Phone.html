@@ -41,21 +41,23 @@
 <center>
     <h1>Cầm đồ Tiến Thanh</h1>
 
-        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">Thêm Điện thoại cầm
-        </button>
-<!--        cần xem lại-->
-        <button th:href="@{/tienthanhORM/}" class="btn btn-success">Quay lại trang chính</button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Thêm Điện thoại cầm
+    </button>
+    <!--        cần xem lại-->
+    <a href="/tienthanhORM"><button type="button" class="btn btn-success">Quay lại trang chính</button></a>
+<!--    <button type="button" class="btn btn-success"><a href="/tienthanhORM">Quay lại trang chính</a></button>-->
+<!--    <a th:href="@{/tienthanhORM}">Quay lại trang chính</a>-->
 
-    <form method="post" action="/tienthanh" class="form-late">
-        <input type="hidden" name="action2" value="watch_late_list_android_phone">
-        <button class="btn btn-success">Xem danh sách trễ hạn</button>
-    </form>
+<!--    <form action="/tienthanhORM/late_list_android_phone" method="post">-->
+<!--        <button class="btn btn-success">Xem danh sách trễ hạn</button>-->
+<!--    </form>-->
+    <a href="/tienthanhORM/late_list_android_phone"><button type="button" class="btn btn-success">Xem danh sách trễ hạn</button></a>
+<!--    <button type="button" class="btn btn-success"><a href="/tienthanhORM/late_list_android_phone">Xem danh sách trễ hạn</a></button>-->
+<!--    <a th:href="@{/tienthanhORM/late_list_android_phone}">Quay lại trang chính</a>-->
 
-    <form method="post" action="/tienthanh" class="form-extend">
-        <input type="hidden" name="action2" value="watch_near_term_list_android_phone">
-        <button class="btn btn-success">Xem danh sách gần tới hạn</button>
-    </form>
+    <a href="/tienthanhORM/near_term_list_android_phone"><button type="button" class="btn btn-success">Xem danh sách gần tới hạn</button></a>
+
 
 
     <div class="search">
@@ -145,7 +147,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form th:object="${android_phone}" th:action="@{/tienthanhORM/add_or_edit_new_android_phone}" method="post">
+                <form th:object="${android_phone}" th:action="@{/tienthanhORM/add_or_edit_new_android_phone}"
+                      method="post">
                     <div class="mb-3">
                         <label for="id_android_phone" class="col-form-label">Mã số:</label>
                         <input type="number" class="form-control" id="id_android_phone" onblur="idError()"
@@ -213,7 +216,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="password_android_phone" class="col-form-label">Mật khẩu:</label>
-                        <input type="text" class="form-control" id="password_android_phone" value="Không có" placeholder="Không có" th:field="*{password}">
+                        <input type="text" class="form-control" id="password_android_phone" value="Không có"
+                               placeholder="Không có" th:field="*{password}">
                         <span class="input-error">Vui lòng nhập mật khẩu</span>
                     </div>
                     <div class="mb-3">
@@ -407,9 +411,9 @@
                     }
                     // đoạn này để in ra thông báo thành công sau khi xoá thành công trong servlet
                     var result = this.responseText;
-                    if (result === "true"){
+                    if (result === "true") {
                         alert("Xoá thành công");
-                    }else {
+                    } else {
                         alert("Lỗi xảy ra, Xoá không thành công");
                     }
                 }

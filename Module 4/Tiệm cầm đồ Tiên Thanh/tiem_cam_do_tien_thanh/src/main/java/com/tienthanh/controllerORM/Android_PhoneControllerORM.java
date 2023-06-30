@@ -53,7 +53,18 @@
             return androidPhoneServiceORM.delete_Android_Phone(idToDelete).toString();
         }
 
-
+        @GetMapping("/late_list_android_phone")
+        public String late_list_android_phone(Model model){
+            model.addAttribute("listAndroid_Phone", androidPhoneServiceORM.late_list_android_phone());
+            model.addAttribute("android_phone", new Android_PhoneORM());
+            return "listAndroid_Phone";
+        }
+        @GetMapping("/near_term_list_android_phone")
+        public String near_term_list_android_phone(Model model){
+            model.addAttribute("listAndroid_Phone", androidPhoneServiceORM.late_list_android_phone());
+            model.addAttribute("android_phone", new Android_PhoneORM());
+            return "listAndroid_Phone";
+        }
 
 
     }
