@@ -32,6 +32,16 @@ public class Android_PhoneServiceORMImpl implements IAndroid_PhoneServiceORM {
     }
 
     @Override
+    public List<Android_PhoneORM> list_Find_Android_Phone_Similar_By_Id(String id) {
+        return androidPhoneRepositoryORM.list_Find_Android_Phone_Similar_By_Id(id);
+    }
+
+    @Override
+    public List<Android_PhoneORM> list_Find_Android_Phone_Similar_By_Name(String name) {
+        return androidPhoneRepositoryORM.list_Find_Android_Phone_Similar_By_Name(name);
+    }
+
+    @Override
     public List<Android_PhoneORM> late_list_android_phone() {
         return androidPhoneRepositoryORM.late_list_android_phone();
     }

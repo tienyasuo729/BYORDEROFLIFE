@@ -61,19 +61,17 @@
 
 
     <div class="search">
-        <form action="/tienthanh" method="post">
+        <form action="/tienthanhORM/list_Find_Android_Phone_Similar_By_Id" method="post">
             <h2>Tìm kiếm theo mã số</h2>
             <input type="number" name="find_by_id" placeholder="Tìm kiếm theo mã số">
-            <input type="hidden" value="list_find_android_phone_similar_by_id" name="action2">
             <button type="submit">Tìm kiếm</button>
         </form>
     </div>
 
     <div class="search">
-        <form action="/tienthanh" method="post">
+        <form action="/tienthanhORM/list_Find_Android_Phone_Similar_By_Name" method="post">
             <h2>Tìm kiếm theo tên</h2>
             <input type="text" name="find_by_name" placeholder="Tìm Điện Thoại theo tên">
-            <input type="hidden" value="list_find_android_phone_similar_by_name" name="action2">
             <button type="submit">Tìm kiếm</button>
         </form>
     </div>
@@ -132,6 +130,18 @@
                         onclick="delete_the_product(this)">Xoá
                 </button>
 
+                <button type="button" class="btn btn-warning"
+                        th:idExtend="${android_phoneJDBC.id}"
+                        th:priceExtend="${android_phoneJDBC.price}"
+                        th:startDateExtend="${android_phoneJDBC.start_Date}"
+                        onclick="calculate(this)">
+                    Gia hạn
+                </button>
+
+<!--                <button type="button" class="btn btn-info"-->
+<!--                        onclick="take_the_product('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}',this)">-->
+<!--                    lấy máy-->
+<!--                </button>-->
             </td>
         </tr>
         </tbody>
@@ -200,7 +210,7 @@
                     <div class="mb-3">
                         <label for="start_date_android_phone" class="col-form-label">Ngày cầm:</label>
                         <input type="date" class="form-control" id="start_date_android_phone"
-                               onblur="startDateError()" th:field="*{start_Date}">
+                               th:field="*{start_Date}">
                         <span class="input-error" id="check_if_start_date_null">Vui lòng nhập ngày cầm</span>
                     </div>
                     <div class="mb-3">
@@ -210,18 +220,16 @@
                     </div>
                     <div class="mb-3">
                         <label for="status_android_phone" class="col-form-label">Tình trạng:</label>
-                        <input type="text" class="form-control" id="status_android_phone"
-                               value="Bình thường" placeholder="Bình thường" th:field="*{status}">
+                        <input type="text" class="form-control" id="status_android_phone" placeholder="Bình thường" th:field="*{status}">
                     </div>
                     <div class="mb-3">
                         <label for="password_android_phone" class="col-form-label">Mật khẩu:</label>
-                        <input type="text" class="form-control" id="password_android_phone" value="Không có"
-                               placeholder="Không có" th:field="*{password}">
+                        <input type="text" class="form-control" id="password_android_phone" placeholder="Không có" th:field="*{password}">
                         <span class="input-error">Vui lòng nhập mật khẩu</span>
                     </div>
                     <div class="mb-3">
                         <label for="note_android_phone" class="col-form-label">Ghi chú:</label>
-                        <input type="text" value="Không có" class="form-control" id="note_android_phone"
+                        <input type="text" class="form-control" id="note_android_phone"
                                th:field="*{note}" placeholder="Không có">
                     </div>
                     <div class="modal-footer">
@@ -453,13 +461,17 @@
         xhr.send(data); // Gửi dữ liệu đi
     }
 
-    function calculate(id, startDate, price) {
+    function calculate(button) {
+        let id = button.getAttribute("idExtend");
+        let startDate = button.getAttribute("startDateExtend");
+        let price = button.getAttribute("priceExtend");
         let days;
         do {
             days = +prompt("Nhập số ngày cầm tính lãi");
         } while (isNaN(days));
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
+            alert(this.status)
             if (this.readyState == 4 && this.status == 200) {
                 var result = this.responseText;
                 alert(result);
@@ -470,9 +482,9 @@
             }
         };
 
-        xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+        xhr.open("POST", "/tienthanhORM/interestPayment", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-        var data = "action2=interestPayment" + "&start_date_interest_payment=" + encodeURIComponent(startDate) + "&price_interest_payment=" + encodeURIComponent(price) + "&days_interest_payment=" + encodeURIComponent(days); // Tạo dữ liệu gửi đi
+        var data ="start_date_interest_payment=" + encodeURIComponent(startDate) + "&price_interest_payment=" + encodeURIComponent(price) + "&days_interest_payment=" + encodeURIComponent(days); // Tạo dữ liệu gửi đi
         xhr.send(data); // Gửi dữ liệu đi
     }
 
@@ -488,7 +500,7 @@
 
         xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-        var data = "action2=extend_interest_payment&id_extend_interest_payment=" + encodeURIComponent(id) + "&start_date_interest_payment=" + encodeURIComponent(startDate) + "&days_interest_payment=" + encodeURIComponent(days); // Tạo dữ liệu gửi đi
+        var data = "id_extend_interest_payment=" + encodeURIComponent(id) + "&start_date_interest_payment=" + encodeURIComponent(startDate) + "&days_interest_payment=" + encodeURIComponent(days); // Tạo dữ liệu gửi đi
         xhr.send(data); // Gửi dữ liệu đi
     }
 
@@ -547,35 +559,6 @@
     }
 
 
-    // function idError() {
-    //     let check = true;
-    //     var id = document.getElementById("id_android_phone");
-    //     let spanCheckIdExist = document.getElementById("check_if_id_exist");
-    //     if (id.value.trim() !== "") {
-    //         id.nextElementSibling.style.display = "none";
-    //     } else {
-    //         id.nextElementSibling.style.display = "block";
-    //     }
-    //     if (check) {
-    //         let xhr = new XMLHttpRequest();
-    //         xhr.onreadystatechange = function () {
-    //             // alert(this.readyState + "///" + this.status);
-    //             if (this.readyState == 4 && this.status == 200) {
-    //                 var result = this.responseText;
-    //                 if (result === "true") {
-    //                     spanCheckIdExist.style.display = "block";
-    //                 } else {
-    //                     spanCheckIdExist.style.display = "none";
-    //                 }
-    //             }
-    //         };
-    //
-    //         xhr.open("POST", "/tienthanhORM/check_if_id_exist", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
-    //         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-    //         var data = "id_need_to_check=" + encodeURIComponent(id.value); // Tạo dữ liệu gửi đi
-    //         xhr.send(data); // Gửi dữ liệu đi
-    //     }
-    // }
 
     function nameError() {
         var name = document.getElementById("name_android_phone");
@@ -634,16 +617,6 @@
         }
         // Gán lại giá trị định dạng cho input
         input.value = formattedValue;
-    }
-
-    function startDateError() {
-        var startDate = document.getElementById("start_date_android_phone");
-        var spanStartDate = document.getElementById("check_if_start_date_null");
-        if (startDate.value.trim() !== "") {
-            spanStartDate.style.display = "none";
-        } else {
-            spanStartDate.style.display = "block";
-        }
     }
 
     function typeError() {
