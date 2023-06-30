@@ -40,13 +40,17 @@ public class Android_PhoneORM {
         this.note = note;
     }
 
+
     public String getPhone_number_owner() {
         return phone_number_owner;
     }
 
     public void setPhone_number_owner(String phone_number_owner) {
-        this.phone_number_owner = phone_number_owner;
-    }
+        if (phone_number_owner.isEmpty()) {
+            this.phone_number_owner = "Không có";
+        } else {
+            this.phone_number_owner = phone_number_owner;
+        }    }
 
     public String getId_of_phone() {
         return id_of_phone;
@@ -93,7 +97,11 @@ public class Android_PhoneORM {
     }
 
     public void setStart_Date(Date start_Date) {
-        this.start_Date = start_Date;
+        if (start_Date == null){
+            this.start_Date = new Date();
+        }else {
+            this.start_Date = start_Date;
+        }
     }
 
     public String getStatus() {
@@ -101,7 +109,11 @@ public class Android_PhoneORM {
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        if (status.isEmpty()) {
+            this.status = "Bình thường";
+        } else {
+            this.status = status;
+        }
     }
 
     public String getPassword() {
@@ -109,7 +121,11 @@ public class Android_PhoneORM {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        if (password.isEmpty()) {
+            this.password = "Không có";
+        } else {
+            this.password = password;
+        }
     }
 
     public String getNote() {
@@ -117,9 +133,12 @@ public class Android_PhoneORM {
     }
 
     public void setNote(String note) {
-        this.note = note;
+        if (note.isEmpty()) {
+            this.note = "Không có";
+        } else {
+            this.note = note;
+        }
     }
-
     @Override
     public String toString() {
         return "Android_Phone{" +

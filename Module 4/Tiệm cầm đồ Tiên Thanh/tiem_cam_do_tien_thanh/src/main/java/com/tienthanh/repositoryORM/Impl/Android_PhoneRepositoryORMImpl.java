@@ -25,7 +25,7 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
     }
 
     @Override
-    public Boolean add_new_android_phone(Android_PhoneORM androidPhoneORM) {
+    public Boolean add_or_edit_new_android_phone(Android_PhoneORM androidPhoneORM) {
         Session session = ConnectionUtilORM.sessionFactory.openSession();
         try {
             Transaction transaction = session.getTransaction();

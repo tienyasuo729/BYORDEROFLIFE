@@ -13,10 +13,10 @@
     public class Android_PhoneControllerORM {
         @Autowired
         private IAndroid_PhoneServiceORM androidPhoneServiceORM;
-        @ModelAttribute("default")
-        public String defaultvalue(){
-            return "Không có";
-        }
+//        @ModelAttribute("default")
+//        public String defaultvalue(){
+//            return "Không có";
+//        }
 
         @GetMapping("")
         public String listAndroid_Phone(Model model){
@@ -24,11 +24,10 @@
             model.addAttribute("android_phone", new Android_PhoneORM());
             return "listAndroid_Phone";
         }
-        @PostMapping("save_create_android_phone")
-        public String save_create_android_phone(@ModelAttribute Android_PhoneORM androidPhoneORM){
-            System.out.println(androidPhoneORM.getNote() == "");
-            System.out.println(androidPhoneServiceORM.add_new_android_phone(androidPhoneORM));
-            return "redirect:/tienthanhORM";
+        @PostMapping("add_or_edit_new_android_phone")
+        public String add_or_edit_new_android_phone(@ModelAttribute Android_PhoneORM androidPhoneORM){
+            androidPhoneServiceORM.add_or_edit_new_android_phone(androidPhoneORM);
+            return "reedirct:/tienthanhORM";
         }
 
         // có anotation @ResponeBody là ajax
@@ -37,12 +36,6 @@
         public String check_if_id_exist(@RequestParam("id_need_to_check") String id){
             return androidPhoneServiceORM.check_if_id_exist(id).toString();
         }
-        @PostMapping("delete_android_phone_by_id")
-        @ResponseBody
-        public String delete_android_phone_by_id(@RequestParam("id_need_to_delete") String idToDelete){
-            return androidPhoneServiceORM.delete_Android_Phone(idToDelete).toString();
-        }
-
 //        @PostMapping("check_if_id_exist")
 //
 //        public void check_if_id_exist(@RequestParam("id_need_to_check") String id, HttpServletResponse response){
@@ -54,6 +47,13 @@
 //                // Xử lý ngoại lệ nếu cần thiết
 //            }
 //        }
+        @PostMapping("delete_android_phone_by_id")
+        @ResponseBody
+        public String delete_android_phone_by_id(@RequestParam("id_need_to_delete") String idToDelete){
+            return androidPhoneServiceORM.delete_Android_Phone(idToDelete).toString();
+        }
+
+
 
 
     }

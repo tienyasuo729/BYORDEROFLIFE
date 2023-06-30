@@ -17,8 +17,8 @@ public class Android_PhoneServiceORMImpl implements IAndroid_PhoneServiceORM {
     }
 
     @Override
-    public Boolean add_new_android_phone(Android_PhoneORM androidPhoneORM) {
-        return androidPhoneRepositoryORM.add_new_android_phone(androidPhoneORM);
+    public Boolean add_or_edit_new_android_phone(Android_PhoneORM androidPhoneORM) {
+        return androidPhoneRepositoryORM.add_or_edit_new_android_phone(androidPhoneORM);
     }
 
     @Override
