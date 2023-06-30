@@ -147,8 +147,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form th:object="${android_phone}" th:action="@{/tienthanhORM/add_or_edit_new_android_phone}"
-                      method="post">
+                <form th:object="${android_phone}" th:action="@{/tienthanhORM/add_or_edit_new_android_phone}" method="post">
                     <div class="mb-3">
                         <label for="id_android_phone" class="col-form-label">Mã số:</label>
                         <input type="number" class="form-control" id="id_android_phone" onblur="idError()"

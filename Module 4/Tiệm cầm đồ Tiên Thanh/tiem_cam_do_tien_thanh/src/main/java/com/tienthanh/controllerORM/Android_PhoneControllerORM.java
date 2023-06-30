@@ -27,7 +27,7 @@
         @PostMapping("add_or_edit_new_android_phone")
         public String add_or_edit_new_android_phone(@ModelAttribute Android_PhoneORM androidPhoneORM){
             androidPhoneServiceORM.add_or_edit_new_android_phone(androidPhoneORM);
-            return "reedirct:/tienthanhORM";
+            return "redirect:/tienthanhORM/";
         }
 
         // có anotation @ResponeBody là ajax
