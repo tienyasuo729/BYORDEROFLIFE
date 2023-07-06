@@ -6,6 +6,7 @@ import com.tienthanh.serviceORM.IAndroid_PhoneServiceORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 @Service
 public class Android_PhoneServiceORMImpl implements IAndroid_PhoneServiceORM {
@@ -29,6 +30,11 @@ public class Android_PhoneServiceORMImpl implements IAndroid_PhoneServiceORM {
     @Override
     public Boolean delete_Android_Phone(String idToDelete) {
         return androidPhoneRepositoryORM.delete_Android_Phone(idToDelete);
+    }
+
+    @Override
+    public Boolean extend_interest_payment(String id, Date newDate) {
+        return androidPhoneRepositoryORM.extend_interest_payment(id, newDate);
     }
 
     @Override

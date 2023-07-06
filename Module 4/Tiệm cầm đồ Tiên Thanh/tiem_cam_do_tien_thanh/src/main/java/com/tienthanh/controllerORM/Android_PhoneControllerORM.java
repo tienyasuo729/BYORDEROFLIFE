@@ -11,6 +11,7 @@
     import java.time.LocalDate;
     import java.time.ZoneId;
     import java.time.temporal.ChronoUnit;
+    import java.util.Calendar;
     import java.util.Date;
     import java.util.Locale;
 
@@ -43,17 +44,7 @@
         public String check_if_id_exist(@RequestParam("id_need_to_check") String id){
             return androidPhoneServiceORM.check_if_id_exist(id).toString();
         }
-//        @PostMapping("check_if_id_exist")
-//
-//        public void check_if_id_exist(@RequestParam("id_need_to_check") String id, HttpServletResponse response){
-//            try {
-//                response.setContentType("text/plain");
-//                response.setCharacterEncoding("UTF-8");
-//                response.getWriter().write(String.valueOf(androidPhoneServiceORM.check_if_id_exist(id)));
-//            } catch (IOException e) {
-//                // Xử lý ngoại lệ nếu cần thiết
-//            }
-//        }
+
         @PostMapping("delete_android_phone_by_id")
         @ResponseBody
         public String delete_android_phone_by_id(@RequestParam("id_need_to_delete") String idToDelete){
@@ -88,7 +79,7 @@
             return "listAndroid_Phone";
         }
 
-        @PostMapping("interestPayment")
+        @PostMapping(value = "interestPayment", produces = "text/plain;charset=UTF-8")
         @ResponseBody
         public String interestPayment(@RequestParam("start_date_interest_payment") String start_date,
                                       @RequestParam("price_interest_payment") int price,
@@ -108,6 +99,31 @@
             System.out.println(start_date);
             return result;
         }
+
+        @PostMapping(value = "extendInterestPayment", produces = "text/plain;charset=UTF-8")
+        @ResponseBody
+        public String extend_interest_payment(@RequestParam("id_extend_interest_payment") String id,
+                                              @RequestParam("start_date_extend_interest_payment") String start_date,
+                                              @RequestParam("days_extend_interest_payment") int days){
+            String result = null;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+            try {
+                Date startDate = dateFormat.parse(start_date);
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(startDate);
+                calendar.add(Calendar.DATE, days);
+                Date newDate = calendar.getTime();
+                if(androidPhoneServiceORM.extend_interest_payment(id, newDate)){// sửa ngày sau khi gia hạn trong mySQL
+                    result = "- Gia hạn thành công";
+                }else {
+                    result = "- Gia hạn Không thành công";
+                }
+            } catch (Exception e) {
+                result = "- Gia hạn Không thành công";
+            }
+            return result;
+        }
+
         private int money_all_days(int days, int price){
             int payment = 0;
             payment = ((price / 1000000) * 3000 + less_than_500(price)) * days;
@@ -122,5 +138,21 @@
             }else {
                 return 3000;
             }
+        }
+
+        @PostMapping(value = "take_the_product", produces = "text/plain;charset=UTF-8")
+        @ResponseBody
+        public String take_the_product(@RequestParam("start_date_take_the_product") String start_date,
+                                       @RequestParam("price_take_the_product") int price){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+            try {
+                Date startDate = dateFormat.parse(start_date);
+                long daysBetween = ChronoUnit.DAYS.between(startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalDate.now());
+                String result = "- Khoảng cách giữa hai ngày là " + daysBetween + " ngày." + "\n- Số tiền lãi " + daysBetween + " ngày là : " + money_all_days((int) daysBetween,price);
+                return result;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        return "Lỗi, không thể tính đuợc";
         }
     }

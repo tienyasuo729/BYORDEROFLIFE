@@ -9,7 +9,7 @@
             crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
             integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--    đoạn link này để phân trang cho một trang wed-->
@@ -138,10 +138,12 @@
                     Gia hạn
                 </button>
 
-<!--                <button type="button" class="btn btn-info"-->
-<!--                        onclick="take_the_product('${android_phone.id}','${android_phone.start_Date}', '${android_phone.price}',this)">-->
-<!--                    lấy máy-->
-<!--                </button>-->
+                <button type="button" class="btn btn-info"
+                        th:idToTake="${android_phoneJDBC.id}"
+                        th:priceTake="${android_phoneJDBC.price}"
+                        th:startDateTake="${android_phoneJDBC.start_Date}"
+                        onclick="take_the_product(this)">Lấy máy
+                </button>
             </td>
         </tr>
         </tbody>
@@ -400,28 +402,28 @@
         otherBrandOption.value = otherBrandValue || firstOptionValue;
     }
 
-    function delete_the_product(btn) {
-        var id = btn.getAttribute("idToDelete");
+    function delete_the_product(button) {
+        var id = button.getAttribute("idToDelete");
         let check = confirm("bạn có muốn xoá người này không");
-        if (check === true) {
+        if (check) {
             let xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
                 // alert(this.readyState + "///" + this.status);
                 if (this.readyState == 4 && this.status == 200) {
                     // bảng này để xoá một hàng trong bảng ( chỉ xoá hàng trong jsp mà không động tới servlet)
-                    var row = btn.parentNode.parentNode;
+                    var row = button.parentNode.parentNode;
                     row.parentNode.removeChild(row);
                     // đoạn này để thay đổi cột STT sau khi xoá một hàng trong bảng
                     var tableRows = document.getElementsByTagName('tr');
                     for (var i = 1; i < tableRows.length; i++) {
                         tableRows[i].getElementsByTagName('td')[0].innerHTML = i;
                     }
-                    // đoạn này để in ra thông báo thành công sau khi xoá thành công trong servlet
+
                     var result = this.responseText;
-                    if (result === "true") {
+                    if (result === "true"){
                         alert("Xoá thành công");
-                    } else {
-                        alert("Lỗi xảy ra, Xoá không thành công");
+                    }else {
+                        alert("Xoá không thành công");
                     }
                 }
             };
@@ -429,13 +431,14 @@
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
             var data = "&id_need_to_delete=" + encodeURIComponent(id); // Tạo dữ liệu gửi đi
             xhr.send(data); // Gửi dữ liệu đi
-        } else {
-            alert("- Xoá không thành công");
         }
 
     }
 
-    function take_the_product(id, startDate, price, btn) {
+    function take_the_product(button) {
+        let id = button.getAttribute("idToTake");
+        let  startDate = button.getAttribute("startDateTake");
+        let price = button.getAttribute("priceTake");
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -443,7 +446,7 @@
                 alert(result);
                 let check = confirm("Khách đã chắc chắn lấy máy không");
                 if (check === true) {
-                    delete_after_take_the_product(id);
+                    delete_after_take_the_product(button,id);
                     var row = btn.parentNode.parentNode;
                     row.parentNode.removeChild(row);
 
@@ -455,9 +458,9 @@
                 }
             }
         };
-        xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+        xhr.open("POST", "/tienthanhORM/take_the_product", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-        var data = "action2=take_the_product_out" + "&start_date_interest_payment=" + encodeURIComponent(startDate) + "&price_interest_payment=" + encodeURIComponent(price); // Tạo dữ liệu gửi đi
+        var data = "start_date_take_the_product=" + encodeURIComponent(startDate) + "&price_take_the_product=" + encodeURIComponent(price); // Tạo dữ liệu gửi đi
         xhr.send(data); // Gửi dữ liệu đi
     }
 
@@ -494,28 +497,41 @@
             if (this.readyState == 4 && this.status == 200) {
                 var result = this.responseText;
                 alert(result);
-
             }
         };
 
-        xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+        xhr.open("POST", "/tienthanhORM/extendInterestPayment", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-        var data = "id_extend_interest_payment=" + encodeURIComponent(id) + "&start_date_interest_payment=" + encodeURIComponent(startDate) + "&days_interest_payment=" + encodeURIComponent(days); // Tạo dữ liệu gửi đi
+        var data = "id_extend_interest_payment=" + encodeURIComponent(id) + "&start_date_extend_interest_payment=" + encodeURIComponent(startDate) + "&days_extend_interest_payment=" + encodeURIComponent(days); // Tạo dữ liệu gửi đi
         xhr.send(data); // Gửi dữ liệu đi
     }
 
-    function delete_after_take_the_product(id) {
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var result = this.responseText;
-                alert("Lấy máy thành công");
-            }
-        };
+    function delete_after_take_the_product(button,id) {
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                // alert(this.readyState + "///" + this.status);
+                if (this.readyState == 4 && this.status == 200) {
+                    // bảng này để xoá một hàng trong bảng ( chỉ xoá hàng trong jsp mà không động tới servlet)
+                    var row = button.parentNode.parentNode;
+                    row.parentNode.removeChild(row);
+                    // đoạn này để thay đổi cột STT sau khi xoá một hàng trong bảng
+                    var tableRows = document.getElementsByTagName('tr');
+                    for (var i = 1; i < tableRows.length; i++) {
+                        tableRows[i].getElementsByTagName('td')[0].innerHTML = i;
+                    }
 
-        xhr.open("POST", "/tienthanh", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
+                    var result = this.responseText;
+                    if (result === "true"){
+                        alert("Lấy máy thành công");
+                    }else {
+                        alert("Lấy máy không thành công");
+                    }
+                }
+            };
+
+        xhr.open("POST", "/tienthanhORM/delete_android_phone_by_id", true); // Thay đổi phương thức gửi dữ liệu từ GET sang POST
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // Thêm header để chỉ định loại dữ liệu gửi đi
-        var data = "action2=delete_android_phone_by_id&id_need_to_delete=" + encodeURIComponent(id) + "&action_stored_procedure=take_the_product"; // Tạo dữ liệu gửi đi
+        var data = "&id_need_to_delete=" + encodeURIComponent(id); // Tạo dữ liệu gửi đi
         xhr.send(data); // Gửi dữ liệu đi
     }
 

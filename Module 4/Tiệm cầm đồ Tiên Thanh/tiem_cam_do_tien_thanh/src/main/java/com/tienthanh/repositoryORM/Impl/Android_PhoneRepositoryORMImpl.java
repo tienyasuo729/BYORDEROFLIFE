@@ -7,11 +7,13 @@ import com.tienthanh.repositoryORM.IAndroid_PhoneRepositoryORM;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.request.SessionScope;
 
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -102,4 +104,48 @@ public class Android_PhoneRepositoryORMImpl implements IAndroid_PhoneRepositoryO
         androidPhoneORMList = typedQuery.getResultList();
         return androidPhoneORMList;
     }
+
+//    @Override
+//    public Boolean extend_interest_payment(String id, Date newDate) {
+//        try {
+//            Session session = ConnectionUtilORM.sessionFactory.openSession();
+//            Query query = session.createNativeQuery("UPDATE Android_PhoneORM SET  start_Date = :newDate WHERE id = :id", Android_PhoneORM.class);
+//            query.setParameter("newDate", newDate);
+//            query.setParameter("id", id);
+//            int rowsAffected = query.executeUpdate();
+//            session.close();
+//            return rowsAffected > 0;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return  true;
+//    }
+
+    @Override
+    public Boolean extend_interest_payment(String id, Date newDate) {
+        Session session = ConnectionUtilORM.sessionFactory.openSession();
+        Transaction transaction = null;
+
+        try {
+            transaction = session.beginTransaction();
+
+            Query query = session.createQuery("UPDATE Android_PhoneORM SET start_Date = :newDate WHERE id = :id");
+            query.setParameter("newDate", newDate);
+            query.setParameter("id", id);
+
+            int rowsAffected = query.executeUpdate();
+
+            transaction.commit();
+
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            throw e;
+        } finally {
+            session.close();
+        }
+    }
+
 }

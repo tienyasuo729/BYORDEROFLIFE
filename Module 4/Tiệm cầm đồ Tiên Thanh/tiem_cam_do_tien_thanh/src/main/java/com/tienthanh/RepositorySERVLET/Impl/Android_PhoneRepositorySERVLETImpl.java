@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneRepositorySERVLET {
-    private BaseRepositorySERVLET baseRepository = new BaseRepositorySERVLET();
+    private BaseRepositorySERVLET baseRepositoryServlet = new BaseRepositorySERVLET();
     private String DISPLAY_ANDROID_PHONE = "select * from android_phone order by android_phone.id desc;";
     private String ADD_NEW_ANDROID_PHONE = "INSERT INTO android_phone(id,name_owner, name_phone, price, start_Date, status, password, note ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     private String DELETE_ANDROID_PHONE_BY_ID = "delete from android_phone where id = ?";
@@ -34,7 +34,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     @Override
     public void interest_payment(String id, Date date) {
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(INTEREST_PAYMENT);
+            PreparedStatement preparedStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareStatement(INTEREST_PAYMENT);
             preparedStatement.setDate(1, new java.sql.Date(date.getTime()));
             preparedStatement.setString(2, id);
             preparedStatement.executeUpdate();
@@ -47,7 +47,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     public List<Android_PhoneSERVLET> displayAndroid_Phone() {
         List<Android_PhoneSERVLET> androidPhoneList = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(DISPLAY_ANDROID_PHONE);
+            PreparedStatement preparedStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareStatement(DISPLAY_ANDROID_PHONE);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 String id = resultSet.getString("id");
@@ -72,7 +72,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     @Override
     public void add_New_Android_Phone(Android_PhoneSERVLET android_phoneServlet) {
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(ADD_NEW_ANDROID_PHONE);
+            PreparedStatement preparedStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareStatement(ADD_NEW_ANDROID_PHONE);
             preparedStatement.setString(1, android_phoneServlet.getId());
             preparedStatement.setString(2, android_phoneServlet.getName_owner());
             preparedStatement.setString(3, android_phoneServlet.getName_phone());
@@ -90,7 +90,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     @Override
     public void edit_Android_Phone(Android_PhoneSERVLET androidPhoneSERVLET) {
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(EDIT_ANDROID_PHONE_BY_ID);
+            PreparedStatement preparedStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareStatement(EDIT_ANDROID_PHONE_BY_ID);
             preparedStatement.setString(1,androidPhoneSERVLET.getName_owner());
             preparedStatement.setString(2,androidPhoneSERVLET.getName_phone());
             preparedStatement.setInt(3,androidPhoneSERVLET.getPrice());
@@ -108,7 +108,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     @Override
     public void delete_Android_Phone(String id) {
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(DELETE_ANDROID_PHONE_BY_ID);
+            PreparedStatement preparedStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareStatement(DELETE_ANDROID_PHONE_BY_ID);
             preparedStatement.setString(1,id);
             preparedStatement.executeUpdate();
 
@@ -125,7 +125,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     @Override
     public void stored_procedure(String action) {
         try {
-            CallableStatement callableStatement = this.baseRepository.getConnectionJavaToDB().prepareCall(CALL_STORED_PROCEDURE_ANDROID_PHONE);
+            CallableStatement callableStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareCall(CALL_STORED_PROCEDURE_ANDROID_PHONE);
             callableStatement.setString(1,action);
             callableStatement.executeUpdate();
         } catch (SQLException e) {
@@ -137,7 +137,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     @Override
     public Boolean check_if_id_exist(String idToCheck) {
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(CHECK_IF_ID_EXIST);
+            PreparedStatement preparedStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareStatement(CHECK_IF_ID_EXIST);
             preparedStatement.setString(1,idToCheck);
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet.next();
@@ -150,7 +150,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     public List<Android_PhoneSERVLET> list_Find_Android_Phone_Similar_By_Id(String id) {
         List<Android_PhoneSERVLET> androidPhoneList = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(LIST_FIND_ANDROID_PHONE_SIMILAR_BY_ID);
+            PreparedStatement preparedStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareStatement(LIST_FIND_ANDROID_PHONE_SIMILAR_BY_ID);
             preparedStatement.setString(1, id + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
@@ -176,7 +176,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     public List<Android_PhoneSERVLET> list_Find_Android_Phone_Similar_By_Name(String name) {
         List<Android_PhoneSERVLET> androidPhoneList = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(LIST_FIND_ANDROID_PHONE_SIMILAR_BY_NAME);
+            PreparedStatement preparedStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareStatement(LIST_FIND_ANDROID_PHONE_SIMILAR_BY_NAME);
             preparedStatement.setString(1, name + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
@@ -202,7 +202,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     public List<Android_PhoneSERVLET> late_list_android_phone() {
         List<Android_PhoneSERVLET> androidPhoneList = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(WATCH_LATE_LIST_ANDROID_PHONE);
+            PreparedStatement preparedStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareStatement(WATCH_LATE_LIST_ANDROID_PHONE);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 String id = resultSet.getString("id");
@@ -227,7 +227,7 @@ public class Android_PhoneRepositorySERVLETImpl implements IAndroid_PhoneReposit
     public List<Android_PhoneSERVLET> near_term_list_android_phone() {
         List<Android_PhoneSERVLET> androidPhoneList = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = this.baseRepository.getConnectionJavaToDB().prepareStatement(WATCH_NEAR_TERM_LIST_ANDROID_PHONE);
+            PreparedStatement preparedStatement = this.baseRepositoryServlet.getConnectionJavaToDB().prepareStatement(WATCH_NEAR_TERM_LIST_ANDROID_PHONE);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String id = resultSet.getString("id");
