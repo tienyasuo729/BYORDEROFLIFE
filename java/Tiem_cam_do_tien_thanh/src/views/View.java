@@ -50,9 +50,9 @@ public class View<T> {
                 "1. Samsung\n" +
                 "2. Iphone\n" +
                 "3. Redmi\n" +
-                "4. Oppo" +
+                "4. Oppo\n" +
                 "5. Khác");
-        int choose = Integer.parseInt(Validate.checkIntInPut("","",""));
+        int choose = Integer.parseInt(Validate.checkIntInPut("^[1-5]$","- Nhập lựa chọn của bạn: ","- Chỉ nhập số từ 1 - 5, xin mời nhập lại: "));
         String result = null;
         switch (choose){
             case 1:
@@ -66,6 +66,65 @@ public class View<T> {
                 break;
             case 4:
                 result = "Oppo";
+                break;
+            case 5:
+                System.out.print("- Nhập lựa chọn khác của bạn: ");
+                result = scanner.nextLine();
+                break;
+        }
+        return result;
+    }
+    public static String manufacturerLaptop(){
+        System.out.println("Lựa chọn hãng máy tính\n" +
+                "1. Asus\n" +
+                "2. Dell\n" +
+                "3. Hp\n" +
+                "4. Macbook\n" +
+                "5. Khác");
+        int choose = Integer.parseInt(Validate.checkIntInPut("^[1-5]$","- Nhập lựa chọn của bạn: ","- Chỉ nhập số từ 1 - 5, xin mời nhập lại: "));
+        String result = null;
+        switch (choose){
+            case 1:
+                result = "Asus";
+                break;
+            case 2:
+                result = "Dell";
+                break;
+            case 3:
+                result = "Hp";
+                break;
+            case 4:
+                result = "Macbook";
+                break;
+            case 5:
+                System.out.print("- Nhập lựa chọn khác của bạn: ");
+                result = scanner.nextLine();
+                break;
+        }
+        return result;
+    }
+
+    public static String manufacturerVehicle(){
+        System.out.println("Lựa chọn Loại xe\n" +
+                "1. Sirius\n" +
+                "2. SH\n" +
+                "3. Exciter\n" +
+                "4. Winner\n" +
+                "5. Khác");
+        int choose = Integer.parseInt(Validate.checkIntInPut("^[1-5]$","- Nhập lựa chọn của bạn: ","- Chỉ nhập số từ 1 - 5, xin mời nhập lại: "));
+        String result = null;
+        switch (choose){
+            case 1:
+                result = "Sirius";
+                break;
+            case 2:
+                result = "SH";
+                break;
+            case 3:
+                result = "Exciter";
+                break;
+            case 4:
+                result = "Winner";
                 break;
             case 5:
                 System.out.print("- Nhập lựa chọn khác của bạn: ");

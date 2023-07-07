@@ -27,48 +27,68 @@ public class LaptopService implements IDeviceService<Laptop> {
 
     @Override
     public void add() {
+        System.out.println("---------- THÊM LAPTOP CẦM ----------");
         int id = checkIdIsExist();
-        String name = Validate.checkIntInPut("","","");
-        String cccd = Validate.checkIntInPut("","","");
-        int price = Integer.parseInt(Validate.checkIntInPut("","",""));
+        String name = Validate.checkIntInPut("^[a-zA-Z]+$","- Nhập tên: ","- Tên chỉ được chứa chữ, xin mời nhập lại: ");
+        String cccd = Validate.checkIntInPut("^(?:\\d{12})?$","- Nhập cccd: ","- CCCD chỉ được chứa 12 chữ số, xin mời nhập lại: ");
+        int price = Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập số tiền cầm: ","- Tiền không được chứa kí tự, xin mời nhập lại: "));
         SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
         Date pawnDate;
         try {
-            pawnDate = dateFormat.parse(Validate.checkIntInPut("","",""));
+            String date = Validate.checkIntInPut("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$|^$","- Mời nhập ngày theo định dạng dd/MM/yyyy: ","- Sai định dạng rồi, xin mời nhập lại: ");
+            if (date.replaceAll("\\s+","") == ""){
+                pawnDate = new Date();
+            }else {
+                pawnDate = dateFormat.parse(date);
+            }
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        String note = Validate.checkIntInPut("","","");
-        String manufacturerLaptop = View.manufacturerPhone();
-        String nameLaptop = Validate.checkIntInPut("","","");
-        String phoneNumber = Validate.checkIntInPut("","","");
-        String password = Validate.checkIntInPut("","","");
-        String status =  Validate.checkIntInPut("","","");
+        String manufacturerLaptop = View.manufacturerLaptop();
+        System.out.print("- Xin mời nhập tên địa thoại: ");
+        String nameLaptop = scanner.nextLine();
+        String phoneNumber = Validate.checkIntInPut("^(?:\\s*|(?:032|033|034|035|036|037|038|039|096|097|098|086|083|084|085|081|082|088|091|094|070|079|077|076|078|090|093|089|056|058|092)\\d{7})$","- Xin mời nhập số điện thoại: ","- Số điện thoại chỉ chứa 10 chữ số, xin mời nhập lại");
+        System.out.print("- Xin mời nhập mật khẩu điện thoại: ");
+        String password = scanner.nextLine();
+        System.out.print("- Nhập tình trạng điện thoại: ");
+        String status =  scanner.nextLine();
+        System.out.print("- Xin mời nhập ghi chú: ");
+        String note = scanner.nextLine();
         IOTest.laptopsRepository.add(new Laptop(id,name,cccd,price,phoneNumber,pawnDate,note,manufacturerLaptop,nameLaptop,password,status));
         IOTest.writeLaptop();
     }
 
     @Override
     public void edit(int idEdit) {
+        System.out.println("---------- CHỈNH SỬA LAPTOP CẦM ----------");
         Laptop laptop = findById(idEdit);
         if (laptop != null){
-            laptop.setName(Validate.checkIntInPut("","",""));
-            laptop.setCccd(Validate.checkIntInPut("","",""));
-            laptop.setPrice(Integer.parseInt(Validate.checkIntInPut("","","")));
+            laptop.setName(Validate.checkIntInPut("^[a-zA-Z]+$","- Nhập tên: ","- Tên chỉ được chứa chữ, xin mời nhập lại: "));
+            laptop.setCccd(Validate.checkIntInPut("^(?:\\d{12})?$","- Nhập cccd: ","- CCCD chỉ được chứa 12 chữ số, xin mời nhập lại: "));
+            laptop.setPrice(Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập số tiền cầm: ","- Tiền không được chứa kí tự, xin mời nhập lại: ")));
             SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
             Date pawnDate;
             try {
-                pawnDate = dateFormat.parse(Validate.checkIntInPut("","",""));
+                String date = Validate.checkIntInPut("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$|^$","- Mời nhập ngày theo định dạng dd/MM/yyyy: ","- Sai định dạng rồi, xin mời nhập lại: ");
+                if (date.replaceAll("\\s+","") == ""){
+                    pawnDate = new Date();
+                }else {
+                    pawnDate = dateFormat.parse(date);
+                }
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
             laptop.setPawnDate(pawnDate);
-            laptop.setNote(Validate.checkIntInPut("","",""));
-            laptop.setManufacturerLaptop(View.manufacturerPhone());
-            laptop.setNameLaptop(Validate.checkIntInPut("","",""));
-            laptop.setPhoneNumber(Validate.checkIntInPut("","",""));
-            laptop.setPassword(Validate.checkIntInPut("","",""));
-            laptop.setStatus(Validate.checkIntInPut("","",""));
+            laptop.setManufacturerLaptop(View.manufacturerLaptop());
+            System.out.print("- Xin mời nhập tên địa thoại: ");
+            laptop.setNameLaptop(scanner.nextLine());
+            laptop.setPhoneNumber( Validate.checkIntInPut("^(?:\\s*|(?:032|033|034|035|036|037|038|039|096|097|098|086|083|084|085|081|082|088|091|094|070|079|077|076|078|090|093|089|056|058|092)\\d{7})$","- Xin mời nhập số điện thoại: ","- Số điện thoại chỉ chứa 10 chữ số, xin mời nhập lại"));
+            System.out.print("- Xin mời nhập mật khẩu điện thoại: ");
+            laptop.setPassword(scanner.nextLine());
+            System.out.print("- Nhập tình trạng điện thoại: ");
+            laptop.setStatus(scanner.nextLine());
+            System.out.print("- Xin mời nhập ghi chú: ");
+            laptop.setNote(scanner.nextLine());
             IOTest.writeLaptop();
         }else {
             System.out.println("- ID này không tồn tại, Không thể chỉnh sửa được");
@@ -130,14 +150,13 @@ public class LaptopService implements IDeviceService<Laptop> {
         Boolean check = true;
         int id = 0;
         while (check){
-            id = Integer.parseInt(Validate.checkIntInPut("","",""));
+            check = false;
+            id = Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập id: ","- ID không được chứa kí tự, xin mời nhập lại: "));
             for (Laptop laptop: IOTest.laptopsRepository) {
                 if (laptop.getId() == id){
                     check = true;
                     System.out.println("- " + id + " đã tồn tại, xin hãy nhập id khác");
                     break;
-                }else {
-                    check = false;
                 }
             }
         }

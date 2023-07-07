@@ -28,48 +28,66 @@ public class VehicleService implements IDeviceService<Vehicle> {
 
     @Override
     public void add() {
+        System.out.println("---------- THÊM XE CẦM ----------");
         int id = checkIdIsExist();
-        String name = Validate.checkIntInPut("","","");
-        String cccd = Validate.checkIntInPut("","","");
-        int price = Integer.parseInt(Validate.checkIntInPut("","",""));
+        String name = Validate.checkIntInPut("^[a-zA-Z]+$","- Nhập tên: ","- Tên chỉ được chứa chữ, xin mời nhập lại: ");
+        String cccd = Validate.checkIntInPut("^\\d{12}$","- Nhập cccd: ","- CCCD chỉ được chứa 12 chữ số, xin mời nhập lại: ");
+        int price = Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập số tiền cầm: ","- Tiền không được chứa kí tự, xin mời nhập lại: "));
         SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
         Date pawnDate;
         try {
-            pawnDate = dateFormat.parse(Validate.checkIntInPut("","",""));
+            String date = Validate.checkIntInPut("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$|^$","- Mời nhập ngày theo định dạng dd/MM/yyyy: ","- Sai định dạng rồi, xin mời nhập lại: ");
+            if (date.replaceAll("\\s+","") == ""){
+                pawnDate = new Date();
+            }else {
+                pawnDate = dateFormat.parse(date);
+            }
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        String note = Validate.checkIntInPut("","","");
-        String manufacturerVehicle = View.manufacturerPhone();
-        String nameVehicle = Validate.checkIntInPut("","","");
-        String phoneNumber = Validate.checkIntInPut("","","");
-        String password = Validate.checkIntInPut("","","");
-        String status =  Validate.checkIntInPut("","","");
-        IOTest.vehiclesRepository.add(new Vehicle(id,name,cccd,price,phoneNumber,pawnDate,note,manufacturerVehicle,nameVehicle,password,status));
+        String manufacturerVehicle = View.manufacturerVehicle();
+        System.out.print("- Xin mời nhập tên xe: ");
+        String nameVehicle = scanner.nextLine();
+        String phoneNumber = Validate.checkIntInPut("^(?:\\s*|(?:032|033|034|035|036|037|038|039|096|097|098|086|083|084|085|081|082|088|091|094|070|079|077|076|078|090|093|089|056|058|092)\\d{7})$","- Xin mời nhập số điện thoại: ","- Số điện thoại chỉ chứa 10 chữ số, xin mời nhập lại");
+        String licensePlate = Validate.checkIntInPut("^.+$","- Xin mời nhập biển số xe: ","- Biển số xe không được để rỗng, xin mời nhập lại: ");
+        System.out.print("- Nhập tình trạng xe: ");
+        String status =  scanner.nextLine();
+        System.out.print("- Xin mời nhập ghi chú: ");
+        String note = scanner.nextLine();
+        IOTest.vehiclesRepository.add(new Vehicle(id,name,cccd,price,phoneNumber,pawnDate,note,manufacturerVehicle,nameVehicle,licensePlate,status));
         IOTest.writeVehicle();
     }
 
     @Override
     public void edit(int idEdit) {
+        System.out.println("---------- THÊM XE CẦM ----------");
         Vehicle vehicle = findById(idEdit);
         if (vehicle != null){
-            vehicle.setName(Validate.checkIntInPut("","",""));
-            vehicle.setCccd(Validate.checkIntInPut("","",""));
-            vehicle.setPrice(Integer.parseInt(Validate.checkIntInPut("","","")));
+            vehicle.setName(Validate.checkIntInPut("^[a-zA-Z]+$","- Nhập tên: ","- Tên chỉ được chứa chữ, xin mời nhập lại: "));
+            vehicle.setCccd(Validate.checkIntInPut("^\\d{12}$","- Nhập cccd: ","- CCCD chỉ được chứa 12 chữ số, xin mời nhập lại: "));
+            vehicle.setPrice(Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập số tiền cầm: ","- Tiền không được chứa kí tự, xin mời nhập lại: ")));
             SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
             Date pawnDate;
             try {
-                pawnDate = dateFormat.parse(Validate.checkIntInPut("","",""));
+                String date = Validate.checkIntInPut("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$|^$","- Mời nhập ngày theo định dạng dd/MM/yyyy: ","- Sai định dạng rồi, xin mời nhập lại: ");
+                if (date.replaceAll("\\s+","") == ""){
+                    pawnDate = new Date();
+                }else {
+                    pawnDate = dateFormat.parse(date);
+                }
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
             vehicle.setPawnDate(pawnDate);
-            vehicle.setNote(Validate.checkIntInPut("","",""));
-            vehicle.setManufacturerVehicle(View.manufacturerPhone());
-            vehicle.setNameVehicle(Validate.checkIntInPut("","",""));
-            vehicle.setPhoneNumber(Validate.checkIntInPut("","",""));
-            vehicle.setLicensePlate(Validate.checkIntInPut("","",""));
-            vehicle.setStatusVehicle(Validate.checkIntInPut("","",""));
+            vehicle.setManufacturerVehicle(View.manufacturerVehicle());
+            System.out.print("- Xin mời nhập tên xe: ");
+            vehicle.setNameVehicle(scanner.nextLine());
+            vehicle.setPhoneNumber(Validate.checkIntInPut("^(?:\\s*|(?:032|033|034|035|036|037|038|039|096|097|098|086|083|084|085|081|082|088|091|094|070|079|077|076|078|090|093|089|056|058|092)\\d{7})$","- Xin mời nhập số điện thoại: ","- Số điện thoại chỉ chứa 10 chữ số, xin mời nhập lại"));
+            vehicle.setLicensePlate(Validate.checkIntInPut("^.+$","- Xin mời nhập biển số xe: ","- Biển số xe không được để rỗng, xin mời nhập lại: "));
+            System.out.print("- Nhập tình trạng xe: ");
+            vehicle.setStatusVehicle(scanner.nextLine());
+            System.out.print("- Xin mời nhập ghi chú: ");
+            vehicle.setNote(scanner.nextLine());
             IOTest.writeVehicle();
         }else {
             System.out.println("- ID này không tồn tại, Không thể chỉnh sửa được");
@@ -131,14 +149,13 @@ public class VehicleService implements IDeviceService<Vehicle> {
         Boolean check = true;
         int id = 0;
         while (check){
-            id = Integer.parseInt(Validate.checkIntInPut("","",""));
+            check = false;
+            id = Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập id: ","- ID không được chứa kí tự, xin mời nhập lại: "));
             for (Vehicle vehicle: IOTest.vehiclesRepository) {
                 if (vehicle.getId() == id){
                     check = true;
                     System.out.println("- " + id + " đã tồn tại, xin hãy nhập id khác");
                     break;
-                }else {
-                    check = false;
                 }
             }
         }

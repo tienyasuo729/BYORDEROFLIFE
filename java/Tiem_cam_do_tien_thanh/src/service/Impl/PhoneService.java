@@ -27,23 +27,33 @@ public class PhoneService implements IDeviceService<Phone> {
 
     @Override
     public void add() {
+        System.out.println("---------- THÊM ĐIỆN THOẠI CẦM ----------");
         int id = checkIdIsExist();
-        String name = Validate.checkIntInPut("","","");
-        String cccd = Validate.checkIntInPut("","","");
-        int price = Integer.parseInt(Validate.checkIntInPut("","",""));
+        String name = Validate.checkIntInPut("^[a-zA-Z]+$","- Nhập tên: ","- Tên chỉ được chứa chữ, xin mời nhập lại: ");
+        String cccd = Validate.checkIntInPut("^(?:\\d{12})?$","- Nhập cccd: ","- CCCD chỉ được chứa 12 chữ số, xin mời nhập lại: ");
+        int price = Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập số tiền cầm: ","- Tiền không được chứa kí tự, xin mời nhập lại: "));
         SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
         Date pawnDate;
         try {
-            pawnDate = dateFormat.parse(Validate.checkIntInPut("","",""));
+            String date = Validate.checkIntInPut("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$|^$","- Mời nhập ngày theo định dạng dd/MM/yyyy: ","- Sai định dạng rồi, xin mời nhập lại: ");
+            if (date.replaceAll("\\s+","") == ""){
+                pawnDate = new Date();
+            }else {
+                pawnDate = dateFormat.parse(date);
+            }
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        String note = Validate.checkIntInPut("","","");
         String manufacturerPhone = View.manufacturerPhone();
-        String namePhone = Validate.checkIntInPut("","","");
-        String phoneNumber = Validate.checkIntInPut("","","");
-        String password = Validate.checkIntInPut("","","");
-        String status =  Validate.checkIntInPut("","","");
+        System.out.print("- Xin mời nhập tên địa thoại: ");
+        String namePhone = scanner.nextLine();
+        String phoneNumber = Validate.checkIntInPut("^(?:\\s*|(?:032|033|034|035|036|037|038|039|096|097|098|086|083|084|085|081|082|088|091|094|070|079|077|076|078|090|093|089|056|058|092)\\d{7})$","- Xin mời nhập số điện thoại: ","- Số điện thoại chỉ chứa 10 chữ số, xin mời nhập lại");
+        System.out.print("- Xin mời nhập mật khẩu điện thoại: ");
+        String password = scanner.nextLine();
+        System.out.print("- Nhập tình trạng điện thoại: ");
+        String status =  scanner.nextLine();
+        System.out.print("- Xin mời nhập ghi chú: ");
+        String note = scanner.nextLine();
         IOTest.phonesRepository.add(new Phone(id,name,cccd,price,phoneNumber,pawnDate,note,manufacturerPhone,namePhone,password,status));
         IOTest.writePhone();
     }
@@ -51,24 +61,34 @@ public class PhoneService implements IDeviceService<Phone> {
     @Override
     public void edit(int idEdit) {
         Phone phone = findById(idEdit);
+        System.out.println("---------- CHỈNH SỬA ĐIỆN THOẠI CẦM ----------");
         if (phone != null){
-            phone.setName(Validate.checkIntInPut("","",""));
-            phone.setCccd(Validate.checkIntInPut("","",""));
-            phone.setPrice(Integer.parseInt(Validate.checkIntInPut("","","")));
+            phone.setName(Validate.checkIntInPut("^[a-zA-Z]+$","- Nhập tên: ","- Tên chỉ được chứa chữ, xin mời nhập lại: "));
+            phone.setCccd(Validate.checkIntInPut("^(?:\\d{12})?$","- Nhập cccd: ","- CCCD chỉ được chứa 12 chữ số, xin mời nhập lại: "));
+            phone.setPrice(Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập số tiền cầm: ","- Tiền không được chứa kí tự, xin mời nhập lại: ")));
             SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
             Date pawnDate;
             try {
-                pawnDate = dateFormat.parse(Validate.checkIntInPut("","",""));
+                String date = Validate.checkIntInPut("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$|^$","- Mời nhập ngày theo định dạng dd/MM/yyyy: ","- Sai định dạng rồi, xin mời nhập lại: ");
+                if (date.replaceAll("\\s+","") == ""){
+                    pawnDate = new Date();
+                }else {
+                    pawnDate = dateFormat.parse(date);
+                }
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
             phone.setPawnDate(pawnDate);
-            phone.setNote(Validate.checkIntInPut("","",""));
             phone.setManufacturerPhone(View.manufacturerPhone());
-            phone.setNamePhone(Validate.checkIntInPut("","",""));
-            phone.setPhoneNumber(Validate.checkIntInPut("","",""));
-            phone.setPassword(Validate.checkIntInPut("","",""));
-            phone.setStatus(Validate.checkIntInPut("","",""));
+            System.out.print("- Xin mời nhập tên địa thoại: ");
+            phone.setNamePhone(scanner.nextLine());
+            phone.setPhoneNumber(Validate.checkIntInPut("^(?:\\s*|(?:032|033|034|035|036|037|038|039|096|097|098|086|083|084|085|081|082|088|091|094|070|079|077|076|078|090|093|089|056|058|092)\\d{7})$","- Xin mời nhập số điện thoại: ","- Số điện thoại chỉ chứa 10 chữ số, xin mời nhập lại"));
+            System.out.print("- Xin mời nhập mật khẩu điện thoại: ");
+            phone.setPassword(scanner.nextLine());
+            System.out.print("- Nhập tình trạng điện thoại: ");
+            phone.setStatus(scanner.nextLine());
+            System.out.print("- Xin mời nhập ghi chú: ");
+            phone.setNote(scanner.nextLine());
             IOTest.writePhone();
         }else {
             System.out.println("- ID này không tồn tại, Không thể chỉnh sửa được");
@@ -130,14 +150,13 @@ public class PhoneService implements IDeviceService<Phone> {
         Boolean check = true;
         int id = 0;
         while (check){
-            id = Integer.parseInt(Validate.checkIntInPut("","",""));
+            check = false;
+            id = Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập id: ","- ID không được chứa kí tự, xin mời nhập lại: "));
             for (Phone phone: IOTest.phonesRepository) {
                 if (phone.getId() == id){
                     check = true;
                     System.out.println("- " + id + " đã tồn tại, xin hãy nhập id khác");
                     break;
-                }else {
-                    check = false;
                 }
             }
         }

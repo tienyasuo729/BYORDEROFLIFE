@@ -38,7 +38,7 @@
         }
         public static void writeVehicle() {
             try {
-                FileOutputStream fileOutputStream = new FileOutputStream("Vehicle");
+                FileOutputStream fileOutputStream = new FileOutputStream("C:\\Codegym\\text\\java\\Tiem_cam_do_tien_thanh\\src\\data\\Vehicle");
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
                 objectOutputStream.writeObject(vehiclesRepository);
                 objectOutputStream.close();
