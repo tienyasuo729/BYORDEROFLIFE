@@ -32,12 +32,12 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
 
     @Override
     public Boolean add_or_edit_new_android_phone(Android_PhoneJPA androidPhoneJPA) {
-        Session session = ConnectionUtilORM.sessionFactory.openSession();
         try {
-            Transaction transaction = session.getTransaction();
-            transaction.begin();
-            session.saveOrUpdate(androidPhoneJPA);
-            transaction.commit();
+            if (findById(androidPhoneJPA.getId()) == null){
+                entityManager.merge(androidPhoneJPA);
+            }else {
+                entityManager.persist(androidPhoneJPA);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -47,66 +47,43 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
 
     @Override
     public Boolean check_if_id_exist(String idToCheck) {
-        Session session = ConnectionUtilORM.sessionFactory.openSession();
-        TypedQuery<Android_PhoneORM> query = session.createQuery("from Android_PhoneORM where id =:idToCheck", Android_PhoneORM.class);
-        query.setParameter("idToCheck", idToCheck);
-        List<Android_PhoneORM> resultList = query.getResultList();
-        return !resultList.isEmpty();
+        Android_PhoneJPA androidPhoneJPA = findById(idToCheck);
+        if (androidPhoneJPA == null){
+            return false;
+        }else {
+            return true;
+        }
     }
 
     @Override
     public Boolean delete_Android_Phone(String idToDelete) {
-        Session session = ConnectionUtilORM.sessionFactory.openSession();
         try {
-            Transaction transaction = session.getTransaction();
-            transaction.begin();
-            session.delete(session.get(Android_PhoneORM.class, idToDelete));
-            transaction.commit();
+            entityManager.remove(findById(idToDelete));
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
         return true;
-//        Query query = session.createQuery("DELETE from Android_PhoneORM where id =: idToDelete",Android_PhoneORM.class);
-//        query.setParameter("idToDelete", idToDelete);
     }
 
     @Override
-    public List<Android_PhoneORM> list_Find_Android_Phone_Similar_By_Id(String id) {
-        List<Android_PhoneORM> androidPhoneORMList = new ArrayList<>();
-        Session session = ConnectionUtilORM.sessionFactory.openSession();
-        TypedQuery<Android_PhoneORM> typedQuery = session.createQuery("from Android_PhoneORM where id_of_phone like :  id", Android_PhoneORM.class);
-        typedQuery.setParameter("id", id + "%");
-        androidPhoneORMList = typedQuery.getResultList();
-        return androidPhoneORMList;
+    public List<Android_PhoneJPA> list_Find_Android_Phone_Similar_By_Id(String id) {
+        return entityManager.createNativeQuery("from Android_PhoneJPA where id_of_phone like :  id", Android_PhoneJPA.class).setParameter("id", id + "%").getResultList();
     }
 
     @Override
-    public List<Android_PhoneORM> list_Find_Android_Phone_Similar_By_Name(String name) {
-        List<Android_PhoneORM> androidPhoneORMList = new ArrayList<>();
-        Session session = ConnectionUtilORM.sessionFactory.openSession();
-        TypedQuery<Android_PhoneORM> typedQuery = session.createQuery("from Android_PhoneORM where name_owner like : name", Android_PhoneORM.class);
-        typedQuery.setParameter("name", name + "%");
-        androidPhoneORMList = typedQuery.getResultList();
-        return androidPhoneORMList;
+    public List<Android_PhoneJPA> list_Find_Android_Phone_Similar_By_Name(String name) {
+        return entityManager.createNativeQuery("from Android_PhoneJPA where name_owner like : name", Android_PhoneJPA.class).setParameter("name", name + "%").getResultList();
     }
 
     @Override
-    public List<Android_PhoneORM> late_list_android_phone() {
-        List<Android_PhoneORM> androidPhoneORMList = new ArrayList<>();
-        Session session = ConnectionUtilORM.sessionFactory.openSession();
-        TypedQuery<Android_PhoneORM> typedQuery = session.createQuery("from Android_PhoneORM where DATEDIFF(CURRENT_DATE(), start_Date) >10 ", Android_PhoneORM.class);
-        androidPhoneORMList = typedQuery.getResultList();
-        return androidPhoneORMList;
+    public List<Android_PhoneJPA> late_list_android_phone() {
+        return entityManager.createNativeQuery("from Android_PhoneJPA where DATEDIFF(CURRENT_DATE(), start_Date) >10 ", Android_PhoneJPA.class).getResultList();
     }
 
     @Override
-    public List<Android_PhoneORM> near_term_list_android_phone() {
-        List<Android_PhoneORM> androidPhoneORMList = new ArrayList<>();
-        Session session = ConnectionUtilORM.sessionFactory.openSession();
-        TypedQuery<Android_PhoneORM> typedQuery = session.createQuery("from Android_PhoneORM where DATEDIFF(CURRENT_DATE(), start_Date) between 8 and 10", Android_PhoneORM.class);
-        androidPhoneORMList = typedQuery.getResultList();
-        return androidPhoneORMList;
+    public List<Android_PhoneJPA> near_term_list_android_phone() {
+        return entityManager.createNativeQuery("from Android_PhoneJPA where DATEDIFF(CURRENT_DATE(), start_Date) between 8 and 10", Android_PhoneJPA.class).getResultList();
     }
 
 //    @Override
@@ -127,29 +104,19 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
 
     @Override
     public Boolean extend_interest_payment(String id, Date newDate) {
-        Session session = ConnectionUtilORM.sessionFactory.openSession();
-        Transaction transaction = null;
-
+        Android_PhoneJPA androidPhoneJPA = findById(id);
+        androidPhoneJPA.setStart_Date(newDate);
         try {
-            transaction = session.beginTransaction();
-
-            Query query = session.createQuery("UPDATE Android_PhoneORM SET start_Date = :newDate WHERE id = :id");
-            query.setParameter("newDate", newDate);
-            query.setParameter("id", id);
-
-            int rowsAffected = query.executeUpdate();
-
-            transaction.commit();
-
-            return rowsAffected > 0;
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            throw e;
-        } finally {
-            session.close();
+            entityManager.merge(androidPhoneJPA);
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
+    @Override
+    public Android_PhoneJPA findById(String id) {
+        return entityManager.find(Android_PhoneJPA.class, id);
+    }
 }

@@ -13,7 +13,6 @@
     import java.time.temporal.ChronoUnit;
     import java.util.Calendar;
     import java.util.Date;
-    import java.util.Locale;
 
 
     @Controller
@@ -30,7 +29,7 @@
         public String listAndroid_Phone(Model model){
             model.addAttribute("listAndroid_Phone", androidPhoneServiceORM.displayAndroid_Phone());
             model.addAttribute("android_phone", new Android_PhoneORM());
-            return "listAndroid_Phone";
+            return "listAndroid_PhoneORM";
         }
         @PostMapping("add_or_edit_new_android_phone")
         public String add_or_edit_new_android_phone(@ModelAttribute Android_PhoneORM androidPhoneORM){
@@ -55,7 +54,7 @@
         public String list_Find_Android_Phone_Similar_By_Id(@RequestParam("find_by_id") String id, Model model){
             model.addAttribute("listAndroid_Phone", androidPhoneServiceORM.list_Find_Android_Phone_Similar_By_Id(id));
             model.addAttribute("android_phone", new Android_PhoneORM());
-            return "listAndroid_Phone";
+            return "listAndroid_PhoneORM";
 
         }
 
@@ -63,20 +62,20 @@
         public String list_Find_Android_Phone_Similar_By_Name(@RequestParam("find_by_name") String name, Model model){
             model.addAttribute("listAndroid_Phone", androidPhoneServiceORM.list_Find_Android_Phone_Similar_By_Name(name));
             model.addAttribute("android_phone", new Android_PhoneORM());
-            return "listAndroid_Phone";
+            return "listAndroid_PhoneORM";
         }
 
         @GetMapping("/late_list_android_phone")
         public String late_list_android_phone(Model model){
             model.addAttribute("listAndroid_Phone", androidPhoneServiceORM.late_list_android_phone());
             model.addAttribute("android_phone", new Android_PhoneORM());
-            return "listAndroid_Phone";
+            return "listAndroid_PhoneORM";
         }
         @GetMapping("/near_term_list_android_phone")
         public String near_term_list_android_phone(Model model){
             model.addAttribute("listAndroid_Phone", androidPhoneServiceORM.late_list_android_phone());
             model.addAttribute("android_phone", new Android_PhoneORM());
-            return "listAndroid_Phone";
+            return "listAndroid_PhoneORM";
         }
 
         @PostMapping(value = "interestPayment", produces = "text/plain;charset=UTF-8")

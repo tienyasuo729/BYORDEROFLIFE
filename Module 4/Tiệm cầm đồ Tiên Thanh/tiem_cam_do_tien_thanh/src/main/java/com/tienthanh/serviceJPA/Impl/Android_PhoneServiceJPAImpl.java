@@ -58,4 +58,9 @@ public class Android_PhoneServiceJPAImpl implements IAndroid_PhoneServiceJPA {
     public List<Android_PhoneJPA> near_term_list_android_phone() {
         return androidPhoneRepositoryJPA.near_term_list_android_phone();
     }
+
+    @Override
+    public Android_PhoneJPA findById(String id) {
+        return androidPhoneRepositoryJPA.findById(id);
+    }
 }

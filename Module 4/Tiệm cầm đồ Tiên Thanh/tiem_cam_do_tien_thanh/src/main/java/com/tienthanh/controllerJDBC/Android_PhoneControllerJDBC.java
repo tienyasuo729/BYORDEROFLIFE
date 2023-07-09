@@ -22,7 +22,7 @@ public class Android_PhoneControllerJDBC {
 //        modelAndView.addObject("listAndroid_Phone", android_phoneService.displayAndroid_Phone());
 //        modelAndView.addObject("Android_phone", new Android_Phone());
 //        return modelAndView;
-        return "listAndroid_Phone";
+        return "listAndroid_PhoneORM";
     }
 
     @PostMapping("save_create_android_phone")

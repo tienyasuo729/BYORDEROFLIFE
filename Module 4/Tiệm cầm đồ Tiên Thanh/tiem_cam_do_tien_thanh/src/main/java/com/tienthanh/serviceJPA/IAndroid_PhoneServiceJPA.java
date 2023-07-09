@@ -16,5 +16,6 @@ public interface IAndroid_PhoneServiceJPA {
     List<Android_PhoneJPA> list_Find_Android_Phone_Similar_By_Name(String name);
     List<Android_PhoneJPA> late_list_android_phone();
     List<Android_PhoneJPA> near_term_list_android_phone();
+    Android_PhoneJPA findById(String id);
 
 }

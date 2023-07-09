@@ -2,9 +2,14 @@ package com.tienthanh.modelJPA;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-
+@Entity
+@Table(name = "android_phone")
 public class Android_PhoneJPA {
+    @Id
     private String id;
     private String name_owner;
     private String name_phone;
