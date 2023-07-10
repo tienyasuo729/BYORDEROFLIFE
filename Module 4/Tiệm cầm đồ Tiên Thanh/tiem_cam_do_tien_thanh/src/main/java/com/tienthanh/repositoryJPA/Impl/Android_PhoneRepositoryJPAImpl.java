@@ -1,6 +1,7 @@
 package com.tienthanh.repositoryJPA.Impl;
 
 import com.tienthanh.ConnectionsORM.ConnectionUtilORM;
+import com.tienthanh.modelJPA.Android_PhoneJPA;
 import com.tienthanh.modelORM.Android_PhoneORM;
 import com.tienthanh.repositoryJPA.IAndroid_PhoneRepositoryJPA;
 import com.tienthanh.repositoryORM.IAndroid_PhoneRepositoryORM;
@@ -8,6 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
@@ -16,22 +19,24 @@ import java.util.List;
 
 @Repository
 public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJPA {
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
-    public List<Android_PhoneORM> displayAndroid_Phone() {
-        List<Android_PhoneORM> androidPhoneORMList = new ArrayList<>();
-        Session session = ConnectionUtilORM.sessionFactory.openSession();
-        TypedQuery<Android_PhoneORM> query = session.createQuery("from Android_PhoneORM order by id", Android_PhoneORM.class);
+    public List<Android_PhoneJPA> displayAndroid_Phone() {
+        List<Android_PhoneJPA> androidPhoneORMList = new ArrayList<>();
+        TypedQuery<Android_PhoneJPA> query = (TypedQuery<Android_PhoneJPA>) entityManager.createNativeQuery("select  * from Android_PhoneJPA", Android_PhoneJPA.class);
         androidPhoneORMList = query.getResultList();
         return androidPhoneORMList;
     }
 
     @Override
-    public Boolean add_or_edit_new_android_phone(Android_PhoneORM androidPhoneORM) {
+    public Boolean add_or_edit_new_android_phone(Android_PhoneJPA androidPhoneJPA) {
         Session session = ConnectionUtilORM.sessionFactory.openSession();
         try {
             Transaction transaction = session.getTransaction();
             transaction.begin();
-            session.saveOrUpdate(androidPhoneORM);
+            session.saveOrUpdate(androidPhoneJPA);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,7 +73,7 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
 
     @Override
     public List<Android_PhoneORM> list_Find_Android_Phone_Similar_By_Id(String id) {
-        List<Android_PhoneORM> androidPhoneORMList= new ArrayList<>();
+        List<Android_PhoneORM> androidPhoneORMList = new ArrayList<>();
         Session session = ConnectionUtilORM.sessionFactory.openSession();
         TypedQuery<Android_PhoneORM> typedQuery = session.createQuery("from Android_PhoneORM where id_of_phone like :  id", Android_PhoneORM.class);
         typedQuery.setParameter("id", id + "%");
@@ -78,12 +83,13 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
 
     @Override
     public List<Android_PhoneORM> list_Find_Android_Phone_Similar_By_Name(String name) {
-        List<Android_PhoneORM> androidPhoneORMList= new ArrayList<>();
+        List<Android_PhoneORM> androidPhoneORMList = new ArrayList<>();
         Session session = ConnectionUtilORM.sessionFactory.openSession();
         TypedQuery<Android_PhoneORM> typedQuery = session.createQuery("from Android_PhoneORM where name_owner like : name", Android_PhoneORM.class);
         typedQuery.setParameter("name", name + "%");
         androidPhoneORMList = typedQuery.getResultList();
-        return androidPhoneORMList;    }
+        return androidPhoneORMList;
+    }
 
     @Override
     public List<Android_PhoneORM> late_list_android_phone() {

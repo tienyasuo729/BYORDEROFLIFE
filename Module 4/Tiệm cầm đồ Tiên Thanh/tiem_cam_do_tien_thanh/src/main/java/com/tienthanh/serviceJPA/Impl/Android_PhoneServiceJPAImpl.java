@@ -1,9 +1,9 @@
 package com.tienthanh.serviceJPA.Impl;
 
+import com.tienthanh.modelJPA.Android_PhoneJPA;
 import com.tienthanh.modelORM.Android_PhoneORM;
-import com.tienthanh.repositoryORM.IAndroid_PhoneRepositoryORM;
+import com.tienthanh.repositoryJPA.IAndroid_PhoneRepositoryJPA;
 import com.tienthanh.serviceJPA.IAndroid_PhoneServiceJPA;
-import com.tienthanh.serviceORM.IAndroid_PhoneServiceORM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,49 +13,49 @@ import java.util.List;
 @Service
 public class Android_PhoneServiceJPAImpl implements IAndroid_PhoneServiceJPA {
     @Autowired
-    private IAndroid_PhoneRepositoryORM androidPhoneRepositoryORM;
+    private IAndroid_PhoneRepositoryJPA androidPhoneRepositoryJPA;
     @Override
-    public List<Android_PhoneORM> displayAndroid_Phone() {
-        return androidPhoneRepositoryORM.displayAndroid_Phone();
+    public List<Android_PhoneJPA> displayAndroid_Phone() {
+        return androidPhoneRepositoryJPA.displayAndroid_Phone();
     }
 
     @Override
-    public Boolean add_or_edit_new_android_phone(Android_PhoneORM androidPhoneORM) {
-        return androidPhoneRepositoryORM.add_or_edit_new_android_phone(androidPhoneORM);
+    public Boolean add_or_edit_new_android_phone(Android_PhoneJPA androidPhoneJPA) {
+        return androidPhoneRepositoryJPA.add_or_edit_new_android_phone(androidPhoneJPA);
     }
 
     @Override
     public Boolean check_if_id_exist(String idToCheck) {
-        return androidPhoneRepositoryORM.check_if_id_exist(idToCheck);
+        return androidPhoneRepositoryJPA.check_if_id_exist(idToCheck);
     }
 
     @Override
     public Boolean delete_Android_Phone(String idToDelete) {
-        return androidPhoneRepositoryORM.delete_Android_Phone(idToDelete);
+        return androidPhoneRepositoryJPA.delete_Android_Phone(idToDelete);
     }
 
     @Override
     public Boolean extend_interest_payment(String id, Date newDate) {
-        return androidPhoneRepositoryORM.extend_interest_payment(id, newDate);
+        return androidPhoneRepositoryJPA.extend_interest_payment(id, newDate);
     }
 
     @Override
-    public List<Android_PhoneORM> list_Find_Android_Phone_Similar_By_Id(String id) {
-        return androidPhoneRepositoryORM.list_Find_Android_Phone_Similar_By_Id(id);
+    public List<Android_PhoneJPA> list_Find_Android_Phone_Similar_By_Id(String id) {
+        return androidPhoneRepositoryJPA.list_Find_Android_Phone_Similar_By_Id(id);
     }
 
     @Override
-    public List<Android_PhoneORM> list_Find_Android_Phone_Similar_By_Name(String name) {
-        return androidPhoneRepositoryORM.list_Find_Android_Phone_Similar_By_Name(name);
+    public List<Android_PhoneJPA> list_Find_Android_Phone_Similar_By_Name(String name) {
+        return androidPhoneRepositoryJPA.list_Find_Android_Phone_Similar_By_Name(name);
     }
 
     @Override
-    public List<Android_PhoneORM> late_list_android_phone() {
-        return androidPhoneRepositoryORM.late_list_android_phone();
+    public List<Android_PhoneJPA> late_list_android_phone() {
+        return androidPhoneRepositoryJPA.late_list_android_phone();
     }
 
     @Override
-    public List<Android_PhoneORM> near_term_list_android_phone() {
-        return androidPhoneRepositoryORM.near_term_list_android_phone();
+    public List<Android_PhoneJPA> near_term_list_android_phone() {
+        return androidPhoneRepositoryJPA.near_term_list_android_phone();
     }
 }
