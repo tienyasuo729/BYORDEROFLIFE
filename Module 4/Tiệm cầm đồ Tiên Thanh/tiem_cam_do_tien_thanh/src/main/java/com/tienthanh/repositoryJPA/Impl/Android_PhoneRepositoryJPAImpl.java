@@ -1,18 +1,13 @@
 package com.tienthanh.repositoryJPA.Impl;
 
-import com.tienthanh.ConnectionsORM.ConnectionUtilORM;
 import com.tienthanh.modelJPA.Android_PhoneJPA;
-import com.tienthanh.modelORM.Android_PhoneORM;
 import com.tienthanh.repositoryJPA.IAndroid_PhoneRepositoryJPA;
-import com.tienthanh.repositoryORM.IAndroid_PhoneRepositoryORM;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +20,8 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
     @Override
     public List<Android_PhoneJPA> displayAndroid_Phone() {
         List<Android_PhoneJPA> androidPhoneORMList = new ArrayList<>();
-        TypedQuery<Android_PhoneJPA> query = (TypedQuery<Android_PhoneJPA>) entityManager.createNativeQuery("select  * from Android_PhoneJPA", Android_PhoneJPA.class);
+//        TypedQuery<Android_PhoneJPA> query = entityManager.createQuery("SELECT a FROM Android_PhoneJPA a", Android_PhoneJPA.class);   //chat GPT sửa lỗi (làm theo spring lấy tên cài lại trong đối tượng để bỏ vào câu truy vấn)
+        TypedQuery<Android_PhoneJPA> query = (TypedQuery<Android_PhoneJPA>) entityManager.createNativeQuery("select * from android_phone", Android_PhoneJPA.class); // này là theo anh chánh (này phải làm theo câu lệnh query thuần tuý, không có hổ trợ , hay tự hiểu gì của spring cả)
         androidPhoneORMList = query.getResultList();
         return androidPhoneORMList;
     }
@@ -33,9 +29,9 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
     @Override
     public Boolean add_or_edit_new_android_phone(Android_PhoneJPA androidPhoneJPA) {
         try {
-            if (findById(androidPhoneJPA.getId()) == null){
+            if (findById(androidPhoneJPA.getId()) == null) {
                 entityManager.merge(androidPhoneJPA);
-            }else {
+            } else {
                 entityManager.persist(androidPhoneJPA);
             }
         } catch (Exception e) {
@@ -48,17 +44,20 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
     @Override
     public Boolean check_if_id_exist(String idToCheck) {
         Android_PhoneJPA androidPhoneJPA = findById(idToCheck);
-        if (androidPhoneJPA == null){
+        if (androidPhoneJPA == null) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }
 
+    @Transactional
     @Override
     public Boolean delete_Android_Phone(String idToDelete) {
         try {
-            entityManager.remove(findById(idToDelete));
+            Android_PhoneJPA androidPhoneJPA = findById(idToDelete);
+            System.out.println(androidPhoneJPA);
+            entityManager.remove(androidPhoneJPA);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -68,39 +67,23 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
 
     @Override
     public List<Android_PhoneJPA> list_Find_Android_Phone_Similar_By_Id(String id) {
-        return entityManager.createNativeQuery("from Android_PhoneJPA where id_of_phone like :  id", Android_PhoneJPA.class).setParameter("id", id + "%").getResultList();
+        return entityManager.createNativeQuery("from android_phone where id_of_phone like :  id", Android_PhoneJPA.class).setParameter("id", id + "%").getResultList();
     }
 
     @Override
     public List<Android_PhoneJPA> list_Find_Android_Phone_Similar_By_Name(String name) {
-        return entityManager.createNativeQuery("from Android_PhoneJPA where name_owner like : name", Android_PhoneJPA.class).setParameter("name", name + "%").getResultList();
+        return entityManager.createNativeQuery("from android_phone where name_owner like : name", Android_PhoneJPA.class).setParameter("name", name + "%").getResultList();
     }
 
     @Override
     public List<Android_PhoneJPA> late_list_android_phone() {
-        return entityManager.createNativeQuery("from Android_PhoneJPA where DATEDIFF(CURRENT_DATE(), start_Date) >10 ", Android_PhoneJPA.class).getResultList();
+        return entityManager.createNativeQuery("from android_phone where DATEDIFF(CURRENT_DATE(), start_Date) >10 ", Android_PhoneJPA.class).getResultList();
     }
 
     @Override
     public List<Android_PhoneJPA> near_term_list_android_phone() {
-        return entityManager.createNativeQuery("from Android_PhoneJPA where DATEDIFF(CURRENT_DATE(), start_Date) between 8 and 10", Android_PhoneJPA.class).getResultList();
+        return entityManager.createNativeQuery("from android_phone where DATEDIFF(CURRENT_DATE(), start_Date) between 8 and 10", Android_PhoneJPA.class).getResultList();
     }
-
-//    @Override
-//    public Boolean extend_interest_payment(String id, Date newDate) {
-//        try {
-//            Session session = ConnectionUtilORM.sessionFactory.openSession();
-//            Query query = session.createNativeQuery("UPDATE Android_PhoneORM SET  start_Date = :newDate WHERE id = :id", Android_PhoneORM.class);
-//            query.setParameter("newDate", newDate);
-//            query.setParameter("id", id);
-//            int rowsAffected = query.executeUpdate();
-//            session.close();
-//            return rowsAffected > 0;
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return  true;
-//    }
 
     @Override
     public Boolean extend_interest_payment(String id, Date newDate) {
@@ -108,7 +91,7 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
         androidPhoneJPA.setStart_Date(newDate);
         try {
             entityManager.merge(androidPhoneJPA);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
