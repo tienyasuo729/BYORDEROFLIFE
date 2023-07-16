@@ -11,4 +11,6 @@ public interface IDeviceService<T> {
     void takeTheProduct(int idToTake);
     int checkIdIsExist();
     T findById(int idToFind);
+    List<T> findListFollowId(String id);
+    List<T> findListFollowName(String name);
 }

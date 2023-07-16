@@ -89,6 +89,9 @@ public class Customer implements Serializable {
     public void setNote(String note) {
         this.note = note;
     }
+    public String stringID(){
+        return String.valueOf(id);
+    }
 
     @Override
     public String toString() {

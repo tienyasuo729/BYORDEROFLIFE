@@ -14,14 +14,16 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class LaptopService implements IDeviceService<Laptop> {
     private static View<Laptop> view = new View<>();
+    private static PredicateService<Laptop> predicateService = new PredicateService<>();
     private static Scanner scanner = new Scanner(System.in);
     @Override
     public void displayList() {
-        view.printList(IOTest.laptopsRepository, "máy tính");
+        view.printList(IOTest.laptopsRepository, "Danh sách Laptop cầm");
 
     }
 
@@ -185,5 +187,15 @@ public class LaptopService implements IDeviceService<Laptop> {
         }else {
             return 3000;
         }
+    }
+
+    @Override
+    public List<Laptop> findListFollowId(String id) {
+        return predicateService.searchCondition((Laptop laptop) -> laptop.stringID().contains(id), IOTest.laptopsRepository);
+    }
+
+    @Override
+    public List<Laptop> findListFollowName(String name) {
+        return predicateService.searchCondition((Laptop laptop) -> laptop.stringID().contains(name), IOTest.laptopsRepository);
     }
 }

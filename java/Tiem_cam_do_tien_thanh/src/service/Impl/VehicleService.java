@@ -15,14 +15,16 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class VehicleService implements IDeviceService<Vehicle> {
     private static View<Vehicle> view = new View<>();
+    private static PredicateService<Vehicle> predicateService = new PredicateService<>();
     private static Scanner scanner = new Scanner(System.in);
     @Override
     public void displayList() {
-        view.printList(IOTest.vehiclesRepository, "xe");
+        view.printList(IOTest.vehiclesRepository, "Danh sách xe cầm");
 
     }
 
@@ -184,5 +186,16 @@ public class VehicleService implements IDeviceService<Vehicle> {
         }else {
             return 3000;
         }
+    }
+
+    @Override
+    public List<Vehicle> findListFollowId(String id) {
+        return predicateService.searchCondition((Vehicle vehicle) -> vehicle.stringID().contains(id), IOTest.vehiclesRepository);
+
+    }
+
+    @Override
+    public List<Vehicle> findListFollowName(String name) {
+        return predicateService.searchCondition((Vehicle vehicle) -> vehicle.stringID().contains(name), IOTest.vehiclesRepository);
     }
 }

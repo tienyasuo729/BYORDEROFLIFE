@@ -13,16 +13,18 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class PhoneService implements IDeviceService<Phone> {
     private static View<Phone> view = new View<>();
+    private static PredicateService<Phone> predicateService = new PredicateService<>();
     private static Scanner scanner = new Scanner(System.in);
 
     @Override
     public void displayList() {
-        view.printList(IOTest.phonesRepository, "điện thoại");
+        view.printList(IOTest.phonesRepository, "Dánh sách điện thoại cầm");
     }
 
     @Override
@@ -186,5 +188,15 @@ public class PhoneService implements IDeviceService<Phone> {
         }else {
             return 3000;
         }
+    }
+
+    @Override
+    public List<Phone> findListFollowId(String id) {
+        return predicateService.searchCondition((Phone phone) -> phone.stringID().contains(id), IOTest.phonesRepository);
+    }
+
+    @Override
+    public List<Phone> findListFollowName(String name) {
+        return predicateService.searchCondition((Phone phone) -> phone.getName().contains(name), IOTest.phonesRepository);
     }
 }

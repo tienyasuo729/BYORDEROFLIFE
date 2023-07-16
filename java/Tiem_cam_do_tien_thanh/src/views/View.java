@@ -15,8 +15,10 @@ public class View<T> {
                 "4. Xoá "+ type + " cầm\n" +
                 "5. Gia hạn "+ type + " cầm\n" +
                 "6. Lấy "+ type + " cầm\n" +
-                "7. Quay lại menu chính\n" +
-                "8. Thoát."
+                "7. Tìm "+ type + " cầm theo ID\n" +
+                "8. Tìm "+ type + " cầm theo tên\n" +
+                "9. Quay lại menu chính\n" +
+                "10. Thoát."
         );
     }
     public static void printMainMenu(){
@@ -30,17 +32,21 @@ public class View<T> {
 
     public static Boolean confirm(String title){
         System.out.println(title + "\n1. Có\n2. Không");
-        String choose = Validate.checkIntInPut("","","");
-        if (choose == "1"){
+        String choose = Validate.checkIntInPut("^[12]$","- Nhập lựa chọn của bạn: ","- Chỉ được lựa chọn 1 hoặc 2 và không được chứa ký tự: ");
+        if (choose.equals("1")){
             return true;
         }else {
             return false;
         }
     }
     public void printList(List<T> lists, String type){
-        System.out.println("---------- Danh sách " + type + " cầm ----------");
-        for (T list: lists) {
-            System.out.println(list.toString());
+        System.out.println("---------- " + type + " ----------");
+        if (lists.isEmpty()){
+            System.out.println(type + " rỗng");
+        }else {
+            for (T list: lists) {
+                System.out.println(list.toString());
+            }
         }
         System.out.println("----------------------------------------");
     }
