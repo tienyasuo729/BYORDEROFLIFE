@@ -64,64 +64,72 @@ public class VehicleService implements IDeviceService<Vehicle> {
     public void edit(int idEdit) {
         Boolean loop = true;
         Vehicle vehicle = findById(idEdit);
-        System.out.println("---------- CHỈNH SỬA XE CẦM ----------");
-        view.viewOptionVehicle();
-        int choose = Integer.parseInt(Validate.checkIntInPut("^(?:[1-9]|1[0-1])$","- Nhập lựa chọn muốn chỉnh sửa: ","- Lựa chọn chỉ nhập số từ 1 - 11, xin mời nhập lại: "));
-        while (loop){
-            switch (choose){
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    break;
-                case 10:
-                    break;
-                case 11:
-                    loop = false;
-                    break;
-            }
-        }
-
         if (vehicle != null){
-            vehicle.setName(Validate.checkIntInPut("^[a-zA-Z]+$","- Nhập tên: ","- Tên chỉ được chứa chữ, xin mời nhập lại: "));
-            vehicle.setCccd(Validate.checkIntInPut("^\\d{12}$","- Nhập cccd: ","- CCCD chỉ được chứa 12 chữ số, xin mời nhập lại: "));
-            vehicle.setPrice(Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập số tiền cầm: ","- Tiền không được chứa kí tự, xin mời nhập lại: ")));
-            SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
-            Date pawnDate;
-            try {
-                String date = Validate.checkIntInPut("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$|^$","- Mời nhập ngày theo định dạng dd/MM/yyyy: ","- Sai định dạng rồi, xin mời nhập lại: ");
-                if (date.replaceAll("\\s+","") == ""){
-                    pawnDate = new Date();
-                }else {
-                    pawnDate = dateFormat.parse(date);
+            System.out.println("---------- CHỈNH SỬA XE CẦM ----------");
+            while (loop){
+                view.viewOptionVehicle();
+                int choose = Integer.parseInt(Validate.checkIntInPut("^(?:[1-9]|1[0-1])$","- Nhập lựa chọn muốn chỉnh sửa: ","- Lựa chọn chỉ nhập số từ 1 - 11, xin mời nhập lại: "));
+                switch (choose){
+                    case 1:
+                        vehicle.setName(Validate.checkIntInPut("^[a-zA-Z]+$","- Nhập tên: ","- Tên chỉ được chứa chữ, xin mời nhập lại: "));
+                        IOTest.writeVehicle();
+                        break;
+                    case 2:
+                        vehicle.setCccd(Validate.checkIntInPut("^\\d{12}$","- Nhập cccd: ","- CCCD chỉ được chứa 12 chữ số, xin mời nhập lại: "));
+                        IOTest.writeVehicle();
+                        break;
+                    case 3:
+                        vehicle.setPrice(Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập số tiền cầm: ","- Tiền không được chứa kí tự, xin mời nhập lại: ")));
+                        IOTest.writeVehicle();
+                        break;
+                    case 4:
+                        vehicle.setPhoneNumber(Validate.checkIntInPut("^(?:\\s*|(?:032|033|034|035|036|037|038|039|096|097|098|086|083|084|085|081|082|088|091|094|070|079|077|076|078|090|093|089|056|058|092)\\d{7})$","- Xin mời nhập số điện thoại: ","- Số điện thoại chỉ chứa 10 chữ số, xin mời nhập lại"));
+                        IOTest.writeVehicle();
+                        break;
+                    case 5:
+                        SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
+                        Date pawnDate;
+                        try {
+                            String date = Validate.checkIntInPut("^(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\\d{4}$|^$","- Mời nhập ngày theo định dạng dd/MM/yyyy: ","- Sai định dạng rồi, xin mời nhập lại: ");
+                            if (date.replaceAll("\\s+","") == ""){
+                                pawnDate = new Date();
+                            }else {
+                                pawnDate = dateFormat.parse(date);
+                            }
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+                        vehicle.setPawnDate(pawnDate);
+                        IOTest.writeVehicle();
+                        break;
+                    case 6:
+                        System.out.print("- Xin mời nhập ghi chú: ");
+                        vehicle.setNote(scanner.nextLine());
+                        IOTest.writeVehicle();
+                        break;
+                    case 7:
+                        vehicle.setManufacturerVehicle(View.manufacturerVehicle());
+                        IOTest.writeVehicle();
+                        break;
+                    case 8:
+                        System.out.print("- Xin mời nhập tên xe: ");
+                        vehicle.setNameVehicle(scanner.nextLine());
+                        IOTest.writeVehicle();
+                        break;
+                    case 9:
+                        vehicle.setLicensePlate(Validate.checkIntInPut("^.+$","- Xin mời nhập biển số xe: ","- Biển số xe không được để rỗng, xin mời nhập lại: "));
+                        IOTest.writeVehicle();
+                        break;
+                    case 10:
+                        System.out.print("- Nhập tình trạng xe: ");
+                        vehicle.setStatusVehicle(scanner.nextLine());
+                        IOTest.writeVehicle();
+                        break;
+                    case 11:
+                        loop = false;
+                        break;
                 }
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
             }
-            vehicle.setPawnDate(pawnDate);
-            vehicle.setManufacturerVehicle(View.manufacturerVehicle());
-            System.out.print("- Xin mời nhập tên xe: ");
-            vehicle.setNameVehicle(scanner.nextLine());
-            vehicle.setPhoneNumber(Validate.checkIntInPut("^(?:\\s*|(?:032|033|034|035|036|037|038|039|096|097|098|086|083|084|085|081|082|088|091|094|070|079|077|076|078|090|093|089|056|058|092)\\d{7})$","- Xin mời nhập số điện thoại: ","- Số điện thoại chỉ chứa 10 chữ số, xin mời nhập lại"));
-            vehicle.setLicensePlate(Validate.checkIntInPut("^.+$","- Xin mời nhập biển số xe: ","- Biển số xe không được để rỗng, xin mời nhập lại: "));
-            System.out.print("- Nhập tình trạng xe: ");
-            vehicle.setStatusVehicle(scanner.nextLine());
-            System.out.print("- Xin mời nhập ghi chú: ");
-            vehicle.setNote(scanner.nextLine());
-            IOTest.writeVehicle();
         }else {
             System.out.println("- ID này không tồn tại, Không thể chỉnh sửa được");
         }
@@ -146,7 +154,7 @@ public class VehicleService implements IDeviceService<Vehicle> {
         Vehicle vehicle = findById(idExtend);
         int days = 0;
         if (vehicle != null){
-            days = Integer.parseInt(Validate.checkIntInPut("","",""));
+            days = Integer.parseInt(Validate.checkIntInPut("^[0-9]+$", "- Nhập số ngày muốn gia hạn: ", "- Số ngày không được chứa ký tự, xin mời nhập lại: "));
             System.out.println("- Số tiền lãi " + days + " ngày là : " + money_all_days(days, vehicle.getPrice()));
             if (View.confirm("Bạn có muốn gia hạn không")){
                 Calendar calendar = Calendar.getInstance();
