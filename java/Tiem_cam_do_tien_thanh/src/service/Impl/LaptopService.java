@@ -47,12 +47,12 @@ public class LaptopService implements IDeviceService<Laptop> {
             throw new RuntimeException(e);
         }
         String manufacturerLaptop = View.manufacturerLaptop();
-        System.out.print("- Xin mời nhập tên địa thoại: ");
+        System.out.print("- Xin mời nhập tên lAPTOP: ");
         String nameLaptop = scanner.nextLine();
         String phoneNumber = Validate.checkIntInPut("^(?:\\s*|(?:032|033|034|035|036|037|038|039|096|097|098|086|083|084|085|081|082|088|091|094|070|079|077|076|078|090|093|089|056|058|092)\\d{7})$","- Xin mời nhập số điện thoại: ","- Số điện thoại chỉ chứa 10 chữ số, xin mời nhập lại");
-        System.out.print("- Xin mời nhập mật khẩu điện thoại: ");
+        System.out.print("- Xin mời nhập mật khẩu LAPTOP: ");
         String password = scanner.nextLine();
-        System.out.print("- Nhập tình trạng điện thoại: ");
+        System.out.print("- Nhập tình trạng LAPTOP: ");
         String status =  scanner.nextLine();
         System.out.print("- Xin mời nhập ghi chú: ");
         String note = scanner.nextLine();
@@ -62,8 +62,40 @@ public class LaptopService implements IDeviceService<Laptop> {
 
     @Override
     public void edit(int idEdit) {
-        System.out.println("---------- CHỈNH SỬA LAPTOP CẦM ----------");
+        Boolean loop = true;
         Laptop laptop = findById(idEdit);
+        System.out.println("---------- CHỈNH SỬA LAPTOP CẦM ----------");
+        view.viewOptionLaptop();
+        int choose = Integer.parseInt(Validate.checkIntInPut("^(?:[1-9]|1[0-1])$","- Nhập lựa chọn muốn chỉnh sửa: ","- Lựa chọn chỉ nhập số từ 1 - 11, xin mời nhập lại: "));
+        while (loop){
+            switch (choose){
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    loop = false;
+                    break;
+            }
+        }
+
+
         if (laptop != null){
             laptop.setName(Validate.checkIntInPut("^[a-zA-Z]+$","- Nhập tên: ","- Tên chỉ được chứa chữ, xin mời nhập lại: "));
             laptop.setCccd(Validate.checkIntInPut("^(?:\\d{12})?$","- Nhập cccd: ","- CCCD chỉ được chứa 12 chữ số, xin mời nhập lại: "));
@@ -116,7 +148,7 @@ public class LaptopService implements IDeviceService<Laptop> {
         Laptop laptop = findById(idExtend);
         int days = 0;
         if (laptop != null){
-            days = Integer.parseInt(Validate.checkIntInPut("","",""));
+            days = Integer.parseInt(Validate.checkIntInPut("^[0-9]+$","- Nhập số ngày muốn gia hạn: ","- Số ngày không được chứa ký tự, xin mời nhập lại: "));
             System.out.println("- Số tiền lãi " + days + " ngày là : " + money_all_days(days, laptop.getPrice()));
             if (View.confirm("Bạn có muốn gia hạn không")){
                 Calendar calendar = Calendar.getInstance();

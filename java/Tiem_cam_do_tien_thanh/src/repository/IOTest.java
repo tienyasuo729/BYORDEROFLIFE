@@ -10,9 +10,9 @@
         public static List<Phone> phonesRepository = new ArrayList<>();
         public static List<Laptop> laptopsRepository = new ArrayList<>();
         public static List<Vehicle> vehiclesRepository = new ArrayList<>();
-        private static String filePhone = "D:\\codegym\\text\\java\\Tiem_cam_do_tien_thanh\\src\\data\\Phone";
-        private static String fileLaptop = "D:\\codegym\\text\\java\\Tiem_cam_do_tien_thanh\\src\\data\\Laptop";
-        private static String fileVehicle = "D:\\codegym\\text\\java\\Tiem_cam_do_tien_thanh\\src\\data\\Vehicle";
+        private static String filePhone = "C:\\codegym\\text\\java\\Tiem_cam_do_tien_thanh\\src\\data\\Phone";
+        private static String fileLaptop = "C:\\codegym\\text\\java\\Tiem_cam_do_tien_thanh\\src\\data\\Laptop";
+        private static String fileVehicle = "C:\\codegym\\text\\java\\Tiem_cam_do_tien_thanh\\src\\data\\Vehicle";
         public static void writePhone() {
             try {
                 FileOutputStream fileOutputStream = new FileOutputStream(filePhone);

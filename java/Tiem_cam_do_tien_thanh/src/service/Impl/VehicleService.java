@@ -62,8 +62,39 @@ public class VehicleService implements IDeviceService<Vehicle> {
 
     @Override
     public void edit(int idEdit) {
-        System.out.println("---------- THÊM XE CẦM ----------");
+        Boolean loop = true;
         Vehicle vehicle = findById(idEdit);
+        System.out.println("---------- CHỈNH SỬA XE CẦM ----------");
+        view.viewOptionVehicle();
+        int choose = Integer.parseInt(Validate.checkIntInPut("^(?:[1-9]|1[0-1])$","- Nhập lựa chọn muốn chỉnh sửa: ","- Lựa chọn chỉ nhập số từ 1 - 11, xin mời nhập lại: "));
+        while (loop){
+            switch (choose){
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    loop = false;
+                    break;
+            }
+        }
+
         if (vehicle != null){
             vehicle.setName(Validate.checkIntInPut("^[a-zA-Z]+$","- Nhập tên: ","- Tên chỉ được chứa chữ, xin mời nhập lại: "));
             vehicle.setCccd(Validate.checkIntInPut("^\\d{12}$","- Nhập cccd: ","- CCCD chỉ được chứa 12 chữ số, xin mời nhập lại: "));

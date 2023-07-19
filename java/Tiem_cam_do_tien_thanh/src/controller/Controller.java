@@ -34,7 +34,7 @@ public class Controller {
                     while (loop) {
                         View<Phone> view = new View<>();
                         View.printTypeMenu("điện thoại");
-                        choose = Integer.parseInt(Validate.checkIntInPut("^[1-8]$", "- Nhập lựa chọn của bạn: ", "- Chỉ nhập số từ 1 - 8, xin mời nhập lại: "));
+                        choose = Integer.parseInt(Validate.checkIntInPut("^(?:[1-9]|10)$", "- Nhập lựa chọn của bạn: ", "- Chỉ nhập số từ 1 - 8, xin mời nhập lại: "));
                         switch (choose) {
                             case 1:
                                 phoneService.displayList();
@@ -84,7 +84,7 @@ public class Controller {
                     while (loop) {
                         View<Laptop> view = new View<>();
                         View.printTypeMenu("laptop");
-                        choose = Integer.parseInt(Validate.checkIntInPut("^[1-8]$", "- Nhập lựa chọn của bạn: ", "- Chỉ nhập số từ 1 - 8, xin mời nhập lại: "));
+                        choose = Integer.parseInt(Validate.checkIntInPut("^(?:[1-9]|10)$", "- Nhập lựa chọn của bạn: ", "- Chỉ nhập số từ 1 - 8, xin mời nhập lại: "));
                         switch (choose) {
                             case 1:
                                 laptopService.displayList();
@@ -134,7 +134,7 @@ public class Controller {
                     while (loop) {
                         View<Vehicle> view = new View<>();
                         View.printTypeMenu("xe");
-                        choose = Integer.parseInt(Validate.checkIntInPut("^[1-8]$", "- Nhập lựa chọn của bạn: ", "- Chỉ nhập số từ 1 - 8, xin mời nhập lại: "));
+                        choose = Integer.parseInt(Validate.checkIntInPut("^(?:[1-9]|10)$", "- Nhập lựa chọn của bạn: ", "- Chỉ nhập số từ 1 - 8, xin mời nhập lại: "));
                         switch (choose) {
                             case 1:
                                 vehicleService.displayList();
