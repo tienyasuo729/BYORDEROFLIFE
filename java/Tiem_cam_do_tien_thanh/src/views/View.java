@@ -50,7 +50,7 @@ public class View<T> {
                         "8. Chỉnh sửa tên điện thoại cầm\n" +
                         "9. Chỉnh sửa mật khẩu điện thoại cầm\n" +
                         "10. Chỉnh sửa tình trạng điện thoại\n" +
-                        "11. Thoát"
+                        "11. Thoát ra menu điện thoại"
         );
     }
 
@@ -61,7 +61,7 @@ public class View<T> {
                         "8. Chỉnh sửa tên Laptop cầm\n" +
                         "9. Chỉnh sửa mật khẩu laptop cầm\n" +
                         "10. Chỉnh sửa tình trạng Laptop\n" +
-                        "11. Thoát"
+                        "11. Thoát ra menu laptop"
         );
     }
 
@@ -72,7 +72,7 @@ public class View<T> {
                         "8. Chỉnh sửa tên xe cầm\n" +
                         "9. Chỉnh sửa biển số xe cầm\n" +
                         "10. Chỉnh sửa tình trạng xe cầm\n" +
-                        "11. Thoát"
+                        "11. Thoát ra menu xe"
         );
     }
 

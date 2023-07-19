@@ -17,12 +17,8 @@ public class Controller {
 
     public static void main(String[] args) {
         IOTest.readPhone();
-//        IOTest.readLaptop();
-//        IOTest.readVehicle();
-
-//        IOTest.writePhone();
-//        IOTest.writeLaptop();
-//        IOTest.writeVehicle();
+        IOTest.readLaptop();
+        IOTest.readVehicle();
         int choose = 0;
         Boolean loop;
         while (true) {

@@ -177,7 +177,7 @@ public class LaptopService implements IDeviceService<Laptop> {
         Laptop laptop = findById(idToTake);
         if (laptop != null) {
             long daysBetween = ChronoUnit.DAYS.between(laptop.getPawnDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalDate.now());
-            System.out.println("- Khoảng cách giữa hai ngày là " + daysBetween + " ngày." + "\n- Số tiền lãi " + daysBetween + " ngày là : " + money_all_days((int) daysBetween, laptop.getPrice()));
+            System.out.println("- Khoảng cách giữa hai ngày là " + daysBetween + " ngày." + "\n- Số tiền lãi " + Math.abs(daysBetween) + " ngày là : " + Math.abs(money_all_days((int) daysBetween, laptop.getPrice())));
             if (View.confirm("Bạn có muốn lấy điện thoại cầm này không")) {
                 delete(idToTake);
                 IOTest.writePhone();
