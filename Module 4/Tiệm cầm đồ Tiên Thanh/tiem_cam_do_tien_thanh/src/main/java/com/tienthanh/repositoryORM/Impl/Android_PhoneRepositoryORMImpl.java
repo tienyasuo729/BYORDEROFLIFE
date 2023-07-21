@@ -1,14 +1,12 @@
 package com.tienthanh.repositoryORM.Impl;
 
-import com.tienthanh.ConnectionsORM.ConnectionUtilORM;
-import com.tienthanh.modelJDBC.Android_PhoneJDBC;
+import com.tienthanh.connectionsORM.ConnectionUtilORM;
 import com.tienthanh.modelORM.Android_PhoneORM;
 import com.tienthanh.repositoryORM.IAndroid_PhoneRepositoryORM;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.context.request.SessionScope;
 
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;

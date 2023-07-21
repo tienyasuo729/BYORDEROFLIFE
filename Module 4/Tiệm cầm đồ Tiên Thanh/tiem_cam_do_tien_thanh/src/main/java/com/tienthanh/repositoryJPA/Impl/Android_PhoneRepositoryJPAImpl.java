@@ -26,10 +26,11 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
         return androidPhoneORMList;
     }
 
+    @Transactional
     @Override
     public Boolean add_or_edit_new_android_phone(Android_PhoneJPA androidPhoneJPA) {
         try {
-            if (findById(androidPhoneJPA.getId()) == null) {
+            if (findById(androidPhoneJPA.getId()) != null) {
                 entityManager.merge(androidPhoneJPA);
             } else {
                 entityManager.persist(androidPhoneJPA);
@@ -67,12 +68,12 @@ public class Android_PhoneRepositoryJPAImpl implements IAndroid_PhoneRepositoryJ
 
     @Override
     public List<Android_PhoneJPA> list_Find_Android_Phone_Similar_By_Id(String id) {
-        return entityManager.createNativeQuery("from android_phone where id_of_phone like :  id", Android_PhoneJPA.class).setParameter("id", id + "%").getResultList();
+        return entityManager.createNativeQuery("from android_phone where id like :idFind", Android_PhoneJPA.class).setParameter("idFind", id + "%").getResultList();
     }
 
     @Override
     public List<Android_PhoneJPA> list_Find_Android_Phone_Similar_By_Name(String name) {
-        return entityManager.createNativeQuery("from android_phone where name_owner like : name", Android_PhoneJPA.class).setParameter("name", name + "%").getResultList();
+        return entityManager.createNativeQuery("from android_phone where name_owner like :name", Android_PhoneJPA.class).setParameter("name", name + "%").getResultList();
     }
 
     @Override

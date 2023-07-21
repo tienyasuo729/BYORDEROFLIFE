@@ -2,7 +2,7 @@ package com.tienthanh.repositoryJDBC.Impl;
 
 
 
-import com.tienthanh.ConnectionsJDBC.BaseRepositoryJDBC;
+import com.tienthanh.connectionsJDBC.BaseRepositoryJDBC;
 import com.tienthanh.modelJDBC.Android_PhoneJDBC;
 import com.tienthanh.repositoryJDBC.IAndroid_PhoneRepositoryJDBC;
 import org.springframework.stereotype.Repository;

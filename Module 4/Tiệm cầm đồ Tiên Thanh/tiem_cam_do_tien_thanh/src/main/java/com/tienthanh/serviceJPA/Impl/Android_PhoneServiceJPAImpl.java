@@ -1,12 +1,12 @@
 package com.tienthanh.serviceJPA.Impl;
 
 import com.tienthanh.modelJPA.Android_PhoneJPA;
-import com.tienthanh.modelORM.Android_PhoneORM;
 import com.tienthanh.repositoryJPA.IAndroid_PhoneRepositoryJPA;
 import com.tienthanh.serviceJPA.IAndroid_PhoneServiceJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +19,7 @@ public class Android_PhoneServiceJPAImpl implements IAndroid_PhoneServiceJPA {
         return androidPhoneRepositoryJPA.displayAndroid_Phone();
     }
 
+    @Transactional
     @Override
     public Boolean add_or_edit_new_android_phone(Android_PhoneJPA androidPhoneJPA) {
         return androidPhoneRepositoryJPA.add_or_edit_new_android_phone(androidPhoneJPA);

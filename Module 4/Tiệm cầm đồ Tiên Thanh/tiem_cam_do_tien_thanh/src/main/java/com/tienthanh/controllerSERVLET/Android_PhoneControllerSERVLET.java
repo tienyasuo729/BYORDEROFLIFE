@@ -2,8 +2,8 @@ package com.tienthanh.controllerSERVLET;
 
 
 
-import com.tienthanh.ServiceSERVLET.IAndroid_PhoneServiceSERVLET;
-import com.tienthanh.ServiceSERVLET.Impl.Android_PhoneServiceSERVLETImpl;
+import com.tienthanh.serviceSERVLET.IAndroid_PhoneServiceSERVLET;
+import com.tienthanh.serviceSERVLET.Impl.Android_PhoneServiceSERVLETImpl;
 import com.tienthanh.modelSERVLET.Android_PhoneSERVLET;
 
 import javax.servlet.ServletException;
