@@ -8,7 +8,6 @@ public class Main {
         System.out.print("Enter a string: ");
         String inputString = scanner.nextLine();
         scanner.close();
-
         WordAndCharacterCounter counter = new WordAndCharacterCounter(inputString);
         counter.countWordsAndCharacters();
         counter.displayResults();
