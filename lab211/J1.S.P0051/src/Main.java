@@ -46,11 +46,7 @@ public class Main {
                                 break;
                             case '=':
                                 break;
-                            default:
-                                System.out.println("Invalid operator.");
-                                break;
                         }
-
                         System.out.println("Result: " + calculator.getMemory());
                         if (operator == '='){
                             break;
