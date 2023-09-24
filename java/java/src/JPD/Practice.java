@@ -1,17 +1,23 @@
 package JPD;
 
+import java.sql.Array;
+
 public class Practice {
     public static void main(String[] args) {
 //        String list1 = "a,i,u,e,o,ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,to,na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo,ya,yu,yo,ra,ri,ru,re,ro,wa,o";
-        String list1 = "a,i,u,e,o,ka,ki,ku,ke,ko,sa,shi,su,se,so";
-        String translate = "あ,い,う,え,お,か,き,く,け,こ,さ,し,す,せ,そ";
+        String translate;
+        String list1;
+//        list1 = "a,i,u,e,o,ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,to";
+        list1 = "na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo,ya,yu,yo,ra,ri,ru,re,ro,wa,n";
+//        translate = "あ,い,う,え,お,か,き,く,け,こ,さ,し,す,せ,そ,た,ち,つ,て,と";
+        translate = "な,に,ぬ,ね,の,は,ひ,ふ,へ,ほ,ま,み,む,め,も,や,ゆ,よ,ら,り,る,れ,ろ,わ,ん";
         int randomindex;
-        int [] tran = {1,2,3};
+        int [] tran = new int[4];
         String [] a = list1.split(",");
         String [] b = translate.split(",");
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 1; i <= 30; i++) {
             System.out.print("\n" + i + ". ");
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < tran.length; j++) {
                 randomindex = (int) (Math.random()*(a.length));
                 tran[j] = randomindex;
                 System.out.print(a[randomindex]);

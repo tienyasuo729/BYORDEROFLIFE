@@ -14,7 +14,6 @@ public class Matrix {
     }
 
     public void inputMatrix() {
-        Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 while (true) {
