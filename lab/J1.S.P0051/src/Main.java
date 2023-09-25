@@ -58,11 +58,9 @@ public class Main {
                     double height = Double.parseDouble(Validate.checkIntInPut("^-?\\d+(\\.\\d+)?$","- Enter your height (m): ","- Invalid data, please enter decimal numbers only: "));
 
                     BMI bmiCalculator = new BMI(weight, height);
-                    double bmi = bmiCalculator.calculateBMI();
-                    String status = bmiCalculator.getStatus();
 
-                    System.out.println("BMI: " + bmi);
-                    System.out.println("Status: " + status);
+                    System.out.println("BMI: " + bmiCalculator.calculateBMI());
+                    System.out.println("Status: " + bmiCalculator.getStatus());
                     break;
 
                 case 3:

@@ -1,6 +1,7 @@
 import model.BubbleSort;
 import validate.Validate;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BubbleSortApp {

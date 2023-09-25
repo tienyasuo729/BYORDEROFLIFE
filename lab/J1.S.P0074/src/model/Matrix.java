@@ -64,25 +64,25 @@ public class Matrix {
         return result;
     }
 
-    public Matrix multiplyMatrix(Matrix matrix2) {
-        if (this.cols != matrix2.rows) {
-            System.out.println("Number of columns in the first matrix must be equal to the number of rows in the second matrix.");
-            return null;
-        }
-
-        Matrix result = new Matrix(this.rows, matrix2.cols);
-        for (int i = 0; i < this.rows; i++) {
-            for (int j = 0; j < matrix2.cols; j++) {
-                double dotProduct = 0;
-                for (int k = 0; k < this.cols; k++) {
-                    dotProduct += this.data[i][k] * matrix2.data[k][j];
-                }
-                result.data[i][j] = dotProduct;
+        public Matrix multiplyMatrix(Matrix matrix2) {
+            if (this.cols != matrix2.rows) {
+                System.out.println("Number of columns in the first matrix must be equal to the number of rows in the second matrix.");
+                return null;
             }
-        }
 
-        return result;
-    }
+            Matrix result = new Matrix(this.rows, matrix2.cols);
+            for (int i = 0; i < this.rows; i++) {
+                for (int j = 0; j < matrix2.cols; j++) {
+                    double dotProduct = 0;
+                    for (int k = 0; k < this.cols; k++) {
+                        dotProduct += this.data[i][k] * matrix2.data[k][j];
+                    }
+                    result.data[i][j] = dotProduct;
+                }
+            }
+
+            return result;
+        }
 
     public void displayMatrixWithOperation(String operation, Matrix matrix2, Matrix result) {
         System.out.println("Matrix 1:");
