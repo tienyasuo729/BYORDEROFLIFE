@@ -18,7 +18,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -34,7 +34,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/codegym/text/lab/week 3/J1.S.P0053",
+    "last_opened_file_path": "C:/codegym/text/lab/week 2/J1.S.P0051",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -58,7 +58,8 @@
       <workItem from="1695560939128" duration="1700000" />
       <workItem from="1695567303045" duration="8000" />
       <workItem from="1695615724798" duration="21000" />
-      <workItem from="1695875207963" duration="27000" />
+      <workItem from="1695688512896" duration="2835000" />
+      <workItem from="1695869998746" duration="487000" />
     </task>
     <servers />
   </component>

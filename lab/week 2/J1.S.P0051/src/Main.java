@@ -22,7 +22,7 @@ public class Main {
                 case 1:
                     calculator.add(Double.parseDouble(Validate.checkIntInPut("^-?\\d+(\\.\\d+)?$","- Enter a number: ","- Invalid data, please enter decimal numbers only: ")));
                     while (true){
-                        char operator = Validate.checkIntInPut("^[+\\-*/^]+$","- Enter an operator (+, -, *, /, ^): ","- Invalid operator, please re-enter: ").charAt(0);
+                        char operator = Validate.checkIntInPut("^[+\\-*/=]*$","- Enter an operator (+, -, *, /, ^, =): ","- Invalid operator, please re-enter: ").charAt(0);
                         switch (operator) {
                             case '+':
                                 num1 = Double.parseDouble(Validate.checkIntInPut("^-?\\d+(\\.\\d+)?$","- Enter a number: ","- Invalid data, please enter decimal numbers only: "));
