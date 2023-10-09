@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/Android_Phone/listAndroid_Phone.html" value="file://$PROJECT_DIR$/src/main/webapp/views/Android_Phone" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/Android_Phone/listAndroid_PhoneJPA.html" value="file://$PROJECT_DIR$/src/main/webapp/views/Android_Phone" />
       </map>
     </option>
   </component>
