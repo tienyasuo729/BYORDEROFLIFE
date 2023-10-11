@@ -1,19 +1,19 @@
 package model;
 
 public class Student {
-    private int id;
+    private String id;
     private String name;
     private int semester;
     private String course;
 
-    public Student(int id, String name, int semester, String course) {
+    public Student(String id, String name, int semester, String course) {
         this.id = id;
         this.name = name;
         this.semester = semester;
         this.course = course;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -43,6 +43,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return "ID: " + id + ", Name: " + name + ", Semester: " + semester + ", Course: " + course;
+        return "ID: " + id + "| Name: " + name + "| Semester: " + semester + "| Course: " + course;
     }
 }
