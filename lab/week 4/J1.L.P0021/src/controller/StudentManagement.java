@@ -6,6 +6,7 @@ import validate.Validate;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class StudentManagement {
@@ -24,7 +25,14 @@ public class StudentManagement {
 
             switch (choice) {
                 case 1:
-                    studentManager.createStudent();
+                    String name = Validate.checkIntInPut("^[a-zA-Z]+$", "- Enter student name: ", "- Invalid name, please re-enter the student name: ");
+
+                    int semester = Integer.parseInt(Validate.checkIntInPut("^[0-9]+$", "- Enter semester: ", "- Invalid semester, please re-enter: "));
+
+                    int courseName = Integer.parseInt(Validate.checkIntInPut("^[1-3]$", "- Choose a course:\n1/ Java\n2/ .Net\n3/ C/C++\n- Enter your choice: ", "- Invalid option. Please choose a valid option: "));
+
+                    studentManager.createStudent(name, semester, courseName);
+                    System.out.println("Student created successfully.");
                     break;
                 case 2:
                     System.out.print("Enter student name or part of the name: ");
@@ -43,25 +51,35 @@ public class StudentManagement {
                     break;
                 case 3:
                     System.out.print("Enter student ID to update/delete: ");
-                    int studentId = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.println("Do you want to update (U) or delete (D) student?");
+                    String studentIdToEdit = scanner.nextLine().trim();
+                    System.out.println("Do you want to update (1) or delete (2) student?");
                     String updateOrDelete = scanner.nextLine().toUpperCase();
 
                     if (updateOrDelete.equals("U")) {
-                        System.out.print("Enter new course (Java, .Net, C/C++): ");
-                        String newCourse = scanner.nextLine();
-                        studentManager.updateStudentCourse(studentId, newCourse);
+                        int choiceNewCourseName = Integer.parseInt(Validate.checkIntInPut("^[1-3]$", "- Choose a new course:\n1/ Java\n2/ .Net\n3/ C/C++\n- Enter your choice: ", "- Invalid option. Please choose a valid option: "));
+                        String newCourse = null;
+                        switch (choiceNewCourseName){
+                            case 1:
+                                courseName = "Java";
+                                break;
+                            case 2:
+                                courseName = ".Net";
+                                break;
+                            case 3:
+                                courseName = "C/C++";
+                                break;
+                        }
+                        studentManager.updateStudentCourse(studentIdToEdit, newCourse);
                         System.out.println("Student updated successfully.");
                     } else if (updateOrDelete.equals("D")) {
-                        studentManager.deleteStudent(studentId);
+                        studentManager.deleteStudent(studentIdToEdit);
                         System.out.println("Student deleted successfully.");
                     } else {
                         System.out.println("Invalid choice.");
                     }
                     break;
                 case 4:
-                    ArrayList<Student> allStudents = studentManager.getAllStudents();
+                    List<Student> allStudents = studentManager.getAllStudents();
                     for (Student student : allStudents) {
                         System.out.println(student);
                     }
@@ -70,8 +88,6 @@ public class StudentManagement {
                     System.out.println("Exiting the program.");
                     scanner.close();
                     System.exit(0);
-                default:
-                    System.out.println("Invalid option. Please choose a valid option.");
             }
         }
     }
