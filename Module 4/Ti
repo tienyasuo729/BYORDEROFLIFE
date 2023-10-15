@@ -49,14 +49,14 @@ create table vendor(
     vendor_address text
 );
 
-create table rawMaterial(
+create table raw_material(
 	material_id int primary key,
     material_name text,
     material_standard_cost text,
     unit_of_measure text
 );
 
-create table workCenter(
+create table work_center(
 	work_center_id int primary key,
     work_center_loaction text
 );
