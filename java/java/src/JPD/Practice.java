@@ -13,13 +13,13 @@ public class Practice {
 //        list1 = "na,ni,nu,ne,no";
 //        translate = "な,に,ぬ,ね,の";
 
-//        list1 = "ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,to,na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo";
-//        translate = "か,き,く,け,こ,さ,し,す,せ,そ,た,ち,つ,て,と,な,に,ぬ,ね,の,は,ひ,ふ,へ,ほ,ま,み,む,め,も";
+        list1 = "ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,to,na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo";
+        translate = "か,き,く,け,こ,さ,し,す,せ,そ,た,ち,つ,て,と,な,に,ぬ,ね,の,は,ひ,ふ,へ,ほ,ま,み,む,め,も";
 
-        list1 = "na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo,ya,yu,yo,ra,ri,ru,re,ro,wa,n";
-        translate = "な,に,ぬ,ね,の,は,ひ,ふ,へ,ほ,ま,み,む,め,も,や,ゆ,よ,ら,り,る,れ,ろ,わ,ん";
+//        list1 = "na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo,ya,yu,yo,ra,ri,ru,re,ro,wa,n";
+//        translate = "な,に,ぬ,ね,の,は,ひ,ふ,へ,ほ,ま,み,む,め,も,や,ゆ,よ,ら,り,る,れ,ろ,わ,ん";
         int randomindex;
-        int[] tran = new int[4];
+        int[] tran = new int[6];
         String[] a = list1.split(",");
         String[] b = translate.split(",");
         for (int i = 1; i <= 27; i++) {
@@ -30,9 +30,11 @@ public class Practice {
                 System.out.print(a[randomindex]);
             }
             System.out.println();
-            for (int j = 0; j < tran.length; j++) {
-                System.out.print(b[tran[j]]);
-            }
+
+//            System.out.println();
+//            for (int j = 0; j < tran.length; j++) {
+//                System.out.print(b[tran[j]]);
+//            }
 
         }
     }
