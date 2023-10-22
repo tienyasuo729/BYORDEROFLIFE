@@ -29,8 +29,19 @@ public class StudentManagement {
 
                     int semester = Integer.parseInt(Validate.checkIntInPut("^[0-9]+$", "- Enter semester: ", "- Invalid semester, please re-enter: "));
 
-                    int courseName = Integer.parseInt(Validate.checkIntInPut("^[1-3]$", "- Choose a course:\n1/ Java\n2/ .Net\n3/ C/C++\n- Enter your choice: ", "- Invalid option. Please choose a valid option: "));
-
+                    int choiceCourseName = Integer.parseInt(Validate.checkIntInPut("^[1-3]$", "- Choose a course:\n1/ Java\n2/ .Net\n3/ C/C++\n- Enter your choice: ", "- Invalid option. Please choose a valid option: "));
+                    String courseName = null;
+                    switch (choiceCourseName){
+                        case 1:
+                            courseName = "Java";
+                            break;
+                        case 2:
+                            courseName = ".Net";
+                            break;
+                        case 3:
+                            courseName = "C/C++";
+                            break;
+                    }
                     studentManager.createStudent(name, semester, courseName);
                     System.out.println("Student created successfully.");
                     break;
@@ -50,8 +61,7 @@ public class StudentManagement {
                     }
                     break;
                 case 3:
-                    System.out.print("Enter student ID to update/delete: ");
-                    String studentIdToEdit = scanner.nextLine().trim();
+                    int studentIdToEdit = Integer.parseInt(Validate.checkIntInPut("^[1-9]\\d+$"," - Enter student ID to update/delete: ","- ID is invalid or does not exist, please re-enter: "));
                     System.out.println("Do you want to update (1) or delete (2) student?");
                     String updateOrDelete = scanner.nextLine().toUpperCase();
 

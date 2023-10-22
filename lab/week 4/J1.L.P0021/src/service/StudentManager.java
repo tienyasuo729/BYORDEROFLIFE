@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class StudentManager {
     private ArrayList<Student> students = new ArrayList<>();
-    private int studentIdCounter = 1;
+    private int studentIdCounter = students.get(students.size() - 1).getId() + 1;
 
     public void createStudent(String name, int semester, String courseName) {
         Student student = new Student(studentIdCounter, name, semester, courseName);
