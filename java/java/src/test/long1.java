@@ -1,8 +1,13 @@
 package test;
 
+import java.util.Scanner;
+
 public class long1 {
     public static void main(String[] args) {
-        long nn = Long.parseLong("999999999");
-        System.out.println(nn + 2);
+        Scanner scanner = new Scanner(System.in);
+        String nn = scanner.nextLine();
+        System.out.println(nn);
+        System.out.println(nn.equals(" "));
+        System.out.println(nn == null);
     }
 }
