@@ -38,7 +38,7 @@ public class Practice {
 //
 //        }
         for (int i = 0; i < 20; i++) {
-            System.out.println((int) (Math.random() * 10) + 1);
+            System.out.println((int) (Math.random() * 900) + 100);
             System.out.println();
         }
 
