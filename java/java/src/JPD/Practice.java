@@ -37,8 +37,11 @@ public class Practice {
 ////            }
 //
 //        }
+
+        int max = 31;
+        int min = 1;
         for (int i = 0; i < 20; i++) {
-            System.out.println((int) (Math.random() * 900) + 100);
+            System.out.println((int) (Math.random() * (max - min + 1)) + min);
             System.out.println();
         }
 
