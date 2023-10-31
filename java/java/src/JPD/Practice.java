@@ -72,5 +72,7 @@ public class Practice {
             System.out.println(array[(int) (Math.random() * 181) + 1]);
             System.out.println();
         }
+
+
     }
 }
