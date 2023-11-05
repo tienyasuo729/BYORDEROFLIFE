@@ -40,39 +40,39 @@ public class Practice {
 //
 //        }
 
-        String day [] = new String[31];
-        String age [] = new String[100];
-        String number [] = new String[100];
-
-        int max = 31;
-        int min = 1;
-        for (int i = 0; i < 50; i++) {
-            number[i] = String.valueOf((int) (Math.random() * (max - min + 1)) + min);
-        }
-
-        for (int i = 1; i <= 31; i++) {
-            day[i-1] = "ngày " + i;
-        }
-
-        for (int i = 1; i <= 100; i++) {
-            age[i-1] = "tuổi " + i;
-        }
-
-
-
+//        String day [] = new String[31];
+//        String age [] = new String[100];
+//        String number [] = new String[100];
+//
 //        int max = 31;
 //        int min = 1;
-//        for (int i = 0; i < 20; i++) {
-//            System.out.println((int) (Math.random() * (max - min + 1)) + min);
-//            System.out.println();
+//        for (int i = 0; i < 50; i++) {
+//            number[i] = String.valueOf((int) (Math.random() * (max - min + 1)) + min);
 //        }
-
-        String array [] = Stream.concat(Stream.concat(Arrays.stream(day),Arrays.stream(age)), Arrays.stream(number)).toArray(String[]::new);
+//
+//        for (int i = 1; i <= 31; i++) {
+//            day[i-1] = "ngày " + i;
+//        }
+//
+//        for (int i = 1; i <= 100; i++) {
+//            age[i-1] = "tuổi " + i;
+//        }
+//
+//
+//
+        int max = 1;
+        int min = 31;
         for (int i = 0; i < 20; i++) {
-            System.out.println(array[(int) (Math.random() * 181) + 1]);
+            System.out.println((int) (Math.random() * (max - min + 1)) + min);
             System.out.println();
         }
-
+//
+//        String array [] = Stream.concat(Stream.concat(Arrays.stream(day),Arrays.stream(age)), Arrays.stream(number)).toArray(String[]::new);
+//        for (int i = 0; i < 20; i++) {
+//            System.out.println(array[(int) (Math.random() * 181) + 1]);
+//            System.out.println();
+//        }
+//
 
     }
 }
