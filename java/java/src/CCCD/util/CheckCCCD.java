@@ -10,6 +10,7 @@ public class CheckCCCD {
         boolean check = true;
         do {
             try {
+                scanner.next();
                 choose = Integer.parseInt(scanner.nextLine());
                 if (choose <= numberInput && choose >= 0){
                     check = false;
