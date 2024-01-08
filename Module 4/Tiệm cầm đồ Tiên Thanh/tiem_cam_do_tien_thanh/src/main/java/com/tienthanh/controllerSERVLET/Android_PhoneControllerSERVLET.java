@@ -129,7 +129,6 @@ public class Android_PhoneControllerSERVLET extends HttpServlet {
         List<Android_PhoneSERVLET> androidPhones = android_phoneService.list_Find_Android_Phone_Similar_By_Name(find_by_name);
         request.setAttribute("listAndroid_Phone", androidPhones);
         request.getRequestDispatcher("Android_Phone/listAndroid_Phone.jsp").forward(request, response);
-
     }
 
     private void list_find_android_phone_similar_by_id(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
